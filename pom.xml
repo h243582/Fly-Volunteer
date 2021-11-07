@@ -13,7 +13,6 @@
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.1.4.RELEASE</version>
         <relativePath/>
-
     </parent>
 
     <properties>
@@ -22,7 +21,9 @@
     </properties>
 
     <modules>
+        <module>hyf_utils</module>
 
+        <module>heyufei_Register</module>
     </modules>
 
 
