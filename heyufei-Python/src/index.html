@@ -1,675 +1,2588 @@
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="format-detection" content="telephone=no"/>
-<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
-<title>百度产品大全</title>
-<style type="text/css">
-body{margin:0;padding:0;font-size:14px;font-family:Arial, Helvetica, sans-serif;position:relative;}
-a{color:#0000cc;}
-a:link{color:#0000cc}
-img,ul,li,h3,form,table{margin:0;padding:0;border:0;list-style:none;}
-#head{width:100%;box-shadow: 0 2px 15px 0 rgba(0,0,0,0.10);position: relative;}
-.s_form:after{content:".";display:block;height:0;clear:both;visibility:hidden}
-.s_form{zoom:1;width:1000px;height:40px;padding:15px 0;margin:0 auto;}
-.logo{float:left;margin-top: 4px;}
-.logo img{width:102px;height: 32px;}
-.fm{clear:none;position:relative;float:left;margin-left: 16px;}
-.s_ipt_wr{border: 2px solid #C4C7CE;border-radius: 10px 0 0 10px;background:#fff;display:inline-block;vertical-align:top;width:590px;height:36px;margin-right:0px;border-right-width:0px;overflow:hidden;}
-.s_ipt_wr:hover,.s_ipt_wr.ipthover{border-color:#999 transparent #b3b3b3 #999;}
-.s_ipt_wr.iptfocus{border-color:#4E6EF2 transparent #4E6EF2 #4E6EF2;} 
-.i{width:590px;height:36px;font:16px/18px arial;line-height:22px\9;padding:5px 10px 8px 7px;background:#fff;border:0;outline:none;-webkit-appearance:none}
-.btn_wr{width:auto;height:auto;*border-bottom:none;display:inline-block;}
-.btn{width:112px;height:40px;font-size:17px;color:white;letter-spacing:1px;background: #4E6EF2;border:none;padding:0;border-bottom:1px solid #2d78f4;outline:medium;*border-bottom:none;-webkit-appearance:none;-webkit-border-radius:0 10px 10px 0;cursor:pointer;}
-.btn_h{background:#4661d9;*border-bottom:none;}
-/* #s_tab{background:#f8f8f8;width:100%;height:38px;padding:0;float:none;zoom:1;font:normal 13px/36px arial,"Sim Sun";display: none;}
-#s_tab_wrap{width:1000px;margin:0 auto;} */
-#main{width:1000px;padding:0;margin:0 auto;}
-.crumb{font-family:arial "Sim Sun";color:#666;}
-.crumb a{text-decoration:none;color:#0000d0;}
-.crumb a:hover{text-decoration:underline;}
-input{padding-top:0;padding-bottom:0;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box}
-#u,#head,#tool,#search,#foot{font-size:13px}
-.seth{margin-left:20px;display:none;}
-.seth a{color:#00c}
-#help{margin-left:24px;}
-.s_link{float: left;position: absolute;top: 50%;margin-top: -8px;right: 24px;width: 102px;}
-.s_link a{color: #222;text-decoration: none;float: left;}
-.s_link a:hover{color: #315efb;}
-.short-line{margin:0 0 0 7px;color:#999999;}
-#tb_mr{color:#00c;cursor:pointer;position:relative;z-index:298}
-#tb_mr small{font-size:11px}
-#tb_mr b{font-weight:normal;text-decoration:underline}
-#more{width:58px;height:100px;border:1px solid #9A99FF;background:#fff;position:absolute;z-index:298;left:452px;top:45px;*top:46px;overflow:hidden;display:none;outline:none}
-#more a{width:53px;height:25%;line-height:24px;display:block;padding:0 0 0 7px;color:#0001CF;text-decoration:none}
-#more a span{font-family:"宋体"}
-#more a:hover{background:#D9E1F6}
-#more div{height:1px;overflow:hidden;background:#ccf;margin:0 3px}
-#page{white-space:nowrap}
-#page{word-spacing:4px}
-#page .n{font-size:16px}
-.tools{width:220px;position:absolute;top:10px;}
-.tools a{text-decoration:none;}
-.tools a:hover{text-decoration:underline;}
-#mHolder{width:62px;position:relative;z-index:296;top:-18px;margin-left:9px;margin-right:-12px;display:none}
-#mCon{height:18px;position:absolute;right:7px;top:3px;top:6px\9;cursor:pointer;padding:0 18px 0 0;line-height:18px;background:url(//www.baidu.com/img/bg-1.0.0.gif) no-repeat right -133px;background-position:right -135px\9}
-#mCon span{color:#00c;cursor:default;display:block}
-#mCon .hw{text-decoration:underline;cursor:pointer}
-#mMenu{width:56px;border:1px solid #9a99ff;position:absolute;right:7px;top:28px;display:none;background:#fff}
-#mMenu a{width:100%;height:100%;color:#00c;display:block;line-height:22px;text-indent:6px;text-decoration:none}
-#mMenu a:hover{background:#d9e1f6}
-#mMenu .ln{height:1px;background:#ccf;overflow:hidden;margin:2px;font-size:1px;line-height:1px}
-
-h3{font-size:16px;padding-bottom:10px;margin:30px 0 0 0;font-family:arial,"Sim Sun";font-weight:normal;color:#333;width:1000px;}
-h3 sup{font:normal 14px arial,"Sim Sun";color:#fff;vertical-align:top;width: 32px;height: 18px;line-height:18px;text-align: center;background-color: #ff6600;border-radius:4px;margin:2px 0 0 8px;display:inline-block;}
-h3.new{margin:30px 0 0 0;}
-.l{float:left;}
-.con{float:left;width:225px;margin:0 20px 0  0;_overflow:hidden;_height:66px;padding:15px 0 16px 0;height:34px;}
-.con_last{margin:0;}
-.con a{margin-bottom:4px;display:inline-block;font-family:arial "MicroSoft YaHei";font-weight:bold;color:#4662d9;text-decoration:none;}
-.con a:hover{text-decoration:underline;}
-.con span{font-family:arial,"Sim Sun";font-size:12px;color:#666;}
-
-.abg{width:24px;height:24px;display:block;float:left;margin-right:8px;overflow:hidden;background:url(img/more.png) no-repeat left -2244px;}
-.secr{width:24px;height:24px;display:block;float:left;margin-right:8px;overflow:hidden;background:url(img/secr.gif) no-repeat;}
-.aipage{width:24px;height:24px;display:block;float:left;margin-right:8px;overflow:hidden;background:url(img/aipage.gif) no-repeat;}
-.con .baipin{background:url(img/baipin.png) no-repeat;background-size: 24px 24px;}
-.con .wangpanqiye{background:url(img/wangpanqiye.png) no-repeat;background-size: 24px 24px;}
-.con .yikexiangce{background:url(img/yikexiangce.png) no-repeat;background-size: 24px 24px;}
-.con .aiqicha{background:url(img/aiqicha.jpg) no-repeat;background-size: 24px 24px;}
-.con .xiaodu{background:url(img/xiaodu.gif) no-repeat;background-size: 24px 24px;}
-.con .anquan{background:url(img/anquan.png) no-repeat;background-size: 24px 24px;}
-.con .baifubao{background:url(img/baifubao.gif) no-repeat;background-size: 24px 24px;}
-.con .finance{background:url(img/finance.gif) no-repeat;background-size: 24px 24px;}
-.con .ydapp{background:url(img/ydapp.gif) no-repeat;background-size: 24px 24px;}
-.con .fanyiapp{background:url(img/fanyiapp.gif) no-repeat;background-size: 24px 24px;}
-.con .aifanfan{background:url(img/aifanfan.png) no-repeat;background-size: 24px 24px;}
-.con .baiduyingxiao{background:url(img/baiduyingxiao.png) no-repeat;background-size: 24px 24px;}
-.con .youjia{background:url(img/youjia.png) no-repeat;background-size: 24px 24px;}
-.gameplatform{background:url(img/gamelogo.jpg) no-repeat; background-size: 24px 24px;}
-.wangpannewlogo{background: url(img/wangpanlogo.png) no-repeat; background-size: 24px 24px; border-radius: 4px; border: 1px solid rgba(17, 16, 16, 0.05); }
-.yueduqi{background-position:left -2244px;}
-.yidongyingyong{background-position:left top;}
-.jdo{background-position:left -2142px;}
-.yi{background-position:left -1802px;}
-.car{background-position:left -1734px;}
-.web{background-position:left -1700px;}
-.video{background-position:left -1292px;}
-.mp3{background-position:left -1020px;}
-.map{background:url(img/map.jpg) no-repeat;background-size: 24px 24px;}
-.news{background-position:left -1088px;}
-.image{background-position:left -714px;}
-.dict{background-position:left -476px;}
-.u_tool{background-position:left -884px;}
-.tuan{background-position:left -1564px;}
-.hao123{background-position:left -612px;}
-.site_nav{background-position:left -1360px;}
-.lvyou{background-position:left -2108px;}
-.zhidao{background-position:left -2040px;}
-.baike{background-position:left -238px;}
-.tieba{background-position:left -1156px;}
-.xinzhi{background-position:left -2210px;}
-.hi{background-position:left -646px;}
-.wenku{background-position:left -1666px;}
-.zhangmen{background-position:left -1054px;}
-.shenbian{background-position:left -1258px;}
-.jingyan{background-position:left -816px;}
-.cang{background-position:left -340px;}
-.youxi{background-position:left -1904px;}
-.ting{background-position:left -1462px;}
-.youxizixun{background-position:left -1938px;}
-.search_mobile{background-position:left -1836px;}
-.baidu_mobile{background-position:left -1836px;}
-.kuaisou{background-position:left -136px;}
-.map_mobile{background-position:left -986px;}
-.open{background-position:left -1122px;}
-.zhanzhang{background-position:left -2006px;}
-.tongji{background-position:left -1496px;}
-.lianmeng{background-position:left -1632px;}
-.tuiguang{background-position:left -1598px;}
-.guanjia{background-position:left -578px;}
-.data{background-position:left -442px;}
-.fengyunbang{background-position:left -1530px;}
-.zhishu{background-position:left -748px;}
-.yingyong{background-position:left -68px;}
-.yingyin{background-position:left -170px;}
-.hi{background-position:left -680px;}
-.tool{background-position:left -306px;}
-.ime{background-position:left -1428px;}
-.qian{background-position:left -1190px;}
-.liubanlv{background-position:left -272px;}
-.fanyi{background-position:left -102px;}
-.xunren{background-position:left -1768px;}
-.gongyi{background-position:left -544px;}
-.jijinhui{background-position:left -374px;}
-.mangdao{background-position:left -408px;}
-.laonian{background-position:left -34px;}
-.zhuanli{background-position:left -2074px;}
-.qiyi{background-position:left -1224px;}
-.youa{background-position:left -1870px;}
-.leju{background-position:left -850px;}
-.tiankong{background-position:left -1394px;}
-.skygame{background-position:left -2278px;}
-.developer{background-position:left -2312px;}
-.mobileexplore{background-position:left -2346px;}
-.yuedu{background-position:left -2380px;}
-.leju{background-position:left -2414px;}
-.mobilesearch{background-position:left -2448px;}
-.zhangshangbaidu{background-position:left -2482px;}
-.mobile-tongxunlu{background-position:left -2516px;}
-.liulanqi{background-position:left -2550px;}
-.fenxiang{background-position:left -2584px;}
-.yunzhineng{background-position:left -2618px;}
-.ydtongji{background-position:left -2652px;}
-.kaifazhe{background-position:left -2720px;}
-.baiduxiangche{background-position:left -2754px;}
-.wangpan{background-position:left -2788px;}
-.xiaoyuan{background-position:left -2822px;}
-.ting2{background-position:left -2890px;}
-
-/**/
-.attr_881{background-position:left -9496px;}
-.attr_879{background-position:left -9428px;}
-.attr_878{background-position:left -9394px;}
-.attr_877{background-position:left -9360px;}
-.attr_876{background-position:left -9326px;}
-.attr_875{background-position:left -9292px;}
-.attr_873{background-position:left -9164px;}
-.attr_872{background-position:left -9198px;}
-.attr_871{background-position:left -8994px;}
-.attr_870{background-position:left -8960px;}
-.attr_869{background-position:left -8892px;}
-.attr_868{background-position:left -8858px;}
-.attr_860{background-position:left -8246px;}
-.attr_859{background-position:left -8172px;}
-.attr_858{background-position:left -8036px;}
-.attr_857{background-position:left -9028px;}
-.attr_855{background-position:left -7900px;}
-.attr_854{background-position:left -9062px;}
-.attr_851{background-position:left -7594px;}
-.attr_850{background-position:left -7560px;}
-.attr_849{background-position:left -7492px;}
-.attr_848{background-position:left -7424px;}
-.attr_845{background-position:left -7220px;}
-.attr_843{background-position:left -6574px;}
-.attr_842{background-position:left -6540px;}
-.attr_841{background-position:left -6506px;}
-.attr_840{background-position:left -6472px;}
-.attr_839{background-position:left -6438px;}
-.attr_838{background-position:left -6404px;}
-.attr_835{background-position:left -6316px;}
-.attr_833{background-position:left -6248px;}
-.attr_831{background-position:left -6180px;}
-.attr_830{background-position:left -6146px;}
-.attr_827{background-position:left -6044px;}
-.attr_824{background-position:left -5908px;}
-.attr_823{background-position:left -7526px;}
-.attr_821{background-position:left -5806px;}
-.attr_819{background-position:left -5738px;}
-.attr_816{background-position:left -5704px;}
-.attr_813{background-position:left -5500px;}
-.attr_809{background-position:left -5942px;}
-.attr_806{background-position:left -5263px;}
-.attr_805{background-position:left -7186px;}
-.attr_804{background-position:left -5195px;}
-.attr_803{background-position:left -5127px;}
-.attr_802{background-position:left -8104px;}
-.attr_800{background-position:left -8070px;}
-.attr_796{background: url('img/taihemusician.gif') no-repeat center;}
-.attr_795{background-position:left -4777px;}
-.attr_794{background-position:left -4743px;}
-.attr_793{background-position:left -4709px;}
-.attr_792{background-position:left -4675px;}
-.attr_791{background-position:left -4811px;}
-.attr_790{background-position:left -4505px;}
-.attr_789{background-position:left -5093px;}
-.attr_787{background-position:left -4301px;}
-.attr_786{background: url('img/qqyy.gif') no-repeat center;}
-.attr_784{background: url('img/qqyy.gif') no-repeat center;}
-.attr_783{background-position:left -4132px;}
-.attr_782{background-position:left -4098px;}
-.attr_775{background-position:left -3792px;}
-.attr_771{background-position:left -3452px;}
-.attr_767{background-position:left -3316px;}
-.attr_766{background-position:left -3282px;}
-.attr_720{background-position:left -6880px;}
-.attr_701{background-position:left -3928px;}
-.ydtongji{background-position:left -2652px;}
-.kaifazhe{background-position:left -8280px;}
-.lvyou{background-position:left -6778px;}
-.zhishu{background-position:left -748px;}
-.yuedu{background-position:left -7084px;}
-.fengyunbang{background-position:left -1530px;}
-.jingyan{background-position:left -6744px;}
-.ime{background-position:left -7322px;}
-.guanjia{background-position:left -578px;}
-.image{background-position:left -6948px;}
-.tuiguang{background-position:left -1598px;}
-.mobileexplore{background-position:left -2346px;}
-.news{background-position:left -6914px;}
-.zhidao{background-position:left -7118px;}
-.lianmeng{background-position:left -1632px;}
-.tieba{
-    background: url(./img/teiba.png) no-repeat center;
-    background: url(./img/teiba@2x.png) no-repeat center / contain;
-}
-.gongyi{background-position:left -544px;}
-.tongji{background-position:left -1496px;}
-.ime_mobile {background: url(./img/ime_mobile.png);}
-.mp3{background-position:left -1020px;}
-.baike{background-position:left -9975px;}
-.wangpan{background-position:left -2788px;}
-.yingyin{background-position:left -170px;}
-.zhanzhang{background-position:left -2006px;}
-.yingyong{background-position:left -68px;}
-.video{background-position:left -7016px;}
-.site_nav{background-position:left -6846px;}
-.liulanqi{background-position:left -4539px;}
-.fanyi{background-position:left -102px;}
-.open{background-position:left -1122px;}
-.youxi{background-position:left -1904px;}
-.web{background-position:left -1700px;}
-.hao123{background-position:left -4437px;}
-.wenku{background-position:left -7050px;}
-/*.liulanqi{background-position:left -9530px;}*/
-.ime{background-position:left -9564px;}
-.baijiahao{background-position:left -9598px;}
-.con .haokan{background:url(img/haokan.gif) no-repeat;}
-.con .duxiaoshi{background:url(img/duxiaoshi@1x.png) no-repeat;background-size: cover;}
-.wangpan{background-position:left -9701px;}
-.attr_851{background-position:left -9667px;}
-.translate{background-position:left -9735px;}
-.ai{background-position:left -9770px;}
-.quzheng{background-position:left -9805px;}
-.lvshi{background-position:left -9840px;}
-.guanxingpan{background:url(img/guanxingpan.png) no-repeat;background-size:cover;}
-.jiaoyu{background-position:left -10045px;}
-.bit{background-position:left -9941px;}
-.yingxiao_center{background-position:left -10009px;}
-.trust{background-position:left -10080px;}
-.juejin{background:url(img/juejin.png) no-repeat;background-size: 24px 24px;}
-.baipin{background-position:left -10149px;}
-.baiji{background-position:left -10182px;}
-.bear{background-position:left -10250px;}
-
-.cl{clear:both;height:0px;line-height:0px;font-size:0px;overflow:hidden;}
-.footer{height:42px;line-height:42px;border-top:1px solid #ebebeb;background-color:#f8f8f8;text-align:center;color:#666;font-size:12px;margin-top:40px;width:100%;}
-.footer a{color:#666;}
-
-.con .fengyunbang{background-position:0px 0px}
-.con .nuomi{background-position:0px -25px}
-.con .image{background-position:0px -50px}
-.con .qqyy{background-position:0px -75px}
-.con .tuiguang{background-position:0px -100px}
-.con .wenku{background-position:0px -125px}
-.con .zhidao{background-position:0px -150px}
-.con .fengyunbang,.con .nuomi,.con .image,.con .qqyy,.con .tuiguang,.con .wenku,.con .zhidao{background-image: url(./img/more_z.png);background-size: 24px;}
-</style>
-
-<style type="text/css">
-@media (max-width:1024px) {
-    body {position:relative;}
-    h3 {width: 100%;}
-    h3, h3.new {margin-top:15px;}
-    #head { padding: 0 10px; width: auto; border-bottom:0;}
-    #main {margin: 0 10px; width: auto;}
-    #foot { width: auto}
-    .i {width: 100%; height: 36px;}
-    .s_form {width: 100%; height: auto; position: relative;}
-    .fm{ margin: 0 142px 0 108px; float: none;}
-    .s_ipt_wr {margin-right: 90px; display: block; width: auto; height: auto; box-sizing: border-box;}
-    .btn_wr{position: absolute; right: 0; top:0;}
-    .btn {height: 40px; width: 90px;}
-    .logo {position: absolute; margin-top: 0px;}
-    .tools {width: auto; min-width: 30px; top: 0; right: -52px;}
-    .s_link{right: 14px;}
-    .crumb a {line-height:40px; display: inline-block;}
-
-    .con {padding: 8px 0 15px; position: relative;}
-    .con_last {margin:0 20px 0 0;}
-    .con .abg {margin-bottom:0;}
-    .con .secr {margin-bottom:0;}
-    .con .aipage {margin-bottom:0;}
-    div[id^="sd"] {top: 39px!important; z-index: 1;}
-    div[id^="sd"] td{line-height: 28px!important;}
-    .con div:last-child>a { margin: 2px 0 0; padding:0;position: absolute; padding: 0 0 15px 30px; display: block; width: 80%;     text-overflow: ellipsis; white-space: nowrap; overflow: hidden;}
-    .con span { height: 15px; overflow: hidden; display: inline-block; text-overflow: ellipsis; white-space: nowrap; width: 100%;}
-
-}
-@media (max-width:740px) {
-    .con { margin: 0; width: 33.3%;}
-    .con span { height: 15px; overflow: hidden; display: inline-block; text-overflow: ellipsis; white-space: nowrap; width: 100%;}
-
-}
-@media (max-width:512px) {
-    .tools{ right: 0;}
-    div[id^="sd"] {top: 69px!important;}
-    .logo img {width: 70px;}
-    .fm{margin: 0 122px 0 80px;}
-    .con .abg {display: none;}
-    .con .secr {display: none;}
-    .con .aipage {display: none;}
-    .con { width: 50%; margin: 0;}
-    .con span { height: 15px; overflow: hidden; display: inline-block; text-overflow: ellipsis; white-space: nowrap; width: 100%; margin-top:4px;}
-    .con div:last-child>a { margin: 2px 0 0; padding:0;position: absolute; padding: 0 0 18px 0; display: block; width: 95%;}
-
-}
-</style>
-
-
-</head>
-<script type="text/javascript">
-function h(obj){obj.style.behavior='url(#default#homepage)';obj.setHomePage('http://www.baidu.com/more/')};
-</script>
-<body>
-<div id="head">
-    <div id="s_fm" class="s_form">
-        <a href="http://www.baidu.com" class="logo">
-            <img src="https://www.baidu.com/img/flexible/logo/pc/privacy.gif" border="0" alt="到百度首页" onMouseDown="nsclick('logo')">
-        </a>
-        <form name="f" action="//www.baidu.com/s"  class="fm">
-            <input type="hidden" name="bs" value="lv">
-            <input type="hidden" name="f" value="8">
-            <input type="hidden" name="rsv_bp" value="1">
-            <input type="hidden" name="rsv_spt" value="3">
-            <span id="header_input" class="s_ipt_wr" onmousedown="this.className='s_ipt_wr iptfocus'"><input name="wd" id="kw" class="i" value="" maxlength="100"></span><span class="btn_wr" ><input type="submit" id="su" value="百度一下" class="btn" onmouseover="this.className='btn btn_h'" onmousedown="this.className='btn btn_h'" onmouseout="this.className='btn'"></span><span class="tools"><span id="mHolder"><div id="mCon"><span>输入法</span></div><ul id="mMenu"><li><a href="#" name="ime_hw">手写</a></li><li><a href="#" name="ime_py">拼音</a></li><li class="ln"></li><li><a href="#" name="ime_cl">关闭</a></li></ul></span><span class="seth" id="seth"><a href="#" onClick="h(this);">把本页设为主页</a><span class="short-line">|</span></span></span>
-        </form>
-    </div>
-    <div class="s_link">
-        <a target="_blank" href="http://www.baidu.com/">百度首页</a>
-        <a id="help" target="_blank" href="http://www.baidu.com/search/jiqiao.html" onMouseDown="nsclick('help')">帮助</a>
-    </div>
-</div>
-<div id="main">
-    <div id="content">
-        <!--新上线产品列表-->
-        <h3  class="new">新上线<sup>最新</sup></h3>
-        
-       
-        <div class="con">
-            <div>
-                <a href="https://aiqicha.baidu.com/?from=allp" class="abg aiqicha" target="_blank"></a>
-            </div>
-            <div>
-                <a href="https://aiqicha.baidu.com/?from=allp" target="_blank">爱企查</a>
-                <br />
-                <span>免费查企业，就上爱企查</span>
-            </div>
-        </div>
-        <div class="con">
-            <div>
-                <a href="https://dumall.baidu.com/?utm_source=baidu&utm_medium=all-products" class="abg xiaodu" target="_blank"></a>
-            </div>
-            <div>
-                <a href="https://dumall.baidu.com/?utm_source=baidu&utm_medium=all-products" target="_blank">小度商城</a>
-                <br />
-                <span>小度AI产品的家</span>
-            </div>
-        </div>
-        <div class="con">
-    <div>
-        <a href="http://secr.baidu.com/" class="secr" target="_blank"></a>
-    </div>
-    <div>
-        <a href="http://secr.baidu.com/" target="_blank">简单搜索</a>
-        <br />
-        <span>极速轻便的搜索app</span>
-    </div>
-</div>
-<div class="con"><div><a href="http://haokan.baidu.com" class="abg haokan" target="_blank"></a></div><div><a href="http://haokan.baidu.com" target="_blank">好看视频</a><br /><span>专业短视频聚合平台</span></div></div>
-<div class="con"><div><a href="http://yingxiao.baidu.com" class="abg yingxiao_center" target="_blank"></a></div><div><a href="http://yingxiao.baidu.com" target="_blank">百度营销中心</a><br /><span>百度商业产品服务平台</span></div></div>
-<div class="con"><div><a href="http://bit.baidu.com/" class="abg bit" target="_blank"></a></div><div><a href="http://bit.baidu.com/" target="_blank">百度技术学院</a><br /><span>做技术的学习者，让我们更强</span></div></div>
-<div class="con"><div><a href="https://quanmin.baidu.com/" class="abg duxiaoshi" target="_blank"></a></div><div><a href="https://quanmin.baidu.com/" target="_blank">度小视</a><br /><span>发个视频，让别人知道</span></div></div>
-<div class="con"><div><a href="https://aipage.baidu.com/" class="aipage" target="_blank"></a></div><div><a href="https://aipage.baidu.com/" target="_blank">百度智能门户</a><br /><span>智能化网站建设&小程序开发平台</span></div></div>
-<div class="con"><div><a href="https://aifanfan.baidu.com/" class="abg aifanfan" target="_blank"></a></div><div><a href="https://aifanfan.baidu.com/" target="_blank">爱番番</a><br /><span>一站式智能营销销售加速器</span></div></div>
-<div class="con"><div><a href="http://e.baidu.com/ebaidu/home?refer=888" class="abg baiduyingxiao" target="_blank"></a></div><div><a href="http://e.baidu.com/ebaidu/home?refer=888" target="_blank">营销推广</a><br /><span>百度营销-让客户主动找到你</span></div></div>
-<div class="con"><div><a href="https://pan.baidu.com/disk/main#/certification/web/introduction?from=header" class="abg wangpanqiye" target="_blank"></a></div><div><a href="https://pan.baidu.com/disk/main#/certification/web/introduction?from=header" target="_blank">百度网盘企业版</a><br /><span>企业级文件极速传输工具</span></div></div>
-<div class="con"><div><a href="https://photo.baidu.com?from=bdcpdq" class="abg yikexiangce" target="_blank"></a></div><div><a href="https://photo.baidu.com?from=bdcpdq" target="_blank">一刻相册</a><br /><span>无限空间云相册</span></div></div>
-<div class="con"><div><a href="https://www.yoojia.com?sa=allp" class="abg youjia" target="_blank"></a></div><div><a href="https://www.yoojia.com?sa=allp" target="_blank">有驾</a><br /><span>真车评，懂行情</span></div></div>
-        <div class="cl"></div>
-
-        <!--搜索服务产品列表-->
-        <h3 >搜索服务</h3>
-<div class="con"><div><a href="http://fanyi-pro.baidu.com/?from=bdmore" class="abg translate" target="_blank"></a></div><div><a href="http://fanyi-pro.baidu.com/?from=bdmore" target="_blank">百度人工翻译</a><br /><span>权威精准人工翻译</span></div></div>
-<div class="con"><div><a href="http://www.baidu.com/" class="abg web" target="_blank"></a></div><div><a href="http://www.baidu.com/" target="_blank">网页</a><br /><span>搜索海量网络资料、资源</span></div></div>
-<div class="con"><div><a href="http://video.baidu.com/" class="abg video" target="_blank"></a></div><div><a href="http://video.baidu.com/" target="_blank">视频</a><br /><span>搜索海量网络视频</span></div></div>
-<div class="con"><div><a href="http://fanyi.baidu.com/" class="abg fanyi" target="_blank"></a></div><div><a href="http://fanyi.baidu.com/" target="_blank">百度翻译</a><br /><span>轻松解决语言差异困扰</span></div></div>
-<div class="con"><div><a href="http://music.taihe.com/" class="abg mp3" target="_blank"></a></div><div><a href="http://music.taihe.com/" target="_blank">音乐</a><br /><span>搜索试听下载海量音乐</span></div></div>
-<div class="con"><div><a href="http://map.baidu.com/" class="abg map" target="_blank"></a></div><div><a href="http://map.baidu.com/" target="_blank">地图</a><br /><span>搜索功能完备的网络地图</span></div></div>
-<div class="con"><div><a href="http://news.baidu.com/" class="abg news" target="_blank"></a></div><div><a href="http://news.baidu.com/" target="_blank">新闻</a><br /><span>搜索浏览新闻资讯</span></div></div>
-<div class="con"><div><a href="http://image.baidu.com/" class="abg image" target="_blank"></a></div><div><a href="http://image.baidu.com/" target="_blank">图片</a><br /><span>搜索海量网络图片</span></div></div>
-<div class="con"><div><a href="http://stu.baidu.com" class="abg attr_792" target="_blank"></a></div><div><a href="http://stu.baidu.com" target="_blank">百度识图</a><br /><span>以图搜信息，发现更多可能！</span></div></div>
-<div class="con"><div><a href="http://y.taihe.com" class="abg attr_796" target="_blank"></a></div><div><a href="http://y.taihe.com" target="_blank">太合音乐人</a><br /><span>发现更好的原创音乐</span></div></div>
-<div class="con"><div><a href="http://xueshu.baidu.com/ " class="abg attr_842" target="_blank"></a></div><div><a href="http://xueshu.baidu.com/ " target="_blank">百度学术</a><br /><span>提供海量中英文文献检索！</span></div></div>
-<div class="con"><div><a href="https://zhaopin.baidu.com?zp_fr=cpdq" class="abg baipin" target="_blank"></a></div><div><a href="https://zhaopin.baidu.com?zp_fr=cpdq" target="_blank">百度百聘</a><br /><span>上百度百聘，搜全网好工作</span></div></div>
-
-        <div class="cl"></div>
-
-        <!--导航服务-->
-        <h3 >导航服务</h3>
-<div class="con"><div><a href="http://www.hao123.com/" class="abg hao123" target="_blank"></a></div><div><a href="http://www.hao123.com/" target="_blank">hao123</a><br /><span>网址导航</span></div></div>
-
-        <div class="cl"></div>
-
-        <!--社区服务-->
-        <h3 >社区服务</h3>
-<div class="con"><div><a href="http://quzheng.baidu.com/" class="abg quzheng" target="_blank"></a></div><div><a href="http://quzheng.baidu.com/" target="_blank">百度取证</a><br /><span>电子数据取证/公正平台</span></div></div>
-<div class="con"><div><a href="http://baijiahao.baidu.com/" class="abg baijiahao" target="_blank"></a></div><div><a href="http://baijiahao.baidu.com/" target="_blank">百家号</a><br /><span>内容变现和粉丝管理</span></div></div>
-<div class="con"><div><a href="http://developer.baidu.com/vcast" class="abg attr_881" target="_blank"></a></div><div><a href="http://developer.baidu.com/vcast" target="_blank">百度广播开放平台</a><br /><span>文本实时转换语音</span></div></div>
-<div class="con"><div><a href="http://duer.baidu.com/" class="abg attr_877" target="_blank"></a></div><div><a href="http://duer.baidu.com/" target="_blank">DUEROS</a><br /><span>每个人贴心的秘书</span></div></div>
-<div class="con"><div><a href="http://anquan.baidu.com/bbs/" class="abg anquan" target="_blank"></a></div><div><a href="https://anquan.baidu.com/forum" target="_blank">百度安全社区</a><br /><span>百度安全产品交流论坛</span></div></div>
-<div class="con"><div><a href="http://wenku.baidu.com/" class="abg wenku" target="_blank"></a></div><div><a href="http://wenku.baidu.com/" target="_blank">文库</a><br /><span>阅读、下载、分享文档</span></div></div>
-<div class="con"><div><a href="http://pan.baidu.com/" class="abg wangpannewlogo" target="_blank"></a></div><div><a href="http://pan.baidu.com/" target="_blank">百度网盘</a><br /><span>文件备份、分享、同步工具</span></div></div>
-<div class="con"><div><a href="http://baike.baidu.com/" class="abg baike" target="_blank"></a></div><div><a href="http://baike.baidu.com/" target="_blank">百科</a><br /><span>查询、贡献网络百科全书</span></div></div>
-<div class="con"><div><a href="http://tieba.baidu.com/" class="abg tieba" target="_blank"></a></div><div><a href="http://tieba.baidu.com/" target="_blank">贴吧</a><br /><span>自由分享话题、参与讨论</span></div></div>
-<div class="con"><div><a href="http://zhidao.baidu.com/" class="abg zhidao" target="_blank"></a></div><div><a href="http://zhidao.baidu.com/" target="_blank">知道</a><br /><span>寻找答案、回答问题</span></div></div>
-<div class="con"><div><a href="http://jingyan.baidu.com/" class="abg jingyan" target="_blank"></a></div><div><a href="http://jingyan.baidu.com/" target="_blank">经验</a><br /><span>实用生活指南</span></div></div>
-<div class="con"><div><a href="https://www.baifubao.com/" class="abg baifubao" target="_blank"></a></div><div><a href="https://www.baifubao.com/" target="_blank">度小满支付</a><br /><span>安全可信赖的支付工具</span></div></div>
-<div class="con"><div><a href="http://yuedu.baidu.com/" class="abg yuedu" target="_blank"></a></div><div><a href="http://yuedu.baidu.com/" target="_blank">百度阅读</a><br /><span>电子书世界，阅读更方便</span></div></div>
-<div class="con"><div><a href="http://test.baidu.com" class="abg attr_771" target="_blank"></a></div><div><a href="http://test.baidu.com" target="_blank">百度众测</a><br /><span>用户体验中心</span></div></div>
-<div class="con"><div><a href="https://jin.baidu.com/?channel=baidumore" class="abg attr_789" target="_blank"></a></div><div><a href="https://jin.baidu.com/?channel=baidumore" target="_blank">康波•财经</a><br /><span>综合金融服务平台</span></div></div>
-<div class="con"><div><a href="http://cbbs.baidu.com" class="abg attr_795" target="_blank"></a></div><div><a href="http://cbbs.baidu.com" target="_blank">百度社团赞助平台</a><br /><span>互联网产品粉丝互动</span></div></div>
-<div class="con"><div><a href="http://baobao.baidu.com" class="abg attr_876" target="_blank"></a></div><div><a href="http://baobao.baidu.com" target="_blank">宝宝知道</a><br /><span>更专业的母婴孕育知识社区</span></div></div>
-<div class="con"><div><a href="https://trust.baidu.com/" class="abg trust" target="_blank"></a></div><div><a href="https://trust.baidu.com/" target="_blank">百度信誉</a><br /><span>权威信誉信息认证平台</span></div></div>
-<div class="con"><div><a href="https://juejin.baidu.com" class="abg juejin" target="_blank"></a></div><div><a href="https://juejin.baidu.com" target="_blank">地图掘金</a><br /><span>众包用户赚零花钱平台</span></div></div>
-        <div class="cl"></div>
-
-        <!--游戏娱乐-->
-        <h3 >游戏娱乐</h3>
-<div class="con"><div><a href="http://game.91.com/" class="abg attr_870" target="_blank"></a></div><div><a href="http://game.91.com/" target="_blank">hao123游戏•手游</a><br /><span>手游资讯、开测、礼包、下载</span></div></div>
-<div class="con"><div><a href="http://youxi.baidu.com/" class="abg youxi" target="_blank"></a></div><div><a href="http://youxi.baidu.com/" target="_blank">百度游戏</a><br /><span>玩游戏、看资讯、找同伴</span></div></div>
-<div class="con"><div><a href="http://app.baidu.com/" class="abg yingyong" target="_blank"></a></div><div><a href="http://app.baidu.com/" target="_blank">百度移动开放平台</a><br /><span>轻松找到所需高质量应用</span></div></div>
-<div class="con"><div><a href="https://g.baidu.com/" class="abg gameplatform"target="_blank"></a></div><div><a href="https://g.baidu.com/" target="_blank">百度游戏开放平台</a><br /><span>共建开发者生态开放平台</span></div></div>
-
-        <div class="cl"></div>
-
-        <!--移动服务-->
-        <h3 >移动服务</h3>
-<div class="con"><div><a href="http://h5.baidu.com/" class="abg attr_878" target="_blank"></a></div><div><a href="http://h5.baidu.com/" target="_blank">百度 H5</a><br /><span>可视化 H5 页面制作工具</span></div></div>
-<div class="con"><div><a href="http://8.baidu.com/content/resource/app/index.html" class="abg finance" target="_blank"></a></div><div><a href="http://8.baidu.com/content/resource/app/index.html" target="_blank">度小满理财</a><br /><span>投资生钱，随时交易</span></div></div>
-<div class="con"><div><a href="http://srf.baidu.com" class="abg ime_mobile" target="_blank"></a></div><div><a href="http://srf.baidu.com" target="_blank">百度手机输入法</a><br /><span>AI语音输入，更快更准</span></div></div>
-<div class="con"><div><a href="http://as.baidu.com/a/bdsuite" class="abg ydapp" target="_blank"></a></div><div><a href="http://shouji.baidu.com" target="_blank">百度手机助手</a><br /><span>更新更全安卓手机应用</span></div></div>
-<div class="con"><div><a href="http://fanyi.baidu.com/appdownload/download.html" class="abg fanyiapp" target="_blank"></a></div><div><a href="http://fanyi.baidu.com/appdownload/download.html" target="_blank">百度翻译App</a><br /><span>您的掌上翻译专家</span></div></div>
-<div class="con"><div><a href="http://shoujiweishi.baidu.com/" class="abg attr_790" target="_blank"></a></div><div><a href="http://shoujiweishi.baidu.com/" target="_blank">百度手机卫士</a><br /><span>手机防吸费，防骚扰</span></div></div>
-
-        <div class="cl"></div>
-
-        <!--站长服务-->
-        <h3 >站长与开发者服务</h3>
-<div class="con"><div><a href="https://cdp.baidu.com" class="abg guanxingpan" target="_blank"></a></div><div><a href="https://cdp.baidu.com" target="_blank">观星盘</a><br /><span>全链AI营销数据平台</span></div></div>
-<!-- <div class="con"><div><a href="http://lvshi.baidu.com/" class="abg lvshi" target="_blank"></a></div><div><a href="http://lvshi.baidu.com/" target="_blank">百度律师</a><br /><span>针对中小微客户提供线上法律服务</span></div></div> -->
-<div class="con"><div><a href="http://ai.baidu.com/index/" class="abg ai" target="_blank"></a></div><div><a href="http://ai.baidu.com/index/" target="_blank">百度大脑</a><br /><span>百度人工智能开放平台</span></div></div>
-<div class="con"><div><a href="http://qiao.baidu.com/home/" class="abg attr_879" target="_blank"></a></div><div><a href="http://qiao.baidu.com/home/" target="_blank">百度商桥</a><br /><span>在线沟通助力精准营销</span></div></div>
-<div class="con"><div><a href="http://open.baidu.com/" class="abg open" target="_blank"></a></div><div><a href="http://open.baidu.com/" target="_blank">百度数据开放平台</a><br /><span>站长提交资源的绿色通道</span></div></div>
-<div class="con"><div><a href="http://zhanzhang.baidu.com/" class="abg zhanzhang" target="_blank"></a></div><div><a href="http://zhanzhang.baidu.com/" target="_blank">百度搜索资源平台</a><br /><span>让百度更了解你的网站</span></div></div>
-<div class="con"><div><a href="http://tongji.baidu.com/" class="abg tongji" target="_blank"></a></div><div><a href="http://tongji.baidu.com/" target="_blank">百度统计</a><br /><span>获取网站流量的专业分析</span></div></div>
-<div class="con"><div><a href="http://union.baidu.com/" class="abg lianmeng" target="_blank"></a></div><div><a href="http://union.baidu.com/" target="_blank">百度联盟</a><br /><span>与百度合作，变得更强</span></div></div>
-<div class="con"><div><a href="http://e.baidu.com?refer=889" class="abg tuiguang" target="_blank"></a></div><div><a href="http://e.baidu.com?refer=889" target="_blank">百度推广</a><br /><span>获得新客户和合作伙伴</span></div></div>
-<div class="con"><div><a href="http://top.baidu.com/" class="abg fengyunbang" target="_blank"></a></div><div><a href="http://top.baidu.com/" target="_blank">风云榜</a><br /><span>观热点事件，看时尚风云</span></div></div>
-<div class="con"><div><a href="http://index.baidu.com/" class="abg zhishu" target="_blank"></a></div><div><a href="http://index.baidu.com/" target="_blank">百度指数</a><br /><span>搜索权威的关键词数据分析</span></div></div>
-<div class="con"><div><a href="http://mtj.baidu.com" class="abg ydtongji" target="_blank"></a></div><div><a href="http://mtj.baidu.com" target="_blank">百度移动统计</a><br /><span>专业的移动应用统计</span></div></div>
-<div class="con"><div><a href="http://sinan.baidu.com/" class="abg attr_806" target="_blank"></a></div><div><a href="http://sinan.baidu.com/" target="_blank">百度司南</a><br /><span>大数据营销决策平台</span></div></div>
-<div class="con"><div><a href="http://developer.baidu.com/" class="abg kaifazhe" target="_blank"></a></div><div><a href="http://developer.baidu.com/" target="_blank">百度开发者中心</a><br /><span>开发者一站式服务平台</span></div></div>
-<div class="con"><div><a href="http://ce.baidu.com/?from=more" class="abg attr_819" target="_blank"></a></div><div><a href="http://ce.baidu.com/?from=more" target="_blank">百度云观测</a><br /><span>网站健康监测中心</span></div></div>
-<div class="con"><div><a href="https://open2.baidu.com/" class="abg attr_821" target="_blank"></a></div><div><a href="https://open2.baidu.com/" target="_blank">百度商业服务市场</a><br /><span>全新SEM工具在线集市</span></div></div>
-<div class="con"><div><a href="http://yuqing.baidu.com/ " class="abg attr_823" target="_blank"></a></div><div><a href="http://yuqing.baidu.com/ " target="_blank">百度舆情</a><br /><span>互联网口碑分析工具</span></div></div>
-<div class="con"><div><a href="http://jingsuan.baidu.com" class="abg attr_827" target="_blank"></a></div><div><a href="http://jingsuan.baidu.com" target="_blank">百度精算</a><br /><span>大数据广告效果衡量平台</span></div></div>
-<div class="con"><div><a href="https://su.baidu.com" class="abg attr_809" target="_blank"></a></div><div><a href="https://su.baidu.com" target="_blank">百度云加速</a><br /><span>为站长提供安全防护和加速服务</span></div></div>
-<div class="con"><div><a href="https://cloud.baidu.com/" class="abg attr_851" target="_blank"></a></div><div><a href="https://cloud.baidu.com/" target="_blank">百度智能云</a><br /><span>百度全系列云计算产品</span></div></div>
-<div class="con"><div><a href="http://yuyin.baidu.com/" class="abg attr_854" target="_blank"></a></div><div><a href="http://yuyin.baidu.com/" target="_blank">百度语音</a><br /><span>语音识别合成技术开放</span></div></div>
-<div class="con"><div><a href="http://ssp.baidu.com/" class="abg attr_855" target="_blank"></a></div><div><a href="http://ssp.baidu.com/" target="_blank">百度SSP媒体服务</a><br /><span>媒体收益管理与优化服务</span></div></div>
-<div class="con"><div><a href="http://push.baidu.com/" class="abg attr_858" target="_blank"></a></div><div><a href="http://push.baidu.com/" target="_blank">百度云推送</a><br /><span>免费专业的推送服务平台</span></div></div>
-<div class="con"><div><a href="http://mtc.baidu.com/" class="abg attr_871" target="_blank"></a></div><div><a href="http://mtc.baidu.com/" target="_blank">百度移动云测试中心</a><br /><span>移动应用测试服务平台</span></div></div>
-
-        <div class="cl"></div>
-
-        <!--软件工具-->
-        <h3 >软件工具</h3>
-<div class="con"><div><a href="http://naotu.baidu.com" class="abg attr_830" target="_blank"></a></div><div><a href="http://naotu.baidu.com" target="_blank">百度脑图工具</a><br /><span>在线脑图编辑工具</span></div></div>
-<div class="con"><div><a href="http://music.taihe.com/download/" class="abg qqyy" target="_blank"></a></div><div><a href="http://music.taihe.com/download/" target="_blank">千千音乐</a><br /><span>千千音乐，听到极致</span></div></div>
-<div class="con"><div><a href="http://im.baidu.com/" class="abg attr_767" target="_blank"></a></div><div><a href="http://im.baidu.com/" target="_blank">如流</a><br /><span>新一代智能办公平台</span></div></div>
-<div class="con"><div><a href="http://shurufa.baidu.com/" class="abg ime" target="_blank"></a></div><div><a href="http://shurufa.baidu.com/" target="_blank">百度输入法</a><br /><span>流畅输入，更懂中文</span></div></div>
-<div class="con"><div><a href="http://wubi.baidu.com/" class="abg attr_791" target="_blank"></a></div><div><a href="http://wubi.baidu.com/" target="_blank">百度五笔输入法</a><br /><span>百度五笔输入法PC版</span></div></div>
-
-        <div class="cl"></div>
-
-
-      </div>
-    <div class="cl"></div>
-
-
-    </div>
-    <div class="footer">&copy; <span id="footer_year_time"></span> Baidu <a href="http://www.baidu.com/duty/" target="_blank">使用百度前必读</a></div>
-<script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F9f14aaa038bbba8b12ec2a4a3e51d254' type='text/javascript'%3E%3C/script%3E"));</script>
-
-<script>
-function G(id){
-	return document.getElementById(id);
-}
-function addEV(o, e, f){
-    if(window.attachEvent){
-        o.attachEvent("on" + e, f);
-    }else if(window.addEventListener){ 
-        o.addEventListener(e, f, false);
-    }
-}
-/*addEV(document, "click", function(e){
-    var e = e||window.event;
-    var tar = e.target || e.srcElement;
-    var btn = window.event ? e.button : e.which;
-    var tb_mr = G("tb_mr"), more = G("more");
-    while (tar && tar != document.body && tar.tagName.toLowerCase() != "html") {
-        if (tar == tb_mr) {
-            break;
-        }
-        tar = tar.parentNode;
-    }
-
-    if (tar != tb_mr) {
-        more.style.display = "none";
-    } else {
-        if (btn < 2) {more.style.display = more.style.display == "block" ? "none" : "block";}
-    }
-});*/
-</script>
-<script type="text/javascript"> 
-    (function () {
-        var maincon = document.getElementById("content");
-        var links = maincon.getElementsByTagName("a");
-        var len = links.length;
-        var host = ("https:" == document.location.protocol) ? "https://sp1.baidu.com/8qUJcD3n0sgCo2Kml5_Y_D3" : "http://nsclick.baidu.com";
-        for (var i = 0; i < len; i++) {
-            addEV(links[i], 'mousedown', request);
-        }
-        function request(e) {
-			var e = e || window.event;
-            var tar = e.target || e.srcElement;
-            if (tar.tagName.toLowerCase() == "img") {
-                tar = tar.parentNode;
-            }
-            var logurl = encodeURIComponent(tar.href);
-            var clicktxt = tar.innerHTML;
-            var img = window["BD_PS_SUG" + (+new Date())] = new Image();
-            img.src = host + "/v.gif?pid=306&pro=" + "more" +"&url=" + logurl +"&this=" + clicktxt + "&type=0" + "&t=" + (+new Date());
-        }
-        let year = new Date().getFullYear();
-        document.getElementById('footer_year_time').innerHTML = year;
-    })();
-function nsclick(tab){
-	var p = encodeURIComponent(window.document.location.href), img = window["BD_PS_C" + (new Date()).getTime()] = new Image();
-	img.src = host + "/v.gif?pid=306&pj=more&tab=" + tab + "&path="+p+"&type=0" +"&t="+new Date().getTime();
-	return true;    
-	}
-</script>
-<script>
-(function(){
-	var homepage = "http://www.baidu.com/more/";
-	var isIE = navigator.userAgent.indexOf("MSIE")!=-1&&!window.opera;
-	var ran = Math.random() * 100;
-	if (isIE){
-		try {
-			var span = document.createElement("span");
-			span.style.behavior='url(#default#homepage)';
-			span.style.display='none';
-			document.body.appendChild(span);
-
-			var hpFlag = span.isHomePage(homepage);
-		
-			//如果未设置则显示设置按钮
-			if (!hpFlag){
-				var seth = G("seth");
-				var help = G("help");
-				if (seth) {
-					seth.style.display = "inline";
-					help.style.marginLeft = 7+"px"; 
-				}
-			}
-		}catch(e){}
-	}
-})();
-// 输入框颜色切换
-document.body.onclick = function(e) {
-    if(e.target && e.target.id !== 'kw') {
-        document.getElementById('header_input').className = "s_ipt_wr";
-    }
-}
-</script>
-<script>
-(function(){
-    function getNode(){
-        var contents = [];
-        var childs = document.getElementById("content").childNodes;
-        var con = [];
-        for(var i in childs){
-            var tmp = childs[i];
-            if(tmp.nodeName && tmp.nodeName.toLowerCase() === 'h3' && con.length > 0){
-                contents.push(con);
-                con = [];
-            }else if(tmp.nodeName && tmp.nodeName.toLowerCase() === 'div' && tmp.className.toLowerCase().indexOf('con')!== -1){
-                con.push(tmp);
-            }
-        }
-        if(con.length > 0){
-            contents.push(con);
-        }
-        return contents;
-    }
-
-
-    var nodes = getNode();
-    for(var i in nodes){
-        for(var j in nodes[i]){
-            if( (parseInt(j) + 1) % 4 == 0){
-                nodes[i][j].className += ' con_last';
-            }
-        }
-    }
-    
-
-})();
-</script>
-<script src="//www.baidu.com/js/bdsug.js?v=1.0.3.0"></script>
-</body>
-</html>
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+    <title>阳光高考_教育部高校招生阳光工程指定平台</title>
+
+    <meta name="keywords" content="教育部阳光高考信息平台,高校招生章程,招生政策,高考分数线,网上咨询周,志愿填报"/>
+
+    <meta name="description" content="教育部高校招生阳光工程指定信息发布平台。发布高校招生章程，提供学生名单公示、院校信息、分数线、填报志愿、选专业、高考咨询等服务。"/>
+
+    <link rel="dns-prefetch" href="//axvert.chsi.com.cn">
+
+    <link rel="dns-prefetch" href="//t1.chei.com.cn">
+
+    <link rel="dns-prefetch" href="//t2.chei.com.cn">
+
+    <link rel="dns-prefetch" href="//t3.chei.com.cn">
+
+    <link rel="dns-prefetch" href="//t4.chei.com.cn">
+
+    <link rel="dns-prefetch" href="//www.google-analytics.com">
+
+    <link rel="icon" href='https://t1.chei.com.cn/gaokao/favicon.ico' type="image/x-icon"/>
+
+    <link href='https://t1.chei.com.cn/gaokao/assets/src/css/gaokao.min-1.0.0.css?20210805' rel="stylesheet"
+          type="text/css"/>
+
+
+    <style type="text/css">
+
+        .l-yl {
+
+            clear: both;
+
+            margin-top: 20px;
+
+            margin-left: 6px;
+
+            padding-top: 2px;
+
+            border-left: 1px solid #d2d3d6;
+
+        }
+
+
+        .l-yl-t {
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+            padding-left: 24px;
+
+            background: url(https://t1.chei.com.cn/gaokao/images/index/icon_yueli.png) no-repeat 0 -274px;
+
+            margin-left: -7px;
+
+            margin-top: -18px;
+
+            line-height: 40px;
+
+        }
+
+
+        .l-yl-cnt {
+
+            position: relative;
+
+            margin-left: 14px;
+
+            margin-bottom: 8px;
+
+            padding: 6px 6px 6px 48px;
+
+            background: #ececec;
+
+            border: none;
+
+            border-radius: 4px;
+
+            line-height: 24px;
+
+        }
+
+
+        .l-yl-i {
+
+            position: absolute;
+
+            left: -18px;
+
+            top: 12px;
+
+            display: block;
+
+            width: 20px;
+
+            height: 16px;
+
+            background: url(https://t1.chei.com.cn/gaokao/images/index/icon_yueli.png) no-repeat 0 0;
+
+        }
+
+
+        .l-yl-y {
+
+            position: absolute;
+
+            left: 12px;
+
+            top: 6px;
+
+            display: block;
+
+            font-size: 16px;
+
+            color: #999;
+
+        }
+
+    </style>
+
+    <script type="text/javascript" src='https://t1.chei.com.cn/common/jquery/1.9.1/jquery.min.js'></script>
+
+    <script type="text/javascript" src='https://t1.chei.com.cn/common/axvert/js/showchsi_m.js'></script>
+
+
+    <script type="text/javascript" src='https://t1.chei.com.cn/common/js/goToTop.js'></script>
+
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-100524-6"></script>
+
+    <script>
+
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-100524-6');
+
+    </script>
+
+
+</head>
+
+<body class="ch-sticky">
+
+
+<div class="main-wrapper">
+
+
+    <script type="text/javascript">
+
+        function goo(curr, adv_id) {
+
+            curr.href = "//axvert.chsi.com.cn/goo.action?aid=" + adv_id + "&evtype=referer_blank";
+
+            return true;
+
+        }
+
+    </script>
+
+    <!-- 1：首页吊顶区域 -->
+
+    <style>
+
+        /**
+
+         * description: top-nav-wrapper: 吊顶;
+
+         * author: myx;
+
+         * date: 2017-08;
+
+         */
+
+        .top-nav-wrapper {
+
+            width: 100%;
+
+            height: 40px;
+
+            line-height: 40px;
+
+            background: #f7f9fa;
+
+            border-bottom: 1px solid #d6d6d6;
+
+            font-size: 12px;
+
+        }
+
+        .top-nav-wrapper a {
+
+            color: #333;
+
+        }
+
+        .top-nav-wrapper a:hover {
+
+            text-decoration: underline;
+
+        }
+
+        .top-nav-wrapper .top-nav-index {
+
+            width: 1180px;
+
+            margin: 0 auto;
+
+        }
+
+        .top-nav-index a {
+
+            margin-right: 39px;
+
+        }
+
+        .top-nav-index .nav-last-li {
+
+            margin-right: 0;
+
+        }
+
+    </style>
+
+    <div class="top-nav-wrapper">
+
+        <div class="top-nav-index">
+
+            <a href="https://www.chsi.com.cn/" target="_blank">学信网</a>
+
+            <a href="https://my.chsi.com.cn/" target="_blank">学籍查询</a>
+
+            <a href="https://www.chsi.com.cn/xlcx/" target="_blank">学历查询</a>
+
+            <a href="https://www.chsi.com.cn/xlcx/bgcx.jsp" target="_blank">在线验证</a>
+
+            <a href="https://www.chsi.com.cn/xlrz/index2.jsp" target="_blank">出国教育背景服务</a>
+
+            <a href="https://my.chsi.com.cn/archive/index.jsp#txjd" target="_blank">图像校对</a>
+
+            <a href="https://my.chsi.com.cn/" target="_blank">学信档案</a>
+
+            <a href="https://gaokao.chsi.com.cn/" title="教育部阳光高考信息平台" target="_blank">高考</a>
+
+            <a href="https://yz.chsi.com.cn/" title="中国研究生招生信息网" target="_blank">研招</a>
+
+            <a href="https://www.gatzs.com.cn/" target="_blank">港澳台招生</a>
+
+            <a href="https://www.gfbzb.gov.cn/" target="_blank">征兵</a>
+
+            <a href="https://www.ncss.cn/" title='就业' target='_blank' onmousedown="goo(this, '1654381345')"
+               onblur="this.href='https://www.ncss.cn/'">就业</a>
+
+            <a href="https://xz.chsi.com.cn/" target="_blank">学职平台</a>
+
+            <a class="nav-last-li" href="https://jp.chsi.com.cn/" target="_blank">日本频道</a>
+
+        </div>
+
+    </div>
+
+
+    <link rel="stylesheet" href="https://t1.chei.com.cn/common/ch/iconfont.css">
+
+    <div class="header-wrapper">
+
+        <!--首页header-->
+
+        <div class="ch-header-index clearfix">
+
+            <h1 class="h1-hide">阳光高考</h1>
+
+            <a class="ch-logo" href="/">&ensp;</a>
+
+            <div class="ch-header-list">
+
+
+                <a href="/user/userAccountLogin.do?entrytype=gkstu" class="head-login">登录</a>
+
+                <a href="https://account.chsi.com.cn/account/account!newaccount?from=gaokao-zixun"
+                   target="_blank">注册</a>
+
+
+                <span class="ch-header-divide">|</span>
+
+                <a href="/htgl/" target="_blank">管理部门登录</a>
+
+                <span class="ch-header-divide">|</span>
+
+                <a href="/help/" target="_blank">帮助中心</a>
+
+                <a href="/gkxx/kp/wbwx.shtml" class="head-media" target="_blank"><i class="iconfont" title="官方微博">&#xe693;</i></a>
+
+                <a href="/gkxx/kp/wbwx.shtml" class="head-media" target="_blank"><i class="iconfont" title="官方微信">&#xe694;</i></a>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="ch-nav-box-index">
+
+        <div class="nav-wrapper">
+
+            <ul class="nav-index-list clearfix">
+
+                <li class="nav-first-li clearfix">
+
+                    <div class="nav-th"><span>信息公开</span></div>
+
+                    <ul class="nav-td clearfix">
+
+                        <li style="margin-right:1em;"><a href="/zsgs/zhangcheng/" target="_blank">招生章程</a></li>
+
+                        <li><a href="/zsgs/mdgs.jsp" target="_blank">名单公示</a></li>
+
+                        <li class="nav-long-name"><a href="/xxgk/zszcgd/" target="_blank">教育部招生政策规定</a></li>
+
+
+                    </ul>
+
+                </li>
+
+                <li class="nav-cx clearfix">
+
+                    <div class="nav-th" style="margin-left: 30px;"><span>大学</span></div>
+
+                    <ul class="nav-td clearfix">
+
+                        <li><a href="/sch/" target="_blank">院校库</a></li>
+
+                        <li class="nav-long-name"><a href="/zyk/pub/myd/schAppraisalTop.action"
+                                                     target="_blank">院校满意度</a></li>
+
+                        <li><a href="/gkzt/zbft2021" target="_blank">招办访谈</a></li>
+
+                        <li class="nav-long-name"><a href="/gkzt/tszs" target="_blank">特殊类型招生</a></li>
+
+                    </ul>
+
+                </li>
+
+                <li class="nav-ss clearfix">
+
+                    <div class="nav-th" style="margin-left: 30px;"><span>专业</span></div>
+
+                    <ul class="nav-td clearfix">
+
+                        <li><a href="/zyk/zybk/" target="_blank">专业库</a></li>
+
+                        <li class="nav-long-name"><a href="/zyk/pub/myd/specAppraisalTop.action"
+                                                     target="_blank">专业满意度</a></li>
+
+                        <li><a href="/zyk/pub/zytj/recommendTop.action" target="_blank">专业推荐</a></li>
+
+                        <li><a href="/zyk/zybk/zyjd/listPage" target="_blank">专业解读</a></li>
+
+                    </ul>
+
+                </li>
+
+                <li class="nav-zy clearfix">
+
+                    <div class="nav-th" style="margin-left: 30px;"><span>志愿</span></div>
+
+                    <ul class="nav-td clearfix" style="width: 165px;">
+
+                        <li class="nav-long-name"><a href="/zxdy/" target="_blank">咨询周</a></li>
+
+                        <li class="nav-long-name"><a
+                                href="/zxdy/zxs--method-listDefault,forumid-6267733,year-2007,start-0.dhtml"
+                                target="_blank">咨询室</a></li>
+
+                        <li class="nav-long-name"><a href="/zyck/" target="_blank">高考填报志愿参考</a></li>
+
+                    </ul>
+
+                </li>
+
+                <li class="nav-last-li clearfix">
+
+                    <ul class="nav-td clearfix">
+
+                        <li><a href="/sitemap.jsp" target="_blank">网站地图</a></li>
+
+                        <li><a href="/zx/" target="_blank">中学版</a></li>
+
+                        <li><a href="/z/gaozhi/index.jsp" target="_blank">高职招生</a></li>
+
+                        <li><a href="https://www.chsi.com.cn/zthz/yggk.jsp" target="_blank">专题汇总</a></li>
+
+                    </ul>
+
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+
+    <div class="container">
+
+        <img src='//t1.chei.com.cn/common/wap/images/share_gk.jpg' width='0' height='0'
+
+             style='position: absolute;top:-100px;left: 0'/>
+
+
+        <style>
+
+            /* 根据广告调整间距 修正css by wj */
+
+            /* .right-side i{ display: inline-block; height: 100%; vertical-align: bottom;  }
+
+            .index-hot h4{margin-top: 12px;}
+
+            .label-list a.label-item{ margin-bottom:11px; margin-right: 15px; }
+
+            .yz-main .list-head{ padding-top: 0; }
+
+            .list-head .list-title{ height: 23px; }
+
+            .list-head{ border-bottom: solid 1px #e5e5e5;  } */
+
+
+            /* 焦点访谈 图文 */
+
+            .l-zbzrft {
+                margin-bottom: 4px;
+            }
+
+            .l-zbzrft table {
+                margin-top: 16px !important;
+            }
+
+            .l-zbzrft table td {
+                width: 93px;
+                text-align: center;
+                vertical-align: top;
+                padding-right: 25px;
+            }
+
+            .l-zbzrft table td img {
+                width: 93px;
+                height: 70px;
+                vertical-align: bottom;
+                border-radius: 4px;
+            }
+
+            .l-zbzrft table td:nth-child(3) {
+                padding-right: 0;
+            }
+
+            .l-zbzrft table td a {
+                display: inline-block;
+                width: 93px;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                text-align: center;
+            }
+
+
+            /* 上线后修正 */
+
+            .img-txt-box {
+                padding-top: 12px;
+            }
+
+            .gk-tsl-list a.label-tsl {
+                margin-bottom: 12px;
+            }
+
+            .gk-tsl-list {
+                padding: 15px 0 6px 0;
+            }
+
+
+            .zyjd-img-list .list-paddingleft-2 {
+                padding: 0;
+            }
+
+        </style>
+
+
+        <!-- part01 start -->
+
+        <div class="index-row part01 clearfix">
+
+            <div class="gk-left">
+
+                <!-- 高考月历 -->
+
+                <div class="gk-month-hot">
+
+                    <div class="gk-months-title"><span class="yl-icon"><img
+                            src="https://t2.chei.com.cn/gaokao/assets/src/images/rl.svg"/> </span> <span>高考月历</span>
+                    </div>
+                    <div class="gkmonth-bot">
+                        <div class="gkmonth-bl">
+                            <div class="gk-month">
+                                <div class="mon-pl">11月</div>
+                                <p><a href="/z/gkbmfslq/index.jsp" target="_blank">高考报名</a></p>
+                                <p>三大招飞持续进行</p>
+                            </div>
+                            <div class="gk-month">
+                                <div class="mon-pl">12月</div>
+                                <p>部分省份艺术类统考</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- 新模板月历 -->
+
+                </div>
+
+
+                <dl class="part01-left">
+
+                    <dl>
+                        <dt class="l-head">
+                            名单公示
+                        </dt>
+                        <dd class="l-body">
+                            <p><a href="/zsgs/mdgs--method-toIndex,zslx=2.dhtml" target="_blank">高校专项计划名单</a></p>
+                            <p><a href="/zsgs/gspydyzgmd--method-groupByYx.dhtml" target="_blank">高水平运动队名单</a></p>
+                            <p><a href="/zsgs/ystcszgmd--method-groupByYx.dhtml" target="_blank">高水平艺术团名单</a></p>
+                        </dd>
+                        <dt class="l-head">
+                            招生政策
+                        </dt>
+                        <dd class="l-body">
+                            <p><a href="/z/gkbmfslq/zszc.jsp" target="_blank">招生工作规定</a> <a href="/z/gkbmfslq/zszc.jsp"
+                                                                                            target="_blank">照顾政策</a><a
+                                    href="/gkxx/zcdh/200702/20070228/754576.html" target="_blank">体检</a><a
+                                    href="https://gaokao.chsi.com.cn/gkxx/zc/ss/201806/20180612/1697224935.html"
+                                    target="_blank">军检</a></p>
+                        </dd>
+                        <dt class="l-head">
+                            高考流程
+                        </dt>
+                        <dd class="l-body">
+                            <p><a href="/z/gkbmfslq/index.jsp" target="_blank">报名</a><a href="/z/gkbmfslq/zytb.jsp"
+                                                                                        target="_blank">志愿</a><a
+                                    href="/gkxx/gzdt/202003/20200331/1886293146.html" target="_blank">考试</a><a
+                                    href="/z/gkbmfslq/cjcx.jsp" target="_blank">查分</a><a href="/z/gkbmfslq/pcx.jsp"
+                                                                                         target="_blank">批次线</a><a
+                                    href="/z/gkbmfslq/lqjg.jsp" target="_blank">录取</a></p>
+                        </dd>
+                        <dt class="l-head">
+                            诚信高考
+                        </dt>
+                        <dd class="l-body">
+                            <p><a href="/gkxx/zc/moe/202106/20210617/2078308929.html" target="_blank">各省招办官网官微</a>　<a
+                                    href="https://gaokao.chsi.com.cn/gkzt/gzfzp2021" target="_blank">警惕招生诈骗</a></p>
+                            <p><a href="/gkxx/gzdt/202106/20210603/2074510508.html" target="_blank">高考举报电话</a>　<a
+                                    href="/gkxx/zszcgd/dnzszc/202110/20211025/2121818494.html"
+                                    target="_blank">全国高等学校名单</a></p>
+                            <p><a href="http://www.chsi.com.cn/jyzx/200711/20071120/1584010.html" target="_blank">高校学生获得学籍及毕业证书政策告知</a>
+                            </p>
+                        </dd>
+                    </dl>
+
+
+                </dl>
+
+
+                <div style="height: 58px; margin-top: 20px; overflow:hidden;">
+
+
+                    <script type="text/javascript">showShortCut('1654566241')</script>
+
+
+                </div>
+
+            </div>
+
+
+            <div class="gk-main">
+
+
+                <div style="height: 260px; overflow: hidden;">
+
+                    <script type="text/javascript">showShortCut('534475030')</script>
+
+
+                </div>
+
+
+                <!-- 热门焦点 start -->
+
+                <div class="index-hot">
+
+                    <h4><a href="/xxgk/" target="_blank">高考信息公开</a> &nbsp;| &nbsp; <a
+                            href="/zsgs/zhangcheng/listVerifedZszc--method-index,lb-1.dhtml" target="_blank">招生章程</a>
+                        &nbsp;| &nbsp; <a href="https://xz.chsi.com.cn/home.action" target="_blank">兴趣测评和专业选择</a></h4>
+
+                    <p class="sub-hot"><span class="blue-badge label arrowed-right">教育要闻</span>&nbsp;<a
+                            href="/gkxx/zcdh/202110/20211025/2121818490.html" target="_blank">教育部公布2021年度全国高等学校名单
+                        共计3012所</a></p>
+
+                    <h4><a href="/gkxx/zc/moe/202111/20211101/2124883082.html" target="_blank">教育部部署做好2022年特殊类型招生工作</a>&nbsp;&nbsp;<a
+                            href="/gkxx/zcdh/202111/20211101/2124883385.html" target="_blank">文件</a></h4>
+
+                    <p class="sub-hot"><span class="blue-badge label arrowed-right">特殊类型</span>&nbsp;<a
+                            href="/gkxx/ss/202111/20211104/2126897569.html" style="color: rgb(255, 0, 0);"
+                            target="_blank">艺术类专业范围有微调，运动队9个项目全国统考</a></p>
+
+                    <h4><a href="/z/gkbmfslq/index.jsp" style="color: rgb(255, 0, 0);" target="_blank">2022年各省高考报名时间及方式查询</a>
+                    </h4>
+
+                    <p class="sub-hot"><span class="blue-badge label arrowed-right">省市动态</span>&nbsp;<a
+                            href="/gkxx/zc/ss/202111/20211105/2127514322.html" target="_blank">河南高招报名问答</a>&nbsp;<a
+                            href="/gkxx/zc/ss/202111/20211105/2127748010.html" target="_blank">重庆高考报名温馨提示</a></p>
+
+                    <h4>三大招飞专题：<a href="/gkzt/kjzf" target="_blank">空军招飞</a>&nbsp;<a href="/gkzt/hjzf" target="_blank">海军招飞</a>&nbsp;<a
+                            href="/gkzt/mhzf" style="color: rgb(255, 0, 0);" target="_blank">民航招飞</a></h4>
+
+                    <p class="sub-hot"><span class="blue-badge label arrowed-right">招考动态</span>&nbsp;<a
+                            href="/gkxx/bss/202111/20211103/2126640308.html" target="_blank">2022年高校保送录取优秀运动员有关事宜的通知</a>
+                    </p>
+
+
+                </div>
+
+                <!-- 热门焦点 end -->
+
+                <div style="height:40px; overflow: hidden;">
+
+
+                    <script type="text/javascript">showShortCut('1010241362')</script>
+
+                </div>
+
+
+                <div style="height: 72px; overflow: hidden; margin-top: 15px;">
+                    <script type="text/javascript">showShortCut('534619637')</script>
+                </div>
+
+
+            </div>
+
+            <div class="gk-right">
+
+                <div class="part01-right">
+
+                    <!-- 信息公开 -->
+
+                    <div class="xxgk-index" style="margin-bottom:20px;"><a href="/xxgk/" target="_blank"><span
+                            class="info-icon"></span> 信息公开</a></div>
+
+
+                    <!-- 特殊类型招生入口 -->
+
+                    <div class="index-long-enter">
+
+                        <a href="https://bm.chsi.com.cn/" class="index-long-btn" target="_blank"
+                           style="margin-bottom: 28px;">特殊类型招生信息服务平台</a>
+
+                    </div>
+
+                    <!-- 特别推荐 -->
+
+                    <div class="tbtj-bl">
+
+                        <div class="side-head">
+
+                            <span class="icon-sp"><img src="//t3.chei.com.cn/gaokao/assets/src/images/tbtj.svg"></span>
+
+                            <span class="tbtj-title">特别推荐</span>
+
+                        </div>
+
+                        <div class="tbtj-box">
+
+                            <table>
+                                <tbody>
+
+                                <tr>
+
+                                    <td align="center"><img src="//t3.chei.com.cn/gaokao/assets/src/images/weixin.jpg"/><br>官方微信
+                                    </td>
+
+                                    <td align="center"><img
+                                            src="//t4.chei.com.cn/gaokao/assets/src/images/weibo.jpg"/><br>官方微博
+                                    </td>
+
+                                </tr>
+
+                                </tbody>
+                            </table>
+
+                        </div>
+
+                        <div class="side-body" style="height:201px; overflow:hidden;">
+
+                            <ul class="index-list list-paddingleft-2">
+                                <li>
+                                    <p><a href="/gkzt/mhzf" target="_blank">2022年民航招飞报考指南</a>&nbsp;<span
+                                            class="r_new_icon">&nbsp;</span></p>
+                                </li>
+                                <li>
+                                    <p><a href="/gkzt/hjzf" target="_blank">2022年海军招飞报考指南</a></p>
+                                </li>
+                                <li>
+                                    <p><a href="/gkxx/zt/gkgg2021.shtml" target="_blank">七省高考改革实施方案汇总</a>&nbsp;<span
+                                            class="r_new_icon">&nbsp;</span></p>
+                                </li>
+                                <li>
+                                    <p><a href="/gkzt/kjzf" target="_blank">2022年空军招飞报考指南</a>&nbsp;<span
+                                            class="r_new_icon">&nbsp;</span></p>
+                                </li>
+                                <li>
+                                    <p><a href="/gkxx/zt/bzgk2022.shtml" target="_blank">备战2022高考你准备好了吗</a>&nbsp;<span
+                                            class="r_new_icon">&nbsp;</span></p>
+                                </li>
+                                <li>
+                                    <p><a href="/gkxx/zt/ysjh.shtml" target="_blank">优师计划政策一览</a>&nbsp;<span
+                                            class="r_new_icon">&nbsp;</span></p>
+                                </li>
+                            </ul>
+
+
+                        </div>
+
+                    </div>
+
+
+                    <div style="height: 126px; overflow:hidden;margin-top: 23px;">
+
+
+                        <script type="text/javascript">showShortCut('534563054')</script>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+        <!-- part01 end -->
+
+
+        <!-- part02 start -->
+
+        <div class="index-row part02 clearfix" style="margin-top: 5px;">
+
+            <div class="part-body clearfix">
+
+                <!-- part02-left start -->
+
+                <div class="gk-left">
+
+                    <div class="side-head">
+
+                        <span class="i-title">招办主任访谈</span>
+
+                        <span class="more"><a href="/gkxx/zbzrft/zx" target="_blank">更多 &gt;</a></span>
+
+                    </div>
+
+                    <div class="side-body" style="margin-bottom: 20px;">
+
+                        <div class="l-zbzrft" style="height:125px; overflow: hidden;">
+
+                            <table border="0" cellpadding="0" cellspacing="0">
+
+                                <tbody>
+
+                                <tr class="firstRow">
+
+                                    <td><a href="/gkxx/zbzrft/zx/202105/20210520/2069719734.html" target="_blank"><img
+                                            src="https://t3.chei.com.cn/news/img/2069720156.jpg" alt="" border="0"
+                                            title=""/></a></td>
+
+                                    <td><a href="/gkxx/zbzrft/zx/202106/20210618/2078778227.html" target="_blank"><img
+                                            src="https://t2.chei.com.cn/news/img/2079484331.jpg" alt="" border="0"
+                                            title=""/></a></td>
+
+                                    <td style="word-break: break-all;"><a
+                                            href="/gkxx/zbzrft/zx/202105/20210524/2070377269.html" target="_blank"><img
+                                            src="https://t1.chei.com.cn/news/img/2070856978.jpg" alt="" border="0"
+                                            title=""/></a></td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td><a href="/gkxx/zbzrft/zx/202105/20210520/2069719734.html"
+                                           target="_blank">天津商业大学</a></td>
+
+                                    <td><a href="/gkxx/zbzrft/zx/202106/20210618/2078778227.html"
+                                           target="_blank">深圳大学</a></td>
+
+                                    <td><a href="/gkxx/zbzrft/zx/202105/20210524/2070377269.html"
+                                           target="_blank">兰州大学</a></td>
+
+                                </tr>
+
+                                </tbody>
+
+                            </table>
+
+                            <p>&nbsp;</p>
+
+
+                        </div>
+
+                        <ul class="index-list">
+
+
+                            <li><a href="/gkxx/zbzrft/zx/202105/20210521/2069814804.html" target="_blank"
+                                   title="武汉理工大学：新增4个招生专业，大部分专业实施大类招生 ">武汉理工大学：新增4个招生专业，大部分专业...</a></li>
+
+
+                            <li><a href="/gkxx/zbzrft/zx/202105/20210524/2070078852.html" target="_blank"
+                                   title="湘潭大学： 新增“人工智能”、“网络空间安全”两个新兴工科专业招生">湘潭大学： 新增“人工智能”、“网络空间安...</a></li>
+
+
+                            <li><a href="/gkxx/zbzrft/zx/202105/20210531/2072865990.html" target="_blank"
+                                   title="中国石油大学（北京）克拉玛依校区：新增5个本科专业，首次开展专项计划招生">中国石油大学（北京）克拉玛依校区：新增5个...</a></li>
+
+
+                            <li><a href="/gkxx/zbzrft/zx/202106/20210601/2073364231.html" target="_blank"
+                                   title="石河子大学：新增小学教育、应急管理招生专业">石河子大学：新增小学教育、应急管理招生专业</a></li>
+
+
+                        </ul>
+
+                    </div>
+
+
+                    <div class="side-head">
+
+                        <span class="i-title">热点</span>
+
+                        <span class="more"><a href="//www.chsi.com.cn/zthz/yggk.jsp" target="_blank">更多 &gt;</a></span>
+
+                    </div>
+
+                    <div class="side-body" style="width: 330px;height: 224px;overflow: hidden;padding-top: 14px;">
+
+
+                        <script type="text/javascript">showShortCut('2356231269')</script>
+
+                        <ul class="index-list hotnew-list ">
+
+                            <li><a href="/gkxx/zytb/202012/20201230/2015959328.html"
+                                   target="_blank">8省市新高考录取工作实施方案汇总</a></li>
+
+                            <li><a href="/gkxx/zszcgd/dnzszc/202010/20201017/1984177296.html" target="_blank">2021年普通高等学校部分特殊类型招生基本要求</a>
+                            </li>
+
+                            <li><a href="/gkzt/tszs" target="_blank">特殊类型招生专题汇总</a></li>
+
+                            <li><a href="/z/gkbmfslq/index.jsp" target="_blank">2021年高考报名分数录取查询</a></li>
+
+                            <li><a href="/gkxx/zcdh/202010/20201014/1983647884.html" target="_blank">深化新时代教育评价改革总体方案</a>
+                            </li>
+
+                            <li><a href="/gkxx/zc/moe/202009/20200917/1977067603.html" target="_blank">首批基础学科拔尖学生培养计划2.0基地名单</a>
+                            </li>
+
+                            <li><a href="/gkxx/zybk/202103/20210323/2045574730.html" target="_blank">教育部：未来五年，打破职业教育学历&ldquo;天花板&rdquo;</a>
+                            </li>
+
+                        </ul>
+
+
+                    </div>
+
+
+                </div>
+
+                <!-- part02-left end -->
+
+
+                <!-- part02-main start  -->
+
+                <div class="gk-main">
+
+                    <div class="ch-list mb13">
+
+                        <div class="list-head clearfix">
+
+                            <div class="list-title">招生政策</div>
+
+                            <div class="list-more"><a href="/gkxx/zc/ss/" target="_blank">更多 &gt;</a></div>
+
+                        </div>
+
+                        <ul class="list-content">
+
+
+                            <li class="clearfix"><span class="news-title"><a
+                                    href='/gkxx/zc/ss/202111/20211105/2127748020.html' target="_blank"
+                                    title="贵州：关于印发贵州省普通高中学生综合素质评价实施办法（修订稿）的通知">贵州：关于印发贵州省普通高中学生综合素质评价实施办法（修订稿...</a></span>
+                            </li>
+
+
+                            <li class="clearfix"><span class="news-title"><a
+                                    href='/gkxx/zc/ss/202111/20211105/2127748018.html' target="_blank"
+                                    title="广东：关于进一步加强我省2022年高考报名管理工作的紧急通知">广东：关于进一步加强我省2022年高考报名管理工作的紧急通知</a></span>
+                            </li>
+
+
+                            <li class="clearfix"><span class="news-title"><a
+                                    href='/gkxx/zc/ss/202111/20211105/2127748016.html' target="_blank"
+                                    title="福建：关于做好2022年海军招收飞行学员工作的通知">福建：关于做好2022年海军招收飞行学员工作的通知</a></span></li>
+
+
+                            <li class="clearfix"><span class="news-title"><a
+                                    href='/gkxx/zc/ss/202111/20211105/2127748014.html' target="_blank"
+                                    title="福建：关于做好2022年招收民航飞行学员工作的通知">福建：关于做好2022年招收民航飞行学员工作的通知</a></span></li>
+
+
+                            <li class="clearfix"><span class="news-title"><a
+                                    href='/gkxx/zc/ss/202111/20211105/2127748013.html' target="_blank"
+                                    title="福建：2022年普通高校招生体育类专业省级统一考试考生须知">福建：2022年普通高校招生体育类专业省级统一考试考生须知</a></span></li>
+
+
+                            <li class="clearfix"><span class="news-title"><a
+                                    href='/gkxx/zc/ss/202111/20211105/2127748010.html' target="_blank"
+                                    title="重庆：2022年普通高考报名工作温馨提示">重庆：2022年普通高考报名工作温馨提示</a></span></li>
+
+
+                        </ul>
+
+                    </div>
+
+
+                    <div class="ch-list">
+
+                        <div class="list-head clearfix">
+
+                            <div class="list-title">省市新闻</div>
+
+                            <div class="list-more"><a href="/gkxx/ss/" target="_blank">更多 &gt;</a></div>
+
+                        </div>
+
+                        <ul class="list-content">
+
+
+                            <li class="clearfix">
+
+                                <span class="news-title"><a href='/gkxx/ss/202111/20211105/2127744701.html'
+                                                            target="_blank" title="浙江：高考报名进行时，有哪些操作细节需注意">浙江：高考报名进行时，有哪些操作细节需注意</a></span>
+                            </li>
+
+
+                            <li class="clearfix">
+
+                                <span class="news-title"><a href='/gkxx/ss/202111/20211104/2126897569.html'
+                                                            target="_blank" title="2022年特殊类型招生：艺术类专业范围有微调，运动队9个项目全国统考">2022年特殊类型招生：艺术类专业范围有微调，运动队9个项目全国...</a></span>
+                            </li>
+
+
+                            <li class="clearfix">
+
+                                <span class="news-title"><a href='/gkxx/ss/202111/20211104/2126878355.html'
+                                                            target="_blank"
+                                                            title="浙江：考生选填报名点时，要注意些啥">浙江：考生选填报名点时，要注意些啥</a></span></li>
+
+
+                            <li class="clearfix">
+
+                                <span class="news-title"><a href='/gkxx/ss/202111/20211104/2126878356.html'
+                                                            target="_blank" title="浙江：艺体类专业考试报名有疑问？来这里找答案">浙江：艺体类专业考试报名有疑问？来这里找答案</a></span>
+                            </li>
+
+
+                            <li class="clearfix">
+
+                                <span class="news-title"><a href='/gkxx/ss/202111/20211103/2126785220.html'
+                                                            target="_blank" title="山西：2022年普通高校招生网上报名系统操作流程">山西：2022年普通高校招生网上报名系统操作流程</a></span>
+                            </li>
+
+
+                            <li class="clearfix">
+
+                                <span class="news-title"><a href='/gkxx/ss/202110/20211029/2124427087.html'
+                                                            target="_blank" title="浙江：2022高考报名动起来！">浙江：2022高考报名动起来！</a></span>
+                            </li>
+
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+                <!-- part02-main end -->
+
+
+                <!-- part02-right start -->
+
+                <div class="gk-right">
+
+                    <div class="side-head">
+
+                        <span class="i-title">地方站</span>
+
+                    </div>
+
+                    <div class="side-body mb13">
+
+                        <ul class="area_sites clearfix">
+
+                            <li><a href="/beijing/" target="_blank">北京</a></li>
+                            　
+
+                            <li><a href="/tianjin/" target="_blank">天津</a></li>
+                            　
+
+                            <li><a href="/hebei/" target="_blank">河北</a></li>
+                            　
+
+                            <li><a href="/shanxi/" target="_blank">山西</a></li>
+                            　
+
+                            <li><a href="/neimenggu/" target="_blank">内蒙古</a></li>
+
+
+                            <li><a href="/liaoning/" target="_blank">辽宁</a></li>
+                            　
+
+                            <li><a href="/jilin/" target="_blank">吉林</a></li>
+
+                            <li><a href="/heilongjiang/" target="_blank">黑龙江</a></li>
+
+
+                            <li><a href="/shanghai/" target="_blank">上海</a></li>
+                            　
+
+                            <li><a href="/jiangsu/" target="_blank">江苏</a></li>
+                            　
+
+                            <li><a href="/zhejiang/" target="_blank">浙江</a></li>
+                            　
+
+                            <li><a href="/anhui/" target="_blank">安徽</a></li>
+                            　
+
+                            <li><a href="/fujian/" target="_blank">福建</a></li>
+                            　
+
+                            <li><a href="/jiangxi/" target="_blank">江西</a></li>
+                            　
+
+                            <li><a href="/shandong/" target="_blank">山东</a></li>
+
+
+                            <li><a href="/henan/" target="_blank">河南</a></li>
+                            　
+
+                            <li><a href="/hubei/" target="_blank">湖北</a></li>
+
+                            <li><a href="/hunan/" target="_blank">湖南</a></li>
+                            　
+
+                            <li><a href="/guangdong/" target="_blank">广东</a></li>
+                            　
+
+                            <li><a href="/guangxi/" target="_blank">广西</a></li>
+                            　
+
+                            <li><a href="/hainan/" target="_blank">海南</a></li>
+
+
+                            <li><a href="/chongqing/" target="_blank">重庆</a></li>
+                            　
+
+                            <li><a href="/sichuan/" target="_blank">四川</a></li>
+                            　
+
+                            <li><a href="/guizhou/" target="_blank">贵州</a></li>
+                            　
+
+                            <li><a href="/yunnan/" target="_blank">云南</a></li>
+                            　
+
+                            <li><a href="/xizang/" target="_blank">西藏</a></li>
+
+
+                            <li><a href="/shaanxi/" target="_blank">陕西</a></li>
+                            　
+
+                            <li><a href="/gansu/" target="_blank">甘肃</a></li>
+
+                            <li><a href="/qinghai/" target="_blank">青海</a></li>
+                            　
+
+                            <li><a href="/ningxia/" target="_blank">宁夏</a></li>
+                            　
+
+                            <li><a href="/xinjiang/" target="_blank">新疆</a></li>
+
+                        </ul>
+
+                    </div>
+
+                    <div style="height: 268px; margin-top: 20px; overflow:hidden;">
+
+
+                        <script type="text/javascript">showShortCut('535307988')</script>
+
+                    </div>
+
+
+                </div>
+
+                <!-- part02-right end -->
+
+
+            </div>
+
+
+        </div>
+
+        <!-- part02 end -->
+
+
+        <div class="clearfix" style=" width: 1180px; overflow: hidden;margin-top: 13px;">
+
+
+            <script type="text/javascript">showShortCut('1010251128')</script>
+
+        </div>
+
+
+        <div class="clearfix" style=" width: 1180px; overflow: hidden;">
+
+
+            <script type="text/javascript">showShortCut('1010342177')</script>
+
+        </div>
+
+
+        <!-- part03 start -->
+
+        <div class="index-row part03 clearfix">
+
+            <div class="part-head clearfix">
+
+                <h3><span class="part-thbg"><img src="//t2.chei.com.cn/gaokao/assets/src/images/dxzy.svg"></span>大学 · 专业
+                </h3>
+
+            </div>
+
+            <div class="part-body clearfix">
+
+                <!-- left start -->
+
+                <div class="gk-left">
+
+
+                    <div style="height: 150px; margin-bottom:22px; overflow:hidden;">
+
+                        <script type="text/javascript">showShortCut('2356238459')</script>
+
+                    </div>
+
+
+                    <div class="side-head">
+
+                        <span class="i-title">招生章程</span>
+
+                        <span class="more"><a href="/zsgs/zhangcheng/" target="_blank">更多 &gt;</a></span>
+
+                    </div>
+
+                    <div class="side-body" style="width:330px; height:165px; overflow:hidden;margin-bottom: 10px;">
+
+                        <script type="text/javascript">showShortCut('1820163374')</script>
+
+                        <ul class="index-list hotnew-list">
+
+
+                            <li class="clearfix"><span class="news-title"><span>[<a
+                                    href="/zsgs/zhangcheng/listZszc--schId-113.dhtml" target="_blank" title="内蒙古民族大学">内蒙古民族大学</a>]</span>&nbsp;<a
+                                    href="/zsgs/zhangcheng/listVerifedZszc--schId-113,infoId-3135354816,categoryId-4503395,method-view.dhtml"
+                                    target="_blank" title="内蒙古民族大学2021年招生章程">内蒙古民族大学2021年招生章程</a></span></li>
+
+
+                            <li class="clearfix"><span class="news-title"><span>[<a
+                                    href="/zsgs/zhangcheng/listZszc--schId-1980488509.dhtml" target="_blank"
+                                    title="陆军军医大学">陆军军医大学</a>]</span>&nbsp;<a
+                                    href="/zsgs/zhangcheng/listVerifedZszc--schId-1980488509,infoId-3242252832,categoryId-1980488511,method-view.dhtml"
+                                    target="_blank"
+                                    title="陆军军医大学（第三军医大学）2021年无军籍地方本科生招生章程">陆军军医大学（第三军医大学）20...</a></span></li>
+
+
+                            <li class="clearfix"><span class="news-title"><span>[<a
+                                    href="/zsgs/zhangcheng/listZszc--schId-1980504628.dhtml" target="_blank"
+                                    title="国防科技大学">国防科技大学</a>]</span>&nbsp;<a
+                                    href="/zsgs/zhangcheng/listVerifedZszc--schId-1980504628,infoId-3242195237,categoryId-1980504630,method-view.dhtml"
+                                    target="_blank" title="国防科技大学无军籍本科学员2021年度招生执行章程">国防科技大学无军籍本科学员202...</a></span>
+                            </li>
+
+
+                            <li class="clearfix"><span class="news-title"><span>[<a
+                                    href="/zsgs/zhangcheng/listZszc--schId-67.dhtml" target="_blank" title="河北地质大学">河北地质大学</a>]</span>&nbsp;<a
+                                    href="/zsgs/zhangcheng/listVerifedZszc--schId-67,infoId-3134685370,categoryId-4500136,method-view.dhtml"
+                                    target="_blank" title="河北地质大学2021年招生章程">河北地质大学2021年招生章程</a></span></li>
+
+
+                            <li class="clearfix"><span class="news-title"><span>[<a
+                                    href="/zsgs/zhangcheng/listZszc--schId-1980498059.dhtml" target="_blank"
+                                    title="空军军医大学">空军军医大学</a>]</span>&nbsp;<a
+                                    href="/zsgs/zhangcheng/listVerifedZszc--schId-1980498059,infoId-3241614942,categoryId-1980498061,method-view.dhtml"
+                                    target="_blank"
+                                    title="空军军医大学（第四军医大学） 2021年无军籍本科学员招生章程">空军军医大学（第四军医大学） 2...</a></span></li>
+
+
+                        </ul>
+
+                    </div>
+
+
+                    <div class="side-head">
+
+                        <span class="i-title">特殊类型招生</span>
+
+                        <span class="more"><a href="/gkzt/tszs" target="_blank">更多 &gt;</a></span>
+
+                    </div>
+
+                    <div class="side-body">
+
+                        <div class="gk-tsl-list">
+
+                            <a class="label-tsl" href="/gkzt/jcxkzs2021" target="_blank">强基计划</a> <a class="label-tsl"
+                                                                                                     href="/gkzt/bss2021"
+                                                                                                     target="_blank">保送生</a>
+                            <a class="label-tsl" href="/gkzt/gspydd2020" target="_blank">运动队</a> <a class="label-tsl"
+                                                                                                    href="/gkzt/gspyst2021"
+                                                                                                    target="_blank">艺术团</a>
+                            <a class="label-tsl" href="/gkzt/ysl2021" target="_blank">艺术类</a> <a class="label-tsl"
+                                                                                                 href="/gkzt/tyl2021"
+                                                                                                 target="_blank">体育类</a>
+                            <a class="label-tsl" href="/gkzt/gfsfs2018" target="_blank">公费师范生</a> <a class="label-tsl"
+                                                                                                     href="/gkzt/gagx"
+                                                                                                     target="_blank">港澳高校招生</a>
+                            <a class="label-tsl" href="/gkzt/hzbx2014" target="_blank">中外合作办学</a> <a class="label-tsl"
+                                                                                                     href="/gkxx/zcdh/200704/20070405/778399.html"
+                                                                                                     target="_blank">公安院校招生</a>
+                            <a class="label-tsl" href="/gkzt/jxzs" target="_blank">军校</a> <a class="label-tsl"
+                                                                                             href="/gkzt/kjzf"
+                                                                                             target="_blank">空军招飞</a> <a
+                                class="label-tsl" href="/gkzt/hjzf" target="_blank">海军招飞</a> <a class="label-tsl"
+                                                                                                href="/gkzt/mhzf"
+                                                                                                target="_blank">民航招飞</a>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div style="height: 255px; overflow:hidden; margin-top:8px;">
+
+
+                        <script type="text/javascript">showShortCut('1830698419')</script>
+
+
+                    </div>
+
+                </div>
+
+                <!-- left end -->
+
+
+                <!-- main start -->
+
+                <div class="gk-main">
+
+                    <div class="index-tab-container" style="margin-bottom:30px;">
+
+                        <div class="index-tab clearfix">
+
+                            <div class="tab-item left-t js-tab selected"><a href="javascript:void(0)">院校招生</a></div>
+
+                            <div class="tab-item right-t js-tab"><a href="javascript:void(0)">高校动态</a></div>
+
+                            <span class="more"><a href="/gkxx/yxzs/" target="_blank">更多&ensp;&gt;</a></span>
+
+                            <span class="more ch-hide"><a href="/sch/" target="_blank">更多&ensp;&gt;</a></span>
+
+                        </div>
+
+                        <div class="tab-content clearfix">
+
+                            <div class="item-content active">
+
+
+                                <div class="list-content" style="overflow: hidden; height: 255px;">
+
+                                    <script type="text/javascript">showShortCut('1010246093')</script>
+
+                                    <ul>
+
+
+                                        <li class="clearfix"><span class="news-title"><a
+                                                href='/gkxx/yxzs/202110/20211014/2118407624.html' target="_blank"
+                                                title="南方科技大学2021年“优秀中学生科技创新体验营”报名通知"><a
+                                                href='https://mp.weixin.qq.com/s/9WDwmNsdZDUw35ilfIO6sg'
+                                                target='_blank'>南方科技大学2021年“优秀中学生科技创新体验营”报名通知</a></a></span></li>
+
+
+                                        <li class="clearfix"><span class="news-title"><a
+                                                href='/gkxx/yxzs/202110/20211013/2117425309.html' target="_blank"
+                                                title="西安石油大学喜迎70周年校庆！"><a
+                                                href='https://mp.weixin.qq.com/s/VyWoxBgYUyxfAguOU1QP-A'
+                                                target='_blank'>西安石油大学喜迎70周年校庆！</a></a></span></li>
+
+
+                                        <li class="clearfix"><span class="news-title"><a
+                                                href='/gkxx/yxzs/202108/20210827/2102759255.html' target="_blank"
+                                                title="首批未来技术学院9月迎来新生 专访教育部高等教育司及北京大学、天津大学未来技术学院负责人 未来技术学院如何引领未来">首批未来技术学院9月迎来新生 专访教育部高等教育司及北京大学、...</a></span>
+                                        </li>
+
+
+                                        <li class="clearfix"><span class="news-title"><a
+                                                href='/gkxx/yxzs/202106/20210628/2082025879.html' target="_blank"
+                                                title="深圳大学2021年本科招生计划6950人，招生模式改革可更好满足考生需求">深圳大学2021年本科招生计划6950人，招生模式改革可更好满足考生...</a></span>
+                                        </li>
+
+
+                                        <li class="clearfix"><span class="news-title"><a
+                                                href='/gkxx/yxzs/202106/20210625/2081271788.html' target="_blank"
+                                                title="2021校友会重庆市一流专业排名中重庆城科位居前五">2021校友会重庆市一流专业排名中重庆城科位居前五</a></span>
+                                        </li>
+
+
+                                        <li class="clearfix"><span class="news-title"><a
+                                                href='/gkxx/yxzs/202106/20210624/2080795695.html' target="_blank"
+                                                title="温州医科大学临床医学（中外合作办学）专业报考指南"><a
+                                                href="https://mp.weixin.qq.com/s/8-J3fNo_P0YAh1B_wFc1fg"
+                                                target="_blank">温州医科大学临床医学（中外合作办学）专业报考指南</a></a></span></li>
+
+
+                                        <li class="clearfix"><span class="news-title"><a
+                                                href='/gkxx/yxzs/202106/20210623/2079814866.html' target="_blank"
+                                                title="资讯∣2021年空军工程大学各省招生组实地宣讲安排"><a
+                                                href="https://mp.weixin.qq.com/s/lsuyqikav2KGDWtsXZZycg"
+                                                target="_blank">资讯∣2021年空军工程大学各省招生组实地宣讲安排</a></a></span></li>
+
+
+                                    </ul>
+
+                                </div>
+
+
+                            </div>
+
+                            <div class="item-content">
+
+
+                                <div class="list-content" style="overflow: hidden; height: 255px;">
+
+                                    <script type="text/javascript">showShortCut('535392248')</script>
+
+                                    <ul>
+
+
+                                        <li class="clearfix"><span class="news-title"><span>[<a
+                                                href="/sch/listBulletin--schId-1869,categoryId-51989.dhtml"
+                                                target="_blank" title="泰山科技学院">泰山科技学院</a>]</span>&nbsp;<a
+                                                href="/sch/viewBulletin--schId-1869,infoId-3283970464,categoryId-51989.dhtml"
+                                                target="_blank" title="我校2021年山东省专科征集计划">我校2021年山东省专科征集计划</a></span>
+                                        </li>
+
+
+                                        <li class="clearfix"><span class="news-title"><span>[<a
+                                                href="/sch/listBulletin--schId-1807,categoryId-37840.dhtml"
+                                                target="_blank" title="重庆人文科技学院">重庆人文科技学院</a>]</span>&nbsp;<a
+                                                href="/sch/viewBulletin--schId-1807,infoId-3275305049,categoryId-37840.dhtml"
+                                                target="_blank" title="我校师生喜获第七届全国大学生工程训练综合能力竞赛重庆赛区一等奖等多个奖项">我校师生喜获第七届全国大学生工程训练综合能力竞赛重庆赛区一等奖等多个奖项</a></span>
+                                        </li>
+
+
+                                        <li class="clearfix"><span class="news-title"><span>[<a
+                                                href="/sch/listBulletin--schId-1574,categoryId-5584234.dhtml"
+                                                target="_blank" title="大连科技学院">大连科技学院</a>]</span>&nbsp;<a
+                                                href="/sch/viewBulletin--schId-1574,infoId-3227355650,categoryId-5584234.dhtml"
+                                                target="_blank" title="大连科技学院2021年招生章程">大连科技学院2021年招生章程</a></span></li>
+
+
+                                        <li class="clearfix"><span class="news-title"><span>[<a
+                                                href="/sch/listBulletin--schId-616825988,categoryId-616826077.dhtml"
+                                                target="_blank" title="巴中职业技术学院">巴中职业技术学院</a>]</span>&nbsp;<a
+                                                href="/sch/viewBulletin--schId-616825988,infoId-3235600371,categoryId-616826077.dhtml"
+                                                target="_blank" title="巴中职业技术学院2021年省内外招生联系人">巴中职业技术学院2021年省内外招生联系人</a></span>
+                                        </li>
+
+
+                                        <li class="clearfix"><span class="news-title"><span>[<a
+                                                href="/sch/listBulletin--schId-1870,categoryId-47312.dhtml"
+                                                target="_blank" title="重庆移通学院">重庆移通学院</a>]</span>&nbsp;<a
+                                                href="/sch/viewBulletin--schId-1870,infoId-3234286431,categoryId-47312.dhtml"
+                                                target="_blank" title="我校通信工程专业获批2021年重庆市级一流本科专业建设点">我校通信工程专业获批2021年重庆市级一流本科专业建设点</a></span>
+                                        </li>
+
+
+                                        <li class="clearfix"><span class="news-title"><span>[<a
+                                                href="/sch/listBulletin--schId-402800,categoryId-402849.dhtml"
+                                                target="_blank" title="三亚学院">三亚学院</a>]</span>&nbsp;<a
+                                                href="/sch/viewBulletin--schId-402800,infoId-3231698925,categoryId-402849.dhtml"
+                                                target="_blank"
+                                                title="学校办学快速发展 多次获省市领导肯定支持">学校办学快速发展 多次获省市领导肯定支持</a></span></li>
+
+
+                                        <li class="clearfix"><span class="news-title"><span>[<a
+                                                href="/sch/listBulletin--schId-1826,categoryId-57961.dhtml"
+                                                target="_blank" title="海南外国语职业学院">海南外国语职业学院</a>]</span>&nbsp;<a
+                                                href="/sch/viewBulletin--schId-1826,infoId-3226090546,categoryId-57961.dhtml"
+                                                target="_blank" title="海南外国语职业学院2021年招生章程">海南外国语职业学院2021年招生章程</a></span>
+                                        </li>
+
+
+                                    </ul>
+
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="index-tab-container" style="margin-bottom:30px;">
+
+                        <div class="index-tab clearfix">
+
+                            <div class="tab-item left-t  js-tab selected"><a href="javascript:void(0)">专业百科</a></div>
+
+                            <div class="tab-item right-t js-tab"><a href="javascript:void(0)">专业与就业</a></div>
+
+                            <span class="more"><a href="/gkxx/zybk/" target="_blank">更多&ensp;&gt;</a></span>
+
+                            <span class="more ch-hide"><a href="/gkxx/zybk/zyyjy/"
+                                                          target="_blank">更多&ensp;&gt;</a></span>
+
+                        </div>
+
+                        <div class="tab-content clearfix">
+
+                            <div class="item-content active">
+
+
+                                <ul class="list-content" style="overflow: hidden; height: 255px;">
+
+
+                                    <li class="clearfix"><span class="news-title"><a
+                                            href='/gkxx/zybk/202111/20211104/2127188646.html' target="_blank"
+                                            title="满满成果，展现创新无限魅力——2020年度国家科学技术奖获奖项目亮点解读">满满成果，展现创新无限魅力——2020年度国家科学技术奖获奖项目...</a></span>
+                                    </li>
+
+
+                                    <li class="clearfix"><span class="news-title"><a
+                                            href='/gkxx/zybk/202110/20211021/2120608095.html' target="_blank"
+                                            title="逐日未来时">逐日未来时</a></span></li>
+
+
+                                    <li class="clearfix"><span class="news-title"><a
+                                            href='/gkxx/zcdh/202110/20211011/2122126580.html' target="_blank"
+                                            title="教育部办公厅关于公布2021年通过普通高等学校师范类专业认证专业名单的通知">教育部办公厅关于公布2021年通过普通高等学校师范类专业认证专业...</a></span>
+                                    </li>
+
+
+                                    <li class="clearfix"><span class="news-title"><a
+                                            href='/gkxx/zybk/202109/20210913/2107633956.html' target="_blank"
+                                            title="【图解专业】环境科学与工程类专业：以所学守护绿水青山">【图解专业】环境科学与工程类专业：以所学守护绿水青山</a></span>
+                                    </li>
+
+
+                                    <li class="clearfix"><span class="news-title"><a
+                                            href='/gkxx/zybk/202109/20210913/2107676787.html' target="_blank"
+                                            title="菌草科学：机会蕴含其中">菌草科学：机会蕴含其中</a></span></li>
+
+
+                                    <li class="clearfix"><span class="news-title"><a
+                                            href='/gkxx/zybk/202108/20210827/2102624579.html' target="_blank"
+                                            title="【图解专业】金融工程：广受青睐，被戏称为最赚钱的专业">【图解专业】金融工程：广受青睐，被戏称为最赚钱的专业</a></span>
+                                    </li>
+
+
+                                    <li class="clearfix"><span class="news-title"><a
+                                            href='/gkxx/zybk/202108/20210825/2101760436.html' target="_blank"
+                                            title="【图解专业】草业科学：小草成就大事业">【图解专业】草业科学：小草成就大事业</a></span></li>
+
+
+                                </ul>
+
+
+                            </div>
+
+                            <div class="item-content">
+
+
+                                <ul class="list-content" style="overflow: hidden; height: 255px;">
+
+
+                                    <li class="clearfix"><span class="news-title"><a
+                                            href='/gkxx/zybk/zyyjy/202110/20211022/2120909453.html' target="_blank"
+                                            title="让教师真正成为最受社会尊重和令人羡慕的职业">让教师真正成为最受社会尊重和令人羡慕的职业</a></span></li>
+
+
+                                    <li class="clearfix"><span class="news-title"><a
+                                            href='/gkxx/zybk/zyyjy/202108/20210831/2103720988.html' target="_blank"
+                                            title="人才缺口巨大，造车界不断上演“抢人大战”——新能源汽车“人才荒”如何破">人才缺口巨大，造车界不断上演“抢人大战”——新能源汽车“人才...</a></span>
+                                    </li>
+
+
+                                    <li class="clearfix"><span class="news-title"><a
+                                            href='/gkxx/zybk/zyyjy/202105/20210518/2068874524.html' target="_blank"
+                                            title="909万大学毕业生如何更好就业">909万大学毕业生如何更好就业</a></span></li>
+
+
+                                    <li class="clearfix"><span class="news-title"><a
+                                            href='/gkxx/zybk/zyyjy/202103/20210322/2041747224.html' target="_blank"
+                                            title="18个新职业发布——新职业打开就业新空间">18个新职业发布——新职业打开就业新空间</a></span></li>
+
+
+                                    <li class="clearfix"><span class="news-title"><a
+                                            href='/gkxx/zybk/zyyjy/202101/20210128/2026237235.html' target="_blank"
+                                            title="第一批电竞生要毕业了：就业情况特别好 但做电竞的不多">第一批电竞生要毕业了：就业情况特别好 但做电竞的不多</a></span>
+                                    </li>
+
+
+                                    <li class="clearfix"><span class="news-title"><a
+                                            href='/gkxx/zybk/zyyjy/202101/20210105/2017945795.html' target="_blank"
+                                            title="4所艺术院校公布应届生薪酬，中央音乐学院本科生年薪近十万">4所艺术院校公布应届生薪酬，中央音乐学院本科生年薪近十万</a></span>
+                                    </li>
+
+
+                                    <li class="clearfix"><span class="news-title"><a
+                                            href='/gkxx/zybk/zyyjy/202012/20201223/2012642069.html' target="_blank"
+                                            title="产教融合，集成电路产业探索“订单式”人才培养">产教融合，集成电路产业探索“订单式”人才培养</a></span></li>
+
+
+                                </ul>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="index-tab-container">
+
+                        <div class="index-tab clearfix">
+
+                            <div class="tab-item left-t  js-tab selected"><a href="javascript:void(0)">强基计划</a></div>
+
+                            <div class="tab-item right-t js-tab"><a href="javascript:void(0)">艺考招生</a></div>
+
+                            <span class="more"><a href="/gkxx/qjjh/" target="_blank">更多&ensp;&gt;</a></span>
+
+                            <span class="more ch-hide"><a href="/gkxx/yszy/dt" target="_blank">更多&ensp;&gt;</a></span>
+
+                        </div>
+
+                        <div class="tab-content clearfix">
+
+                            <div class="item-content active">
+
+
+                                <div class="list-content" style="overflow: hidden; height: 255px;">
+
+                                    <script type="text/javascript">showShortCut('535393336')</script>
+
+                                    <ul>
+
+
+                                        <li class="clearfix"><span class="news-title"><a
+                                                href='/gkxx/qjjh/202106/20210615/2077582795.html' target="_blank"
+                                                title="同济大学：2021年强基计划重要事项通知">同济大学：2021年强基计划重要事项通知</a></span></li>
+
+
+                                        <li class="clearfix"><span class="news-title"><a
+                                                href='/gkxx/qjjh/202106/20210611/2076374584.html' target="_blank"
+                                                title="上海交通大学：强基计划6月10日开始确认">上海交通大学：强基计划6月10日开始确认</a></span></li>
+
+
+                                        <li class="clearfix"><span class="news-title"><a
+                                                href='/gkxx/qjjh/202106/20210610/2076044951.html' target="_blank"
+                                                title="中国人民大学：关于提醒强基计划考生校考相关环节要求的公告">中国人民大学：关于提醒强基计划考生校考相关环节要求的公告</a></span>
+                                        </li>
+
+
+                                        <li class="clearfix"><span class="news-title"><a
+                                                href='/gkxx/qjjh/202105/20210508/2066652661.html' target="_blank"
+                                                title="“强基计划”：拔尖创新人才培养新路径">“强基计划”：拔尖创新人才培养新路径</a></span></li>
+
+
+                                        <li class="clearfix"><span class="news-title"><a
+                                                href='/gkxx/qjjh/202104/20210416/2059185880.html' target="_blank"
+                                                title="对话招办主任：上海交大强基计划答疑！">对话招办主任：上海交大强基计划答疑！</a></span></li>
+
+
+                                        <li class="clearfix"><span class="news-title"><a
+                                                href='/gkxx/qjjh/202104/20210415/2058586273.html' target="_blank"
+                                                title="清华大学强基计划报名相关问答">清华大学强基计划报名相关问答</a></span></li>
+
+
+                                        <li class="clearfix"><span class="news-title"><a
+                                                href='/gkxx/qjjh/202104/20210413/2058148322.html' target="_blank"
+                                                title="详解北大强基计划！">详解北大强基计划！</a></span></li>
+
+
+                                    </ul>
+
+                                </div>
+
+
+                            </div>
+
+                            <div class="item-content">
+
+
+                                <div class="list-content" style="overflow: hidden; height: 255px; ">
+
+                                    <script type="text/javascript">showShortCut('535393780')</script>
+
+                                    <ul>
+
+
+                                        <li class="clearfix"><span class="news-title"><a
+                                                href='/gkxx/yszy/dt/202111/20211103/2126140223.html' target="_blank"
+                                                title="高考艺体生文化课分数线提高">高考艺体生文化课分数线提高</a></span></li>
+
+
+                                        <li class="clearfix"><span class="news-title"><a
+                                                href='/gkxx/yszy/dt/202110/20211029/2124426749.html' target="_blank"
+                                                title="艺文并进，科学应对“新艺考”">艺文并进，科学应对“新艺考”</a></span></li>
+
+
+                                        <li class="clearfix"><span class="news-title"><a
+                                                href='/gkxx/ss/202110/20211021/2120500048.html' target="_blank"
+                                                title="北京：英语听说考试、美术统考、体育专业考试高招三类考试时间确定">北京：英语听说考试、美术统考、体育专业考试高招三类考试时间确...</a></span>
+                                        </li>
+
+
+                                        <li class="clearfix"><span class="news-title"><a
+                                                href='/gkxx/ss/202110/20211028/2123088518.html' target="_blank"
+                                                title="广西：2022年全区艺术统考报名已开始，新增航空服务类专业">广西：2022年全区艺术统考报名已开始，新增航空服务类专业</a></span>
+                                        </li>
+
+
+                                        <li class="clearfix"><span class="news-title"><a
+                                                href='/gkxx/zc/ss/202110/20211014/2117682119.html' target="_blank"
+                                                title="2022年浙江省艺术类专业省统考时间安排表">2022年浙江省艺术类专业省统考时间安排表</a></span></li>
+
+
+                                        <li class="clearfix"><span class="news-title"><a
+                                                href='/gkxx/zc/ss/202110/20211013/2117425298.html' target="_blank"
+                                                title="上海：2022年普通高校招生艺术类专业统一考试网上咨询将于10月16日举行">上海：2022年普通高校招生艺术类专业统一考试网上咨询将于10月16...</a></span>
+                                        </li>
+
+
+                                        <li class="clearfix"><span class="news-title"><a
+                                                href='/gkxx/yszy/dt/202110/20211012/2116797562.html' target="_blank"
+                                                title="关于艺术类招考新政策，艺考生需重点关注哪些点？">关于艺术类招考新政策，艺考生需重点关注哪些点？</a></span></li>
+
+
+                                    </ul>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+                <!-- main end -->
+
+
+                <!-- right start -->
+
+                <div class="gk-right">
+
+                    <div class="side-head">
+
+                        <span class="i-title">专业解读</span>
+
+                        <span class="more"><a href="/zyk/zybk/zyjd/listPage" target="_blank">更多 &gt;</a></span>
+
+                    </div>
+
+                    <div class="side-body zyjd-img-list">
+
+                        <div class="thumbs-box">
+
+                            <div class="imgs-panel"><img border="0" height="100%"
+                                                         src="https://t3.chei.com.cn/news/img/2084811780.jpg" title=""
+                                                         width="100%"/></div>
+
+                            <div class="tips-panel">
+
+                                <div class="tips-mask">&nbsp;</div>
+
+                                <div class="tips-text"><a href="/zyk/zybk/zyjd/viewPage/9mg32kkl7ngzl3nd"
+                                                          target="_blank">核工程与核技术：变&ldquo;辐&rdquo;为&ldquo;福&rdquo;，让核更多地造福人类</a>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <ul class="img-txt-list clearfix list-paddingleft-2">
+
+                            <li class="img-txt-box clearfix">
+
+                                <div class="img-wrapper"><img alt="" border="0"
+                                                              src="https://t3.chei.com.cn/news/img/2084811781.jpg"
+                                                              title=""/></div>
+
+                                <p class="info"><a href="/zyk/zybk/zyjd/viewPage/tcl1qp6hpacg3a9m"
+                                                   target="_blank"><span>金融工程：广受青睐，被戏称为最赚钱的专业</span></a></p>
+
+                            </li>
+
+                            <li class="img-txt-box clearfix">
+
+                                <div class="img-wrapper"><img alt="" border="0"
+                                                              src="https://t3.chei.com.cn/news/img/2084811782.jpg"
+                                                              title=""/></div>
+
+                                <p class="info"><a href="/zyk/zybk/zyjd/viewPage/hgf23tzpjvgidvfv"
+                                                   target="_blank"><span>环境科学与工程类专业：以所学守护绿水青山</span></a></p>
+
+                            </li>
+
+                            <li class="img-txt-box clearfix">
+
+                                <div class="img-wrapper"><img alt="" border="0"
+                                                              src="https://t4.chei.com.cn/news/img/2070983194.jpg"
+                                                              title=""/></div>
+
+                                <p class="info"><a href="/zyk/zybk/zyjd/viewPage/uuyy97wfxgponupu"
+                                                   target="_blank"><span>信息与计算科学：&ldquo;数学+计算机&rdquo;挖掘数据开发新高地</span></a>
+                                </p>
+
+                            </li>
+
+                        </ul>
+
+
+                    </div>
+
+
+                    <div class="side-head" style="margin-top: 19px;">
+
+                        <span class="i-title">港澳高校招生</span>
+
+                        <span class="more"><a href="/gkxx/hkzs" target="_blank">更多 &gt;</a></span>
+
+                    </div>
+
+                    <div class="side-body" style="overflow: hidden; height: 170px; width:280px;">
+
+                        <script type="text/javascript">showShortCut('535394089')</script>
+
+                        <ul class="index-list hotnew-list">
+
+
+                            <li><a href="/gkxx/hkzs/201912/20191202/1790939120.html" target="_blank"
+                                   title="2021年港澳高校内地招生报考指南"><a href="https://gaokao.chsi.com.cn/gkzt/gagx"
+                                                                target="_blank">2021年港澳高校内地招生报考指南</a></a></li>
+
+
+                            <li><a href="/gkxx/hkzs/202108/20210809/2096127552.html" target="_blank"
+                                   title="“2021学在港澳”说明会 期待你的参与！">“2021学在港澳”说明会 期待你的参与...</a></li>
+
+
+                            <li><a href="/gkxx/yxzs/202106/20210607/2075031407.html" target="_blank"
+                                   title="香港中文大学为高考同学加油">香港中文大学为高考同学加油</a></li>
+
+
+                            <li><a href="/gkxx/yxzs/202106/20210604/2074656096.html" target="_blank"
+                                   title="澳门大学六月份一系列内地本科入学及学院说明会约定您在线见！">澳门大学六月份一系列内地本科入学及学...</a></li>
+
+
+                            <li><a href="/gkxx/zbzrft/zx/202106/20210601/2073364944.html" target="_blank"
+                                   title="澳门理工学院：内地招生约200人 6月30日报名截止">澳门理工学院：内地招生约200人 6月30...</a></li>
+
+
+                        </ul>
+
+
+                    </div>
+
+
+                    <div style="height: 262px; margin-top: 16px; overflow:hidden;">
+
+
+                        <script type="text/javascript">showShortCut('535420737')</script>
+
+                    </div>
+
+
+                </div>
+
+                <!-- right end -->
+
+
+            </div>
+
+        </div>
+
+        <!-- part03 end -->
+
+
+        <div class="clearfix" style=" width: 1180px; overflow: hidden;margin-top: 2px;">
+
+
+            <script type="text/javascript">showShortCut('1010255274')</script>
+
+        </div>
+
+
+        <div class="clearfix" style=" width: 1180px; overflow: hidden;">
+
+
+            <script type="text/javascript">showShortCut('1010345714')</script>
+
+        </div>
+
+
+        <!-- part04 start -->
+
+        <div class="index-row part04 clearfix">
+
+            <div class="part-head clearfix">
+
+                <h3><span class="part-thbg"><img src="//t3.chei.com.cn/gaokao/assets/src/images/zy.svg"></span>志愿</h3>
+
+            </div>
+
+            <div class="part-body">
+
+                <!-- gk-left start -->
+
+                <div class="gk-left">
+
+
+                    <div class="side-head">
+
+                        <span class="i-title">咨询室</span>
+
+                        <span class="more"><a
+                                href="/zxdy/zxs--method-listDefault,forumid-6267733,year-2007,start-0.dhtml"
+                                target="_blank">更多 &gt;</a></span>
+
+                    </div>
+
+                    <div class="side-body">
+
+                        <ul class="index-list">
+
+                            <li>山东考生：<a href="/zxdy/view--qid-978557164,method-listDefault.dhtml" target="_blank">提前批次未被录取，是否会影响一本？</a>
+                            </li>
+
+                            <li>山西考生：<a
+                                    href="/zxdy/view--qid-996250711,method-listDefault,showCurrent-tlq3,year-2007,start-0.dhtml"
+                                    target="_blank">英语需口试是怎么回事？</a></li>
+
+                            <li>吉林考生：<a
+                                    href="/zxdy/view--qid-1005966238,method-listDefault,showCurrent-tlq3,year-2007,start-0.dhtml"
+                                    target="_blank">平行志愿被退档还能投到下一个志愿吗？</a></li>
+
+                            <li>辽宁考生：<a
+                                    href="/zxdy/view--qid-963399793,method-listDefault,showCurrent-tlq3,year-2007,start-0.dhtml"
+                                    target="_blank">怎么报考会减小被退档的风险？</a></li>
+
+                            <li>安徽考生：<a
+                                    href="/zxdy/view--qid-963448809,method-listDefault,showCurrent-tlq3,year-2007,start-0.dhtml"
+                                    target="_blank">关于分数优先&rdquo;和&ldquo;志愿优先&rdquo;</a></li>
+
+                        </ul>
+
+
+                    </div>
+
+                    <div class="side-head">
+
+                        <span class="i-title">帮助中心</span>
+
+                        <span class="more"><a href="/help/" target="_blank">更多 &gt;</a></span>
+
+                    </div>
+
+                    <div class="side-body">
+
+                        <ul class="index-list">
+
+                            <li><a href="/help/wb.jsp#" target="_blank">特殊类型报名建议使用什么浏览器？</a></li>
+
+                            <li><a href="/help/wb.jsp#" target="_blank">特殊类型网报步骤是怎样的？</a></li>
+
+                            <li><a href="/help/wb.jsp#" target="_blank">特殊类型报名如何添加志愿？</a></li>
+
+                            <li><a href="/help/wb.jsp#" target="_blank">特殊类型网报对上传的照片有什么要求？</a></li>
+
+                            <li><a href="/help/wb.jsp#" target="_blank">确认考试是否有志愿数量的限制？</a></li>
+
+                        </ul>
+
+
+                    </div>
+
+
+                    <div class="side-head">
+
+                        <span class="i-title">高考常识</span>
+
+                        <span class="more"><a href="/gkxx/gkcs/" target="_blank">更多 &gt;</a></span>
+
+                    </div>
+
+                    <div class="side-body">
+
+                        <ul class="index-list hotnew-list">
+
+
+                            <li><a href="/gkxx/gkcs/202108/20210819/2100715238.html" target="_blank"
+                                   title="优师计划九大热点问题解答">优师计划九大热点问题解答</a></li>
+
+
+                            <li><a href="/gkxx/gkcs/202108/20210805/2094888733.html" target="_blank"
+                                   title="优师计划：大学期间“两免一补”，毕业有编、有岗！">优师计划：大学期间“两免一补”，毕业有编、有岗！</a></li>
+
+
+                            <li><a href="/gkxx/ncdzjz/202005/20200518/1912975165.html" target="_blank"
+                                   title="2020年是否报考专项计划，这八个问题给你答案">2020年是否报考专项计划，这八个问题给你答案</a></li>
+
+
+                            <li><a href="/gkxx/gkcs/201906/20190606/1796951223.html" target="_blank"
+                                   title="何谓批次线、调档线、录取线？">何谓批次线、调档线、录取线？</a></li>
+
+
+                            <li><a href="/gkxx/gkcs/201906/20190604/1796726264.html" target="_blank"
+                                   title="高校招生章程包含哪些重要信息？">高校招生章程包含哪些重要信息？</a></li>
+
+
+                        </ul>
+
+                    </div>
+
+
+                </div>
+
+                <!-- gk-left end -->
+
+
+                <!-- gk-main start -->
+
+                <div class="gk-main">
+
+
+                    <div class="index-tab-container">
+
+                        <div class="index-tab clearfix">
+
+                            <div class="tab-item left-t  js-tab selected"><a href="javascript:void(0)">报考指南</a></div>
+
+                            <div class="tab-item right-t js-tab"><a href="javascript:void(0)">政策解读</a></div>
+
+                            <span class="more"><a href="/gkxx/zytb/" target="_blank">更多&ensp;&gt;</a></span>
+
+                            <span class="more ch-hide"><a href="/gkxx/zjsd/zcjd/"
+                                                          target="_blank">更多&ensp;&gt;</a></span>
+
+                        </div>
+
+                        <div class="tab-content clearfix">
+
+                            <div class="item-content active">
+
+
+                                <div class="list-content" style="overflow: hidden; height: 255px;">
+
+                                    <script type="text/javascript">showShortCut('2356257984')</script>
+
+                                    <ul>
+
+
+                                        <li class="clearfix"><span class="news-title"><a
+                                                href='/gkxx/ss/202108/20210805/2094746918.html' target="_blank"
+                                                title="江苏：征求志愿怎样设置？如何填报征求志愿？">江苏：征求志愿怎样设置？如何填报征求志愿？</a></span></li>
+
+
+                                        <li class="clearfix"><span class="news-title"><a
+                                                href='/gkxx/zytb/202108/20210804/2094287928.html' target="_blank"
+                                                title="填报高职专科志愿，4个事项请特别注意！">填报高职专科志愿，4个事项请特别注意！</a></span></li>
+
+
+                                        <li class="clearfix"><span class="news-title"><a
+                                                href='/gkxx/ss/202108/20210804/2094243254.html' target="_blank"
+                                                title="沪考心语 | 尽早酝酿专科志愿填报">沪考心语 | 尽早酝酿专科志愿填报</a></span></li>
+
+
+                                        <li class="clearfix"><span class="news-title"><a
+                                                href='/gkxx/zc/ss/202108/20210804/2094243252.html' target="_blank"
+                                                title="山西：2021年普通高校招生网上填报志愿（第四段）公告">山西：2021年普通高校招生网上填报志愿（第四段）公告</a></span>
+                                        </li>
+
+
+                                        <li class="clearfix"><span class="news-title"><a
+                                                href='/gkxx/zc/ss/202108/20210803/2094243248.html' target="_blank"
+                                                title="山西：2021年全国普通高校招生《填报志愿指南》更正说明">山西：2021年全国普通高校招生《填报志愿指南》更正说明</a></span>
+                                        </li>
+
+
+                                        <li class="clearfix"><span class="news-title"><a
+                                                href='/gkxx/zc/ss/202108/20210803/2094081984.html' target="_blank"
+                                                title="四川：录取到哪个专业？录取规则说了算">四川：录取到哪个专业？录取规则说了算</a></span></li>
+
+
+                                        <li class="clearfix"><span class="news-title"><a
+                                                href='/gkxx/zc/ss/202108/20210802/2093433200.html' target="_blank"
+                                                title="上海：2021年普通高校招生专科阶段志愿填报及录取问答">上海：2021年普通高校招生专科阶段志愿填报及录取问答</a></span>
+                                        </li>
+
+
+                                    </ul>
+
+                                </div>
+
+
+                            </div>
+
+                            <div class="item-content">
+
+
+                                <ul class="list-content" style="overflow: hidden; height: 255px;">
+
+
+                                    <li class="clearfix"><span class="news-title"><a
+                                            href='/gkxx/zc/ss/202108/20210808/2095876440.html' target="_blank"
+                                            title="广西：关于2021年普通高校招生高职高专提前批征集志愿的说明">广西：关于2021年普通高校招生高职高专提前批征集志愿的说明</a></span>
+                                    </li>
+
+
+                                    <li class="clearfix"><span class="news-title"><a
+                                            href='/gkxx/zc/ss/202107/20210730/2093338629.html' target="_blank"
+                                            title="福建：2021年高招录取常见问题解答（4）">福建：2021年高招录取常见问题解答（4）</a></span></li>
+
+
+                                    <li class="clearfix"><span class="news-title"><a
+                                            href='/gkxx/zc/ss/202107/20210705/2084273286.html' target="_blank"
+                                            title="安徽：2021年普通高校招生文理科志愿设置及投档办法">安徽：2021年普通高校招生文理科志愿设置及投档办法</a></span>
+                                    </li>
+
+
+                                    <li class="clearfix"><span class="news-title"><a
+                                            href='/gkxx/ss/202107/20210712/2086963991.html' target="_blank"
+                                            title="河南：一图看懂考生电子档案状态">河南：一图看懂考生电子档案状态</a></span></li>
+
+
+                                    <li class="clearfix"><span class="news-title"><a
+                                            href='/gkxx/zc/ss/202107/20210713/2087378908.html' target="_blank"
+                                            title="浙江：普通类提前招生一段录取结果15日可查询！你填报的传统志愿这样投档">浙江：普通类提前招生一段录取结果15日可查询！你填报的传统志愿...</a></span>
+                                    </li>
+
+
+                                    <li class="clearfix"><span class="news-title"><a
+                                            href='/gkxx/ss/202107/20210709/2086963596.html' target="_blank"
+                                            title="上海：高考招生录取流程探微">上海：高考招生录取流程探微</a></span></li>
+
+
+                                    <li class="clearfix"><span class="news-title"><a
+                                            href='/gkxx/zc/ss/202106/20210629/2082154900.html' target="_blank"
+                                            title="福建：2021年普通高校招生志愿填报问答">福建：2021年普通高校招生志愿填报问答</a></span></li>
+
+
+                                </ul>
+
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="ch-list clearfix">
+
+                        <div class="list-head clearfix">
+
+                            <div class="list-title">考生必读</div>
+
+                            <div class="list-more"><a href="/gkxx/ksbd/" target="_blank">更多 &gt;</a></div>
+
+                        </div>
+
+                        <ul class="list-content">
+
+
+                            <li class="clearfix"><span class="news-title"><a
+                                    href='/gkxx/ksbd/202109/20210917/2109593063.html' target="_blank"
+                                    title="专家解读｜3+1+2新高考模式怎么分班？历史+物理不行吗？">专家解读｜3+1+2新高考模式怎么分班？历史+物理不行吗？</a></span></li>
+
+
+                            <li class="clearfix"><span class="news-title"><a
+                                    href='/gkxx/ksbd/202109/20210910/2107337149.html' target="_blank"
+                                    title="高考经验分享丨理科综合备考全集">高考经验分享丨理科综合备考全集</a></span></li>
+
+
+                            <li class="clearfix"><span class="news-title"><a
+                                    href='/gkxx/ksbd/202109/20210910/2107184060.html' target="_blank"
+                                    title="新高三生如何调好学习节奏？心理专家来支招">新高三生如何调好学习节奏？心理专家来支招</a></span></li>
+
+
+                            <li class="clearfix"><span class="news-title"><a
+                                    href='/gkxx/ksbd/202109/20210909/2106979158.html' target="_blank"
+                                    title="高三备考丨化学：立足基础 提升能力">高三备考丨化学：立足基础 提升能力</a></span></li>
+
+
+                            <li class="clearfix"><span class="news-title"><a
+                                    href='/gkxx/ksbd/202109/20210909/2106979061.html' target="_blank"
+                                    title="高三备考丨英语：三轮复习 步步为营">高三备考丨英语：三轮复习 步步为营</a></span></li>
+
+
+                            <li class="clearfix"><span class="news-title"><a
+                                    href='/gkxx/ksbd/202109/20210909/2106978608.html' target="_blank"
+                                    title="高三备考丨语文：本立道生 循道优术">高三备考丨语文：本立道生 循道优术</a></span></li>
+
+
+                            <li class="clearfix"><span class="news-title"><a
+                                    href='/gkxx/ksbd/202108/20210820/2100738907.html' target="_blank"
+                                    title="湖南：准高三需要知道的一些事！">湖南：准高三需要知道的一些事！</a></span></li>
+
+
+                        </ul>
+
+                    </div>
+
+
+                </div>
+
+                <!-- gk-main end -->
+
+
+                <!-- gk-right start -->
+
+                <div class="gk-right">
+
+                    <div class="side-head">
+
+                        <span class="i-title">志愿参考系统</span>
+
+                    </div>
+
+                    <div class="side-body">
+
+                        <a href="/zyck/" target="_blank">
+
+                            <img src="//t2.chei.com.cn/gaokao/assets/src/images/zyck.png?201905" alt="志愿填报参考系统"/>
+
+                        </a>
+
+                    </div>
+
+
+                    <div class="side-head" style="margin-top: 2px;">
+
+                        <span class="i-title">全国各省市招办</span>
+
+                    </div>
+
+                    <div class="side-body">
+
+                        <ul class="area_sites clearfix">
+
+                            <li><a target="_blank" href="http://www.bjeea.cn/">北京</a></li>
+
+                            <li><a target="_blank" href="http://www.zhaokao.net/">天津</a></li>
+
+                            <li><a target="_blank" href="http://www.hebeea.edu.cn/">河北</a></li>
+
+                            <li><a target="_blank" href="http://www.sxkszx.cn/">山西</a></li>
+
+                            <li><a target="_blank" href="http://www.nm.zsks.cn/">内蒙古</a></li>
+
+                            <li><a target="_blank" href="http://www.lnzsks.com/">辽宁</a></li>
+
+                            <li><a target="_blank" href="http://www.jleea.edu.cn/">吉林</a></li>
+
+                            <li><a target="_blank" href="http://www.lzk.hl.cn/">黑龙江</a></li>
+
+                            <li><a target="_blank" href="http://www.shmeea.edu.cn">上海</a></li>
+
+                            <li><a target="_blank" href="http://www.jseea.cn/index.html">江苏</a></li>
+
+                            <li><a target="_blank" href="http://www.zjzs.net/">浙江</a></li>
+
+                            <li><a target="_blank" href="http://www.ahzsks.cn/">安徽</a></li>
+
+                            <li><a target="_blank" href="http://www.eeafj.cn/">福建</a></li>
+
+                            <li><a target="_blank" href="http://www.jxeea.cn/">江西</a></li>
+
+                            <li><a target="_blank" href="http://www.sdzk.cn/">山东</a></li>
+
+                            <li><a target="_blank" href="http://www.heao.gov.cn/">河南</a></li>
+
+                            <li><a target="_blank" href="http://zsxx.e21.cn/">湖北</a></li>
+
+                            <li><a target="_blank" href="http://jyt.hunan.gov.cn/jyt/sjyt/hnsjyksy/">湖南</a></li>
+
+                            <li><a target="_blank" href="http://eea.gd.gov.cn/">广东</a></li>
+
+                            <li><a target="_blank" href="http://www.gxeea.cn/">广西</a></li>
+
+                            <li><a target="_blank" href="http://ea.hainan.gov.cn/">海南</a></li>
+
+                            <li><a target="_blank" href="http://www.cqksy.cn/">重庆</a></li>
+
+                            <li><a target="_blank" href="http://www.sceea.cn/">四川</a></li>
+
+                            <li><a target="_blank" href="http://zsksy.guizhou.gov.cn/">贵州</a></li>
+
+                            <li><a target="_blank" href="http://www.ynzs.cn/">云南</a></li>
+
+                            <li><a target="_blank" href="http://zsks.edu.xizang.gov.cn/">西藏</a></li>
+
+                            <li><a target="_blank" href="http://www.sneac.com/">陕西</a></li>
+
+                            <li><a target="_blank" href="http://www.ganseea.cn/ ">甘肃</a></li>
+
+                            <li><a target="_blank" href="http://www.qhjyks.com/">青海</a></li>
+
+                            <li><a target="_blank" href="http://www.nxjyks.cn/">宁夏</a></li>
+
+                            <li><a target="_blank" href="http://www.xjzk.gov.cn/">新疆</a></li>
+
+                        </ul>
+
+                    </div>
+
+
+                    <div class="side-head" style="margin-top:0;">
+
+                        <span class="i-title">友情链接</span>
+
+                    </div>
+
+                    <div class="side-body clearfix" style="margin-top: 14px;">
+
+                        <ul class="index-links fl">
+
+                            <li><a href="http://www.moe.gov.cn/" target="_blank">中华人民共和国教育部</a></li>
+
+                            <li><a href="http://www.moe.gov.cn/s78/A15/" target="_blank">教育部高校学生司</a></li>
+
+                            <li><a href="http://www.xszz.cee.edu.cn/" target="_blank">全国学生资助管理中心</a></li>
+
+                        </ul>
+
+                        <ul class="index-links fr">
+
+                            <li><a href="http://www.kjzfw.mil.cn/" target="_blank">空军招飞网</a></li>
+
+                            <li><a href="http://www.hjzf.mil.cn/" target="_blank">海军招飞网</a></li>
+
+                        </ul>
+
+                    </div>
+
+
+                </div>
+
+                <!-- gk-right end -->
+
+            </div>
+
+        </div>
+
+        <!-- part04 end -->
+
+    </div>
+
+
+</div>
+
+
+<!-- 4: 底部区域 -->
+
+<style>
+
+    /**
+
+     * description: footer 共用底部;
+
+     * author:myx;
+
+     * date:2017-12;
+
+     */
+
+
+    .footer-wrapper {
+
+        line-height: 30px;
+
+        background: #282828;
+
+        color: #ababab;
+
+    }
+
+
+    .footer-wrapper a {
+
+        color: #ababab;
+
+    }
+
+
+    .footer-wrapper .footer {
+
+        position: relative;
+
+        width: 1180px;
+
+        height: 198px;
+
+        margin: 0 auto;
+
+    }
+
+
+    .footer-wrapper .footer-list {
+
+        position: absolute;
+
+        top: 32px;
+
+        left: 0px;
+
+    }
+
+
+    .footer-wrapper .footer-list a {
+
+        margin-right: 15px;
+
+    }
+
+
+    .footer-wrapper .footer-units {
+
+        position: absolute;
+
+        top: 75px;
+
+        left: 0px;
+
+    }
+
+
+    .footer-wrapper .footer-media {
+
+        position: absolute;
+
+        top: 32px;
+
+        left: 844px;
+
+    }
+
+
+    .footer-wrapper .footer-media a {
+
+        position: relative;
+
+        display: inline-block;
+
+        margin-right: 30px;
+
+        vertical-align: top;
+
+    }
+
+
+    .footer-wrapper .footer-media img {
+
+        display: none;
+
+        position: absolute;
+
+        top: -20px;
+
+        left: -85px;
+
+    }
+
+
+    .footer-wrapper .footer-media a:hover {
+
+        text-decoration: none;
+
+    }
+
+
+    .footer-wrapper .footer-media a:hover img {
+
+        display: block;
+
+    }
+
+
+    .footer-wrapper .footer-media .iconfont {
+
+        margin-right: 5px;
+
+        font-size: 20px;
+
+        vertical-align: middle;
+
+    }
+
+
+    .footer-wrapper .footer-msg {
+
+        position: absolute;
+
+        top: 75px;
+
+        left: 844px;
+
+    }
+
+</style>
+
+<div class="footer-wrapper">
+
+    <div class="footer">
+
+        <div class="footer-list">
+
+            <a href="//www.chsi.com.cn/" target="_blank">学信网</a>
+
+            <a href="https://chesicc.chsi.com.cn/zxgw/zxjs/201604/20160418/1529506207.html" target="_blank">中心简介</a>
+
+            <a href="//www.chsi.com.cn/about/contact.shtml" target="_blank">联系我们</a>
+
+            <a href="//www.chsi.com.cn/about/copyright.shtml" target="_blank">版权声明</a>
+
+            <a href="/sitemap.jsp" target="_blank">网站地图</a>
+
+            <a href="/help/" target="_blank">帮助中心</a>
+
+            <a href="//www.chsi.com.cn/ad/index.shtml" target="_blank">网站宣传</a>
+
+        </div>
+
+        <div class="footer-units">
+
+            主办单位：<a href="https://chesicc.chsi.com.cn/" target="_blank">全国高等学校学生信息咨询与就业指导中心</a><br>
+
+            Copyright © 2003-2021 <a href="//www.chsi.com.cn/" target="_blank">学信网</a> All Rights Reserved<br>
+
+            <a href="http://beian.miit.gov.cn" target="_blank">京ICP备19004913号-1</a>
+
+            <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010202009747" target="_blank">
+
+                <img src="https://t1.chei.com.cn/chsi/images/jgwab.png"
+                     style="vertical-align: middle; margin-bottom: 2px; margin-left: 8px;">
+
+                京公网安备11010202009747号
+
+            </a>
+
+        </div>
+
+        <div class="footer-media">
+
+            <a href="javascript:;"><i class="iconfont" title="官方微信">&#xe694;</i>官方微信<img
+                    src="/news/file.do?method=downFile&amp;id=1537666622"></a>
+
+            <a href="http://weibo.com/chsigk" target="_blank"><i class="iconfont" title="官方微博">&#xe693;</i>官方微博</a>
+
+        </div>
+
+        <div class="footer-msg">
+
+            客服热线：010-67410388<br>
+
+            客服邮箱：kefu#chsi.com.cn（将#替换为@）
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script src="https://t1.chei.com.cn/common/plugins/placeholder-fix.js"></script>
+
+<!--	摩天楼		-->
+
+<div style="z-index: 100; left: 1px; position: fixed; top: 200px; width:102px; height:320px; overflow:hidden;">
+
+    <script type="text/javascript">showShortCut('544726344')</script>
+
+</div>
+
+<div style="z-index: 100; right: 1px; position: fixed; top: 200px; width:102px; height:320px; overflow:hidden;">
+
+    <script type="text/javascript">showShortCut('544726454')</script>
+
+</div>
+
+<!--	网站通知，有则自动弹出		-->
+
+
+<script type="text/javascript">
+
+    var s = new CreatGoToTop("jsGoToTop");
+
+    s.goToTop();
+
+</script>
+
+
+<script>
+
+    $(function () {
+
+        //选项卡切换
+
+        $(".js-tab a").click(function () {
+
+            var $this = $(this),
+
+                tempIdx = $(".js-tab a").index($this);
+
+            $this.parent(".js-tab").addClass("selected").siblings().removeClass("selected");
+
+            $(".index-tab").find(".more").eq(tempIdx).removeClass('ch-hide').siblings().addClass("ch-hide");
+
+            $(".tab-content .item-content").eq(tempIdx).addClass("active").siblings().removeClass("active");
+
+        });
+
+
+    })
+
+</script>
+
+</body>
+
+</html>

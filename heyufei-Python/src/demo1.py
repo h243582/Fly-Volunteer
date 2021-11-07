@@ -2,7 +2,7 @@
 import requests
 
 # 2.确定url
-base_url = 'https://www.baidu.com/more/'
+base_url = 'https://gaokao.chsi.com.cn/'
 
 # 3.发送请求，获取响应
 response = requests.get(base_url)
@@ -17,7 +17,8 @@ response = requests.get(base_url)
 # response.encoding='utf-8'
 # print(response.text)
 
-#方法二：解码为utf-8
+# 方法二：解码为utf-8
+
 with open('index.html', 'w', encoding='utf-8') as fp:
     fp.write(response.content.decode('utf-8'))
 
