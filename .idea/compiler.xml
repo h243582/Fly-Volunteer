@@ -8,6 +8,8 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="hyf-demo" />
+        <module name="heyufei-Ribbon" />
+        <module name="heyufei-Gateway" />
         <module name="hyf_utils" />
         <module name="heyufei_Register" />
       </profile>
@@ -16,6 +18,8 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="Fly-Volunteer" options="-parameters" />
+      <module name="heyufei-Gateway" options="-parameters" />
+      <module name="heyufei-Ribbon" options="-parameters" />
       <module name="heyufei_Register" options="-parameters" />
       <module name="hyf-demo" options="-parameters" />
       <module name="hyf_utils" options="-parameters" />

@@ -12,9 +12,9 @@ import util.JwtUtil;
 @EnableSwagger2// 开启Swagger2的自动配置
 @EnableZuulProxy
 @SpringBootApplication
-public class Manager {
+public class Gateway {
     public static void main(String[] args) {
-        SpringApplication.run(Manager.class, args);
+        SpringApplication.run(Gateway.class, args);
     }
 
     @Bean

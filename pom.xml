@@ -11,6 +11,16 @@
         <relativePath/>
     </parent>
 
+    <modules>
+        <module>hyf_utils</module>
+
+        <module>heyufei-Gateway</module>
+        <module>heyufei_Register</module>
+        <module>hyf-demo</module>
+        <module>heyufei-Ribbon</module>
+
+
+    </modules>
 
     <groupId>com.hyf</groupId>
     <artifactId>Fly-Volunteer</artifactId>
@@ -24,12 +34,7 @@
         <spring-cloud.version>Greenwich.SR1</spring-cloud.version>
     </properties>
 
-    <modules>
-        <module>hyf_utils</module>
 
-        <module>heyufei_Register</module>
-        <module>hyf-demo</module>
-    </modules>
 
 
     <dependencyManagement>
