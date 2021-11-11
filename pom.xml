@@ -34,9 +34,6 @@
         <spring-cloud.version>Greenwich.SR1</spring-cloud.version>
     </properties>
 
-
-
-
     <dependencyManagement>
         <dependencies>
             <dependency>
