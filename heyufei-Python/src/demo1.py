@@ -5,7 +5,7 @@ import requests
 base_url = 'https://gaokao.chsi.com.cn/'
 
 # 3.发送请求，获取响应
-response = requests.get(base_url)
+response = requests.get(base_url,verify=False)
 
 # 4.查看页面内容,可能出现 乱码
 # print(response.text)
