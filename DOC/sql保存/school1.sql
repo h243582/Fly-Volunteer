@@ -50,6 +50,10 @@ create table tb_city(
     primary key (`id`)
 )engine =InnoDB DEFAULT CHARSET=utf8 COMMENT='市级';
 
+alter table tb_city
+    add constraint province_id_fk
+        foreign key (province_id) references tb_province (id);
+
 -- 添加市区
 -- 城市 tb_city
 -- 4个直辖市
