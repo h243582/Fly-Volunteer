@@ -3,42 +3,47 @@ create table tb_school_major
     `id`                  int NOT NULL auto_increment COMMENT 'ID',
     `tb_school_id`        int           DEFAULT NULL COMMENT '学校id',
     `tb_major_id`         int           DEFAULT NULL COMMENT '专业id',
-    `satisfaction`        decimal(2, 1) default 4.2 comment '学校对应专业满意度',
-    `recommended_number`  bigint        default 888 comment '推荐人数',
     `educational_system`  varchar(30)   default '四年    授予工学学士学位' comment '学制',
     `training_objectives` varchar(520)  default '本专业培养掌握软件工程基础理论知识，精通软件开发技术，熟练使用软件开发工程化方法和工具，具备软件系统分析与设计、软件开发实践、软件项目工程管理的能力，具有国际视野、创新意识和团队合作精神，能在大型软件与服务外包企业、金融机构、通信行业、IT 相关行业、跨国公司、高新技术产业园区、政府部门等单位从事软件技术开发、信息技术外包与项目管理的国际化应用型高级软件专门人才。' comment '培养目标',
+
+    `satisfaction`        decimal(2, 1) default 4.5 comment '推荐指数',
+    `recommended_number`  int        default 789 comment '推荐人数',
+
+    `comprehensive_satisfaction` decimal(2, 1) DEFAULT 4.1 COMMENT '综合满意度',
+    `comprehensive_people`       int           DEFAULT 6352 COMMENT '综合满意度人数',
+
+    `conditions_satisfaction`    decimal(2, 1) DEFAULT 4.3 COMMENT '办学条件满意度',
+    `conditions_people`          int           DEFAULT 5599 COMMENT '办学条件满意度人数',
+
+    `quality_satisfaction`       decimal(2, 1) DEFAULT 4.5 COMMENT '教学质量满意度',
+    `quality_people`             int           DEFAULT 6210 COMMENT '教学质量满意度人数',
+
+    `job_satisfaction`           decimal(2, 1) DEFAULT 4.2 COMMENT '就业满意度',
+    `job_people`                 int           DEFAULT 6485 COMMENT '就业满意度人数',
+
     primary key (`id`)
 ) engine = InnoDB
   DEFAULT CHARSET = utf8 COMMENT ='学校和专业对应表';
 
 
-
 alter table tb_school_major
-    add constraint tb_school_id_fk
+    add constraint tb_school_major_tb_school_id_fk
         foreign key (tb_school_id) references tb_school (id);
 
 alter table tb_school_major
-    add constraint tb_major_id_fk
+    add constraint tb_school_major_tb_major_id_fk
         foreign key (tb_major_id) references tb_major (id);
 
 insert into tb_school_major(tb_school_id, tb_major_id, satisfaction, recommended_number)
-values (1559, 173, 4.9, 653);
-insert into tb_school_major(tb_school_id, tb_major_id, satisfaction, recommended_number)
-values (1559, 111, 4.5, 213);
-insert into tb_school_major(tb_school_id, tb_major_id, satisfaction, recommended_number)
-values (1559, 12, 4.2, 213);
-insert into tb_school_major(tb_school_id, tb_major_id, satisfaction, recommended_number)
-values (1559, 41, 4.3, 241);
-insert into tb_school_major(tb_school_id, tb_major_id, satisfaction, recommended_number)
-values (1559, 213, 4.7, 234);
-insert into tb_school_major(tb_school_id, tb_major_id, satisfaction, recommended_number)
-values (1559, 33, 4.6, 123);
-insert into tb_school_major(tb_school_id, tb_major_id, satisfaction, recommended_number)
-values (1559, 34, 4.4, 231);
-insert into tb_school_major(tb_school_id, tb_major_id, satisfaction, recommended_number)
-values (1559, 35, 4.2, 312);
-insert into tb_school_major(tb_school_id, tb_major_id, satisfaction, recommended_number)
-values (1559, 36, 4.1, 541);
+values (1559, 173, 4.9, 653),
+ (1559, 111, 4.5, 213),
+ (1559, 12, 4.2, 213),
+ (1559, 41, 4.3, 241),
+ (1559, 213, 4.7, 234),
+ (1559, 33, 4.6, 123),
+ (1559, 34, 4.4, 231),
+ (1559, 35, 4.2, 312),
+ (1559, 36, 4.1, 541);
 
 
 
@@ -199,12 +204,46 @@ values ('软件工程师')
 create table tb_major_vocation_major
 (
     `id` int NOT NULL auto_increment COMMENT 'ID',
-    `tb_major_vocation_id` int NOT NULL COMMENT '就业职业表id',
     `tb_major_id` int NOT NULL COMMENT '专业表id',
-
-
-    name varchar(50) DEFAULT NULL COMMENT '就业方向',
+    `tb_major_vocation_id` int NOT NULL COMMENT '就业职业表id',
 
     primary key (`id`)
 ) engine = InnoDB
   DEFAULT CHARSET = utf8 COMMENT ='就业方向表';
+
+alter table tb_major_vocation_major
+    add constraint tb_major_vocation_major_tb_major_id_fk
+        foreign key (tb_major_id) references tb_major (id),
+    add constraint tb_major_vocation_major_tb_major_vocation_id_fk
+        foreign key (tb_major_vocation_id) references tb_major_vocation (id);
+
+
+
+DELIMITER //
+CREATE PROCEDURE callback()
+BEGIN
+    DECLARE num INT;
+    SET num = 1;
+    WHILE
+            num <= 11
+        DO
+            INSERT INTO tb_major_vocation_major(tb_major_id, tb_major_vocation_id) VALUES (173, num);
+            SET num = num + 1;
+        END WHILE;
+END;
+//
+CALL callback();
+DROP PROCEDURE callback;
+
+
+create table tb_class
+(
+    `id` int NOT NULL auto_increment COMMENT 'ID',
+    name varchar(50) DEFAULT NULL COMMENT '课程',
+
+    primary key (`id`)
+) engine = InnoDB
+  DEFAULT CHARSET = utf8 COMMENT ='课程表';
+
+insert into tb_class(name)
+values ('软件工程师')
