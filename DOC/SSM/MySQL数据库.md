@@ -292,3 +292,95 @@ create table sys_dept (
   primary key (dept_id)
 ) engine=innodb auto_increment=200 comment = '部门表';
 ```
+
+# 八、**Win下安装**
+
+## **1、安装包下载。**
+
+下载地址：https://dev.mysql.com/downloads/mysql/
+
+![img](https://heyufei-1305336662.cos.ap-shanghai.myqcloud.com/my_img/1435523-20180909145941512-769947425.png)
+
+ 
+
+点击下载之后，可以选择注册Oracle账号，也可以跳过直接下载。
+
+![img](https://heyufei-1305336662.cos.ap-shanghai.myqcloud.com/my_img/1435523-20180909150321246-422217249.png)
+
+下载完成后，选择一个磁盘内放置并解压。
+
+ 
+
+2020年2月14日，mysql官网进不去了，好吧~那就来个镜像，总没问题了吧。如果官网龟速下载，建议使用下面镜像巨快。相对的~
+
+**Mysql国内镜像：http://mirrors.sohu.com/mysql/MySQL-8.0/**
+
+**![img](https://heyufei-1305336662.cos.ap-shanghai.myqcloud.com/my_img/1435523-20200214012521294-416245235.png)**
+
+ 
+
+ 
+
+ 下载完成之后，解压即可！
+
+## **2 安装教程**
+
+### **（1）配置环境变量**
+
+变量名：MYSQL_HOME
+
+变量值：E:\mysql-5.7.20-winx64
+
+![img](https://heyufei-1305336662.cos.ap-shanghai.myqcloud.com/my_img/1435523-20180909150744140-2120125213.png)
+
+ 
+
+### **（2）生成data文件**
+
+**以管理员身份运行cmd**
+
+进入E:\python\mysql\mysql-8.0.12-winx64\bin>下(这里在说一下：这里的路径需要根据自己的实际安装位置进行调整，总之就是刚刚解压的文件放在那，就在哪打开~)
+
+执行命令：mysqld --initialize-insecure --user=mysql  在E:\python\mysql\mysql-8.0.12-winx64目录下生成data目录
+
+ 
+
+### **(3) 安装MySQL**
+
+继续执行命令：mysqld -install
+
+ ![img](https://heyufei-1305336662.cos.ap-shanghai.myqcloud.com/my_img/1435523-20180909151316958-1570665300.png)
+
+ 
+
+### **（4）启动服务**
+
+继续执行命令：net start MySQL
+
+![img](https://heyufei-1305336662.cos.ap-shanghai.myqcloud.com/my_img/1435523-20180909151501496-475633604.png)
+
+ 
+
+### **（5）登录MySQL**
+
+登录mysql:(因为之前没设置密码，所以密码为空，不用输入密码，直接回车即可）
+
+E:\python\mysql\mysql-8.0.12-winx64\bin>mysql -u root -p
+
+![img](https://heyufei-1305336662.cos.ap-shanghai.myqcloud.com/my_img/1435523-20180909151708478-864137964.png)
+
+ 
+
+### **（6）查询用户密码**
+
+查询用户密码命令：mysql> select host,user,authentication_string from mysql.user;
+
+![img](https://heyufei-1305336662.cos.ap-shanghai.myqcloud.com/my_img/1435523-20180909152055740-1024771042.png)
+
+ 
+
+### **（7）设置（或修改）root用户密码**
+
+```cpp
+alter user user() identified by "XXXXXX";
+```
