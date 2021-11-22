@@ -45,6 +45,25 @@ values (1559, 173, 4.9, 653),
  (1559, 35, 4.2, 312),
  (1559, 36, 4.1, 541);
 
+DELIMITER //
+CREATE PROCEDURE callback()
+BEGIN
+    DECLARE num1 INT;
+    DECLARE num2 INT;
+
+    SET num1 = 2;
+    SET num2 = 1;
+    WHILE
+            num1 <= 20
+        DO
+            insert into tb_school_major(tb_school_id, tb_major_id, satisfaction, recommended_number)
+            values (1559, num1, cast(rand()*10%5 AS signed),  cast(rand()*1000 AS signed));
+            SET num1 = num1 + 3;
+        END WHILE;
+END;
+//
+CALL callback();
+DROP PROCEDURE callback;
 
 
 create table tb_major_information
@@ -236,7 +255,7 @@ CALL callback();
 DROP PROCEDURE callback;
 
 
-create table tb_class
+create table tb_course
 (
     `id` int NOT NULL auto_increment COMMENT 'ID',
     name varchar(50) DEFAULT NULL COMMENT '课程',
@@ -245,5 +264,164 @@ create table tb_class
 ) engine = InnoDB
   DEFAULT CHARSET = utf8 COMMENT ='课程表';
 
-insert into tb_class(name)
-values ('软件工程师')
+
+insert into tb_course(name)values ('面向对象程序设计'),
+    ('软件质量保障与测试技术'),
+    ('软件分析与设计'),
+    ('软件工程和质量控制'),
+    ('网络存储'),
+    ('数字电路分析设计'),
+    ('离散结构'),
+    ('J2EE构架与程序设计'),
+    ('分布式计算与实践'),
+    ('软件测试技术及实践'),
+    ('面向服务架构'),
+                                  ('软件工程综合实践'),
+                                  ('数据结构与算法综合实践'),
+                                  ('随机数学'),
+                                  ('计算机应用与编程综合实践'),
+                                  ('计算机网络与信息安全'),
+                                  ('分布式计算'),
+                                  ('网络安全与网络管理'),
+                                  ('Internet开发技术'),
+                                  ('人工智能技术'),
+                                  ('计算机网络测控技术'),
+                                  ('传感网理论与互联网技术'),
+                                  ('软件开发案例分析'),
+                                  ('模拟与数字电路'),
+                                  ('网络综合实验'),
+                                  ('操作系统基础'),
+                                  ('软件体系架构与设计模式'),
+                                  ('嵌入式技术'),
+                                  ('WEB技术与应用'),
+                                  ('CMM/IS'),
+                                  ('汇编语言与计算机组成原理'),
+                                  ('程序设计基础及语言'),
+                                  ('JSP课程设计'),
+                                  ('PHP程序设计'),
+                                  ('.NET构架与实践'),
+                                  ('C/C++程序设计'),
+                                  ('.NET程序设计与系统开发'),
+                                  ('面向对象分析和设计'),
+                                  ('WindowsServer应用'),
+                                  ('数据库系统及其应用'),
+                                  ('JAVA语言程序设计实践'),
+                                  ('软件工程数学'),
+                                  ('数据结构与算法'),
+                                  ('计算机与软件工程概论'),
+                                  ('软件需求分析设计与建模'),
+                                  ('嵌入式软件项目实训'),
+                                  ('计算模型与算法技术'),
+                                  ('动画原理与设计'),
+                                  ('Internet程序开发'),
+                                  ('网络协议分析实验'),
+                                  ('线性代数'),
+                                  ('算法分析'),
+                                  ('UNIX/LINUX操作系统'),
+                                  ('Web编程技术'),
+                                  ('网页制作工程实训'),
+                                  ('软件工程经济学'),
+                                  ('数据库开发技术'),
+                                  ('高级算法与数据结构实践'),
+                                  ('软件方法建模与验证'),
+                                  ('嵌入式系统与开发'),
+                                  ('TCP/IP协议详解'),
+                                  ('概率统计和随机过程'),
+                                  ('安全协议与标准'),
+                                  ('软件工程'),
+                                  ('数据仓库数据挖掘'),
+                                  ('数字部件设计'),
+                                  ('数字部件设计实验'),
+                                  ('统一建模设计语言UML'),
+                                  ('Windows操作系统'),
+                                  ('Oracle数据库设计与开发'),
+                                  ('游戏开发实践'),
+                                  ('编译原理及应用'),
+                                  ('UML及软件建模'),
+                                  ('UNIX程序设计'),
+                                  ('图形图像软件应用'),
+                                  ('游戏架构与编程'),
+                                  ('用户界面设计与测试'),
+                                  ('网络及分布式计算'),
+                                  ('网络工程与编程实践'),
+                                  ('可视化编程'),
+                                  ('计算机系统组装实习'),
+                                  ('图论与代数系统'),
+                                  ('人机交互工程'),
+                                  ('电路与模拟电子技术'),
+                                  ('操作系统设计与实现'),
+                                  ('移动应用开发实验'),
+                                  ('计算机语言及其处理实验'),
+                                  ('通信原理与系统'),
+                                  ('移动信息工程导论'),
+                                  ('数字信号处理与控制'),
+                                  ('网络计算编程'),
+                                  ('面向对象的技术与UML'),
+                                  ('网络布线系统'),
+                                  ('ORACLE数据库系统管理与维护技'),
+                                  ('Linux操作系统与网络编程'),
+                                  ('电路与模拟电子技术实验'),
+                                  ('.NET平台/J2EE平台综合实训'),
+                                  ('关系数据库系统'),
+                                  ('存贮技术'),
+                                  ('J2EE平台技术'),
+                                  ('网站设计与架构'),
+                                  ('数字媒体处理技术'),
+                                  ('单片机原理及系统设计'),
+                                  ('机器人技术导论'),
+                                  ('高级数据结构与算法分析'),
+                                  ('电工电子基础实验'),
+                                  ('计算机语言及其处理'),
+                                  ('数字信号处理与控制实验'),
+                                  ('软件设计综合实验'),
+                                  ('计算机组成原理与接口技术'),
+                                  ('设计模式与统一建模语言'),
+                                  ('计算和信息系统导论'),
+                                  ('通信原理与系统实验'),
+                                  ('移动网络安全'),
+                                  ('数据结构'),
+                                  ('计算机导论'),
+                                  ('JAVASCRIPT'),
+                                  ('程序设计基础'),
+                                  ('JAVAweb应用开发'),
+                                  ('c++程序设计');
+
+
+
+
+create table tb_course_major
+(
+    `id` int NOT NULL auto_increment COMMENT 'ID',
+    `tb_course_id` int NOT NULL COMMENT '课程ID',
+    `tb_major_id` int NOT NULL COMMENT '专业ID',
+    `course_difficulty`           decimal(2, 1) DEFAULT 5 COMMENT '课程难易度',
+    `course_practical`            decimal(2, 1) DEFAULT 4 COMMENT '课程实用性（于工作、个人成长) ',
+
+    primary key (`id`)
+) engine = InnoDB
+  DEFAULT CHARSET = utf8 COMMENT ='课程专业对照表';
+
+alter table tb_course_major
+    add constraint tb_course_major_tb_course_fk
+        foreign key (tb_course_id) references tb_course (id),
+    add constraint tb_course_major_tb_major_fk
+        foreign key (tb_major_id) references tb_major (id);
+
+
+DELIMITER //
+CREATE PROCEDURE callback()
+BEGIN
+    DECLARE num INT;
+    SET num = 1;
+    WHILE
+            num <= 120
+        DO
+            INSERT INTO tb_course_major(tb_major_id, tb_course_id) VALUES (173, num);
+            SET num = num + 1;
+        END WHILE;
+END;
+//
+CALL callback();
+DROP PROCEDURE callback;
+
+
