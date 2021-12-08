@@ -384,3 +384,59 @@ E:\python\mysql\mysql-8.0.12-winx64\bin>mysql -u root -p
 ```cpp
 alter user user() identified by "XXXXXX";
 ```
+
+
+
+# 九、批量
+
+## 1、批量插入
+
+```sql
+insert into t_place  (select * from t_place_ex_h2)
+```
+
+
+
+## 2、批量修改
+
+```sql
+update t_place set city = concat(city,county) where county !='213213';
+```
+
+
+
+# 十、方法
+
+## 1、concat字符串合并
+
+```sql
+concat(city,county)
+select concat(city,county,town) from t_place
+
+
+```
+
+
+
+## 2、split_part字符串分割
+
+`split_part([原字符串],  [分割字符], [取第几坨])`
+
+`注意：分割之后的字符串是不包括分割字符的`
+
+```sql
+select split_part(tp.name,'镇',3) from t_place
+
+```
+
+## 3、substring字符串截取
+
+substring([原字符串], [从第n个开始], [数m-1个数])         n从0开始
+
+比如
+
+```
+--place_code=123456
+substring(place_code, 0, 3)    --数两位： 12
+```
+
