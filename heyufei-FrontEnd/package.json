@@ -1,0 +1,39 @@
+{
+  "name": "Fly-Volunteer-FontEnd",
+  "version": "1.0.0",
+  "description": "{{ description }}",
+  "author": "{{ author }}",
+  "private": true,
+  "config": {
+    "nuxt": {
+      "port": "8021"
+    }
+  },
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "precommit": "npm run lint"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "element-ui": "^2.15.0",
+    "js-cookie": "^2.2.1",
+    "net": "^1.0.2",
+    "nuxt": "^2.0.0",
+    "sockjs-client": "^1.5.0",
+    "stompjs": "^2.3.3",
+    "vue-infinite-scroll": "^2.0.2",
+    "vue-quill-editor": "^3.0.6",
+    "vue-quill-editor-upload": "^1.1.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "eslint": "^4.19.1",
+    "eslint-friendly-formatter": "^4.0.1",
+    "eslint-loader": "^2.1.2",
+    "eslint-plugin-vue": "^4.0.0"
+  }
+}

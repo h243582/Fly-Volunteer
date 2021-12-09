@@ -12,12 +12,14 @@
         <module name="heyufei-Gateway" />
         <module name="hyf_utils" />
         <module name="heyufei_Register" />
+        <module name="heyufei-FrontEnd" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="Fly-Volunteer" options="-parameters" />
+      <module name="heyufei-FrontEnd" options="-parameters" />
       <module name="heyufei-Gateway" options="-parameters" />
       <module name="heyufei-Ribbon" options="-parameters" />
       <module name="heyufei_Register" options="-parameters" />
