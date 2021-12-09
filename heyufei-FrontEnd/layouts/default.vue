@@ -36,7 +36,7 @@
                 <li><a href="/sch/" target="_blank">院校库</a></li>
 
                 <li class="nav-long-name">
-                  <a href="/zyk/pub/myd/schAppraisalTop.action" target="_blank" >院校满意度</a>
+                  <a href="/zyk/pub/myd/schAppraisalTop.action" target="_blank">院校满意度</a>
                 </li>
 
                 <li>
@@ -82,7 +82,7 @@
                 </li>
 
                 <li class="nav-long-name">
-                  <a href="/zxd" target="_blank" >咨询室</a>
+                  <a href="/zxd" target="_blank">咨询室</a>
                 </li>
 
                 <li class="nav-long-name">
@@ -92,17 +92,25 @@
             </li>
 
 
-            <li  v-if="user.token !== undefined" >
-              <el-button type="success"  plain size="mini" style="margin-top: 26px;margin-left: 5px" >登入</el-button>
+            <li v-if="user.token === undefined">
+              <router-link to="/login">
+                  <el-button type="success" plain size="mini" style="margin-top: 26px;margin-left: 5px">登入</el-button>
+              </router-link>
             </li>
 
             <!-- 已登入时，显示用户名和头像 -->
-            <li v-if="user.name === undefined">
-                <router-link to="/manager">
-                  <el-button type="primary" plain style="margin-top: -26px;margin-left: 5px">{{user.name}}</el-button>
-                  <el-avatar shape="square"  :src="user.avatar" style="margin-top: 26px;margin-left: 5px"/>
-                </router-link>
+            <li v-if="user.name !== undefined">
+              <router-link to="/login" style="float:left;margin-left: 5px;margin-top: 26px;" >
+                <el-button plain size="mini" style="width: 70px;overflow: hidden;text-overflow: ellipsis;">
+                  {{ user.name }}
+                </el-button>
+              </router-link>
+              <router-link to="/login" style="float:left;margin: 18px 5px ;line-height: inherit">
+                <el-avatar :size="40" :src="user.avatar" />
+              </router-link>
+              <div style="float:left;margin-top: 26px;">
                 <el-button type="danger" plain size="mini" @click="logout">注销</el-button>
+              </div>
             </li>
           </ul>
         </div>
@@ -110,7 +118,7 @@
       </div>
     </header>
 
-    <nuxt />
+    <nuxt/>
 
     <!-- 尾部 -->
     <div class="footer-wrapper">
@@ -129,10 +137,12 @@
           Copyright © 2003-2021 <a href="//www.chsi.com.cn/" target="_blank">学信网</a> All Rights Reserved<br>
           <a href="http://beian.miit.gov.cn" target="_blank">京ICP备19004913号-1</a>
           <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010202009747" target="_blank">
-            <img src="https://t1.chei.com.cn/chsi/images/jgwab.png" style="vertical-align: middle; margin-bottom: 2px; margin-left: 8px;"> 京公网安备11010202009747号</a>
+            <img src="https://t1.chei.com.cn/chsi/images/jgwab.png"
+                 style="vertical-align: middle; margin-bottom: 2px; margin-left: 8px;"> 京公网安备11010202009747号</a>
         </div>
         <div class="footer-media">
-          <a href="javascript:;"><i class="iconfont" title="官方微信">&#xe694;</i>官方微信<img src="/news/file.do?method=downFile&amp;id=1537666622"></a>
+          <a href="javascript:;"><i class="iconfont" title="官方微信">&#xe694;</i>官方微信<img
+            src="/news/file.do?method=downFile&amp;id=1537666622"></a>
           <a href="http://weibo.com/chsigk" target="_blank"><i class="iconfont" title="官方微博">&#xe693;</i>官方微博</a>
         </div>
         <div class="footer-msg">
@@ -147,9 +157,8 @@
 
 <script>
 import '~/assets/css/hyf-1.css'
-import { getUser, removeUser } from "@/utils/auth";
+import {getUser, removeUser} from "@/utils/auth";
 import userApi from "@/api/user";
-
 
 
 export default {
@@ -160,10 +169,13 @@ export default {
   },
   created() {
     this.user = getUser();
+    // this.user.avatar = 'https://heyufei-1305336662.cos.ap-shanghai.myqcloud.com/my_img%2Fimage-20210514113216346.png';
+    // this.user.name = '和方法1212313'
   },
   methods: {
     logout() {
-      userApi.logout().then((res) => {});
+      userApi.logout().then((res) => {
+      });
       removeUser(); //清除登陆用户信息
       location.href = "/login";
     },
