@@ -12,18 +12,17 @@
     </parent>
 
     <modules>
-        <module>hyf_utils</module>
+        <module>heyufei-utils</module>
 
         <module>heyufei-Gateway</module>
-        <module>heyufei_Register</module>
-        <module>hyf-demo</module>
+        <module>heyufei-Register</module>
         <module>heyufei-Ribbon</module>
         <module>heyufei-FrontEnd</module>
 
 
     </modules>
 
-    <groupId>com.hyf</groupId>
+    <groupId>com.heyufei</groupId>
     <artifactId>Fly-Volunteer</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
