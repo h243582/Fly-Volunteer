@@ -18,6 +18,7 @@
         <module>heyufei-Register</module>
         <module>heyufei-Ribbon</module>
         <module>heyufei-FrontEnd</module>
+        <module>heyufei-user</module>
 
 
     </modules>
