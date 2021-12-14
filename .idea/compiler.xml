@@ -9,10 +9,10 @@
         <outputRelativeToContentRoot value="true" />
         <module name="heyufei-Ribbon" />
         <module name="heyufei-utils" />
-        <module name="heyufei-Register" />
-        <module name="heyufei-FrontEnd" />
         <module name="heyufei-user" />
         <module name="heyufei-Gateway" />
+        <module name="heyufei-Register" />
+        <module name="heyufei-FrontEnd" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

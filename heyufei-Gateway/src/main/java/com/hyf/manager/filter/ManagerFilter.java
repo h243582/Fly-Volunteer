@@ -32,14 +32,15 @@ public class ManagerFilter extends ZuulFilter {
 
     @Override
     public Object run() throws ZuulException {
-        System.out.println("Zuul过滤器");
+        System.out.println("Zuul过滤器: ");
         RequestContext requestContext = RequestContext.getCurrentContext();
         HttpServletRequest request = requestContext.getRequest();
         if (request.getMethod().equals("OPTIONS")) {
             return null;
         }
         String url = request.getRequestURL().toString();
-        if (url.indexOf("/admin/login") > 0 || url.indexOf("/user/login") > 0 || url.indexOf("/label") > 0 || url.indexOf("/") > 0) {
+        System.out.println("Zuul过滤器内容: "+url);
+        if (url.contains("login") || url.contains("user")  || url.indexOf("/label") > 0 ) {
             System.out.println("登陆页面" + url);
             return null;
         }
