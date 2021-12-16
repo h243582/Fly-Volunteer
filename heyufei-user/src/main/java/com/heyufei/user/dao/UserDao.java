@@ -19,17 +19,12 @@ public interface UserDao extends JpaRepository<User,String>,JpaSpecificationExec
     public User findByMobile(String mobile);
 
     /**
-     * 更新粉丝数
+     * 注册
      */
     @Modifying
-    @Query(value = "update tb_user set fanscount = fanscount + ?2 where id=?1",nativeQuery = true)
-    public void incFanscount(String userid,int x);
+    @Query(value = "insert into tb_user(mobile, password, nickname, avatar, is_vip, register_date, update_date, last_date) VALUE (?1,?2,?3,?4,?5,?6,?7,?8)",nativeQuery = true)
+    public void addUser(User user);
 
-    /**
-     * 变更关注数
-     */
-    @Modifying
-    @Query(value = "update tb_user set followcount = followcount + ?2 where id=?1",nativeQuery = true)
-    public void incFollowcount(String userid,int x);
+
 
 }

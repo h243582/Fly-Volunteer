@@ -163,22 +163,4 @@ public class UserController {
 		}
 	}
 
-	/**
-	 * 增加粉丝数
-	 */
-	@RequestMapping(value="/fans/{userid}/{x}",method=RequestMethod.POST)
-	public Result fans(@PathVariable String userid,@PathVariable int x){
-		userService.incFanscount(userid,x);
-		return new Result(true,StatusCode.OK,"增加粉丝成功");
-	}
-
-	/**
-	 * 增加关注数
-	 */
-	@RequestMapping(value="/attention/{userid}/{x}",method=RequestMethod.POST)
-	public Result attention(@PathVariable String userid,@PathVariable int x){
-		userService.incFollowcount(userid,x);
-		return new Result(true,StatusCode.OK,"增加关注成功");
-
-	}
 }

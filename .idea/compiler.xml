@@ -16,7 +16,9 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="heyufei_Register" target="8" />
       <module name="hyf-demo" target="8" />
+      <module name="hyf_utils" target="8" />
       <module name="untitled" target="8" />
     </bytecodeTargetLevel>
   </component>

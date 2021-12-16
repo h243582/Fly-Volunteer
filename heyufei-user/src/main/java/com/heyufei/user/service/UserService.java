@@ -56,11 +56,6 @@ public class UserService {
 
     /**
      * 条件查询+分页
-     *
-     * @param whereMap
-     * @param page
-     * @param size
-     * @return
      */
     public Page<User> findSearch(Map whereMap, int page, int size) {
         Specification<User> specification = createSpecification(whereMap);
@@ -71,9 +66,6 @@ public class UserService {
 
     /**
      * 条件查询
-     *
-     * @param whereMap
-     * @return
      */
     public List<User> findSearch(Map whereMap) {
         Specification<User> specification = createSpecification(whereMap);
@@ -82,9 +74,6 @@ public class UserService {
 
     /**
      * 根据ID查询实体
-     *
-     * @param id
-     * @return
      */
     public User findById(String id) {
         return userDao.findById(id).get();
@@ -92,21 +81,21 @@ public class UserService {
 
     /**
      * 增加
-     *
-     * @param user
      */
     public void add(User user) {
         user.setId(idWorker.nextId() + "");
         //密码加密
-        String newpassword = encoder.encode(user.getPassword());//加密后的密码
-        user.setPassword(newpassword);
+        String passwordKey = encoder.encode(user.getPassword());//加密后的密码
+        user.setPassword(passwordKey);
+        user.setRegisterDate(new Date());//注册日期
+        user.setUpdateDate(new Date());//更新日期
+        user.setLastDate(new Date());//最后登陆日期
+        user.setIsVip(0);
         userDao.save(user);
     }
 
     /**
      * 修改
-     *
-     * @param user
      */
     public void update(User user) {
         userDao.save(user);
@@ -114,8 +103,6 @@ public class UserService {
 
     /**
      * 删除
-     *
-     * @param id
      */
     public void deleteById(String id) {
         userDao.deleteById(id);
@@ -123,9 +110,6 @@ public class UserService {
 
     /**
      * 动态条件构建
-     *
-     * @param searchMap
-     * @return
      */
     private Specification<User> createSpecification(Map searchMap) {
 
@@ -248,23 +232,5 @@ public class UserService {
         }else{
             return null;
         }
-    }
-
-    /**
-     * 更新粉丝数
-     * @param x
-     */
-    @Transactional
-    public void incFanscount(String userid,int x){
-        userDao.incFanscount(userid,x);
-    }
-
-    /**
-     * 更新关注数
-     * @param x
-     */
-    @Transactional
-    public void incFollowcount(String userid,int x){
-        userDao.incFollowcount(userid,x);
     }
 }

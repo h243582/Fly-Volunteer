@@ -89,6 +89,7 @@ export default {
       }
     };
     return {
+      checked:false,
       pojo: {},
       ruleForm: {
         name: '',
