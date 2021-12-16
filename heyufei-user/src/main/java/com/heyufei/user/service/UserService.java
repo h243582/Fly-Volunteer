@@ -83,7 +83,7 @@ public class UserService {
      * 增加
      */
     public void add(User user) {
-        user.setId(idWorker.nextId() + "");
+//        user.setId(idWorker.nextId() + "");
         //密码加密
         String passwordKey = encoder.encode(user.getPassword());//加密后的密码
         user.setPassword(passwordKey);

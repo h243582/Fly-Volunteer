@@ -24,8 +24,6 @@ import javax.servlet.http.HttpServletRequest;
 
 /**
  * 控制器层
- * @author Administrator
- *
  */
 @RestController
 @CrossOrigin
@@ -102,10 +100,9 @@ public class UserController {
 	
 	/**
 	 * 修改
-	 * @param user
 	 */
 	@RequestMapping(value="/{id}",method= RequestMethod.PUT)
-	public Result update(@RequestBody User user, @PathVariable String id ){
+	public Result update(@RequestBody User user, @PathVariable int id ){
 		user.setId(id);
 		userService.update(user);		
 		return new Result(true,StatusCode.OK,"修改成功");
@@ -136,7 +133,6 @@ public class UserController {
 	}
 	/**
 	 * 用户注册
-	 * @param user
 	 */
 	@RequestMapping(value="/register/{code}",method=RequestMethod.POST)
 	public Result register( @RequestBody User user ,@PathVariable String code){
@@ -146,13 +142,12 @@ public class UserController {
 
 	/**
 	 * 用户登陆
-	 * @return
 	 */
 	@RequestMapping(value="/login",method=RequestMethod.POST)
 	public Result login(@RequestBody Map<String,String> loginMap){
 		User user = userService.findByMobileAndPassword(loginMap.get("mobile"),loginMap.get("password"));
 		if(user!=null){
-			String token = jwtUtil.createJWT(user.getId(),user.getNickname(), "user");
+			String token = jwtUtil.createJWT(String.valueOf(user.getId()),user.getNickname(), "user");
 			Map map=new HashMap();
 			map.put("token",token);
 			map.put("name",user.getNickname());//昵称

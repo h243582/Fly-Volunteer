@@ -36,7 +36,7 @@ public class JwtUtil {
         if (ttl > 0) {
             builder.setExpiration(new Date(nowMillis + ttl));
         }
-        return "HeYuFei:" + builder.compact();
+        return builder.compact();
     }
 
     /**

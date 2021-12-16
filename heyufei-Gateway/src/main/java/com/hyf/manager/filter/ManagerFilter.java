@@ -45,15 +45,14 @@ public class ManagerFilter extends ZuulFilter {
             return null;
         }
         String authHeader = (String) request.getHeader("Authorization");// 获取头信息
-        if (authHeader != null && authHeader.startsWith("HeYuFei")) {
-            String token = authHeader.substring(8);
-            Claims claims = jwtUtil.parseJWT(token);
+        if (authHeader != null ) {
+            Claims claims = jwtUtil.parseJWT(authHeader);
             if (claims != null) {
                 String roles = (String) claims.get("roles");
                 System.out.println(roles);
                 if ("admin".equals(roles) || "user".equals(roles)) {
                     requestContext.addZuulRequestHeader("Authorization", authHeader);
-                    System.out.println("token 验证通过，添加了头息" + authHeader);
+                    System.out.println("token 验证通过，添加了头" + authHeader);
                     return null;
                 }
             }
