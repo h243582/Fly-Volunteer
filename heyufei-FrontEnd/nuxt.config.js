@@ -1,5 +1,4 @@
 module.exports = {
-
   head: {
     title: '高考志愿平台',
     meta: [
@@ -22,23 +21,14 @@ module.exports = {
     'quill/dist/quill.bubble.css',
     'quill/dist/quill.core.css'
   ],
-  /*
-  ** Customize the progress bar color
-  */
   loading: { color: '#3B8070' },
-  /*
-  ** Build configuration
-  */
   build: {
-    /*
-    ** Run ESLint on save
-    */
     extend (config, { isDev, isClient }) {
       if (isDev && isClient) {
         config.module.rules.push({
           enforce: 'pre',
           test: /\.(js|vue)$/,
-          loader: 'eslint-loader',
+          // loader: 'eslint-loader',
           exclude: /(node_modules)/
         })
       }

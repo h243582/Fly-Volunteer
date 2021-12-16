@@ -2,13 +2,15 @@
   {
     "name": "login",
     "path": "/login",
-    "component": "F:\\\\IDEA\\\\WORK\\\\Fly-Volunteer\\\\heyufei-FrontEnd\\\\pages\\\\login\\\\index.vue",
-    "chunkName": "pages/login/index"
+    "component": "F:\\\\IDEA\\\\IDEA-Project\\\\Fly-Volunteer\\\\heyufei-FrontEnd\\\\pages\\\\login\\\\index.vue",
+    "chunkName": "pages/login/index",
+    "_name": "_29a9caab"
   },
   {
     "name": "index",
     "path": "/",
-    "component": "F:\\\\IDEA\\\\WORK\\\\Fly-Volunteer\\\\heyufei-FrontEnd\\\\pages\\\\index.vue",
-    "chunkName": "pages/index"
+    "component": "F:\\\\IDEA\\\\IDEA-Project\\\\Fly-Volunteer\\\\heyufei-FrontEnd\\\\pages\\\\index.vue",
+    "chunkName": "pages/index",
+    "_name": "_25ed92e0"
   }
 ]

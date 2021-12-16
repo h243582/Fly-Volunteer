@@ -4,6 +4,10 @@
 npm install --registry=https://registry.npm.taobao.org     //用阿里镜像可以下载成功
 ```
 
+==-g是安装的意思，如果没有-g就会安装到在当前路径下==
+
+
+
 # 一、安装nodejs、cnpm和cli
 
 ## 安装`Node.js`
@@ -36,10 +40,7 @@ npm config set cache "D:\Java\Nodejs\node_cache"
 D:\Java\Nodejs\node_modules
 ```
 
-
 ## 安装express
-
-==-g是安装的意思，如果没有-g就会安装到在当前路径下==
 
 ```
 npm install express -g
@@ -84,23 +85,48 @@ npm uninstall vue-cli -g   卸载 1.x 或 2.x 版本的Vue Cli
 vue list
 ```
 
-
-
-
-
-
-
-# 二、安装http-server,SwaggerEditor，SwaggerUI 
-
-
-
-## http-server
+## 安装http-server
 
 全局安装http-server(http-server是一个简单的零配置命令行http服务器)
 
 ```
 npm install -g http-server
 ```
+
+## 安装touch
+
+```
+npm install touch-cli -g
+```
+
+## 安装webpack 
+
+```
+npm install webpack -g
+```
+
+## 安装webpack-cli
+
+```
+npm install webpack-cli -g
+```
+
+## 查看版本
+
+```
+webpack -v
+```
+
+//首先清除我们已经安装过的版本：
+npm uninstall node-sass -g
+npm uninstall sass-loader -g
+npm uninstall style-loader -g
+//清除的时候选择全局的清除和安装，否则下次创建 项目还会有同样的错误 执行重复的操作
+npm i node-sass --sass_binary_site=https://npm.taobao.org/mirrors/node-sass/ -g
+npm install sass-loader@7.3.1 --save-dev -g
+npm install style-loader --save-dev -g
+
+# 二、SwaggerEditor，SwaggerUI 
 
 
 
@@ -152,15 +178,7 @@ SwaggerUI是用来展示Swagger文档的界面，以下为安装步骤
 
 ==网页是动态的，不用重启！==
 
-### Windows关闭进程
-
-任意位置输入
-
-```
-taskkill /f /t /im nginx.exe
-```
-
-### 重启进程
+## 重启进程
 
 nginx目录输入
 
@@ -170,36 +188,19 @@ nginx -r reload
 
 
 
+# Windows关闭进程
 
-
-# 二、安装webpack和webpack-cli
-
-## 安装webpack 
-
-+ ```
-  npm install webpack -g
-  ```
-
-## 安装webpack-cli
+任意位置输入
 
 ```
-npm install webpack-cli -g
+taskkill /f /t /im nginx.exe
 ```
 
-## 查看版本
 
-```
-webpack -v
-```
 
-//首先清除我们已经安装过的版本：
-npm uninstall node-sass -g
-npm uninstall sass-loader -g
-npm uninstall style-loader -g
-　//注意我们清除的时候可以选择全局的清除 全局的安装，否则下次创建 项目还会有同样的错误 执行重复的操作
-npm i node-sass --sass_binary_site=https://npm.taobao.org/mirrors/node-sass/  -g   
-npm install sass-loader@7.3.1 --save-dev -g　　　
-npm install style-loader --save-dev   -g     　
+
+
+
 
 # 三、命令行创建项目
 
@@ -292,11 +293,6 @@ vue ui
 
 ![image-20210803134716813](https://img-blog.csdnimg.cn/img_convert/4046d1c97737274bda80958268e97820.png)
 
-# 安装touch
-
-```
-npm install touch-cli -g
-```
 
 
 
@@ -311,8 +307,7 @@ npm install touch-cli -g
 
 
 
-
-## 使用webpack打包
+# 使用webpack打包
 
 #### main.js文件
 
