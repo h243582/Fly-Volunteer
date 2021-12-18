@@ -166,7 +166,7 @@ JSONObject只是一种数据结构，可以理解为JSON格式的数据结构（
 </dependency>
 ```
 
-## **1.2、使用**
+## 1.2、JSONObject 
 
 ### 1.2.1、初始化
 
@@ -193,9 +193,36 @@ System.out.println(JSON.toJSON(user));
 System.out.println(JSONObject.toJSONString(user));
 ```
 
+## 1.3、JSONArrays数组
+
+```
+JSONArray jsonArray = new JSONArray();
+
+JSONObject liJson = new JSONObject();
+liJson.put("materialUniqueFieldType", "idType");
+liJson.put("materialUniqueFieldValue", materialId);
+liJson.put("resourceType", "document");
+
+jsonArray.add(liJson);
+
+```
+
+显示效果：
+
+[
+
+​	{
+​         "materialNo": 1,
+​         "playTime": 20,
+​         "resourceValue": "Station"
+​	}
+]
 
 
-# 3.2、JSONObject(谷歌)
 
-## **1、依赖Gson**
+
+
+```java
+
+```
 

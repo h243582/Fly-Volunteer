@@ -15,7 +15,7 @@
 
           <el-form-item class="control-label" label="短信验证码" prop="yzm" style="margin-bottom: 20px">
             <el-input  id="appendedInputButton" v-model="pojo.yzm" size="30" placeholder="短信验证码" style="width: 192px"/>
-            <el-button type="primary" @click="sendsms" plain>获取验证码</el-button>
+            <el-button type="primary" @click="sendMessage" plain>获取验证码</el-button>
           </el-form-item>
 
 
@@ -35,7 +35,15 @@
     <div class="item">
       <div class="form">
         <h3 class="loginsign-title">用户登录</h3>
-        <form class="sui-form login-form">
+        <el-form>
+          <el-form-item class="control-label" label="手机号码" prop="mobile" style="margin-bottom: 20px">
+            <el-input v-model="username" placeholder="仅支持大陆手机号"/>
+          </el-form-item>
+
+          <el-form-item class="control-label" label="密码" prop="password" style="margin-bottom: 20px">
+            <el-input v-model="password" placeholder="仅支持大陆手机号"/>
+          </el-form-item>
+        </el-form>
           <!--          <div class="control-group">-->
           <!--            <label for="inputname2" class="control-label">用户名：</label>-->
           <!--            <div class="controls">-->
@@ -48,15 +56,9 @@
           <!--              <input type="text" id="inputpassword2" v-model="password" placeholder="输入登录密码" class="input-xlarge" />-->
           <!--            </div>-->
           <!--          </div>-->
-          <div class="controls">
-            <label> <input type="checkbox" name="remember-me"/><span class="type-text"
-                                                                     style="font-size:12px;">记住登录状态</span> </label>
-            <button type="button" class="sui-btn btn-danger btn-yes" @click="login">登 录</button>
-          </div>
-          <!-- <div class="other-methods"></div> -->
-          <!-- <el-button type="success">微信登入</el-button> -->
-          <!-- <div id="weixin"></div> -->
-        </form>
+          <el-button type="success" @click="login" plain style="float:right;width: 400px">登 录</el-button>
+
+
       </div>
     </div>
 
@@ -69,38 +71,11 @@ import {setUser} from '@/utils/auth'
 
 export default {
   data() {
-    var validatePass = (rule, value, callback) => {
-      if (value === '') {
-        callback(new Error('请输入密码'));
-      } else {
-        if (this.pojo.checkPass !== '') {
-          this.$refs.pojo.validateField('checkPass');
-        }
-        callback();
-      }
-    };
-    var validatePass2 = (rule, value, callback) => {
-      if (value === '') {
-        callback(new Error('请再次输入密码'));
-      } else if (value !== this.pojo.password) {
-        callback(new Error('两次输入密码不一致!'));
-      } else {
-        callback();
-      }
-    };
     return {
       checked:false,
+      password:'',
+      username:'',
       pojo: {},
-      ruleForm: {
-        name: '',
-        region: '',
-        date1: '',
-        date2: '',
-        delivery: false,
-        type: [],
-        resource: '',
-        desc: ''
-      },
       rules: {
         name: [
           {required: true, message: '请输入姓名', trigger: 'blur'},
@@ -112,15 +87,12 @@ export default {
         ],
         mobile: [
           {required: true, message: '请输入手机号码', trigger: 'blur'},
-        ],
-        agree: [
-          {required: true, message: '请输入勾选', trigger: 'blur'},
-        ],
+        ]
       },
     }
   },
   methods: {
-    sendsms() {
+    sendMessage() {
       userApi.sendsms(this.pojo.mobile).then(res => {
         if (res.data.flag) {
           this.$message({
