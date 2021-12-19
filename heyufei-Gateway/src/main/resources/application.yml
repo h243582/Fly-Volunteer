@@ -1,0 +1,56 @@
+server:
+  port: 9012
+spring:
+  application:
+    name: heufei-Gateway #指定服务名
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:6868/eureka/ #eureka客户端和服务器端交互的地址,6868是eureka服务的地址
+  instance:
+    prefer-ip-address: true  #能否跨服务器访问（就是说访问另一个服务）
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
+feign:
+  client:
+    config:
+      default:
+        #建立连接所用的时间，适用于网络状况正常的情况下，两端连接所需要的时间
+        ConnectTimeOut: 6000
+        #指建立连接后从服务端读取到可用资源所用的时间
+        ReadTimeOut: 10000
+  hystrix:
+    enabled: true
+    command:
+      default:
+        execution:
+          isolation:
+            thread:
+              timeoutInMilliseconds: 60000
+
+zuul:
+  host:
+    connect-timeout-millis: 30000 #HTTP连接超时要比Hystrix的大
+    socket-timeout-millis: 60000   #socket超时
+    max-total-connections: 30000
+  routes:
+    hyf-article:
+      path: /user/** #配置请求的URL的请求规则
+      serviceId: heyufei-user #指定Eureka注册中心中的服务id
+
+ribbon:
+  ReadTimeout: 10000
+  ConnectTimeout: 10000
+  MaxAutoRetries: 0
+  MaxAutoRetriesNextServer: 1
+
+jwt:
+  config:
+    key: heyufei
+    ttl: 3600000000

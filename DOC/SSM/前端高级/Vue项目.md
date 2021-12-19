@@ -1,3 +1,32 @@
+
+
+```
+/**
+ * 增加
+ * @param user 用户
+ * @param code 用户填写的验证码
+ */
+public void add(User user, String code) {
+    //判断验证码是否正确
+    String sysCode = (String) redisTemplate.opsForValue().get("smscode_" + user.getMobile());
+    //提取系统正确的验证码
+    if (sysCode == null) {
+        throw new RuntimeException("请点击获取短信验证码");
+    }
+    if (!sysCode.equals(code)) {
+        throw new RuntimeException("验证码输入不正确");
+    }
+    user.setRegisterDate(new Date());//注册日期
+    user.setUpdateDate(new Date());//更新日期
+    user.setLastDate(new Date());//最后登陆日期
+    user.setIsVip(0);
+    userDao.save(user);
+}
+
+```
+
+
+
 # 安装不了的时候
 
 ```java

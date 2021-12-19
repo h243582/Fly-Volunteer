@@ -39,22 +39,22 @@ public class User implements Serializable{
 	@Column(name = "last_date")
 	private java.util.Date lastDate;//最后登录时间
 
-	public User(String mobile, String password, String nickname, String avatar, Integer isVip) {
-		this.mobile = mobile;
-		this.password = password;
-		this.nickname = nickname;
-		this.avatar = avatar;
-		this.isVip = isVip;
-	}
-
-	public User(String mobile, String password, String nickname, String avatar, Integer isVip, Date registerDate, Date updateDate, Date lastDate) {
-		this.mobile = mobile;
-		this.password = password;
-		this.nickname = nickname;
-		this.avatar = avatar;
-		this.isVip = isVip;
-		this.registerDate = registerDate;
-		this.updateDate = updateDate;
-		this.lastDate = lastDate;
-	}
+//	public User(String mobile, String password, String nickname, String avatar, Integer isVip) {
+//		this.mobile = mobile;
+//		this.password = password;
+//		this.nickname = nickname;
+//		this.avatar = avatar;
+//		this.isVip = isVip;
+//	}
+//
+//	public User(String mobile, String password, String nickname, String avatar, Integer isVip, Date registerDate, Date updateDate, Date lastDate) {
+//		this.mobile = mobile;
+//		this.password = password;
+//		this.nickname = nickname;
+//		this.avatar = avatar;
+//		this.isVip = isVip;
+//		this.registerDate = registerDate;
+//		this.updateDate = updateDate;
+//		this.lastDate = lastDate;
+//	}
 }

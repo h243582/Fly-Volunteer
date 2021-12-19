@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper loginsign">
+  <div class="wrapper loginsign" style="height: 600px">
     <!-- 注册 -->
     <div class="item signup">
       <div class="form">
@@ -14,7 +14,7 @@
           </el-form-item>
 
           <el-form-item class="control-label" label="短信验证码" prop="yzm" style="margin-bottom: 20px">
-            <el-input  id="appendedInputButton" v-model="pojo.yzm" size="30" placeholder="短信验证码" style="width: 192px"/>
+            <el-input id="appendedInputButton" v-model="pojo.yzm" size="30" placeholder="短信验证码" style="width: 192px"/>
             <el-button type="primary" @click="sendMessage" plain>获取验证码</el-button>
           </el-form-item>
 
@@ -44,19 +44,8 @@
             <el-input v-model="password" placeholder="仅支持大陆手机号"/>
           </el-form-item>
         </el-form>
-          <!--          <div class="control-group">-->
-          <!--            <label for="inputname2" class="control-label">用户名：</label>-->
-          <!--            <div class="controls">-->
-          <!--              <input type="text" id="inputname2" v-model="username" placeholder="11位手机号或Email" class="input-xlarge" data-rules="required" />-->
-          <!--            </div>-->
-          <!--          </div>-->
-          <!--          <div class="control-group">-->
-          <!--            <label for="inputpassword2" class="control-label">密码：</label>-->
-          <!--            <div class="controls">-->
-          <!--              <input type="text" id="inputpassword2" v-model="password" placeholder="输入登录密码" class="input-xlarge" />-->
-          <!--            </div>-->
-          <!--          </div>-->
-          <el-button type="success" @click="login" plain style="float:right;width: 400px">登 录</el-button>
+
+        <el-button type="success" @click="login" plain style="float:right;width: 400px">登 录</el-button>
 
 
       </div>
@@ -72,9 +61,9 @@ import {setUser} from '@/utils/auth'
 export default {
   data() {
     return {
-      checked:false,
-      password:'',
-      username:'',
+      checked: false,
+      password: '',
+      username: '',
       pojo: {},
       rules: {
         name: [
