@@ -12,11 +12,6 @@ export function setUser(id, token, name, avatar) {
     Cookie.set(nameKey, name);
     Cookie.set(avatarKey, avatar);
 }
-// export function setUser(token, name, avatar) {
-//     Cookie.set(tokenKey, token);
-//     Cookie.set(nameKey, name);
-//     Cookie.set(avatarKey, avatar);
-// }
 
 export function setAvatar(avatar) {
     Cookie.set(avatarKey, avatar);

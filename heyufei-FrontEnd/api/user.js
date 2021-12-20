@@ -24,7 +24,7 @@ export default {
     },
     login(mobile, password) {
         return request({
-            url: "/user/login",
+            url: "/heyufei-user/user/login",
             method: "post",
             data: {
                 mobile,

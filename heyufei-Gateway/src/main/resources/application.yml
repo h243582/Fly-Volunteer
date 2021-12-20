@@ -40,9 +40,9 @@ zuul:
     socket-timeout-millis: 60000   #socket超时
     max-total-connections: 30000
   routes:
-    hyf-article:
+    heyufei-user:
       path: /user/** #配置请求的URL的请求规则
-      serviceId: heyufei-user #指定Eureka注册中心中的服务id
+      url: http://localhost:9008/user #指定Eureka注册中心中的服务id
 
 ribbon:
   ReadTimeout: 10000

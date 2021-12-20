@@ -1,6 +1,5 @@
 <template>
   <div>
-    <header>
       <div class="ch-nav-box-index">
         <div class="nav-wrapper">
           <ul class="nav-index-list clearfix">
@@ -101,9 +100,7 @@
             <!-- 已登入时，显示用户名和头像 -->
             <li v-if="user.name !== undefined">
               <router-link to="/login" style="float:left;margin-left: 5px;margin-top: 26px;" >
-                <el-button plain size="mini" style="width: 70px;overflow: hidden;text-overflow: ellipsis;">
-                  {{ user.name }}
-                </el-button>
+                <el-button plain size="mini" style="width: 70px;overflow: hidden;text-overflow: ellipsis;">{{ user.name }}</el-button>
               </router-link>
               <router-link to="/login" style="float:left;margin: 18px 5px ;line-height: inherit">
                 <el-avatar :size="40" :src="user.avatar" />
@@ -116,7 +113,6 @@
         </div>
 
       </div>
-    </header>
 
     <nuxt/>
 

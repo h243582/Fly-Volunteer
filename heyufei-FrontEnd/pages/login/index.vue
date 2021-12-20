@@ -25,7 +25,7 @@
 
           <el-checkbox v-model="checked" style="float:right;" prop="agree">同意协议并接受《服务条款》</el-checkbox>
 
-          <el-button type="success" @click="register" plain style="float:right;width: 400px">注 册</el-button>
+          <el-button type="success" @click="register"  style="float:right;width: 400px">注 册</el-button>
 
         </el-form>
       </div>
@@ -41,11 +41,11 @@
           </el-form-item>
 
           <el-form-item class="control-label" label="密码" prop="password" style="margin-bottom: 20px">
-            <el-input v-model="password" placeholder="仅支持大陆手机号"/>
+            <el-input type="password" v-model="password" placeholder="请输入密码"/>
           </el-form-item>
         </el-form>
 
-        <el-button type="success" @click="login" plain style="float:right;width: 400px">登 录</el-button>
+        <el-button type="primary" @click="login"  style="float:right;width: 430px">登 录</el-button>
 
 
       </div>
@@ -113,18 +113,18 @@ export default {
       })
     },
     login() {
-      userApi.login(this.usernameLog, this.passwordLog).then(res => {
+      userApi.login(this.username, this.password).then(res => {
         if (res.data.code === 20000) {
           //保存用户信息,用户ID暂时用1代替
           setUser(res.data.data.id, res.data.data.token, res.data.data.name, res.data.data.avatar)
-          location.href = '/manager'
+          location.href = '/'
         } else {
           this.$message({
             message: '用户名或密码错误',
             type: 'error'
           })
-          this.usernameLog = ''
-          this.passwordLog = ''
+          this.username = ''
+          this.password = ''
         }
       })
     }

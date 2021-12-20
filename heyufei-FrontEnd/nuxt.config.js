@@ -13,7 +13,8 @@ module.exports = {
   plugins: [
     { src: '~plugins/element-ui', ssr: false },
     { src: '~plugins/vue-infinite-scroll', ssr: false },
-    { src: '~plugins/nuxt-quill-plugin.js', ssr: false }
+    { src: '~plugins/nuxt-quill-plugin.js', ssr: false },
+    { src: '~plugins/quill-image-extend-module.js', ssr: false }
   ],
   css: [
     'element-ui/lib/theme-chalk/index.css',
@@ -21,18 +22,9 @@ module.exports = {
     'quill/dist/quill.bubble.css',
     'quill/dist/quill.core.css'
   ],
-  loading: { color: '#3B8070' },
+  loading: { color: '#20e8ba' },
   build: {
-    extend (config, { isDev, isClient }) {
-      if (isDev && isClient) {
-        config.module.rules.push({
-          enforce: 'pre',
-          test: /\.(js|vue)$/,
-          // loader: 'eslint-loader',
-          exclude: /(node_modules)/
-        })
-      }
-    }
+
   }
 }
 
