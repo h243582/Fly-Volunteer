@@ -13,8 +13,8 @@
             <el-input v-model="pojo.mobile" placeholder="仅支持大陆手机号"/>
           </el-form-item>
 
-          <el-form-item class="control-label" label="短信验证码" prop="yzm" style="margin-bottom: 20px">
-            <el-input id="appendedInputButton" v-model="pojo.yzm" size="30" placeholder="短信验证码" style="width: 192px"/>
+          <el-form-item class="control-label" label="短信验证码" prop="yzm" >
+            <el-input id="appendedInputButton" v-model="pojo.yzm" size="30" placeholder="验证码" style="width: 40%"/>
             <el-button type="primary" @click="sendMessage" plain>获取验证码</el-button>
           </el-form-item>
 
@@ -25,7 +25,7 @@
 
           <el-checkbox v-model="checked" style="float:right;" prop="agree">同意协议并接受《服务条款》</el-checkbox>
 
-          <el-button type="success" @click="register"  style="float:right;width: 400px">注 册</el-button>
+          <el-button type="success" @click="register"  style="float:right;width: 100%">注 册</el-button>
 
         </el-form>
       </div>
@@ -45,7 +45,7 @@
           </el-form-item>
         </el-form>
 
-        <el-button type="primary" @click="login"  style="float:right;width: 430px">登 录</el-button>
+        <el-button type="primary" @click="login"  style="float:right;width: 100%">登 录</el-button>
 
 
       </div>
