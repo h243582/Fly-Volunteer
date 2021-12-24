@@ -13,9 +13,9 @@
             <el-input v-model="pojo.mobile" placeholder="仅支持大陆手机号"/>
           </el-form-item>
 
-          <el-form-item class="control-label" label="短信验证码" prop="yzm" >
-            <el-input id="appendedInputButton" v-model="pojo.yzm" size="30" placeholder="验证码" style="width: 40%"/>
-            <el-button type="primary" @click="sendMessage" plain>获取验证码</el-button>
+          <el-form-item class="control-label" label="短信验证码" prop="yzm">
+            <el-input id="appendedInputButton" v-model="pojo.yzm" size="30" placeholder="验证码" style=" width: 40%"/>
+            <el-button type="primary" @click="sendMessage" plain style="padding-top: 10px; width: 58%">获取验证码</el-button>
           </el-form-item>
 
 
