@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .wrap {
+            width: 100%;
+            height: 650px;
+            position: absolute;
+        }
+
+        .list {
+            width: 100%;
+            list-style: none;
+            position: relative;
+        }
+
+        .item {
+            width: 100%;
+            height: 100%;
+            color: white;
+            font-size: 30px;
+            opacity: 0;
+            transition: all 3s;
+            position: absolute;
+        }
+        .font{
+            position: absolute;
+            top: 450px;
+            left: 30%;
+            text-align: center;
+
+        }
+
+        .btn {
+            width: 40px;
+            height: 70px;
+            color: antiquewhite;
+            font-size: 30px;
+            background-color:transparent;
+            border-color: antiquewhite;
+            /*border-style:none;*/
+            border-radius: 4px;
+            position: absolute;
+            top: 250px;
+            z-index: 100;
+        }
+
+        #gopPre {
+            left: 0px;
+        }
+
+        #goNext {
+            right: 0px;
+        }
+
+        .item.active {
+            z-index: 10;
+            opacity: 1;
+        }
+
+        /*    列表圆圈*/
+        .pointList {
+            padding-left: 0px;
+            list-style: none;
+            position: absolute;
+            right: 50px;
+            bottom: 25px;
+            z-index: 1000;
+        }
+
+        .point {
+            width: 15px;
+            height: 15px;
+            background-color: rgba(0, 0, 0, 0.4);
+            border-radius: 100%; /*变成圆*/
+            float: left;
+            margin-right: 20px;
+            border-style: solid;
+            border-width: 2px;
+            border-color: rgba(0, 0, 0, 0.6);
+        }
+
+        .point.active {
+            background-color: rgba(255, 255, 255, 0.8);
+            cursor: pointer;
+        }
+
+    </style>
+
+
+
+</head>
+<body>
+<div class="wrap">
+    <ul class="list">
+        <li class="item active"><a href=""><img src="img/bl1.png" alt="" width="500px"></a></li>
+        <li class="item"><a href=""><img src="img/bl2.png" alt="" width="500px"></a></li>
+        <li class="item"><a href=""><img src="img/bl3.png" alt="" width="500px"></a></li>
+    </ul>
+    <ul class="pointList">
+        <li class="point active" data-index='0'></li>
+        <li class="point" data-index='1'></li>
+        <li class="point" data-index='2'></li>
+    </ul>
+    <button type="button" class="btn" id="goPre">左</button>
+    <button type="button" class="btn" id="goNext">右</button>
+</div>
+<script>
+    var items = document.getElementsByClassName('item');
+    var points = document.getElementsByClassName('point')
+    var goPreBtn = document.getElementById('goPre');
+    var goNextBtn = document.getElementById('goNext');
+    var index = 0;//图片在几张图片显示，第index张图片有active这个类名
+    var time = 0;//定时器
+    /**
+     * index是多少就显示哪个图片
+     */
+    var goIndex = function () {
+        for (var i = 0; i < items.length; i++) {
+            items[i].className = 'item';
+            points[i].className = "point";
+        }
+        items[index].className = 'item active';
+        points[index].className = 'point active';
+    }
+
+    var goNext = function () {
+        index++;
+        if (index === 3) {
+            index = 0;
+        }
+        goIndex();
+    }
+
+    var goPre = function () {
+        index--;
+        if (index === -1) {
+            index = 2;
+        }
+        goIndex();
+    }
+    goNextBtn.addEventListener('click', function () {
+        goNext();
+        time = 0;
+    });
+    goPreBtn.addEventListener('click', function () {
+        goPre();
+        time = 0;
+    });
+    //    点击点
+    for (var i = 0; i < points.length; i++) {
+        points[i].addEventListener('click', function () {
+            var pointIndex = this.getAttribute('data-index');
+            index = pointIndex;
+            goIndex();
+            time = 0;
+        });
+    }
+
+    //定时器自动轮播，点击时取消定时器
+    setInterval(function () {
+        time++;
+        if (time === 20) {
+            goNext();
+            time = 0;
+        }
+    }, 100);
+
+
+</script>
+
+
+
+</body>
+</html>
