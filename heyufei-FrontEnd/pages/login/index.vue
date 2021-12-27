@@ -5,6 +5,13 @@
       <div class="form">
         <h3 class="loginsign-title">注册新账号</h3>
         <el-form :model="pojo" :rules="rules" ref="pojo" label-width="120px" class="demo-form-inline">
+          <el-image
+              style="width: 100px; height: 100px;align-self: center"
+              :src="pojo.picURL"
+              :preview-src-list="srcList">
+
+          </el-image>
+
           <el-form-item class="control-label" label="姓名" prop="name" style="margin-bottom: 20px">
             <el-input v-model="pojo.name" placeholder="真实姓名或常用昵称"/>
           </el-form-item>

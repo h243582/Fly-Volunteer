@@ -130,9 +130,9 @@
         </div>
         <div class="footer-units">
           主办单位：<a href="https://chesicc.chsi.com.cn/" target="_blank">全国高等学校学生信息咨询与就业指导中心</a><br>
-          Copyright © 2003-2021 <a href="//www.chsi.com.cn/" target="_blank">学信网</a> All Rights Reserved<br>
+          Copyright © 2003-2021 <a >学信网</a> All Rights Reserved<br>
           <a href="http://beian.miit.gov.cn" target="_blank">京ICP备19004913号-1</a>
-          <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010202009747" target="_blank">
+          <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010202009747">
             <img src="https://t1.chei.com.cn/chsi/images/jgwab.png"
                  style="vertical-align: middle; margin-bottom: 2px; margin-left: 8px;"> 京公网安备11010202009747号</a>
         </div>

@@ -2,108 +2,17 @@
   <div>
     <div class="main-wrapper">
       <div class="container">
+
+        <!-- 轮播和 轮播 右边 -->
         <div class="index-row part01 clearfix">
-          <div class="gk-left">
-            <!-- 高考月历 -->
-            <div class="gk-month-hot">
-              <div class="gk-months-title"><span class="yl-icon"><img
-                  src="https://t2.chei.com.cn/gaokao/assets/src/images/rl.svg"/> </span> <span>高考月历</span>
-              </div>
-              <div class="gkmonth-bot">
-                <div class="gkmonth-bl">
-                  <div class="gk-month">
-                    <div class="mon-pl">11月</div>
-                    <p><a href="/z/gkbmfslq/index.jsp" target="_blank">高考报名</a></p>
-                    <p>三大招飞持续进行</p>
-                  </div>
-                  <div class="gk-month">
-                    <div class="mon-pl">12月</div>
-                    <p>部分省份艺术类统考</p>
-                  </div>
-                </div>
-              </div>
-              <!-- 新模板月历 -->
-            </div>
-            <dl class="part01-left">
-              <dl>
-                <dt class="l-head">
-                  名单公示
-                </dt>
-                <dd class="l-body">
-                  <p><a href="/zsgs/mdgs--method-toIndex,zslx=2.dhtml" target="_blank">高校专项计划名单</a></p>
-                  <p><a href="/zsgs/gspydyzgmd--method-groupByYx.dhtml" target="_blank">高水平运动队名单</a></p>
-                  <p><a href="/zsgs/ystcszgmd--method-groupByYx.dhtml" target="_blank">高水平艺术团名单</a></p>
-                </dd>
-                <dt class="l-head">
-                  招生政策
-                </dt>
-                <dd class="l-body">
-                  <p><a href="/z/gkbmfslq/zszc.jsp" target="_blank">招生工作规定</a> <a href="/z/gkbmfslq/zszc.jsp"
-                                                                                  target="_blank">照顾政策</a><a
-                      href="/gkxx/zcdh/200702/20070228/754576.html" target="_blank">体检</a><a
-                      href="https://gaokao.chsi.com.cn/gkxx/zc/ss/201806/20180612/1697224935.html"
-                      target="_blank">军检</a></p>
-                </dd>
-                <dt class="l-head">
-                  高考流程
-                </dt>
-                <dd class="l-body">
-                  <p><a href="/z/gkbmfslq/index.jsp" target="_blank">报名</a><a href="/z/gkbmfslq/zytb.jsp"
-                                                                              target="_blank">志愿</a><a
-                      href="/gkxx/gzdt/202003/20200331/1886293146.html" target="_blank">考试</a><a
-                      href="/z/gkbmfslq/cjcx.jsp" target="_blank">查分</a><a href="/z/gkbmfslq/pcx.jsp"
-                                                                           target="_blank">批次线</a><a
-                      href="/z/gkbmfslq/lqjg.jsp" target="_blank">录取</a></p>
-                </dd>
-                <dt class="l-head">
-                  诚信高考
-                </dt>
-                <dd class="l-body">
-                  <p><a href="/gkxx/zc/moe/202106/20210617/2078308929.html" target="_blank">各省招办官网官微</a>　<a
-                      href="https://gaokao.chsi.com.cn/gkzt/gzfzp2021" target="_blank">警惕招生诈骗</a></p>
-                  <p><a href="/gkxx/gzdt/202106/20210603/2074510508.html" target="_blank">高考举报电话</a>　<a
-                      href="/gkxx/zszcgd/dnzszc/202110/20211025/2121818494.html"
-                      target="_blank">全国高等学校名单</a></p>
-                  <p><a href="http://www.chsi.com.cn/jyzx/200711/20071120/1584010.html" target="_blank">高校学生获得学籍及毕业证书政策告知</a>
-                  </p>
-                </dd>
-              </dl>
-            </dl>
-          </div>
+          <!--轮播和右边按钮-->
           <div class="gk-main">
-            <div style="height: 260px; overflow: hidden;">
-              <script type="text/javascript">showShortCut('534475030')</script>
-            </div>
-            <!-- 热门焦点 start -->
-            <div class="index-hot">
-              <h4><a href="/xxgk/" target="_blank">高考信息公开</a> &nbsp;| &nbsp; <a
-                  href="/zsgs/zhangcheng/listVerifedZszc--method-index,lb-1.dhtml" target="_blank">招生章程</a>
-                &nbsp;| &nbsp; <a href="https://xz.chsi.com.cn/home.action" target="_blank">兴趣测评和专业选择</a></h4>
-              <p class="sub-hot"><span class="blue-badge label arrowed-right">教育要闻</span>&nbsp;<a
-                  href="/gkxx/zcdh/202110/20211025/2121818490.html" target="_blank">教育部公布2021年度全国高等学校名单
-                共计3012所</a></p>
-              <h4><a href="/gkzt/ysl2022" style="color: rgb(255, 0, 0);" target="_blank">2022年艺术类专业报考指南专题</a></h4>
-              <p class="sub-hot"><span class="blue-badge label arrowed-right">特殊类型</span>&nbsp;<a
-                  href="/gkxx/zc/moe/202111/20211101/2124883082.html" target="_blank">教育部部署做好2022年特殊类型招生工作</a>&nbsp;&nbsp;<a
-                  href="/gkxx/zcdh/202111/20211101/2124883385.html" target="_blank">文件</a></p>
-              <h4><a href="/z/gkbmfslq/index.jsp" style="color: rgb(255, 0, 0);" target="_blank">2022年各省高考报名时间及方式查询</a>
-              </h4>
-              <p class="sub-hot"><span class="blue-badge label arrowed-right">省市动态</span>&nbsp;<a
-                  href="/gkxx/ss/202111/20211111/2130255849.html" target="_blank">北京体育专业考试2022年4月9日开考</a>&nbsp;<a
-                  href="/gkxx/zc/ss/202111/20211112/2130911694.html" target="_blank">山西高考补报名公告</a></p>
-              <h4>三大招飞专题：<a href="/gkzt/kjzf" target="_blank">空军招飞</a>&nbsp;<a href="/gkzt/hjzf"
-                                                                               target="_blank">海军招飞</a>&nbsp;<a
-                  href="/gkzt/mhzf" target="_blank">民航招飞</a></h4>
-              <p class="sub-hot"><span class="blue-badge label arrowed-right">招考动态</span>&nbsp;<a
-                  href="/gkxx/zc/ss/202111/20211111/2129778250.html" target="_blank">​​​​​​​湖南高考考生优惠信息及专项计划资格申报审核问答</a>
-              </p>
-            </div>
-            <!-- 热门焦点 end -->
-            <div style="height:40px; overflow: hidden;">
-              <script type="text/javascript">showShortCut('1010241362')</script>
-            </div>
-            <div style="height: 72px; overflow: hidden; margin-top: 15px;">
-              <script type="text/javascript">showShortCut('534619637')</script>
+            <div class="block">
+              <el-carousel height="600px">
+                <el-carousel-item v-for="item in rotation" :key="item">
+                  <el-image class="small" :src="item" style="height: 100%"/>
+                </el-carousel-item>
+              </el-carousel>
             </div>
           </div>
           <div class="gk-right">
@@ -163,85 +72,20 @@
                   </ul>
                 </div>
               </div>
-              <div style="height: 126px; overflow:hidden;margin-top: 23px;">
-                <script type="text/javascript">showShortCut('534563054')</script>
+              <div style="overflow:hidden;">
+                <router-link to="/login">
+                  <img src="~/assets/img/报考查询.png" alt="">
+                </router-link>
               </div>
             </div>
           </div>
         </div>
-        <!-- part01 end -->
-        <!-- part02 start -->
+
+        <!-- 招生政策和省市新闻 -->
         <div class="index-row part02 clearfix" style="margin-top: 5px;">
           <div class="part-body clearfix">
-            <!-- part02-left start -->
-            <div class="gk-left">
-              <div class="side-head">
-                <span class="i-title">招办主任访谈</span>
-                <span class="more"><a href="/gkxx/zbzrft/zx" target="_blank">更多 &gt;</a></span>
-              </div>
-              <div class="side-body" style="margin-bottom: 20px;">
-                <div class="l-zbzrft" style="height:125px; overflow: hidden;">
-                  <table border="0" cellpadding="0" cellspacing="0">
-                    <tbody>
-                    <tr class="firstRow">
-                      <td><a href="/gkxx/zbzrft/zx/202105/20210520/2069719734.html" target="_blank"><img
-                          src="https://t3.chei.com.cn/news/img/2069720156.jpg" alt="" border="0"
-                          title=""/></a></td>
-                      <td><a href="/gkxx/zbzrft/zx/202106/20210618/2078778227.html" target="_blank"><img
-                          src="https://t2.chei.com.cn/news/img/2079484331.jpg" alt="" border="0"
-                          title=""/></a></td>
-                      <td style="word-break: break-all;"><a
-                          href="/gkxx/zbzrft/zx/202105/20210524/2070377269.html" target="_blank"><img
-                          src="https://t1.chei.com.cn/news/img/2070856978.jpg" alt="" border="0"
-                          title=""/></a></td>
-                    </tr>
-                    <tr>
-                      <td><a href="/gkxx/zbzrft/zx/202105/20210520/2069719734.html"
-                             target="_blank">天津商业大学</a></td>
-                      <td><a href="/gkxx/zbzrft/zx/202106/20210618/2078778227.html"
-                             target="_blank">深圳大学</a></td>
-                      <td><a href="/gkxx/zbzrft/zx/202105/20210524/2070377269.html"
-                             target="_blank">兰州大学</a></td>
-                    </tr>
-                    </tbody>
-                  </table>
-                  <p>&nbsp;</p>
-                </div>
-                <ul class="index-list">
-                  <li><a href="/gkxx/zbzrft/zx/202105/20210521/2069814804.html" target="_blank"
-                         title="武汉理工大学：新增4个招生专业，大部分专业实施大类招生 ">武汉理工大学：新增4个招生专业，大部分专业...</a></li>
-                  <li><a href="/gkxx/zbzrft/zx/202105/20210524/2070078852.html" target="_blank"
-                         title="湘潭大学： 新增“人工智能”、“网络空间安全”两个新兴工科专业招生">湘潭大学： 新增“人工智能”、“网络空间安...</a></li>
-                  <li><a href="/gkxx/zbzrft/zx/202105/20210531/2072865990.html" target="_blank"
-                         title="中国石油大学（北京）克拉玛依校区：新增5个本科专业，首次开展专项计划招生">中国石油大学（北京）克拉玛依校区：新增5个...</a></li>
-                  <li><a href="/gkxx/zbzrft/zx/202106/20210601/2073364231.html" target="_blank"
-                         title="石河子大学：新增小学教育、应急管理招生专业">石河子大学：新增小学教育、应急管理招生专业</a></li>
-                </ul>
-              </div>
-              <div class="side-head">
-                <span class="i-title">热点</span>
-                <span class="more"><a href="//www.chsi.com.cn/zthz/yggk.jsp" target="_blank">更多 &gt;</a></span>
-              </div>
-              <div class="side-body" style="width: 330px;height: 224px;overflow: hidden;padding-top: 14px;">
-                <script type="text/javascript">showShortCut('2356231269')</script>
-                <ul class="index-list hotnew-list ">
-                  <li><a href="/gkxx/zytb/202012/20201230/2015959328.html"
-                         target="_blank">8省市新高考录取工作实施方案汇总</a></li>
-                  <li><a href="/gkxx/zszcgd/dnzszc/202010/20201017/1984177296.html" target="_blank">2021年普通高等学校部分特殊类型招生基本要求</a>
-                  </li>
-                  <li><a href="/gkzt/tszs" target="_blank">特殊类型招生专题汇总</a></li>
-                  <li><a href="/z/gkbmfslq/index.jsp" target="_blank">2021年高考报名分数录取查询</a></li>
-                  <li><a href="/gkxx/zcdh/202010/20201014/1983647884.html" target="_blank">深化新时代教育评价改革总体方案</a>
-                  </li>
-                  <li><a href="/gkxx/zc/moe/202009/20200917/1977067603.html" target="_blank">首批基础学科拔尖学生培养计划2.0基地名单</a>
-                  </li>
-                  <li><a href="/gkxx/zybk/202103/20210323/2045574730.html" target="_blank">教育部：未来五年，打破职业教育学历&ldquo;天花板&rdquo;</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <!-- part02-left end -->
-            <!-- part02-main start  -->
+
+            <!-- 招生政策和省市新闻  -->
             <div class="gk-main">
               <div class="ch-list mb13">
                 <div class="list-head clearfix">
@@ -308,8 +152,8 @@
                 </ul>
               </div>
             </div>
-            <!-- part02-main end -->
-            <!-- part02-right start -->
+
+            <!-- 招生政策和省市新闻 的 地方站 -->
             <div class="gk-right">
               <div class="side-head">
                 <span class="i-title">地方站</span>
@@ -371,104 +215,37 @@
                   <li><a href="/xinjiang/" target="_blank">新疆</a></li>
                 </ul>
               </div>
-              <div style="height: 268px; margin-top: 20px; overflow:hidden;">
-                <script type="text/javascript">showShortCut('535307988')</script>
+              <div style="overflow:hidden;">
+                <router-link to="/login">
+                <img src="~/assets/img/中国科技大学.jpg" alt="">
+                </router-link>
+              </div>
+              <div style="overflow:hidden;">
+                <router-link to="/login">
+                  <img src="~/assets/img/体育类报考指南.jpg" alt="">
+                </router-link>
+              </div>
+              <div style="overflow:hidden;">
+                <router-link to="/login">
+                  <img src="~/assets/img/专业知识库.png" alt="">
+                </router-link>
+              </div>
+              <div style="overflow:hidden;">
+                <router-link to="/login">
+                  <img src="~/assets/img/报考查询.png" alt="">
+                </router-link>
               </div>
             </div>
-            <!-- part02-right end -->
           </div>
         </div>
-        <!-- part02 end -->
-        <div class="clearfix" style=" width: 1180px; overflow: hidden;margin-top: 13px;">
-          <script type="text/javascript">showShortCut('1010251128')</script>
-        </div>
-        <div class="clearfix" style=" width: 1180px; overflow: hidden;">
-          <script type="text/javascript">showShortCut('1010342177')</script>
-        </div>
-        <!-- part03 start -->
+
+        <!-- 大学 · 专业 -->
         <div class="index-row part03 clearfix">
           <div class="part-head clearfix">
-            <h3><span class="part-thbg"><img src="//t2.chei.com.cn/gaokao/assets/src/images/dxzy.svg"></span>大学 · 专业
-            </h3>
+            <h3><span class="part-thbg"><img src="//t2.chei.com.cn/gaokao/assets/src/images/dxzy.svg"></span>大学 · 专业</h3>
           </div>
-          <div class="part-body clearfix">
-            <!-- left start -->
-            <div class="gk-left">
-              <div style="height: 150px; margin-bottom:22px; overflow:hidden;">
-                <script type="text/javascript">showShortCut('2356238459')</script>
-              </div>
-              <div class="side-head">
-                <span class="i-title">招生章程</span>
-                <span class="more"><a href="/zsgs/zhangcheng/" target="_blank">更多 &gt;</a></span>
-              </div>
-              <div class="side-body" style="width:330px; height:165px; overflow:hidden;margin-bottom: 10px;">
-                <script type="text/javascript">showShortCut('1820163374')</script>
-                <ul class="index-list hotnew-list">
-                  <li class="clearfix"><span class="news-title"><span>[<a
-                      href="/zsgs/zhangcheng/listZszc--schId-113.dhtml" target="_blank"
-                      title="内蒙古民族大学">内蒙古民族大学</a>]</span>&nbsp;<a
-                      href="/zsgs/zhangcheng/listVerifedZszc--schId-113,infoId-3135354816,categoryId-4503395,method-view.dhtml"
-                      target="_blank" title="内蒙古民族大学2021年招生章程">内蒙古民族大学2021年招生章程</a></span></li>
-                  <li class="clearfix"><span class="news-title"><span>[<a
-                      href="/zsgs/zhangcheng/listZszc--schId-1980488509.dhtml" target="_blank"
-                      title="陆军军医大学">陆军军医大学</a>]</span>&nbsp;<a
-                      href="/zsgs/zhangcheng/listVerifedZszc--schId-1980488509,infoId-3242252832,categoryId-1980488511,method-view.dhtml"
-                      target="_blank"
-                      title="陆军军医大学（第三军医大学）2021年无军籍地方本科生招生章程">陆军军医大学（第三军医大学）20...</a></span></li>
-                  <li class="clearfix"><span class="news-title"><span>[<a
-                      href="/zsgs/zhangcheng/listZszc--schId-1980504628.dhtml" target="_blank"
-                      title="国防科技大学">国防科技大学</a>]</span>&nbsp;<a
-                      href="/zsgs/zhangcheng/listVerifedZszc--schId-1980504628,infoId-3242195237,categoryId-1980504630,method-view.dhtml"
-                      target="_blank" title="国防科技大学无军籍本科学员2021年度招生执行章程">国防科技大学无军籍本科学员202...</a></span>
-                  </li>
-                  <li class="clearfix"><span class="news-title"><span>[<a
-                      href="/zsgs/zhangcheng/listZszc--schId-67.dhtml" target="_blank" title="河北地质大学">河北地质大学</a>]</span>&nbsp;<a
-                      href="/zsgs/zhangcheng/listVerifedZszc--schId-67,infoId-3134685370,categoryId-4500136,method-view.dhtml"
-                      target="_blank" title="河北地质大学2021年招生章程">河北地质大学2021年招生章程</a></span></li>
-                  <li class="clearfix"><span class="news-title"><span>[<a
-                      href="/zsgs/zhangcheng/listZszc--schId-1980498059.dhtml" target="_blank"
-                      title="空军军医大学">空军军医大学</a>]</span>&nbsp;<a
-                      href="/zsgs/zhangcheng/listVerifedZszc--schId-1980498059,infoId-3241614942,categoryId-1980498061,method-view.dhtml"
-                      target="_blank"
-                      title="空军军医大学（第四军医大学） 2021年无军籍本科学员招生章程">空军军医大学（第四军医大学） 2...</a></span></li>
-                </ul>
-              </div>
-              <div class="side-head">
-                <span class="i-title">特殊类型招生</span>
-                <span class="more"><a href="/gkzt/tszs" target="_blank">更多 &gt;</a></span>
-              </div>
-              <div class="side-body">
-                <div class="gk-tsl-list">
-                  <a class="label-tsl" href="/gkzt/jcxkzs2021" target="_blank">强基计划</a> <a class="label-tsl"
-                                                                                           href="/gkzt/bss2021"
-                                                                                           target="_blank">保送生</a>
-                  <a class="label-tsl" href="/gkzt/gspydd2020" target="_blank">运动队</a> <a class="label-tsl"
-                                                                                          href="/gkzt/gspyst2021"
-                                                                                          target="_blank">艺术团</a>
-                  <a class="label-tsl" href="/gkzt/ysl2021" target="_blank">艺术类</a> <a class="label-tsl"
-                                                                                       href="/gkzt/tyl2021"
-                                                                                       target="_blank">体育类</a>
-                  <a class="label-tsl" href="/gkzt/gfsfs2018" target="_blank">公费师范生</a> <a class="label-tsl"
-                                                                                           href="/gkzt/gagx"
-                                                                                           target="_blank">港澳高校招生</a>
-                  <a class="label-tsl" href="/gkzt/hzbx2014" target="_blank">中外合作办学</a> <a class="label-tsl"
-                                                                                           href="/gkxx/zcdh/200704/20070405/778399.html"
-                                                                                           target="_blank">公安院校招生</a>
-                  <a class="label-tsl" href="/gkzt/jxzs" target="_blank">军校</a> <a class="label-tsl"
-                                                                                   href="/gkzt/kjzf"
-                                                                                   target="_blank">空军招飞</a> <a
-                    class="label-tsl" href="/gkzt/hjzf" target="_blank">海军招飞</a> <a class="label-tsl"
-                                                                                    href="/gkzt/mhzf"
-                                                                                    target="_blank">民航招飞</a>
-                </div>
-              </div>
-              <div style="height: 255px; overflow:hidden; margin-top:8px;">
-                <script type="text/javascript">showShortCut('1830698419')</script>
-              </div>
-            </div>
-            <!-- left end -->
-            <!-- main start -->
             <div class="gk-main">
+              <!-- 院校招生  高校动态 -->
               <div class="index-tab-container" style="margin-bottom:30px;">
                 <div class="index-tab clearfix">
                   <div class="tab-item left-t js-tab selected"><a href="javascript:void(0)">院校招生</a></div>
@@ -479,7 +256,6 @@
                 <div class="tab-content clearfix">
                   <div class="item-content active">
                     <div class="list-content" style="overflow: hidden; height: 255px;">
-                      <script type="text/javascript">showShortCut('1010246093')</script>
                       <ul>
                         <li class="clearfix"><span class="news-title"><a
                             href='/gkxx/yxzs/202111/20211111/2130344451.html' target="_blank"
@@ -517,7 +293,6 @@
                   </div>
                   <div class="item-content">
                     <div class="list-content" style="overflow: hidden; height: 255px;">
-                      <script type="text/javascript">showShortCut('535392248')</script>
                       <ul>
                         <li class="clearfix"><span class="news-title"><span>[<a
                             href="/sch/listBulletin--schId-1869,categoryId-51989.dhtml"
@@ -565,6 +340,7 @@
                   </div>
                 </div>
               </div>
+              <!-- 专业百科  专业与就业 -->
               <div class="index-tab-container" style="margin-bottom:30px;">
                 <div class="index-tab clearfix">
                   <div class="tab-item left-t  js-tab selected"><a href="javascript:void(0)">专业百科</a></div>
@@ -573,6 +349,7 @@
                   <span class="more ch-hide"><a href="/gkxx/zybk/zyyjy/"
                                                 target="_blank">更多&ensp;&gt;</a></span>
                 </div>
+                <!-- 用AI -->
                 <div class="tab-content clearfix">
                   <div class="item-content active">
                     <ul class="list-content" style="overflow: hidden; height: 255px;">
@@ -603,36 +380,9 @@
                           title="菌草科学：机会蕴含其中">菌草科学：机会蕴含其中</a></span></li>
                     </ul>
                   </div>
-                  <div class="item-content">
-                    <ul class="list-content" style="overflow: hidden; height: 255px;">
-                      <li class="clearfix"><span class="news-title"><a
-                          href='/gkxx/zybk/zyyjy/202111/20211109/2128571498.html' target="_blank"
-                          title="EDG夺冠全网沸腾，但电竞不只有光鲜">EDG夺冠全网沸腾，但电竞不只有光鲜</a></span></li>
-                      <li class="clearfix"><span class="news-title"><a
-                          href='/gkxx/zybk/zyyjy/202110/20211022/2120909453.html' target="_blank"
-                          title="让教师真正成为最受社会尊重和令人羡慕的职业">让教师真正成为最受社会尊重和令人羡慕的职业</a></span></li>
-                      <li class="clearfix"><span class="news-title"><a
-                          href='/gkxx/zybk/zyyjy/202108/20210831/2103720988.html' target="_blank"
-                          title="人才缺口巨大，造车界不断上演“抢人大战”——新能源汽车“人才荒”如何破">人才缺口巨大，造车界不断上演“抢人大战”——新能源汽车“人才...</a></span>
-                      </li>
-                      <li class="clearfix"><span class="news-title"><a
-                          href='/gkxx/zybk/zyyjy/202105/20210518/2068874524.html' target="_blank"
-                          title="909万大学毕业生如何更好就业">909万大学毕业生如何更好就业</a></span></li>
-                      <li class="clearfix"><span class="news-title"><a
-                          href='/gkxx/zybk/zyyjy/202103/20210322/2041747224.html' target="_blank"
-                          title="18个新职业发布——新职业打开就业新空间">18个新职业发布——新职业打开就业新空间</a></span></li>
-                      <li class="clearfix"><span class="news-title"><a
-                          href='/gkxx/zybk/zyyjy/202101/20210128/2026237235.html' target="_blank"
-                          title="第一批电竞生要毕业了：就业情况特别好 但做电竞的不多">第一批电竞生要毕业了：就业情况特别好 但做电竞的不多</a></span>
-                      </li>
-                      <li class="clearfix"><span class="news-title"><a
-                          href='/gkxx/zybk/zyyjy/202101/20210105/2017945795.html' target="_blank"
-                          title="4所艺术院校公布应届生薪酬，中央音乐学院本科生年薪近十万">4所艺术院校公布应届生薪酬，中央音乐学院本科生年薪近十万</a></span>
-                      </li>
-                    </ul>
-                  </div>
                 </div>
               </div>
+              <!-- 强基计划  艺考招生 -->
               <div class="index-tab-container">
                 <div class="index-tab clearfix">
                   <div class="tab-item left-t  js-tab selected"><a href="javascript:void(0)">强基计划</a></div>
@@ -643,7 +393,6 @@
                 <div class="tab-content clearfix">
                   <div class="item-content active">
                     <div class="list-content" style="overflow: hidden; height: 255px;">
-                      <script type="text/javascript">showShortCut('535393336')</script>
                       <ul>
                         <li class="clearfix"><span class="news-title"><a
                             href='/gkxx/qjjh/202106/20210615/2077582795.html' target="_blank"
@@ -670,42 +419,10 @@
                       </ul>
                     </div>
                   </div>
-                  <div class="item-content">
-                    <div class="list-content" style="overflow: hidden; height: 255px; ">
-                      <script type="text/javascript">showShortCut('535393780')</script>
-                      <ul>
-                        <li class="clearfix"><span class="news-title"><a
-                            href='/gkxx/yszy/dt/202111/20211111/2130271294.html' target="_blank"
-                            title="上海：2022年普通高校招生艺术类专业统一考试防疫提醒">上海：2022年普通高校招生艺术类专业统一考试防疫提醒</a></span>
-                        </li>
-                        <li class="clearfix"><span class="news-title"><a
-                            href='/gkxx/ss/202111/20211104/2126897569.html' target="_blank"
-                            title="2022年特殊类型招生：艺术类专业范围有微调">2022年特殊类型招生：艺术类专业范围有微调</a></span></li>
-                        <li class="clearfix"><span class="news-title"><a
-                            href='/gkxx/yszy/dt/202111/20211103/2126140223.html' target="_blank"
-                            title="高考艺体生文化课分数线提高">高考艺体生文化课分数线提高</a></span></li>
-                        <li class="clearfix"><span class="news-title"><a
-                            href='/gkxx/yszy/dt/202110/20211029/2124426749.html' target="_blank"
-                            title="艺文并进，科学应对“新艺考”">艺文并进，科学应对“新艺考”</a></span></li>
-                        <li class="clearfix"><span class="news-title"><a
-                            href='/gkxx/ss/202110/20211021/2120500048.html' target="_blank"
-                            title="北京：英语听说考试、美术统考、体育专业考试高招三类考试时间确定">北京：英语听说考试、美术统考、体育专业考试高招三类考试时间确...</a></span>
-                        </li>
-                        <li class="clearfix"><span class="news-title"><a
-                            href='/gkxx/ss/202110/20211028/2123088518.html' target="_blank"
-                            title="广西：2022年全区艺术统考报名已开始，新增航空服务类专业">广西：2022年全区艺术统考报名已开始，新增航空服务类专业</a></span>
-                        </li>
-                        <li class="clearfix"><span class="news-title"><a
-                            href='/gkxx/zc/ss/202110/20211014/2117682119.html' target="_blank"
-                            title="2022年浙江省艺术类专业省统考时间安排表">2022年浙江省艺术类专业省统考时间安排表</a></span></li>
-                      </ul>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
-            <!-- main end -->
-            <!-- right start -->
+          <!-- 大学 · 专业 的右边 -->
             <div class="gk-right">
               <div class="side-head">
                 <span class="i-title">专业解读</span>
@@ -713,9 +430,9 @@
               </div>
               <div class="side-body zyjd-img-list">
                 <div class="thumbs-box">
-                  <div class="imgs-panel"><img border="0" height="100%"
-                                               src="https://t3.chei.com.cn/news/img/2084811780.jpg" title=""
-                                               width="100%"/></div>
+                  <div class="imgs-panel">
+                    <img border="0" height="100%" width="100%" src="~/assets/img/核工程与核技术.jpg"/></div>
+
                   <div class="tips-panel">
                     <div class="tips-mask">&nbsp;</div>
                     <div class="tips-text"><a href="/zyk/zybk/zyjd/viewPage/9mg32kkl7ngzl3nd"
@@ -753,7 +470,6 @@
                 <span class="more"><a href="/gkxx/hkzs" target="_blank">更多 &gt;</a></span>
               </div>
               <div class="side-body" style="overflow: hidden; height: 170px; width:280px;">
-                <script type="text/javascript">showShortCut('535394089')</script>
                 <ul class="index-list hotnew-list">
                   <li><a href="/gkxx/hkzs/201912/20191202/1790939120.html" target="_blank"
                          title="2021年港澳高校内地招生报考指南"><a href="https://gaokao.chsi.com.cn/gkzt/gagx"
@@ -769,85 +485,38 @@
                 </ul>
               </div>
               <div style="height: 262px; margin-top: 16px; overflow:hidden;">
-                <script type="text/javascript">showShortCut('535420737')</script>
+                <div style="overflow:hidden;">
+                  <router-link to="/login">
+                    <img src="~/assets/img/中国科技大学.jpg" alt="">
+                  </router-link>
+                </div>
+                <div style="overflow:hidden;">
+                  <router-link to="/login">
+                    <img src="~/assets/img/体育类报考指南.jpg" alt="">
+                  </router-link>
+                </div>
+                <div style="overflow:hidden;">
+                  <router-link to="/login">
+                    <img src="~/assets/img/专业知识库.png" alt="">
+                  </router-link>
+                </div>
+                <div style="overflow:hidden;">
+                  <router-link to="/login">
+                    <img src="~/assets/img/报考查询.png" alt="">
+                  </router-link>
+                </div>
               </div>
             </div>
-            <!-- right end -->
           </div>
-        </div>
-        <!-- part03 end -->
-        <div class="clearfix" style=" width: 1180px; overflow: hidden;margin-top: 2px;">
-          <script type="text/javascript">showShortCut('1010255274')</script>
-        </div>
-        <div class="clearfix" style=" width: 1180px; overflow: hidden;">
-          <script type="text/javascript">showShortCut('1010345714')</script>
-        </div>
-        <!-- part04 start -->
+
+
+
+        <!-- 志愿 -->
         <div class="index-row part04 clearfix">
           <div class="part-head clearfix">
             <h3><span class="part-thbg"><img src="//t3.chei.com.cn/gaokao/assets/src/images/zy.svg"></span>志愿</h3>
           </div>
           <div class="part-body">
-            <!-- gk-left start -->
-            <div class="gk-left">
-              <div class="side-head">
-                <span class="i-title">咨询室</span>
-                <span class="more"><a
-                    href="/zxdy/zxs--method-listDefault,forumid-6267733,year-2007,start-0.dhtml"
-                    target="_blank">更多 &gt;</a></span>
-              </div>
-              <div class="side-body">
-                <ul class="index-list">
-                  <li>山东考生：<a href="/zxdy/view--qid-978557164,method-listDefault.dhtml" target="_blank">提前批次未被录取，是否会影响一本？</a>
-                  </li>
-                  <li>山西考生：<a
-                      href="/zxdy/view--qid-996250711,method-listDefault,showCurrent-tlq3,year-2007,start-0.dhtml"
-                      target="_blank">英语需口试是怎么回事？</a></li>
-                  <li>吉林考生：<a
-                      href="/zxdy/view--qid-1005966238,method-listDefault,showCurrent-tlq3,year-2007,start-0.dhtml"
-                      target="_blank">平行志愿被退档还能投到下一个志愿吗？</a></li>
-                  <li>辽宁考生：<a
-                      href="/zxdy/view--qid-963399793,method-listDefault,showCurrent-tlq3,year-2007,start-0.dhtml"
-                      target="_blank">怎么报考会减小被退档的风险？</a></li>
-                  <li>安徽考生：<a
-                      href="/zxdy/view--qid-963448809,method-listDefault,showCurrent-tlq3,year-2007,start-0.dhtml"
-                      target="_blank">关于分数优先&rdquo;和&ldquo;志愿优先&rdquo;</a></li>
-                </ul>
-              </div>
-              <div class="side-head">
-                <span class="i-title">帮助中心</span>
-                <span class="more"><a href="/help/" target="_blank">更多 &gt;</a></span>
-              </div>
-              <div class="side-body">
-                <ul class="index-list">
-                  <li><a href="/help/wb.jsp#" target="_blank">特殊类型报名建议使用什么浏览器？</a></li>
-                  <li><a href="/help/wb.jsp#" target="_blank">特殊类型网报步骤是怎样的？</a></li>
-                  <li><a href="/help/wb.jsp#" target="_blank">特殊类型报名如何添加志愿？</a></li>
-                  <li><a href="/help/wb.jsp#" target="_blank">特殊类型网报对上传的照片有什么要求？</a></li>
-                  <li><a href="/help/wb.jsp#" target="_blank">确认考试是否有志愿数量的限制？</a></li>
-                </ul>
-              </div>
-              <div class="side-head">
-                <span class="i-title">高考常识</span>
-                <span class="more"><a href="/gkxx/gkcs/" target="_blank">更多 &gt;</a></span>
-              </div>
-              <div class="side-body">
-                <ul class="index-list hotnew-list">
-                  <li><a href="/gkxx/gkcs/202108/20210819/2100715238.html" target="_blank"
-                         title="优师计划九大热点问题解答">优师计划九大热点问题解答</a></li>
-                  <li><a href="/gkxx/gkcs/202108/20210805/2094888733.html" target="_blank"
-                         title="优师计划：大学期间“两免一补”，毕业有编、有岗！">优师计划：大学期间“两免一补”，毕业有编、有岗！</a></li>
-                  <li><a href="/gkxx/ncdzjz/202005/20200518/1912975165.html" target="_blank"
-                         title="2020年是否报考专项计划，这八个问题给你答案">2020年是否报考专项计划，这八个问题给你答案</a></li>
-                  <li><a href="/gkxx/gkcs/201906/20190606/1796951223.html" target="_blank"
-                         title="何谓批次线、调档线、录取线？">何谓批次线、调档线、录取线？</a></li>
-                  <li><a href="/gkxx/gkcs/201906/20190604/1796726264.html" target="_blank"
-                         title="高校招生章程包含哪些重要信息？">高校招生章程包含哪些重要信息？</a></li>
-                </ul>
-              </div>
-            </div>
-            <!-- gk-left end -->
-            <!-- gk-main start -->
             <div class="gk-main">
               <div class="index-tab-container">
                 <div class="index-tab clearfix">
@@ -860,7 +529,6 @@
                 <div class="tab-content clearfix">
                   <div class="item-content active">
                     <div class="list-content" style="overflow: hidden; height: 255px;">
-                      <script type="text/javascript">showShortCut('2356257984')</script>
                       <ul>
                         <li class="clearfix"><span class="news-title"><a
                             href='/gkxx/ss/202108/20210805/2094746918.html' target="_blank"
@@ -888,34 +556,6 @@
                         </li>
                       </ul>
                     </div>
-                  </div>
-                  <div class="item-content">
-                    <ul class="list-content" style="overflow: hidden; height: 255px;">
-                      <li class="clearfix"><span class="news-title"><a
-                          href='/gkxx/zc/ss/202108/20210808/2095876440.html' target="_blank"
-                          title="广西：关于2021年普通高校招生高职高专提前批征集志愿的说明">广西：关于2021年普通高校招生高职高专提前批征集志愿的说明</a></span>
-                      </li>
-                      <li class="clearfix"><span class="news-title"><a
-                          href='/gkxx/zc/ss/202107/20210730/2093338629.html' target="_blank"
-                          title="福建：2021年高招录取常见问题解答（4）">福建：2021年高招录取常见问题解答（4）</a></span></li>
-                      <li class="clearfix"><span class="news-title"><a
-                          href='/gkxx/zc/ss/202107/20210705/2084273286.html' target="_blank"
-                          title="安徽：2021年普通高校招生文理科志愿设置及投档办法">安徽：2021年普通高校招生文理科志愿设置及投档办法</a></span>
-                      </li>
-                      <li class="clearfix"><span class="news-title"><a
-                          href='/gkxx/ss/202107/20210712/2086963991.html' target="_blank"
-                          title="河南：一图看懂考生电子档案状态">河南：一图看懂考生电子档案状态</a></span></li>
-                      <li class="clearfix"><span class="news-title"><a
-                          href='/gkxx/zc/ss/202107/20210713/2087378908.html' target="_blank"
-                          title="浙江：普通类提前招生一段录取结果15日可查询！你填报的传统志愿这样投档">浙江：普通类提前招生一段录取结果15日可查询！你填报的传统志愿...</a></span>
-                      </li>
-                      <li class="clearfix"><span class="news-title"><a
-                          href='/gkxx/ss/202107/20210709/2086963596.html' target="_blank"
-                          title="上海：高考招生录取流程探微">上海：高考招生录取流程探微</a></span></li>
-                      <li class="clearfix"><span class="news-title"><a
-                          href='/gkxx/zc/ss/202106/20210629/2082154900.html' target="_blank"
-                          title="福建：2021年普通高校招生志愿填报问答">福建：2021年普通高校招生志愿填报问答</a></span></li>
-                    </ul>
                   </div>
                 </div>
               </div>
@@ -950,8 +590,6 @@
                 </ul>
               </div>
             </div>
-            <!-- gk-main end -->
-            <!-- gk-right start -->
             <div class="gk-right">
               <div class="side-head">
                 <span class="i-title">志愿参考系统</span>
@@ -1014,23 +652,32 @@
                 </ul>
               </div>
             </div>
-            <!-- gk-right end -->
           </div>
         </div>
-        <!-- part04 end -->
       </div>
     </div>
   </div>
 </template>
 <script>
 import '~/assets/css/index.css'
-// import '~/assets/js/index.js'
-// import userApi from "@/assets/js/index";
+
 export default {
   data() {
+    return {
+      rotation: [
+        require('~/assets/img/banner1.png'),
+        require('~/assets/img/banner2.png'),
+        require('~/assets/img/banner3.png'),
+        require('~/assets/img/banner4.png'),
+        require('~/assets/img/banner5.png'),
+      ]
+    }
   },
   created() {
+
   },
-  methods: {}
+  methods: {
+
+  }
 }
 </script>

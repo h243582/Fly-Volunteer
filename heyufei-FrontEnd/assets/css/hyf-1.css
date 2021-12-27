@@ -3196,9 +3196,9 @@ a, a:link, a:visited {
 }
 
 .gk-main {
-  width: 490px;
+  width: 880px;
   float: left;
-  margin-left: 40px;
+  margin-left: 0px;
   *display: inline;
   _zoom: 1
 }
