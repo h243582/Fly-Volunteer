@@ -36,18 +36,14 @@ RabbitMQ版本	Erlang最低版本要求	Erlang最高版本要求
 | 3.7.7 - 3.7.14  | 20.3.x             | 21.3.x             |
 | 3.7.0 - 3.7.6   | 19.3               | 20.3.x             |
 
-
 如果觉得下载比较繁琐，我已经提供了所需模块的安装包：
 
-Erlang安装包：
+链接：https://pan.baidu.com/s/1NLYtuSkaQQHLH8lcMILYuw 
+提取码：1111
 
-链接：https://pan.baidu.com/s/1WxzA4AGexbHXSUoHYzJbWw 
-提取码：c3we 
+Erlang安装包：otp_src_22.0.tar.gz
 
-RabbitMQ安装包：
-
-链接：https://pan.baidu.com/s/1fFy_rhYv0IHEhx58z-lsfw 
-提取码：vht2 
+RabbitMQ安装包：rabbitmq-server-generic-unix-3.7.16.tar.xz
 
 
 
