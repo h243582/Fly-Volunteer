@@ -5,12 +5,21 @@
       <div class="form">
         <h3 class="loginsign-title">注册新账号</h3>
         <el-form :model="pojo" :rules="rules" ref="pojo" label-width="120px" class="demo-form-inline">
-          <el-image
-              style="width: 100px; height: 100px;align-self: center"
-              :src="pojo.picURL"
-              :preview-src-list="srcList">
+          <el-upload
+              class="avatar-uploader"
+              action="#"
+              :show-file-list="false"
+              :on-success="handleAvatarSuccess"
+              :before-upload="beforeAvatarUpload"
+              :http-request="uploadImg">
 
-          </el-image>
+            <img v-if="pojo.imageUrl" :src="pojo.imageUrl" class="avatar">
+            <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+          </el-upload>
+          <div class="upload-name">点击上传头像</div>
+
+
+
 
           <el-form-item class="control-label" label="姓名" prop="name" style="margin-bottom: 20px">
             <el-input v-model="pojo.name" placeholder="真实姓名或常用昵称"/>
@@ -61,7 +70,7 @@
   </div>
 </template>
 <script>
-import '~/assets/css/page-sj-person-loginsign.css'
+import '~/assets/css/loginsign.css'
 import userApi from '@/api/user'
 import {setUser} from '@/utils/auth'
 
@@ -71,7 +80,13 @@ export default {
       checked: false,
       password: '',
       username: '',
-      pojo: {},
+      pojo: {
+        mobile:'',
+        imageUrl: 'https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png',
+        name:'',
+        password:'',
+        yzm:''
+      },
       rules: {
         name: [
           {required: true, message: '请输入姓名', trigger: 'blur'},
@@ -85,6 +100,7 @@ export default {
           {required: true, message: '请输入手机号码', trigger: 'blur'},
         ]
       },
+
     }
   },
   methods: {
@@ -134,7 +150,27 @@ export default {
           this.password = ''
         }
       })
-    }
+    },
+    handleAvatarSuccess(res, file) {
+      this.imageUrl = URL.createObjectURL(file.raw);
+    },
+    beforeAvatarUpload(file) {
+      const isJPG = file.type === 'image/jpeg';
+      const isLt2M = file.size / 1024 / 1024 < 2;
+
+      if (!isJPG) {
+        this.$message.error('上传头像图片只能是 JPG 格式!');
+      }
+      if (!isLt2M) {
+        this.$message.error('上传头像图片大小不能超过 2MB!');
+      }
+      return isJPG && isLt2M;
+    },
+    uploadImg (params) {
+      console.log(params)
+
+    },
+
   }
 }
 </script>

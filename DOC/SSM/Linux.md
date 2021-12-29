@@ -14,6 +14,14 @@ find -name "*.sh"
 
 
 
+## 查看各个运行的端口号
+
+ ```
+ netstat -ntpl
+ ```
+
+
+
 ## 切换用户
 > su root
 > Password: ******

@@ -10,13 +10,24 @@ eureka:
 
 spring:
   application:
-    name: hyf-sms  #指定服务名
+    name: heyufei-sms  #指定服务名
   rabbitmq:
-    host: 127.0.0.1
-
+    host: 120.24.145.157
+    port: 5672
+    username: guest
+    password: guest
+  mail:
+    username: 2435823336@qq.com
+    password: thiofahhwoayeabe
+    host: smtp.qq.com
+    properties:
+      mail:
+        smtp:
+          ssl:
+            enable: true
 aliyun:
   sms:
     accessKeyId: 不告诉你
     accessKeySecret: 不告诉你
     template_code: SMS_85735065
-    sign_name: 青软
+    sign_name: 软

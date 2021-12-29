@@ -1,3 +1,7 @@
+# 一、安装及配置
+
+
+
 > 摘要：为了简单起见，在安装过程中已默认关闭了firewalld防火墙 和 SELinux。实际生产中，则不这样子做，而是开放相应的端口，以增强安全性。
 >
 > 关闭firewalld防火墙 和 SELinux关闭命令如下：
@@ -20,7 +24,7 @@ setenforce 0
 sed -i "s/^SELINUX=enforcing/SELINUX=disabled/g" /etc/selinux/config
 ```
 
-# 二、下载
+## 1、下载
 
 > RabbitMQ所需要的安装包，即Erlang 和 RabbitMQ
 
@@ -53,7 +57,7 @@ RabbitMQ安装包：
 
 
 
-# 三、传到Linux
+## 2、传到Linux
 
 > 把下载好的RabbitMQ 和 Erlang上传到Linux服务器上
 
@@ -99,7 +103,7 @@ otp_src_22.0  rabbitmq_server-3.7.16
 
 ![img](https://heyufei-1305336662.cos.ap-shanghai.myqcloud.com/my_img/20190713115902388.png)
 
-# 四、安装Erlang
+## 3、安装Erlang
 
 1、安装Erlang编译所依赖的环境
 
@@ -184,7 +188,7 @@ Eshell V10.4  (abort with ^G)
 
 ![img](https://heyufei-1305336662.cos.ap-shanghai.myqcloud.com/my_img/20190713161146229.png)
 
-# 五、安装RabbitMQ
+## 4、安装RabbitMQ
 
 1、配置RabbitMQ环境变量
 
@@ -293,7 +297,7 @@ Warning: PID file not written; -detached was passed.
 
 ![img](https://heyufei-1305336662.cos.ap-shanghai.myqcloud.com/my_img/20190713184222581.png)
 
-# 六、管理界面创建用户和虚拟主机
+## 5、管理界面创建用户和虚拟主机
 
 1、点击Admin，进入到用户管理界面
 
@@ -346,4 +350,133 @@ Warning: PID file not written; -detached was passed.
 10、退出guest用户登录，测试使用admin用户登录
 
 ![img](https://heyufei-1305336662.cos.ap-shanghai.myqcloud.com/my_img/20190714013859898.png)![img](https://heyufei-1305336662.cos.ap-shanghai.myqcloud.com/my_img/2019071401395790.png)![img](https://heyufei-1305336662.cos.ap-shanghai.myqcloud.com/my_img/20190714014304721.png)
+
+
+
+# 二、java调用
+
+>**mq有三种端口**
+>
+>| Protocol               | Bound to | Port  |
+>| ---------------------- | -------- | ----- |
+>| amqp  （java中）       | ::       | 5672  |
+>| clustering  （网页中） | ::       | 25672 |
+>| http （集群中）        | ::       | 15672 |
+
+## 1、依赖
+
+```
+<dependency>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-starter-amqp</artifactId>
+</dependency>
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-data-jpa</artifactId>
+</dependency>
+```
+
+## 2、yml中
+
+```yaml
+spring:
+  rabbitmq:
+    host: 120.24.145.157
+    port: 5672
+    username: guest
+    password: guest
+```
+
+## 3、config中
+
+### （1）config类
+
+```java
+package com.heyufei.user.config;
+
+
+import org.springframework.amqp.core.*;
+
+import org.springframework.amqp.rabbit.annotation.QueueBinding;
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
+
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
+
+
+@Component
+public class RabbitmqConfig {
+    //...
+    
+}
+```
+
+### （2）方法1创建及绑定
+
+其中引用的包（Queue、Exchange）一定要注意，==org.springframework.amqp.core==，因为另一种方法并不是引用这个
+
+```java
+import org.springframework.amqp.core.*;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
+
+
+//    创建队列
+@Bean(value = "queue")
+public Queue Queue(){
+    Queue queue = QueueBuilder.durable("queue2222222222222222").build();
+    return queue;
+}
+
+//    创建交换机
+@Bean(value = "exchange")
+public Exchange Exchange(){
+    Exchange exchange = ExchangeBuilder.fanoutExchange("exchange_name33333333").durable(true).build();
+    return exchange;
+}
+//绑定
+@Bean
+public Binding Binding(@Qualifier("exchange") Exchange exchange, @Qualifier("queue") Queue queue){
+    return   BindingBuilder.bind(queue).to(exchange).with("").noargs();
+}
+```
+
+### （3）方法2创建及绑定
+
+其中引用的包（Queue、Exchange）一定要注意，==org.springframework.amqp.rabbit.annotation==，因为另一种方法并不是引用这个
+
+```java
+import org.springframework.amqp.rabbit.annotation.Exchange;
+import org.springframework.amqp.rabbit.annotation.Queue;
+import org.springframework.amqp.rabbit.annotation.QueueBinding;
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.stereotype.Component;
+
+
+//自动创建队列
+@RabbitListener(queuesToDeclare = @Queue("myQueue1111111"))
+public void process2(String message){
+
+}
+
+//自动创建队列、交换机、并两者绑定
+@RabbitListener(bindings = @QueueBinding(value = @Queue("send_message_mq"),
+        exchange = @Exchange("send_message_exchange") ))
+public void process3(String message){
+}
+```
+
+### 4、发送
+
+```
+Map<String, String> map = new HashMap();
+map.put("mobile", mobile);
+map.put("code", code + "");
+rabbitTemplate.convertAndSend("sms", map);
+```
+
+2021-12-29T19:53:08.955+08:00 INFO reservioralert.reservioralert [http-nio-1655-exec-1] [com.hikvision.artemis.sdk.ArtemisHttpUtil:826] the Artemis Request is Success,statusCode:200 SuccessMsg:{"code":"0","msg":"success","data":{"station":{"name":"西兴水库","regionIndexCode":"0644662c-f60e-450b-a2e7-dd98ddbe537e","basinId":null,"code":"a0001","latitudeDegree":24,"latitudeMinute":29,"latitudeSecond":37.1528,"longitudeDegree":107,"longitudeMinute":42,"longitudeSecond":11.77097,"createTime":"2021-12-29 17:27:24","updateTime":"2021-12-29 17:48:12","version":null,"type":0,"reportSwitch":0,"reportType":null,"stickOrder":null,"remark":null,"waterLevelMonitoring":null,"rainfallMonitoring":null,"dayRainfallWarning":30.0,"hourRainfallWarning":20.0,"criticalLevel":20.0,"resourceType":null,"enable":1,"externalIndexCode":null,"typeName":"河道","picUrl":null,"address":null,"displayOrder":null,"management":null,"placeCode":null,"placeName":null,"specialTag":"","upstreamId":null,"upstreamName":null,"downstreamId":null,"downstreamName":null,"geo":null,"sid":"babebb32-75b6-4648-b2af-dea50a1522d5"},"currentData":{"realtimeLevel":8.9,"levelDiff":0.0,"criticalLevel":20.0,"rainfallInOneHour":0.0,"rainfallInOneDay":49.0,"regionInfo":["浙江省","杭州市","滨江区","西兴街道"],"regionIndexCode":"0644662c-f60e-450b-a2e7-dd98ddbe537e","stationId":null,"basinInfo":null,"stationType":0,"stationCode":"a0001","stationName":"西兴水库","resourceType":null,"**alarmType**":4,"createTime":"2021-09-28 15:13:00","dayRainfallWarning":30.0,"hourRainfallWarning":20.0},"dataTrendBo":{"waterLevel":[{"picUrl":null,"xfield":"2021-12-29 17:00:00","yfield":"23.89"},{"picUrl":null,"xfield":"2021-12-29 18:00:00","yfield":"353.61"},{"picUrl":null,"xfield":"2021-12-29 19:00:00","yfield":"663.79"}],"rainfall":[{"picUrl":null,"xfield":"2021-12-29 17:00:00","yfield":"119.00"},{"picUrl":null,"xfield":"2021-12-29 18:00:00","yfield":"28.00"},{"picUrl":null,"xfield":"2021-12-29 19:00:00","yfield":"-49.00"}],"criticalLevel":20.0,"dayRainfallWarning":30.0,"hourRainfallWarning":20.0,"total":0,"name":"西兴水库","regionIndexCode":"0644662c-f60e-450b-a2e7-dd98ddbe537e","stationId":"babebb32-75b6-4648-b2af-dea50a1522d5","code":"a0001"},"basin":null,"cameraList":[{"indexCode":"6d54828226444ffcbfac6b3704464b9c","name":"区域入侵球机","status":null,"altitude":null,"channelNo":1,"componentId":null,"createTime":"2021-12-27 18:44:30","updateTime":"2021-12-27 18:44:49","regionIndexCode":"0644662c-f60e-450b-a2e7-dd98ddbe537e","belongRegionIndexCode":null,"isTop":0,"enable":1,"transmode":1,"displayOrder":6,"cameraType":"枪机","latitude":null,"longitude":null,"deviceIndexCode":"f48b5293984c49f095fbd26f8c6b7d11","externalIndexCode":"33010801581314000001","isSync":1,"cascadeCode":null,"originalIndexCode":null,"remark":null},{"indexCode":"f7be1adaf6924f19b93d7b73cc34e18b","name":"IPdome","status":null,"altitude":null,"channelNo":1,"componentId":null,"createTime":"2021-12-29 17:34:21","updateTime":"2021-12-29 17:34:31","regionIndexCode":"0644662c-f60e-450b-a2e7-dd98ddbe537e","belongRegionIndexCode":null,"isTop":0,"enable":1,"transmode":1,"displayOrder":18,"cameraType":"枪机","latitude":null,"longitude":null,"deviceIndexCode":"5305e1d6687b48208a17bfdfcbf9de87","externalIndexCode":"33010801581314000002","isSync":1,"cascadeCode":null,"originalIndexCode":null,"remark":null}],"sensorList":[{"indexCode":"b17f078e5e824d3a9c049f68ca5f445f","regionIndexCode":"0644662c-f60e-450b-a2e7-dd98ddbe537e","stationId":"babebb32-75b6-4648-b2af-dea50a1522d5","enable":1,"displayOrder":99999,"type":"wl","channelNo":"57","measureLow":10.0,"measureHigh":20.0,"alarmLow":null,"alarmHigh":null,"sensitive":0.1,"unit":null,"createTime":"2021-12-29 17:32:56","updateTime":"2021-12-29 17:32:56","version":null,"deviceIndexCode":"095aaa8413064175931233786ac0e3b0","deviceName":"水位","name":"水位","remark":null},{"indexCode":"0151a1dcde4f4602909163183b5882ee","regionIndexCode":"0644662c-f60e-450b-a2e7-dd98ddbe537e","stationId":"babebb32-75b6-4648-b2af-dea50a1522d5","enable":1,"displayOrder":99999,"type":"precipitation","channelNo":"32","measureLow":10.0,"measureHigh":20.0,"alarmLow":null,"alarmHigh":null,"sensitive":0.2,"unit":null,"createTime":"2021-12-29 17:33:32","updateTime":"2021-12-29 17:33:32","version":null,"deviceIndexCode":"f77893e52ed84b73ae76e66089ea3ee1","deviceName":"雨量","name":"雨量","remark":null}],"regionName":"西兴街道"}}
 

@@ -5,17 +5,13 @@ import java.util.concurrent.TimeUnit;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Expression;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
-import javax.persistence.criteria.Selection;
-import javax.transaction.Transactional;
 
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -44,7 +40,7 @@ public class UserService {
     BCryptPasswordEncoder encoder;
 
     @Autowired
-    private RedisTemplate redisTemplate;
+    private RedisTemplate<String, String> redisTemplate;
 
     @Autowired
     private RabbitTemplate rabbitTemplate;
@@ -165,10 +161,11 @@ public class UserService {
         //2.将验证码放入redis
         redisTemplate.opsForValue().set("smscode_" + mobile, code + "", 5, TimeUnit.MINUTES);//五分钟过期
         //3.将验证码和手机号发动到rabbitMQ中
-        Map<String, String> map = new HashMap();
+        Map<String, String> map = new HashMap<>();
         map.put("mobile", mobile);
         map.put("code", code + "");
-        rabbitTemplate.convertAndSend("sms", map);
+        rabbitTemplate.convertAndSend("send_message_exchange","",map);
+
     }
 
     /**
@@ -178,7 +175,7 @@ public class UserService {
      */
     public void add(User user, String code) {
         //判断验证码是否正确
-        String sysCode = (String) redisTemplate.opsForValue().get("smscode_" + user.getMobile());
+        String sysCode = redisTemplate.opsForValue().get("smscode_" + user.getMobile());
         //提取系统正确的验证码
         if (sysCode == null) {
             throw new RuntimeException("请点击获取短信验证码");

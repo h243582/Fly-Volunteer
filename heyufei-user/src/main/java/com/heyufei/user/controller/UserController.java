@@ -1,16 +1,16 @@
 package com.heyufei.user.controller;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 import io.jsonwebtoken.Claims;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.heyufei.user.pojo.User;
 import com.heyufei.user.service.UserService;
@@ -18,7 +18,10 @@ import com.heyufei.user.service.UserService;
 import entity.PageResult;
 import entity.Result;
 import entity.StatusCode;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import util.JwtUtil;
+import util.OSS_Tencent;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -158,4 +161,76 @@ public class UserController {
 		}
 	}
 
+	//采用file.transferTo 来保存上传的文件
+	@RequestMapping("/uploadPic")
+	@ResponseBody
+	public String fileUpload1(@RequestParam("file") CommonsMultipartFile imgFile, HttpServletRequest request) throws IOException {
+		//获取文件名 : file.getOriginalFilename();
+		String uploadFileName = imgFile.getOriginalFilename();
+		System.out.println("上传文件名 : "+uploadFileName);
+		//如果文件名为空，直接回到首页！
+		if ("".equals(uploadFileName)){
+//            return "app/register.jsp";
+			return null;
+		}
+
+		//上传路径保存设置
+		String path = request.getServletContext().getRealPath("/upload");
+		System.out.println("path----------------------"+path);
+		//如果路径不存在，创建一个
+		File realPath = new File(path);
+		if (!realPath.exists()){
+			realPath.mkdir();
+		}
+		System.out.println("上传文件保存地址："+realPath);
+
+		OSS_Tencent oss = new OSS_Tencent();
+		String picPath = realPath.getAbsolutePath() + "\\" + uploadFileName;
+		String httpUrl = oss.upload(picPath, uploadFileName);
+		System.out.println("httpUrl:  "+httpUrl);
+		return httpUrl;
+	}
+
+	@RequestMapping("/uploadToFile")
+	@ResponseBody
+	public String uploadToUser(@RequestParam("file") MultipartFile file, HttpServletRequest request) {
+		String fileName = file.getOriginalFilename();
+		String upload;
+		System.out.println(fileName);
+		if (fileName.indexOf("\\") != -1) {
+			fileName = fileName.substring(fileName.lastIndexOf("\\"));
+		}
+		System.out.println(fileName);
+
+		// 获取文件存放地址
+		String filePath = request.getServletContext().getRealPath("/upload/");;
+		File f = new File(filePath);
+		if (!f.exists()) {
+			f.mkdirs();// 不存在路径则进行创建
+		}
+		FileOutputStream out = null;
+		try {
+			// 重新自定义文件的名称
+			Date date = new Date();
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+			String d = sdf.format(date);// 时间
+
+			//名字
+			fileName =  d + fileName.substring(fileName.indexOf('.'));
+			filePath = filePath + fileName;
+			System.out.println(filePath);
+			out = new FileOutputStream(filePath);
+			out.write(file.getBytes());
+			out.flush();
+			out.close();
+
+			OSS_Tencent oss = new OSS_Tencent();
+			upload = oss.upload(filePath,  fileName);
+		} catch (Exception e) {
+			return "error";
+		}
+		request.getSession().setAttribute("picUrl",upload);
+
+		return upload; // 返回文件地址
+	}
 }

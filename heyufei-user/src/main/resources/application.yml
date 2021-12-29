@@ -28,8 +28,17 @@ spring:
     password: Jsu123456.
 
   rabbitmq:
-    host: localhost
+    host: 120.24.145.157
+    port: 5672
+    username: guest
+    password: guest
+
 jwt:
   config:
     key: heyufei
     ttl: 360000000000
+
+#设置交换器的名称
+mq:
+  config:
+    exchange: log.direct
