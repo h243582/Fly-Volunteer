@@ -121,7 +121,7 @@
       <div class="footer">
         <div class="footer-list">
           <a href="//www.chsi.com.cn/" target="_blank">学信网</a>
-          <a href="https://chesicc.chsi.com.cn/zxgw/zxjs/201604/20160418/1529506207.html" target="_blank">中心简介</a>
+          <a href="" target="_blank">中心简介</a>
           <a href="//www.chsi.com.cn/about/contact.shtml" target="_blank">联系我们</a>
           <a href="//www.chsi.com.cn/about/copyright.shtml" target="_blank">版权声明</a>
           <a href="/sitemap.jsp" target="_blank">网站地图</a>
@@ -135,11 +135,6 @@
           <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010202009747">
             <img src="https://t1.chei.com.cn/chsi/images/jgwab.png"
                  style="vertical-align: middle; margin-bottom: 2px; margin-left: 8px;"> 京公网安备11010202009747号</a>
-        </div>
-        <div class="footer-media">
-          <a href="javascript:;"><i class="iconfont" title="官方微信">&#xe694;</i>官方微信<img
-            src="/news/file.do?method=downFile&amp;id=1537666622"></a>
-          <a href="http://weibo.com/chsigk" target="_blank"><i class="iconfont" title="官方微博">&#xe693;</i>官方微博</a>
         </div>
         <div class="footer-msg">
           客服热线：010-67410388<br>

@@ -5,15 +5,15 @@
       <div class="form">
         <h3 class="loginsign-title">注册新账号</h3>
         <el-form :model="pojo" :rules="rules" ref="pojo" label-width="120px" class="demo-form-inline">
+
           <el-upload
               class="avatar-uploader"
               action="#"
               :show-file-list="false"
-              :on-success="handleAvatarSuccess"
               :before-upload="beforeAvatarUpload"
               :http-request="uploadImg">
 
-            <img v-if="pojo.imageUrl" :src="pojo.imageUrl" class="avatar">
+            <img v-if="pojo.imageUrl" :src="pojo.imageUrl" class="avatar" alt="">
             <i v-else class="el-icon-plus avatar-uploader-icon"></i>
           </el-upload>
           <div class="upload-name">点击上传头像</div>
@@ -31,7 +31,9 @@
 
           <el-form-item class="control-label" label="短信验证码" prop="yzm">
             <el-input id="appendedInputButton" v-model="pojo.yzm" size="30" placeholder="验证码" style=" width: 40%"/>
-            <el-button type="primary" @click="sendMessage" plain style="padding-top: 10px; width: 58%">获取验证码</el-button>
+            <el-row>
+              <el-button type="primary" @click="sendMessage" plain style="padding-top: 10px; width: 58%">获取验证码</el-button>
+            </el-row>
           </el-form-item>
 
 
@@ -41,8 +43,9 @@
 
           <el-checkbox v-model="checked" style="float:right;" prop="agree">同意协议并接受《服务条款》</el-checkbox>
 
-          <el-button type="success" @click="register"  style="float:right;width: 100%">注 册</el-button>
-
+          <el-row>
+            <el-button type="success" @click="register"  style="float:right;width: 100%">注 册</el-button>
+          </el-row>
         </el-form>
       </div>
     </div>
@@ -52,6 +55,7 @@
       <div class="form">
         <h3 class="loginsign-title">用户登录</h3>
         <el-form>
+
           <el-form-item class="control-label" label="手机号码" prop="mobile" style="margin-bottom: 20px">
             <el-input v-model="username" placeholder="仅支持大陆手机号"/>
           </el-form-item>
@@ -59,20 +63,26 @@
           <el-form-item class="control-label" label="密码" prop="password" style="margin-bottom: 20px">
             <el-input type="password" v-model="password" placeholder="请输入密码"/>
           </el-form-item>
+
+          <el-row>
+            <el-button type="primary" @click="login"  style="float:right;width: 100%">登 录</el-button>
+          </el-row>
+
         </el-form>
-
-        <el-button type="primary" @click="login"  style="float:right;width: 100%">登 录</el-button>
-
 
       </div>
     </div>
 
   </div>
 </template>
+
+
+
 <script>
 import '~/assets/css/loginsign.css'
 import userApi from '@/api/user'
 import {setUser} from '@/utils/auth'
+import COS from 'cos-js-sdk-v5' //脚手架安装
 
 export default {
   data() {
@@ -151,9 +161,6 @@ export default {
         }
       })
     },
-    handleAvatarSuccess(res, file) {
-      this.imageUrl = URL.createObjectURL(file.raw);
-    },
     beforeAvatarUpload(file) {
       const isJPG = file.type === 'image/jpeg';
       const isLt2M = file.size / 1024 / 1024 < 2;
@@ -166,11 +173,60 @@ export default {
       }
       return isJPG && isLt2M;
     },
-    uploadImg (params) {
-      console.log(params)
-
+    dateFormat(fmt, date) {
+      let ret;
+      const opt = {
+        "Y+": date.getFullYear().toString(),        // 年
+        "m+": (date.getMonth() + 1).toString(),     // 月
+        "d+": date.getDate().toString(),            // 日
+        "H+": date.getHours().toString(),           // 时
+        "M+": date.getMinutes().toString(),         // 分
+        "S+": date.getSeconds().toString()          // 秒
+        // 有其他格式化字符需求可以继续添加，必须转化成字符串
+      };
+      for (let k in opt) {
+        ret = new RegExp("(" + k + ")").exec(fmt);
+        if (ret) {
+          fmt = fmt.replace(ret[1], (ret[1].length == 1) ? (opt[k]) : (opt[k].padStart(ret[1].length, "0")))
+        };
+      };
+      return fmt;
     },
 
+    uploadImg (res) {
+      console.log(res)
+
+
+        if (res.file) {
+          // 下面的代码是固定写法
+          // 填写自己腾讯云cos中的key和id (密钥)
+          const cos = new COS({
+            SecretId: 'AKIDY2PVXMBrCMQYUFwfGi40kPq1QcYCckdf', // 身份识别ID
+            SecretKey: 'z8x43NhlbFFVdW7ZptIRKyMh1A4uWtSR' // 身份秘钥
+          })
+          let date = new Date();
+
+          // 执行上传操作
+          cos.putObject({
+            Bucket: 'heyufei-1305336662', /* 存储桶 */
+            Region: 'ap-shanghai', /* 存储桶所在地域，必须字段 */
+            Key: '/Fly-Volunteer/' + dateFormat("YYYYmmddHHMM", date)  + res.file.name, /* 文件名 */
+            StorageClass: 'STANDARD', // 上传模式, 标准模式
+            Body: res.file, // 上传文件对象
+            // onProgress: (progressData) => { // 上传进度
+            //   console.log('----------------'+JSON.stringify(progressData))
+            // }
+          }, (err, data) => {
+            console.log(err || data)
+            // 上传成功之后
+            if (data.statusCode === 200) {
+              this.pojo.imageUrl = `https:${data.Location}`
+            }
+          })
+      }
+
+
+    },
   }
 }
 </script>
