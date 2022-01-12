@@ -4,13 +4,15 @@ const tokenKey = "X-Token"; //Token
 const nameKey = "userName"; //用户名
 const avatarKey = "userAvatar"; //用户头像
 const idKey = "userId"; //用户id
+const isVIP = "isVIP"; //vip
 
 
-export function setUser(id, token, name, avatar) {
+export function setUser(id, token, name, avatar, vip) {
     Cookie.set(idKey, id);
     Cookie.set(tokenKey, token);
     Cookie.set(nameKey, name);
     Cookie.set(avatarKey, avatar);
+    Cookie.set(isVIP, vip);
 }
 
 export function setAvatar(avatar) {
@@ -23,6 +25,7 @@ export function getUser() {
         token: Cookie.get(tokenKey),
         name: Cookie.get(nameKey),
         avatar: Cookie.get(avatarKey),
+        isvip: Cookie.get(isVIP),
     };
 }
 
@@ -31,5 +34,6 @@ export function removeUser() {
     Cookie.remove(tokenKey);
     Cookie.remove(nameKey);
     Cookie.remove(avatarKey);
+    Cookie.remove(isVIP);
 }
 

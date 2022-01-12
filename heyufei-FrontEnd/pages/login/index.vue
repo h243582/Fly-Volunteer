@@ -5,24 +5,28 @@
       <div class="form">
         <h3 class="loginsign-title">注册新账号</h3>
         <el-form :model="pojo" :rules="rules" ref="pojo" label-width="120px" class="demo-form-inline">
+          <div v-if="progress===0 || progress===100">
+            <el-upload
+                class="avatar-uploader"
+                action="#"
+                :show-file-list="false"
+                :before-upload="beforeAvatarUpload"
+                :http-request="uploadImg">
 
-          <el-upload
-              class="avatar-uploader"
-              action="#"
-              :show-file-list="false"
-              :before-upload="beforeAvatarUpload"
-              :http-request="uploadImg">
+              <img v-if="pojo.avatar" :src="pojo.avatar" class="avatar" alt="">
+              <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+            </el-upload>
+          </div>
 
-            <img v-if="pojo.imageUrl" :src="pojo.imageUrl" class="avatar" alt="">
-            <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-          </el-upload>
+          <div v-if="progress!==0&&progress!==100">
+            <el-progress class="progress" type="circle" :percentage="progress" stroke-width="4"	 ></el-progress>
+          </div>
+
           <div class="upload-name">点击上传头像</div>
 
 
-
-
-          <el-form-item class="control-label" label="姓名" prop="name" style="margin-bottom: 20px">
-            <el-input v-model="pojo.name" placeholder="真实姓名或常用昵称"/>
+          <el-form-item class="control-label" label="姓名" prop="nickname" style="margin-bottom: 20px">
+            <el-input v-model="pojo.nickname" placeholder="真实姓名或常用昵称"/>
           </el-form-item>
 
           <el-form-item class="control-label" label="手机号码" prop="mobile" style="margin-bottom: 20px">
@@ -30,10 +34,9 @@
           </el-form-item>
 
           <el-form-item class="control-label" label="短信验证码" prop="yzm">
-            <el-input id="appendedInputButton" v-model="pojo.yzm" size="30" placeholder="验证码" style=" width: 40%"/>
-            <el-row>
-              <el-button type="primary" @click="sendMessage" plain style="padding-top: 10px; width: 58%">获取验证码</el-button>
-            </el-row>
+            <el-input id="appendedInputButton" v-model="pojo.yzm" size="30" placeholder="验证码" style=" width: 38%"/>
+            <el-button type="primary" @click="sendMessage" plain style="padding-top: 10px; width: 58%">获取验证码
+            </el-button>
           </el-form-item>
 
 
@@ -44,7 +47,7 @@
           <el-checkbox v-model="checked" style="float:right;" prop="agree">同意协议并接受《服务条款》</el-checkbox>
 
           <el-row>
-            <el-button type="success" @click="register"  style="float:right;width: 100%">注 册</el-button>
+            <el-button type="success" @click="register" style="float:right;width: 100%">注 册</el-button>
           </el-row>
         </el-form>
       </div>
@@ -65,7 +68,7 @@
           </el-form-item>
 
           <el-row>
-            <el-button type="primary" @click="login"  style="float:right;width: 100%">登 录</el-button>
+            <el-button type="primary" @click="login" style="float:right;width: 100%">登 录</el-button>
           </el-row>
 
         </el-form>
@@ -77,12 +80,12 @@
 </template>
 
 
-
 <script>
 import '~/assets/css/loginsign.css'
 import userApi from '@/api/user'
 import {setUser} from '@/utils/auth'
-import COS from 'cos-js-sdk-v5' //脚手架安装
+import COS from 'cos-js-sdk-v5'
+import file from "cos-js-sdk-v5"; //脚手架安装
 
 export default {
   data() {
@@ -91,14 +94,10 @@ export default {
       password: '',
       username: '',
       pojo: {
-        mobile:'',
-        imageUrl: 'https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png',
-        name:'',
-        password:'',
-        yzm:''
+        avatar: 'https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png',
       },
       rules: {
-        name: [
+        nickname: [
           {required: true, message: '请输入姓名', trigger: 'blur'},
           {min: 2, max: 5, message: '长度在 2 到 5 个字符', trigger: 'blur'}
         ],
@@ -110,6 +109,7 @@ export default {
           {required: true, message: '请输入手机号码', trigger: 'blur'},
         ]
       },
+      progress: 0,
 
     }
   },
@@ -130,13 +130,14 @@ export default {
       })
     },
     register() {
-      userApi.register(this.pojo).then(res => {
+      userApi.register(this.pojo,this.pojo.yzm).then(res => {
         if (res.data.flag) {
           this.$message({
             message: '注册成功',
             type: 'success'
           })
           this.pojo = {}
+          this.pojo.avatar='https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png'
         } else {
           this.$message({
             message: '注册出错',
@@ -149,8 +150,9 @@ export default {
       userApi.login(this.username, this.password).then(res => {
         if (res.data.code === 20000) {
           //保存用户信息,用户ID暂时用1代替
-          setUser(res.data.data.id, res.data.data.token, res.data.data.name, res.data.data.avatar)
+          setUser(res.data.data.id, res.data.data.token, res.data.data.name, res.data.data.avatar, res.data.data.isvip)
           location.href = '/'
+          // console.log(res.data.data)
         } else {
           this.$message({
             message: '用户名或密码错误',
@@ -171,6 +173,7 @@ export default {
       if (!isLt2M) {
         this.$message.error('上传头像图片大小不能超过 2MB!');
       }
+
       return isJPG && isLt2M;
     },
     dateFormat(fmt, date) {
@@ -188,41 +191,41 @@ export default {
         ret = new RegExp("(" + k + ")").exec(fmt);
         if (ret) {
           fmt = fmt.replace(ret[1], (ret[1].length == 1) ? (opt[k]) : (opt[k].padStart(ret[1].length, "0")))
-        };
-      };
+        }
+      }
       return fmt;
     },
 
-    uploadImg (res) {
-      console.log(res)
+    uploadImg(res) {
+      if (res.file) {
+        // 下面的代码是固定写法
+        // 填写自己腾讯云cos中的key和id (密钥)
+        const cos = new COS({
+          SecretId: 'AKIDY2PVXMBrCMQYUFwfGi40kPq1QcYCckdf', // 身份识别ID
+          SecretKey: 'z8x43NhlbFFVdW7ZptIRKyMh1A4uWtSR' // 身份秘钥
+        })
+        let date = new Date();
 
-
-        if (res.file) {
-          // 下面的代码是固定写法
-          // 填写自己腾讯云cos中的key和id (密钥)
-          const cos = new COS({
-            SecretId: 'AKIDY2PVXMBrCMQYUFwfGi40kPq1QcYCckdf', // 身份识别ID
-            SecretKey: 'z8x43NhlbFFVdW7ZptIRKyMh1A4uWtSR' // 身份秘钥
-          })
-          let date = new Date();
-
-          // 执行上传操作
-          cos.putObject({
-            Bucket: 'heyufei-1305336662', /* 存储桶 */
-            Region: 'ap-shanghai', /* 存储桶所在地域，必须字段 */
-            Key: '/Fly-Volunteer/' + dateFormat("YYYYmmddHHMM", date)  + res.file.name, /* 文件名 */
-            StorageClass: 'STANDARD', // 上传模式, 标准模式
-            Body: res.file, // 上传文件对象
-            // onProgress: (progressData) => { // 上传进度
-            //   console.log('----------------'+JSON.stringify(progressData))
-            // }
-          }, (err, data) => {
-            console.log(err || data)
-            // 上传成功之后
-            if (data.statusCode === 200) {
-              this.pojo.imageUrl = `https:${data.Location}`
+        // 执行上传操作
+        cos.putObject({
+          Bucket: 'heyufei-1305336662', /* 存储桶 */
+          Region: 'ap-shanghai', /* 存储桶所在地域，必须字段 */
+          Key: '/Fly-Volunteer/Head-' + this.dateFormat("YYYYmmddHHMM", date) + res.file.name, /* 文件名 */
+          StorageClass: 'STANDARD', // 上传模式, 标准模式
+          Body: res.file, // 上传文件对象
+          onProgress: (progressEvent) => { // 上传进度
+            let num = progressEvent.loaded / progressEvent.total * 100 | 0;  //百分比
+            if (num !== undefined) {
+              this.progress = num
             }
-          })
+          }
+        }, (err, data) => {
+          console.log(err || data)
+          // 上传成功之后
+          if (data.statusCode === 200) {
+            this.pojo.avatar = `https:${data.Location}`
+          }
+        })
       }
 
 

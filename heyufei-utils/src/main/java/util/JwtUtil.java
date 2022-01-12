@@ -16,19 +16,19 @@ import java.util.Date;
 @ConfigurationProperties("jwt.config") //从application.yml中得到key和ttl值
 public class JwtUtil {
     private String key;
-    private long ttl;//一个小时
+    private long ttl;//过期时间
 
 
     /**
      * 生成JWT
-     * @param userid   user.id 或者 admin.id
+     * @param mobile   user.mobile 或者 admin.mobile
      * @param username user.name 或者 admin.name
      * @param roles "user"或者"admin"
      */
-    public String createJWT(String userid, String username, String roles) {
+    public String createJWT(String mobile, String username, String roles) {
         long nowMillis = System.currentTimeMillis();
         Date now = new Date(nowMillis);
-        JwtBuilder builder = Jwts.builder().setId(userid)
+        JwtBuilder builder = Jwts.builder().setId(mobile)
                 .setSubject(username)
                 .setIssuedAt(now)
                 .signWith(SignatureAlgorithm.HS256, key)

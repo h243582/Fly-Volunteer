@@ -13,4 +13,11 @@ public class StatusCode {
 
 
     public static final Integer ACCESSRROR = 20006;//无权访问
+
+
+    public static final String Exchange = "send_message_exchange";//交换机
+    public static final String QUERY = "send_message_mq";//队列
+
+
+
 }

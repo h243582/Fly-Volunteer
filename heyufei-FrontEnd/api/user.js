@@ -8,6 +8,7 @@ export default {
         });
     },
     register(user, code) {
+        console.log(user+"-----"+code)
         return request({
             url: `/user/register/${code}`,
             method: "post",

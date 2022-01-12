@@ -1,0 +1,48 @@
+/*.uzy-gaokao-date {*/
+/*    width: 280px;*/
+/*    height: 80px;*/
+/*    box-shadow: 0 2px 4px 0 rgba(224, 52, 92, 0.4);*/
+/*    border-radius: 4px*/
+/*}*/
+
+
+
+.uzy-gaokao-date.applyFor-vip {
+    background: #f66;
+    color: #fff;
+    overflow: hidden
+}
+
+/*.uzy-gaokao-date.applyFor-vip */
+.lighting {
+    width: 90px;
+    height: 120px;
+    position: relative;
+    top: -100px;
+    left: -100px;
+    transform: rotate(15deg);
+    -webkit-transform: rotate(15deg);
+    -webkit-animation: lightingVip 1s linear infinite forwards;
+    -moz-animation: lightingVip .8s linear infinite forwards;
+    animation: lightingVip .8s linear infinite forwards;
+    background: rgba(255, 255, 255, .4);
+    /*z-index: 0*/
+}
+
+@keyframes lightingVip {
+    20% {
+        left: -80px
+    }
+    100% {
+        left: 280px
+    }
+}
+
+@-webkit-keyframes lightingVip {
+    20% {
+        left: -49px
+    }
+    100% {
+        left: 90px
+    }
+}

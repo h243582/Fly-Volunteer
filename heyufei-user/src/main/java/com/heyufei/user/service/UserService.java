@@ -8,6 +8,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
+import entity.StatusCode;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -159,12 +160,12 @@ public class UserService {
         }
         System.out.println(mobile + "验证码是：" + code);
         //2.将验证码放入redis
-        redisTemplate.opsForValue().set("smscode_" + mobile, code + "", 5, TimeUnit.MINUTES);//五分钟过期
+        redisTemplate.opsForValue().set("smscode_" + mobile, code + "", 2, TimeUnit.MINUTES);//五分钟过期
         //3.将验证码和手机号发动到rabbitMQ中
         Map<String, String> map = new HashMap<>();
         map.put("mobile", mobile);
         map.put("code", code + "");
-        rabbitTemplate.convertAndSend("send_message_exchange","",map);
+        rabbitTemplate.convertAndSend(StatusCode.Exchange,"",map);
 
     }
 
@@ -183,6 +184,9 @@ public class UserService {
         if (!sysCode.equals(code)) {
             throw new RuntimeException("验证码输入不正确");
         }
+        String passwordKey = encoder.encode(user.getPassword());//加密后的密码
+        user.setPassword(passwordKey);
+
         user.setRegisterDate(new Date());//注册日期
         user.setUpdateDate(new Date());//更新日期
         user.setLastDate(new Date());//最后登陆日期

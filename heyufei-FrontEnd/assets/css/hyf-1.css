@@ -836,7 +836,8 @@ h1.h1-hide {
 }
 
 .ch-nav-box-index {
-  background: #1cb278
+  background: #e84c33
+
 }
 
 .ch-nav-box-index .nav-wrapper {
@@ -3936,20 +3937,22 @@ a, a:link, a:visited {
 }
 
 .xxgk-index:hover {
-  background: linear-gradient(179deg, #8ad2a8, #1cb278) rgba(0, 0, 0, .1)
+  background: linear-gradient(179deg, #da4f4f, #fa6f6f) rgba(0, 0, 0, .1)
 }
 
 .xxgk-index, .xxgk-index:hover {
   width: 280px;
   height: 80px;
-  box-shadow: 0 2px 4px 0 rgba(28, 178, 120, .4);
-  border-radius: 4px
+  box-shadow: 0 2px 4px 0 rgba(224, 52, 92, 0.4);
+  border-radius: 4px;
+  overflow: hidden
+
 }
 
 .xxgk-index {
   text-align: center;
   margin-bottom: 20px;
-  background: linear-gradient(1turn, #1cb278, #31c78d)
+  background: linear-gradient(1turn, #e9302d, #f66)
 }
 
 .xxgk-index .info-icon {

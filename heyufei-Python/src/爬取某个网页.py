@@ -2,7 +2,7 @@
 import requests
 
 # 2.确定url
-base_url = 'https://gaokao.chsi.com.cn/'
+base_url = 'https://www.youzy.cn/pay/onlineBuy'
 
 # 3.发送请求，获取响应
 response = requests.get(base_url,verify=False)
@@ -19,7 +19,7 @@ response = requests.get(base_url,verify=False)
 
 # 方法二：解码为utf-8
 
-with open('index.html', 'w', encoding='utf-8') as fp:
+with open('爬出的网页.html', 'w', encoding='utf-8') as fp:
     fp.write(response.content.decode('utf-8'))
 
 print(response.status_code)

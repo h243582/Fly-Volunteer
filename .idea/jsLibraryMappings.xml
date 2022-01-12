@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JavaScriptLibraryMappings">
-    <file url="file://$PROJECT_DIR$/heyufei-Python" libraries="{vue}" />
+    <file url="file://$PROJECT_DIR$/heyufei-Python" libraries="{animate, app, font-awesome, font_493051_b1blj983trb, framework20190619, global, icons.simplelineicons, onlineBuy.controller, require, reset, vue}" />
   </component>
 </project>

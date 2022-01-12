@@ -19,7 +19,7 @@ public class JwtFilter extends HandlerInterceptorAdapter {
         final String authHeader = request.getHeader("Authorization");
         if (authHeader != null ) {
             Claims claims = jwtUtil.parseJWT(authHeader);
-            System.out.println("id:"+claims.getId());
+            System.out.println("mobile:"+claims.getId());
             System.out.println("subject:"+claims.getSubject());
             System.out.println("IssuedAt:"+claims.getIssuedAt());
 

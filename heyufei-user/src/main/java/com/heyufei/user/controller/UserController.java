@@ -150,11 +150,13 @@ public class UserController {
 	public Result login(@RequestBody Map<String,String> loginMap){
 		User user = userService.findByMobileAndPassword(loginMap.get("mobile"),loginMap.get("password"));
 		if(user!=null){
-			String token = jwtUtil.createJWT(String.valueOf(user.getId()),user.getNickname(), "user");
-			Map map=new HashMap();
+			String token = jwtUtil.createJWT(user.getMobile(),user.getNickname(), "user");
+			Map<String,String> map=new HashMap<>();
 			map.put("token",token);
 			map.put("name",user.getNickname());//昵称
 			map.put("avatar",user.getAvatar());//头像
+			map.put("isvip",user.getIsVip()+"");//是否VIP
+
 			return new Result(true,StatusCode.OK,"登陆成功",map);
 		}else{
 			return new Result(false,StatusCode.LOGINERROR,"用户名或密码错误");
