@@ -4359,3 +4359,43 @@ a:hover {
   top: 75px;
   left: 844px;
 }
+
+
+/*开通vip按钮*/
+.uzy-gaokao-date.applyFor-vip {
+  background: #f66;
+  color: #fff;
+  overflow: hidden
+}
+
+.lighting {
+  width: 90px;
+  height: 120px;
+  position: relative;
+  top: -100px;
+  left: -100px;
+  transform: rotate(15deg);
+  -webkit-transform: rotate(15deg);
+  -webkit-animation: lightingVip 1s linear infinite forwards;
+  -moz-animation: lightingVip .8s linear infinite forwards;
+  animation: lightingVip .8s linear infinite forwards;
+  background: rgba(255, 255, 255, .4);
+}
+
+@keyframes lightingVip {
+  20% {
+    left: -80px
+  }
+  100% {
+    left: 280px
+  }
+}
+
+@-webkit-keyframes lightingVip {
+  20% {
+    left: -49px
+  }
+  100% {
+    left: 90px
+  }
+}

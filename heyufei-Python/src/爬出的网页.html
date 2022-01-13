@@ -1,63 +1,34 @@
 <html lang="zh-CN">
-<!--<![endif]-->
-
 <head>
     <meta http-equiv="Content-type" content="text/html;charset=utf-8"/>
-<!--    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"/>-->
-
-
-    <link rel="stylesheet" href="//staticv3.youzy.cn/libs/swiper.animate1.0.2/animate.min.css"/>
-
-
     <!-- 主要样式-->
     <link href="//staticv3-pre.youzy.cn/ToC.PC/css/framework20190619.css" rel="stylesheet"/>
     <link href="//staticv3-pre.youzy.cn/ToC.PC/css/20190619/global.css" rel="stylesheet"/>
 
-    <link href="//staticv3.youzy.cn/content/fonts/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet"
-          type="text/css"/>
-
-    <link href="//staticv3.youzy.cn/content/fonts/simplelineicons/icons.simplelineicons.css" rel="stylesheet"/>
-
-    <script src="//staticv3.youzy.cn/libs/require.js" type="text/javascript"></script>
-    <script src="//staticv3-pre.youzy.cn/ToC.PC/scripts_dist/0204_89r6yi20i81/static/scripts/app.js"></script>
 
 
 
+<!--    <script src="//staticv3.youzy.cn/libs/require.js" type="text/javascript"></script>-->
+<!--    <script src="//staticv3-pre.youzy.cn/ToC.PC/scripts_dist/0204_89r6yi20i81/static/scripts/app.js"></script>-->
+<!--    <script id="peopleRecordsTemplate" type="text/x-handlebars-template"></script>-->
+<!--    <script src="//staticv3-pre.youzy.cn/ToC.PC/scripts_dist/0204_89r6yi20i81/static/scripts/controllers/pay/onlineBuy.controller.js"></script>-->
+
+    <script src="js/app.js"></script>
+    <script src="js/require.js"></script>
+    <script src="js/controller.js"></script>
 
 </head>
 
+
 <body>
+
 <input type="hidden" id="user_data" value="&quot;&quot;">
 <input type="hidden" id="plateform_id" value="cb2419e0e2d82d12d0619f98cc2ae91f"/>
 
 
-
-
-<div class="uzy-header-wrap nogaokao">
-    <div class="uzy-something">
-        <div class="fright">
-            <div class="uzy-gaokao-date applyFor-vip" onclick="location.href='/pay/onlineBuy'">
-                开通<b>VIP</b>
-                <div class="lighting"></div>
-            </div>
-        </div>
-
-
-    </div>
-</div>
-
-
-
-<link href="//staticv3.youzy.cn/libs/fancybox/jquery.fancybox.css" rel="stylesheet" type="text/css"/>
-<link href="//staticv3.youzy.cn/libs/fancybox/helpers/jquery.fancybox-thumbs.css" rel="stylesheet" type="text/css"/>
-
-<link href="//staticv3.youzy.cn/css/animate.min.css" rel="stylesheet"/>
-
 <div class="container-frame mt20">
-
     <div class="col900 card-buy-v3">
         <div class="content-box">
-
             <div class="card-show card-show1 type1">
                 <div class="photes-box bd">
                     <ul>
@@ -128,7 +99,6 @@
                     </ul>
                 </div>
             </div>
-
             <div class="card-info">
                 <h3 id="card-title">志愿卡（VIP）</h3>
                 <h4>考试院专家推荐平台，录取参考数据与省考试院完全一致</h4>
@@ -205,7 +175,6 @@
                         (VIP+全科提分)
                     </a>
                 </div>
-
                 <div class="card-buy-btn">
                     <a class="btn btn-primary js-onlineBuy" style="width:300px;" data-type="openBuyVipBtn">立即购买</a>
                     <div style="cursor:pointer;position:absolute;right:180px;top:6px;padding:0 10px;height:26px;color:#fff;background:#e84c33;text-align: center;line-height:26px;border-radius: 20px;"
@@ -214,7 +183,6 @@
                     </div>
                     <div class="tel" style="background:none;">咨询热线：400-181-5008</div>
                 </div>
-
                 <div class="type1 " style="font-size: 14px">
                     <p>1、开通志愿卡畅享查、测、填、学、问5大核心功能。</p>
                     <p>2、1000部学长学姐讲专业、500部专家讲志愿在线视频讲座，帮助考生科学填志愿。</p>
@@ -223,7 +191,6 @@
                     <!-- <p style="color: red">5、上海不提供普通类“专科批次”模拟填报服务（全端设备）</p> -->
                     <p style="color: red">5、陕西不提供普通类文理“单设本科批次”模拟填报服务（全端设备）</p>
                 </div>
-
                 <div class="type2 hide" style="font-size: 14px">
                     <p>1、升学卡适用于高一、高二、高三学生课程学习。名师执教紧跟命题方向，深谙考生学习规律，全科辅导，快速提分。</p>
                     <p>2、畅享志愿卡全部功能。</p>
@@ -233,31 +200,9 @@
                     <p style="color: red">5、陕西不提供普通类文理“单设本科批次”模拟填报服务（全端设备）</p>
                 </div>
             </div>
-
         </div>
-
-
     </div>
-
-
 </div>
-
-<script id="peopleRecordsTemplate" type="text/x-handlebars-template">
-    {{#each this}}
-    <div class="box">
-        <div class="font">
-            <h5>{{appraise}}</h5>
-            <p>{{time}}<span></span>成功开通服务</p>
-        </div>
-        <div class="people">
-            {{userName}} <span>(匿名）</span>
-        </div>
-    </div>
-    {{/each}}
-</script>
-
-<!--------------------------------------------------轮播 end-------------------------------------------------->
-<script src="//staticv3-pre.youzy.cn/ToC.PC/scripts_dist/0204_89r6yi20i81/static/scripts/controllers/pay/onlineBuy.controller.js"></script>
 
 <!-- 底部 -->
 <div class="uzy-foot-wra uzy-foot-wraV2">
@@ -265,21 +210,12 @@
         <div class="section">
             <div class="home-title">友情链接</div>
             <ul class="clearfix">
-
-
                 <li><a href="http://www.eagersoft.cn/" title="亿阁教育" target="_blank">亿阁教育</a></li>
-
                 <li><a href="http://www.yingsheng.com/topic/1692" title="培训体系" target="_blank">培训体系</a></li>
-
                 <li><a href="http://www.youzy.cn/" title="高考志愿填报" target="_blank">高考志愿填报</a></li>
-
                 <li><a href="http://zuowen.xuexila.com/" title="优秀作文范文" target="_blank">优秀作文范文</a></li>
-
                 <li><a href="http://xialinying.com/" title="军事夏令营" target="_blank">军事夏令营</a></li>
-
                 <li><a href="http://www.huatu.com/a/gwy/" title="省公务员考试	" target="_blank">省公务员考试 </a></li>
-
-
             </ul>
         </div>
     </div>
@@ -300,11 +236,7 @@
             </div>
         </div>
     </div>
-
-
 </div>
 
-
 </body>
-
 </html>

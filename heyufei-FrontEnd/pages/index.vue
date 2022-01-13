@@ -1,20 +1,4 @@
 <template>
-  <div>
-
-<!--    <div class="uzy-gaokao-date applyFor-vip" onclick="location.href='/'">-->
-<!--      开通VIP-->
-<!--      <div class="lighting"></div>-->
-<!--    </div>-->
-
-<!--    <div class="xxgk-index" style="margin-bottom:20px;">-->
-<!--      <div v-if="user.isvip === '0'">-->
-<!--        <a href="/" >开通VIP</a>-->
-<!--        <div class="lighting"></div>-->
-
-<!--      </div>-->
-<!--    </div>-->
-
-
     <div class="main-wrapper">
       <div class="container">
 
@@ -37,11 +21,12 @@
 
               <div class="xxgk-index" style="margin-bottom:20px;">
                 <div v-if="user.isvip === '0'">
-                  <a href="/" >
+                  <router-link to="/vip">
+                  <a>
                     开通VIP
                     <div class="lighting"></div>
                   </a>
-
+                  </router-link>
                 </div>
                 <div v-if="user.isvip === '1'">
                   <a href="/">
@@ -687,11 +672,9 @@
         </div>
       </div>
     </div>
-  </div>
 </template>
 <script>
 import '~/assets/css/index.css'
-import '~/assets/css/vip.css'
 import {getUser} from "@/utils/auth";
 
 export default {
