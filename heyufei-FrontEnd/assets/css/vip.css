@@ -989,7 +989,7 @@ label {
     background: #f5f5f5
 }
 .col900 {
-    width: 900px;
+    width: 1100px;
     height: auto;
     float: left;
     *zoom: 1
@@ -1004,7 +1004,7 @@ label {
 }
 .col900 {
     float: left;
-    width: 900px;
+    width: 1200px;
     height: auto;
     *zoom: 1
 }
@@ -7533,7 +7533,7 @@ a.get-code-off {
     width: 1180px
 }
 .permissionModal {
-    width: 900px;
+    width: 1200px;
     margin-left: -450px
 }
 .permissionModal .modal-header {
@@ -7546,7 +7546,7 @@ a.get-code-off {
     margin: 0 auto
 }
 .permissionModal .modal-body {
-    width: 900px;
+    width: 1200px;
     padding-top: 20px;
     padding-bottom: 30px
 }
@@ -8150,7 +8150,7 @@ a.get-code-off {
     text-align: right
 }
 .bindInfoModal {
-    width: 900px !important;
+    width: 1200px !important;
     height: auto;
     margin-left: -450px !important
 }
@@ -8227,7 +8227,7 @@ a.get-code-off {
     padding: 8px 0
 }
 .perfect-info-modal {
-    width: 900px !important;
+    width: 1200px !important;
     height: auto;
     margin-left: -450px !important
 }
@@ -8251,7 +8251,7 @@ a.get-code-off {
     height: 40px
 }
 .perfect-grade-modal {
-    width: 900px !important;
+    width: 1200px !important;
     height: auto;
     margin-left: -450px !important
 }
@@ -16141,10 +16141,10 @@ a.forget:hover {
     margin-top: 3px
 }
 .card-buy-v3 .card-show {
-    width: 300px;
+    width: 350px;
     height: auto;
     float: left;
-    position: relative;
+    /*position: relative;*/
     *zoom: 1
 }
 .card-buy-v3 .card-show:before,
@@ -19571,3 +19571,7 @@ a:hover {
     padding: 20px 0;
     border-bottom: 1px dashed #F2F2F2;
 }
+
+
+
+

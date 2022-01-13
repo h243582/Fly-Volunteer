@@ -2,18 +2,14 @@
   <div>
     <div class="container-frame mt20">
       <div class="col900 card-buy-v3">
-        <div class="content-box">
-          <div class="card-show card-show1 type1">
 
-            <div class="photes-box" style="width: 400px">
-              <el-carousel>
+            <div style="width: 360px;height: 429px;float:left;">
+              <el-carousel height="429px">
                 <el-carousel-item v-for="item in rotation" :key="item">
-                  <el-image  :src="item"/>
+                  <el-image class="small" :src="item" style="width: 360px;height: 400px"/>
                 </el-carousel-item>
               </el-carousel>
             </div>
-
-          </div>
 
           <div class="card-info">
             <h3 id="card-title">志愿卡（VIP）</h3>
@@ -55,7 +51,6 @@
             </div>
           </div>
 
-        </div>
       </div>
     </div>
 
