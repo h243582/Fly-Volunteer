@@ -56,7 +56,14 @@
             title="充值会员"
             :visible.sync="dialogVisible"
             width="50%">
-          <span>这是一段信息</span>
+          <div class="demo-image__placeholder">
+            <div class="block">
+              <el-image style="width: 100px; height: 100px" :src="skm1"></el-image>
+              <el-image style="width: 100px; height: 100px" :src="skm2"></el-image>
+            </div>
+          </div>
+
+
           <span slot="footer" class="dialog-footer">
             <el-button @click="dialogVisible = false">取 消</el-button>
             <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
@@ -116,6 +123,9 @@ export default {
         require('~/assets/img/vip4.jpg'),
       ],
       dialogVisible: false,
+      skm1:require('~/assets/img/收款码1.png'),
+      skm2:require('~/assets/img/收款码2.png'),
+
 
     }
   },
@@ -123,7 +133,9 @@ export default {
     this.user = getUser()
     console.log(this.user)
   },
-  methods: {}
+  methods: {
+
+  }
 }
 </script>
 <div class="nail hd">

@@ -147,12 +147,16 @@
 
 
 <script>
+
+
 import '~/assets/css/hyf-1.css'
 import {getUser, removeUser} from "@/utils/auth";
 import userApi from "@/api/user";
 
 
 export default {
+  name: "default",
+
   data() {
     return {
       user: {},
