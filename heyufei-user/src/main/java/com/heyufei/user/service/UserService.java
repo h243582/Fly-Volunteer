@@ -1,13 +1,7 @@
 package com.heyufei.user.service;
 
-import java.util.*;
-import java.util.concurrent.TimeUnit;
-
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
-
+import com.heyufei.user.dao.UserDao;
+import com.heyufei.user.pojo.User;
 import entity.StatusCode;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,11 +11,14 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-
 import util.IdWorker;
 
-import com.heyufei.user.dao.UserDao;
-import com.heyufei.user.pojo.User;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
+import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 服务层
@@ -112,6 +109,7 @@ public class UserService {
 
     /**
      * 动态条件构建
+     *
      * @param searchMap
      * @return
      */
@@ -121,27 +119,25 @@ public class UserService {
             public Predicate toPredicate(Root<User> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
                 List<Predicate> predicateList = new ArrayList<Predicate>();
                 // 手机号码
-                if (searchMap.get("mobile")!=null && !"".equals(searchMap.get("mobile"))) {
-                    predicateList.add(cb.like(root.get("mobile").as(String.class), "%"+(String)searchMap.get("mobile")+"%"));
+                if (searchMap.get("mobile") != null && !"".equals(searchMap.get("mobile"))) {
+                    predicateList.add(cb.like(root.get("mobile").as(String.class), "%" + (String) searchMap.get("mobile") + "%"));
                 }
                 // 密码
-                if (searchMap.get("password")!=null && !"".equals(searchMap.get("password"))) {
-                    predicateList.add(cb.like(root.get("password").as(String.class), "%"+(String)searchMap.get("password")+"%"));
+                if (searchMap.get("password") != null && !"".equals(searchMap.get("password"))) {
+                    predicateList.add(cb.like(root.get("password").as(String.class), "%" + (String) searchMap.get("password") + "%"));
                 }
                 // 昵称
-                if (searchMap.get("nickname")!=null && !"".equals(searchMap.get("nickname"))) {
-                    predicateList.add(cb.like(root.get("nickname").as(String.class), "%"+(String)searchMap.get("nickname")+"%"));
+                if (searchMap.get("nickname") != null && !"".equals(searchMap.get("nickname"))) {
+                    predicateList.add(cb.like(root.get("nickname").as(String.class), "%" + (String) searchMap.get("nickname") + "%"));
                 }
                 // 头像
-                if (searchMap.get("avatar")!=null && !"".equals(searchMap.get("avatar"))) {
-                    predicateList.add(cb.like(root.get("avatar").as(String.class), "%"+(String)searchMap.get("avatar")+"%"));
+                if (searchMap.get("avatar") != null && !"".equals(searchMap.get("avatar"))) {
+                    predicateList.add(cb.like(root.get("avatar").as(String.class), "%" + (String) searchMap.get("avatar") + "%"));
                 }
-                return cb.and( predicateList.toArray(new Predicate[predicateList.size()]));
+                return cb.and(predicateList.toArray(new Predicate[predicateList.size()]));
             }
         };
     }
-
-
 
 
     /**
@@ -160,17 +156,18 @@ public class UserService {
         }
         System.out.println(mobile + "验证码是：" + code);
         //2.将验证码放入redis
-        redisTemplate.opsForValue().set("smscode_" + mobile, code + "", 2, TimeUnit.MINUTES);//五分钟过期
+        redisTemplate.opsForValue().set("smscode_" + mobile, code + "", 1, TimeUnit.MINUTES);//1分钟过期
         //3.将验证码和手机号发动到rabbitMQ中
         Map<String, String> map = new HashMap<>();
-        map.put("mobile", mobile);
-        map.put("code", code + "");
-        rabbitTemplate.convertAndSend(StatusCode.Exchange,"",map);
+        map.put("email", mobile);
+        map.put("code", String.valueOf(code));
+        rabbitTemplate.convertAndSend(StatusCode.Exchange,"", map);
 
     }
 
     /**
      * 增加
+     *
      * @param user 用户
      * @param code 用户填写的验证码
      */
@@ -197,7 +194,7 @@ public class UserService {
     /**
      * 根据手机号查询用户
      */
-    public User findByMobile(String mobile){
+    public User findByMobile(String mobile) {
         return userDao.findByMobile(mobile);
     }
 
@@ -205,11 +202,11 @@ public class UserService {
     /**
      * 根据手机号和密码查询用户
      */
-    public User findByMobileAndPassword(String mobile,String password){
+    public User findByMobileAndPassword(String mobile, String password) {
         User user = userDao.findByMobile(mobile);
-        if(user!=null && encoder.matches(password,user.getPassword())){
+        if (user != null && encoder.matches(password, user.getPassword())) {
             return user;
-        }else{
+        } else {
             return null;
         }
     }
