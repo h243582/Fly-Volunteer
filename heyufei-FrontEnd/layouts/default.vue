@@ -1,6 +1,6 @@
 <template>
   <div>
-      <div class="ch-nav-box-index">
+      <div class="ch-nav-box-index">cd
         <div class="nav-wrapper">
           <ul class="nav-index-list clearfix">
             <li>
