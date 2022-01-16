@@ -29,7 +29,7 @@ public class SmsListener {
 //     private String sign_name;//签名
 
     @RabbitHandler
-     public void sendSms(Map<String,String> map){
+     public void sendSms(Map map){
 //        System.out.println("------heyufei-sms接收到消息, 邮箱是："+map.get("email"));
         System.out.println("------进入heyufei-sms");
         System.out.println("------heyufei-sms接收到消息, 手机号："+map.get("email"));
