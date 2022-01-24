@@ -73,9 +73,17 @@ public class UserService {
 
     /**
      * 根据ID查询实体
+     * @param id
      */
-    public User findById(String id) {
-        return userDao.findById(id).get();
+    public User findById(int id) {
+        return userDao.findById(id);
+    }
+
+    /**
+     * 根据email查询实体
+     */
+    public User findByEmail(String email) {
+        return userDao.findByEmail(email);
     }
 
     /**
@@ -88,7 +96,6 @@ public class UserService {
         user.setPassword(passwordKey);
         user.setRegisterDate(new Date());//注册日期
         user.setUpdateDate(new Date());//更新日期
-        user.setLastDate(new Date());//最后登陆日期
         user.setIsVip(0);
         userDao.save(user);
     }
@@ -119,8 +126,8 @@ public class UserService {
             public Predicate toPredicate(Root<User> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
                 List<Predicate> predicateList = new ArrayList<Predicate>();
                 // 手机号码
-                if (searchMap.get("mobile") != null && !"".equals(searchMap.get("mobile"))) {
-                    predicateList.add(cb.like(root.get("mobile").as(String.class), "%" + (String) searchMap.get("mobile") + "%"));
+                if (searchMap.get("email") != null && !"".equals(searchMap.get("email"))) {
+                    predicateList.add(cb.like(root.get("email").as(String.class), "%" + (String) searchMap.get("email") + "%"));
                 }
                 // 密码
                 if (searchMap.get("password") != null && !"".equals(searchMap.get("password"))) {
@@ -143,10 +150,10 @@ public class UserService {
     /**
      * 发送短信验证码
      *
-     * @param mobile 手机号
+     * @param email 手机号
      */
-    public void sendSms(String mobile) {
-        //1.生成6位短信验证码
+    public void sendSms(String email) {
+        //1.生成6位邮箱验证码
         Random random = new Random();
         int max = 999999;//最大数
         int min = 100000;//最小数
@@ -154,26 +161,26 @@ public class UserService {
         if (code < min) {
             code = code + min;
         }
-        System.out.println(mobile + "验证码是：" + code);
+        System.out.println(email + "验证码是：" + code);
         //2.将验证码放入redis
-        redisTemplate.opsForValue().set("smscode_" + mobile, code + "", 1, TimeUnit.MINUTES);//1分钟过期
+        redisTemplate.opsForValue().set("email_code_" + email, code + "", 1, TimeUnit.MINUTES);//1分钟过期
         //3.将验证码和手机号发动到rabbitMQ中
         Map<String, String> map = new HashMap<>();
-        map.put("email", mobile);
+        map.put("email", email);
         map.put("code", String.valueOf(code));
         rabbitTemplate.convertAndSend(StatusCode.Exchange,"", map);
 
     }
 
     /**
-     * 增加
+     * 注册
      *
      * @param user 用户
      * @param code 用户填写的验证码
      */
     public void add(User user, String code) {
         //判断验证码是否正确
-        String sysCode = redisTemplate.opsForValue().get("smscode_" + user.getMobile());
+        String sysCode = redisTemplate.opsForValue().get("email_code_" + user.getEmail());
         //提取系统正确的验证码
         if (sysCode == null) {
             throw new RuntimeException("请点击获取短信验证码");
@@ -186,24 +193,16 @@ public class UserService {
 
         user.setRegisterDate(new Date());//注册日期
         user.setUpdateDate(new Date());//更新日期
-        user.setLastDate(new Date());//最后登陆日期
         user.setIsVip(0);
         userDao.save(user);
     }
 
-    /**
-     * 根据手机号查询用户
-     */
-    public User findByMobile(String mobile) {
-        return userDao.findByMobile(mobile);
-    }
-
 
     /**
-     * 根据手机号和密码查询用户
+     * 根据邮箱和密码查询用户
      */
-    public User findByMobileAndPassword(String mobile, String password) {
-        User user = userDao.findByMobile(mobile);
+    public User findByMobileAndPassword(String email, String password) {
+        User user = userDao.findByEmail(email);
         if (user != null && encoder.matches(password, user.getPassword())) {
             return user;
         } else {

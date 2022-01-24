@@ -13,11 +13,12 @@ import org.springframework.data.jpa.repository.Query;
  *
  */
 public interface UserDao extends JpaRepository<User,String>,JpaSpecificationExecutor<User>{
+
+    public User findById(int id);
+
     /**
-     * 根据手机号查询用户
+     * 根据邮箱查询用户
      */
-    public User findByMobile(String mobile);
-
-
+    public User findByEmail(String email);
 
 }

@@ -1,6 +1,17 @@
 import request from '@/utils/request'
 
 export default {
+    /*查询所有用户分页*/
+    getAllUserListLimit(page, size) {
+        console.log("getAllUserListLimit:" + "," + page + "," + size)
+        let searchMap = {}
+        return new request({
+            url: `user/search/${page}/${size}`,
+            method: 'post',
+            data: searchMap
+        })
+
+    },
     sendsms(mobile) {
         return request({
             url: `/user/sendsms/${mobile}`,
@@ -8,7 +19,7 @@ export default {
         });
     },
     register(user, code) {
-        console.log(user+"-----"+code)
+        console.log(user + "-----" + code)
         return request({
             url: `/user/register/${code}`,
             method: "post",
@@ -16,12 +27,12 @@ export default {
         });
     },
     //使用微信登录添加新用户
-    add(user){
-      return request({
-          url:"/user",
-          method:"post",
-          data:user,
-      });
+    add(user) {
+        return request({
+            url: "/user",
+            method: "post",
+            data: user,
+        });
     },
     login(mobile, password) {
         return request({
@@ -35,73 +46,73 @@ export default {
     },
     logout() {
         return request({
-          url: "/user/logout",
-          method: 'post'
+            url: "/user/logout",
+            method: 'post'
         })
     },
     /*根据cookie的token查询我的个人信息*/
-    getInfo(token){
+    getInfo(token) {
         return request({
             url: "/user/info",
-            method:"get",
-            params: { token }
+            method: "get",
+            params: {token}
         });
     },
     info() {
         return request({
-          url: `/user/info`,
-          method: 'get'
+            url: `/user/info`,
+            method: 'get'
         })
     },
     /*根据用户id查询我的个人信息*/
-    getInfoById(uid){
+    getInfoById(uid) {
         return request({
-           url : `/user/${uid}`,
+            url: `/user/${uid}`,
             method: "get"
         });
     },
 
     //获取当前登录的用户的账户信息
-    getAccount(){
+    getAccount() {
         return request({
             url: `/user/info`,
-            method:"get"
+            method: "get"
         })
     },
     //修改账户信息
     saveinfo(user) {
         return request({
-          url: "/user/saveinfo",
-          method: 'put',
-          data:user
+            url: "/user/saveinfo",
+            method: 'put',
+            data: user
         })
     },
     //查询当前登录用户的用户信息
-    getUser(){
+    getUser() {
         return new request({
-           url: "/user/info",
-           method:"get",
+            url: "/user/info",
+            method: "get",
         });
     },
     //修改用户信息
-    updateUser(pojo){
+    updateUser(pojo) {
         return new request({
             url: `/user/`,
-            method:"put",
-            data:pojo,
+            method: "put",
+            data: pojo,
         });
     },
 
     //设置用户头像
-    setAvator(uid,url){
-        let pojo={
-          uid:uid,
-          url:url
+    setAvator(uid, url) {
+        let pojo = {
+            uid: uid,
+            url: url
         };
         return new request({
-           url:`/user/setAvator` ,
-            method:"put",
-            data:pojo
+            url: `/user/setAvator`,
+            method: "put",
+            data: pojo
         });
     }
 }

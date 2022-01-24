@@ -19,8 +19,8 @@ import java.util.Date;
 public class User implements Serializable{
 
 	@Id
-	private int id;//ID
-	private String mobile;//手机号码
+	private Integer id;//ID
+	private String email;//邮箱
 	private String password;//密码
 	private String nickname;//昵称
 	private String avatar;//头像
@@ -28,16 +28,13 @@ public class User implements Serializable{
 	private Integer isVip;//是否会员
 
 	@Column(name = "vip_day")
-	private Integer vipDay;//是否会员
+	private Integer vipDay;//
 
 	@Column(name = "register_date")
 	private java.util.Date registerDate;//注册日期
 
 	@Column(name = "update_date")
 	private java.util.Date updateDate;//修改日期
-
-	@Column(name = "last_date")
-	private java.util.Date lastDate;//最后登录时间
 
 
 }

@@ -1,4 +1,20 @@
 package com.heyufei.user.controller;
+
+import com.heyufei.user.pojo.User;
+import com.heyufei.user.service.UserService;
+import entity.PageResult;
+import entity.Result;
+import entity.StatusCode;
+import io.jsonwebtoken.Claims;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import util.JwtUtil;
+import util.OSS_Tencent;
+
+import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -6,24 +22,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-
-import io.jsonwebtoken.Claims;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.web.bind.annotation.*;
-
-import com.heyufei.user.pojo.User;
-import com.heyufei.user.service.UserService;
-
-import entity.PageResult;
-import entity.Result;
-import entity.StatusCode;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
-import util.JwtUtil;
-import util.OSS_Tencent;
-
-import javax.servlet.http.HttpServletRequest;
 
 /**
  * 控制器层
@@ -51,21 +49,19 @@ public class UserController {
 	
 	/**
 	 * 根据ID查询
-	 * @param id ID
-	 * @return
 	 */
 	@RequestMapping(value="/{id}",method= RequestMethod.GET)
-	public Result findById(@PathVariable String id){
+	public Result findById(@PathVariable int id){
 		return new Result(true,StatusCode.OK,"查询成功",userService.findById(id));
 	}
 
+
 	/**
-	 * 根据手机号查询
-	 * @return
+	 * 根据邮箱查询
 	 */
-	@RequestMapping(value="/mobile/{mobile}",method= RequestMethod.GET)
-	public Result findByMobile(@PathVariable String mobile){
-		return new Result(true,StatusCode.OK,"查询成功",userService.findByMobile(mobile));
+	@RequestMapping(value="/email",method= RequestMethod.GET)
+	public Result findByEmail(@RequestParam String email){
+		return new Result(true,StatusCode.OK,"查询成功",userService.findByEmail(email));
 	}
 
 	/**
@@ -84,7 +80,6 @@ public class UserController {
 	/**
      * 根据条件查询
      * @param searchMap
-     * @return
      */
     @RequestMapping(value="/search",method = RequestMethod.POST)
     public Result findSearch( @RequestBody Map searchMap){
@@ -125,15 +120,18 @@ public class UserController {
 		return new Result(true,StatusCode.OK,"删除成功");
 	}
 
+
+
 	/**
-	 * 发送短信验证码
-	 * @param mobile 电话号码
+	 * 发送邮箱验证码
+	 * @param email 电话号码
 	 */
-	@RequestMapping(value="/sendsms/{mobile}",method=RequestMethod.POST)
-	public Result sendsms(@PathVariable String mobile ){
-		userService.sendSms(mobile);
+	@RequestMapping(value="/sendsms/{email}",method=RequestMethod.POST)
+	public Result sendsms(@PathVariable String email ){
+		userService.sendSms(email);
 		return new Result(true,StatusCode.OK,"发送成功");
 	}
+
 	/**
 	 * 用户注册
 	 */
@@ -148,12 +146,12 @@ public class UserController {
 	 */
 	@RequestMapping(value="/login",method=RequestMethod.POST)
 	public Result login(@RequestBody Map<String,String> loginMap){
-		User user = userService.findByMobileAndPassword(loginMap.get("mobile"),loginMap.get("password"));
+		User user = userService.findByMobileAndPassword(loginMap.get("email"), loginMap.get("password"));
 		if(user!=null){
-			String token = jwtUtil.createJWT(user.getMobile(),user.getNickname(), "user");
+			String token = jwtUtil.createJWT(user.getEmail(),user.getNickname(), "user");
 			Map<String,String> map=new HashMap<>();
 			map.put("token",token);
-			map.put("name",user.getNickname());//昵称
+			map.put("nickname",user.getNickname());//昵称
 			map.put("avatar",user.getAvatar());//头像
 			map.put("isvip",user.getIsVip()+"");//是否VIP
 
