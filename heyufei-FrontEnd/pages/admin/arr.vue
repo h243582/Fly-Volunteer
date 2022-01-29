@@ -116,30 +116,31 @@
 
     <el-dialog title= "用户编辑" :visible.sync="dialogFormVisible">
       <el-form ref="user" label-width="80px">
-        <el-form-item label="编号">
-          <el-input v-model="user.id" v-bind:disabled="true"></el-input>
+        <el-form-item label="头像">
+          <img :src="user.avatar" style="width: 50px;height: 50px;border: 1px solid black;border-radius: 60px" alt="">
         </el-form-item>
         <el-form-item label="邮箱">
           <el-input v-model="user.email" v-bind:disabled="true" ></el-input>
         </el-form-item>
         <el-form-item label="密码">
-          <el-input v-model="user.password" id="password" ></el-input>
+          <el-input type="password" v-model="user.password" ></el-input>
         </el-form-item>
         <el-form-item label="昵称">
           <el-input v-model="user.nickname" id="nickname" ></el-input>
         </el-form-item>
-        <el-form-item label="头像">
-          <img :src="user.avatar" style="width: 50px;height: 50px;border: 1px solid black;border-radius: 60px" alt="">
-        </el-form-item>
-        <el-form-item label="是否会员">
-          <el-switch v-model="user.isVip!==0"></el-switch>
-        </el-form-item>
-<!--        <el-form-item label="注册日期">-->
-<!--          <el-input v-model="user.registerDate" id="register_date"  v-bind:disabled="true"></el-input>-->
+<!--        <el-checkbox-group v-model="user.isVip">-->
+<!--          <el-checkbox-button label="美食/餐厅线上活动" name="type"></el-checkbox-button>-->
+<!--        </el-checkbox-group>-->
+
+<!--        <el-form-item label="是否会员">-->
+<!--          <el-switch v-model="isvipComputed(user.isVip)"></el-switch>-->
 <!--        </el-form-item>-->
-<!--        <el-form-item label="修改日期">-->
-<!--          <el-input v-model="user.updateDate" id="update_date"  v-bind:disabled="true"></el-input>-->
-<!--        </el-form-item>-->
+        <el-form-item label="注册日期">
+          <el-input :placeholder="formateDate(user.registerDate)" id="register_date"  v-bind:disabled="true"></el-input>
+        </el-form-item>
+        <el-form-item label="修改日期">
+          <el-input :placeholder="formateDate(user.updateDate)" id="update_date"  v-bind:disabled="true"></el-input>
+        </el-form-item>
 
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -235,7 +236,7 @@ export default {
       this.dialogFormVisible = true;
       this.user.id = rows[index].id;
       this.user.email = rows[index].email;
-      this.user.password = rows[index].password;
+      // this.user.password = rows[index].password;
       this.user.nickname = rows[index].nickname;
       this.user.isVip = rows[index].isVip;
       this.user.registerDate = rows[index].registerDate;
@@ -245,15 +246,16 @@ export default {
     formSubmit(){
       this.dialogFormVisible = false;
       console.log(this.user);
-      userApi.getAllUserListLimit(this.user,10 ).then( res=>{
-        console.log("返回的参数：");
-        if (res.data.code === 20000) {
-          var arrays = res.data.data.rows
-          console.log(arrays)
-        }
 
-        this.tableData = arrays
-      })
+      // userApi.saveinfo(this.user).then( res=>{
+      //   console.log("返回的参数：");
+      //   if (res.data.code === 20000) {
+      //     var arrays = res.data.data.rows
+      //     console.log(arrays)
+      //   }
+      //
+      //   this.tableData = arrays
+      // })
 
       // var index = $(".el-pager>.active")[0].innerText;
 
@@ -279,16 +281,11 @@ export default {
     },
   },
   computed:{
-    formateDate2(datetime) {
-      function addDateZero(num) {
-        return (num < 10 ? "0" + num : num);
+      isvipComputed: function (isvip){
+        return isvip!==0
       }
-
-      let d = new Date(datetime);
-      let formatdatetime = d.getFullYear() + '-' + addDateZero(d.getMonth() + 1) + '-' + addDateZero(d.getDate()) + '  ' + addDateZero(d.getHours()) + ':' + addDateZero(d.getMinutes() + ':' + addDateZero(d.getSeconds()));
-      return formatdatetime;
-    },
-
   }
+
+
 };
 </script>
