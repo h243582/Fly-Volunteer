@@ -126,10 +126,14 @@ public class UserController {
 	 * 发送邮箱验证码
 	 * @param email 电话号码
 	 */
-	@RequestMapping(value="/sendsms/{email}",method=RequestMethod.POST)
-	public Result sendsms(@PathVariable String email ){
-		userService.sendSms(email);
-		return new Result(true,StatusCode.OK,"发送成功");
+	@RequestMapping(value="/sendsms",method=RequestMethod.POST)
+	public Result sendsms(@RequestParam String email ){
+		int statusCode = userService.sendSms(email);
+		if (statusCode==20000){
+			return new Result(true,StatusCode.OK,"发送成功");
+		}else {
+			return new Result(true,StatusCode.REPERROR,"重复操作");
+		}
 	}
 
 	/**

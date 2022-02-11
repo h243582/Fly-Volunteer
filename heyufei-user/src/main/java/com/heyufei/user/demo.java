@@ -1,13 +1,40 @@
 package com.heyufei.user;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.redis.core.BoundValueOperations;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 
+import java.util.concurrent.TimeUnit;
+
+
+@SpringBootTest
 public class demo {
-    public static void main(String[] args) throws ParseException {
-        Date date = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSX").parse("2021-12-23T16:07:46.000+08:00");
+    @Autowired
+    private RedisTemplate<String, String> redisTemplate;
 
-        System.out.println(date);
+    @Test
+    public void contextLoads() {
+        BoundValueOperations<String, String> str1 = redisTemplate.boundValueOps("str");
+
+        //添加键值
+        str1.set("何昱飞飞");
+        //获取键值
+        String string = str1.get();
+        System.out.println(string);
+
     }
+
+    @Test
+    public void contextLoad2() {
+
+        redisTemplate.opsForValue().set("email_code_" + "243582@qq.com", "888446" + "", 3, TimeUnit.MINUTES);//1分钟过期
+
+
+    }
+
+
 }

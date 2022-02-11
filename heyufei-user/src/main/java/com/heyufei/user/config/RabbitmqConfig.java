@@ -2,17 +2,21 @@ package com.heyufei.user.config;
 
 
 import entity.StatusCode;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
-import org.springframework.amqp.core.*;
-import org.springframework.beans.factory.annotation.Qualifier;
+//import org.springframework.amqp.core.*;
+//import org.springframework.beans.factory.annotation.Qualifier;
+
+import org.springframework.amqp.rabbit.annotation.Exchange;
+import org.springframework.amqp.rabbit.annotation.Queue;
+import org.springframework.amqp.rabbit.annotation.QueueBinding;
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
 
 
-@Component
-public class RabbitmqConfig {
+//@Component
+//public class RabbitmqConfig {
 
 //    //自动创建队列、交换机、并两者绑定
-//    @RabbitListener(bindings = @QueueBinding(value = @Queue(StatusCode.QUERY), exchange = @Exchange(StatusCode.Exchange) ))
+//    @RabbitListener(bindings = @QueueBinding(value = @Queue(StatusCode.Query), exchange = @Exchange(StatusCode.Exchange) ))
 //    public void process3(String message){
 //    }
 
@@ -36,5 +40,5 @@ public class RabbitmqConfig {
 //    }
 
 
-}
+//}
 

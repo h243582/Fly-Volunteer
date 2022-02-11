@@ -12,14 +12,14 @@ export default {
         })
 
     },
-    sendsms(mobile) {
+    sendsms(email) {
         return request({
-            url: `/user/sendsms/${mobile}`,
+            url: `/user/sendsms?email=${email}`,
             method: "post",
         });
     },
     register(user, code) {
-        console.log(user + "-----" + code)
+        // console.log(user + "-----" + code)
         return request({
             url: `/user/register/${code}`,
             method: "post",

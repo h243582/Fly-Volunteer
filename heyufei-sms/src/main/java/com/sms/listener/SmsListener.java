@@ -14,7 +14,7 @@ import java.util.Map;
  * 短信监听类
  */
 @Component
-@RabbitListener(queues = StatusCode.QUERY)
+@RabbitListener(queues = StatusCode.Query)
 public class SmsListener {
     @Autowired
     JavaMailSenderImpl mailSender;

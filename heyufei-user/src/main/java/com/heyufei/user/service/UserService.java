@@ -152,7 +152,7 @@ public class UserService {
      *
      * @param email 手机号
      */
-    public void sendSms(String email) {
+    public int sendSms(String email) {
         //1.生成6位邮箱验证码
         Random random = new Random();
         int max = 999999;//最大数
@@ -163,13 +163,17 @@ public class UserService {
         }
         System.out.println(email + "验证码是：" + code);
         //2.将验证码放入redis
-        redisTemplate.opsForValue().set("email_code_" + email, code + "", 1, TimeUnit.MINUTES);//1分钟过期
+        try {
+            redisTemplate.opsForValue().set("email_code_" + email, code + "", 3, TimeUnit.MINUTES);//1分钟过期
+        }catch (Exception e){
+            return StatusCode.REPERROR;
+        }
         //3.将验证码和手机号发动到rabbitMQ中
         Map<String, String> map = new HashMap<>();
         map.put("email", email);
         map.put("code", String.valueOf(code));
         rabbitTemplate.convertAndSend(StatusCode.Exchange,"", map);
-
+        return StatusCode.OK;
     }
 
     /**

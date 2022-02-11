@@ -29,8 +29,8 @@
             <el-input v-model="pojo.nickname" placeholder="真实姓名或常用昵称"/>
           </el-form-item>
 
-          <el-form-item class="control-label" label="手机号码" prop="mobile" style="margin-bottom: 20px">
-            <el-input v-model="pojo.mobile" placeholder="仅支持大陆手机号"/>
+          <el-form-item class="control-label" label="邮箱" prop="mobile" style="margin-bottom: 20px">
+            <el-input v-model="pojo.email" placeholder="请输入邮箱"/>
           </el-form-item>
 
           <el-form-item class="control-label" label="短信验证码" prop="yzm">
@@ -59,8 +59,8 @@
         <h3 class="loginsign-title">用户登录</h3>
         <el-form>
 
-          <el-form-item class="control-label" label="手机号码" prop="mobile" style="margin-bottom: 20px">
-            <el-input v-model="username" placeholder="仅支持大陆手机号"/>
+          <el-form-item class="control-label" label="邮箱" prop="mobile" style="margin-bottom: 20px">
+            <el-input v-model="username" placeholder="请输入邮箱"/>
           </el-form-item>
 
           <el-form-item class="control-label" label="密码" prop="password" style="margin-bottom: 20px">
@@ -105,7 +105,7 @@ export default {
           {required: true, message: '请输入密码', trigger: 'blur'},
           {min: 3, max: 11, message: '长度在 3 到 11 个字符', trigger: 'blur'}
         ],
-        mobile: [
+        email: [
           {required: true, message: '请输入手机号码', trigger: 'blur'},
         ]
       },
@@ -115,7 +115,9 @@ export default {
   },
   methods: {
     sendMessage() {
-      userApi.sendsms(this.pojo.mobile).then(res => {
+      console.log(this.pojo.email)
+      userApi.sendsms(this.pojo.email).then(res => {
+        console.log(res.data)
         if (res.data.flag) {
           this.$message({
             message: '验证码已发送成功',
@@ -158,7 +160,7 @@ export default {
             message: '用户名或密码错误',
             type: 'error'
           })
-          this.username = ''
+          // this.username = ''
           this.password = ''
         }
       })
