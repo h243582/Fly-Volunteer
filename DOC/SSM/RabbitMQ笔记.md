@@ -192,9 +192,9 @@ Eshell V10.4  (abort with ^G)
 [root@localhost otp_src_22.0]# vim /etc/profile     //编辑环境配置文件
 
 //添加如下配置信息
-export RABBITMQ_HOME=/usr/local/software/rabbitmq_software/rabbitmq_server-3.7.16
+export RABBooleanMQ_HOME=/usr/local/software/rabbitmq_software/rabbitmq_server-3.7.16
 
-export PATH=${RABBITMQ_HOME}/sbin:${PATH}
+export PATH=${RABBooleanMQ_HOME}/sbin:${PATH}
 
 [root@localhost otp_src_22.0]# source /etc/profile  //重新读取配置文件
 ```

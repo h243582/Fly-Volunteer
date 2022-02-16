@@ -667,7 +667,7 @@ Redis常用的指令
 - `bitcount key [start end]`：统计字符串被设置为1的bit数，也可以指定统计范围按字节
 
   ```bash
-  127.0.0.1:6379> BITCOUNT sign # 统计sign中为1的位数
+  127.0.0.1:6379> BooleanCOUNT sign # 统计sign中为1的位数
   (integer) 4
   ```
 

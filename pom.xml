@@ -20,6 +20,7 @@
         <module>heyufei-FrontEnd</module>
         <module>heyufei-user</module>
         <module>heyufei-sms</module>
+        <module>Demo</module>
 
 
     </modules>

@@ -19,7 +19,7 @@ import java.util.Date;
 public class User implements Serializable{
 
 	@Id
-	private Integer id;//ID
+	private String id;//ID
 	private String email;//邮箱
 	private String password;//密码
 	private String nickname;//昵称
@@ -27,8 +27,8 @@ public class User implements Serializable{
 	@Column(name = "is_vip")
 	private Integer isVip;//是否会员
 
-	@Column(name = "vip_day")
-	private Integer vipDay;//
+//	@Column(name = "vip_day")
+//	private Integer vipDay;//
 
 	@Column(name = "register_date")
 	private java.util.Date registerDate;//注册日期

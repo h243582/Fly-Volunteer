@@ -17,6 +17,8 @@ hystrix:
         isolation:
           thread:
             timeoutInMilliseconds: 60000
+
+
 feign:
   client:
     config:
@@ -25,14 +27,16 @@ feign:
         ConnectTimeOut: 6000
         #指建立连接后从服务端读取到可用资源所用的时间
         ReadTimeOut: 10000
+
   hystrix:
-    enabled: true
+
     command:
       default:
         execution:
           isolation:
             thread:
               timeoutInMilliseconds: 60000
+    enabled: false
 
 zuul:
   host:

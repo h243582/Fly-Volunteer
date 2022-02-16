@@ -60,7 +60,7 @@
         <el-form>
 
           <el-form-item class="control-label" label="邮箱" prop="mobile" style="margin-bottom: 20px">
-            <el-input v-model="username" placeholder="请输入邮箱"/>
+            <el-input v-model="email" placeholder="请输入邮箱"/>
           </el-form-item>
 
           <el-form-item class="control-label" label="密码" prop="password" style="margin-bottom: 20px">
@@ -91,22 +91,23 @@ export default {
   data() {
     return {
       checked: false,
+      email: '',
       password: '',
-      username: '',
+
       pojo: {
         avatar: 'https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png',
       },
       rules: {
         nickname: [
           {required: true, message: '请输入姓名', trigger: 'blur'},
-          {min: 2, max: 5, message: '长度在 2 到 5 个字符', trigger: 'blur'}
+          {min: 1, max: 20, message: '长度在 1 到 20 个字符', trigger: 'blur'}
         ],
         password: [
           {required: true, message: '请输入密码', trigger: 'blur'},
           {min: 3, max: 11, message: '长度在 3 到 11 个字符', trigger: 'blur'}
         ],
         email: [
-          {required: true, message: '请输入手机号码', trigger: 'blur'},
+          {required: true, message: '请输入电子邮箱', trigger: 'blur'},
         ]
       },
       progress: 0,
@@ -149,12 +150,11 @@ export default {
       })
     },
     login() {
-      userApi.login(this.username, this.password).then(res => {
+      userApi.login(this.email, this.password).then(res => {
         if (res.data.code === 20000) {
           //保存用户信息,用户ID暂时用1代替
-          setUser(res.data.data.id, res.data.data.token, res.data.data.name, res.data.data.avatar, res.data.data.isvip)
+          setUser(res.data.data.id, res.data.data.token, res.data.data.nickname, res.data.data.avatar, res.data.data.isvip)
           location.href = '/'
-          // console.log(res.data.data)
         } else {
           this.$message({
             message: '用户名或密码错误',

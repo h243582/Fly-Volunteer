@@ -75,8 +75,8 @@ public class UserService {
      * 根据ID查询实体
      * @param id
      */
-    public User findById(int id) {
-        return userDao.findById(id);
+    public User findById(String id) {
+        return userDao.findById(id).get();
     }
 
     /**
@@ -90,7 +90,7 @@ public class UserService {
      * 增加
      */
     public void add(User user) {
-//        user.setId(idWorker.nextId() + "");
+        user.setId(idWorker.nextId() + "");
         //密码加密
         String passwordKey = encoder.encode(user.getPassword());//加密后的密码
         user.setPassword(passwordKey);
@@ -116,36 +116,43 @@ public class UserService {
 
     /**
      * 动态条件构建
-     *
      * @param searchMap
      * @return
      */
     private Specification<User> createSpecification(Map searchMap) {
+
         return new Specification<User>() {
+
             @Override
             public Predicate toPredicate(Root<User> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
                 List<Predicate> predicateList = new ArrayList<Predicate>();
-                // 手机号码
-                if (searchMap.get("email") != null && !"".equals(searchMap.get("email"))) {
-                    predicateList.add(cb.like(root.get("email").as(String.class), "%" + (String) searchMap.get("email") + "%"));
+                // ID
+                if (searchMap.get("id")!=null && !"".equals(searchMap.get("id"))) {
+                    predicateList.add(cb.like(root.get("id").as(String.class), "%"+(String)searchMap.get("id")+"%"));
+                }
+                // 邮箱
+                if (searchMap.get("email")!=null && !"".equals(searchMap.get("email"))) {
+                    predicateList.add(cb.like(root.get("email").as(String.class), "%"+(String)searchMap.get("email")+"%"));
                 }
                 // 密码
-                if (searchMap.get("password") != null && !"".equals(searchMap.get("password"))) {
-                    predicateList.add(cb.like(root.get("password").as(String.class), "%" + (String) searchMap.get("password") + "%"));
+                if (searchMap.get("password")!=null && !"".equals(searchMap.get("password"))) {
+                    predicateList.add(cb.like(root.get("password").as(String.class), "%"+(String)searchMap.get("password")+"%"));
                 }
                 // 昵称
-                if (searchMap.get("nickname") != null && !"".equals(searchMap.get("nickname"))) {
-                    predicateList.add(cb.like(root.get("nickname").as(String.class), "%" + (String) searchMap.get("nickname") + "%"));
+                if (searchMap.get("nickname")!=null && !"".equals(searchMap.get("nickname"))) {
+                    predicateList.add(cb.like(root.get("nickname").as(String.class), "%"+(String)searchMap.get("nickname")+"%"));
                 }
                 // 头像
-                if (searchMap.get("avatar") != null && !"".equals(searchMap.get("avatar"))) {
-                    predicateList.add(cb.like(root.get("avatar").as(String.class), "%" + (String) searchMap.get("avatar") + "%"));
+                if (searchMap.get("avatar")!=null && !"".equals(searchMap.get("avatar"))) {
+                    predicateList.add(cb.like(root.get("avatar").as(String.class), "%"+(String)searchMap.get("avatar")+"%"));
                 }
-                return cb.and(predicateList.toArray(new Predicate[predicateList.size()]));
+
+                return cb.and( predicateList.toArray(new Predicate[predicateList.size()]));
+
             }
         };
-    }
 
+    }
 
     /**
      * 发送短信验证码
@@ -193,6 +200,8 @@ public class UserService {
             throw new RuntimeException("验证码输入不正确");
         }
         String passwordKey = encoder.encode(user.getPassword());//加密后的密码
+        user.setId(idWorker.nextId() + "");
+
         user.setPassword(passwordKey);
 
         user.setRegisterDate(new Date());//注册日期
@@ -203,9 +212,21 @@ public class UserService {
 
 
     /**
-     * 根据邮箱和密码查询用户
+     * 根据邮箱和密码(加密后)查询用户
      */
     public User findByMobileAndPassword(String email, String password) {
+        User user = userDao.findByEmail(email);
+        if (user != null && encoder.matches(password, user.getPassword())) {
+            return user;
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * 根据邮箱和密码(加密后)查询用户
+     */
+    public User findByEmailAndPassword2(String email, String password) {
         User user = userDao.findByEmail(email);
         if (user != null && encoder.matches(password, user.getPassword())) {
             return user;

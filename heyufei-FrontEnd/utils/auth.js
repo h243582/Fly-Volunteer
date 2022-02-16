@@ -1,16 +1,16 @@
 import Cookie from "js-cookie";
 
 const tokenKey = "X-Token"; //Token
-const nameKey = "userName"; //用户名
+const nameKey = "email"; //邮箱
 const avatarKey = "userAvatar"; //用户头像
 const idKey = "userId"; //用户id
 const isVIP = "isVIP"; //vip
 
 
-export function setUser(id, token, name, avatar, vip) {
+export function setUser(id, token, nickname, avatar, vip) {
     Cookie.set(idKey, id);
     Cookie.set(tokenKey, token);
-    Cookie.set(nameKey, name);
+    Cookie.set(nameKey, nickname);
     Cookie.set(avatarKey, avatar);
     Cookie.set(isVIP, vip);
 }

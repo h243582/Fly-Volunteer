@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="heyufei-Ribbon" />
         <module name="heyufei-utils" />
+        <module name="Demo" />
         <module name="heyufei-Register" />
         <module name="heyufei-FrontEnd" />
         <module name="heyufei-user" />
@@ -25,6 +26,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Demo" options="-parameters" />
       <module name="Fly-Volunteer" options="-parameters" />
       <module name="heyufei-FrontEnd" options="-parameters" />
       <module name="heyufei-Gateway" options="-parameters" />

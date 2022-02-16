@@ -1,4 +1,6 @@
 import request from '@/utils/request'
+const group_name = ''
+const api_name = 'user'
 
 export default {
     /*查询所有用户分页*/
@@ -11,6 +13,13 @@ export default {
             data: searchMap
         })
 
+    },
+    search(page, size, searchMap) {
+        return request({
+            url: `/${api_name}/search/${page}/${size}`,
+            method: 'post',
+            data: searchMap
+        })
     },
     sendsms(email) {
         return request({
@@ -34,12 +43,12 @@ export default {
             data: user,
         });
     },
-    login(mobile, password) {
+    login(email, password) {
         return request({
             url: "/heyufei-user/user/login",
             method: "post",
             data: {
-                mobile,
+                email,
                 password,
             },
         });
@@ -71,7 +80,12 @@ export default {
             method: "get"
         });
     },
-
+    findById(id) {
+        return request({
+            url: `/${api_name}/${id}`,
+            method: 'get'
+        })
+    },
     //获取当前登录的用户的账户信息
     getAccount() {
         return request({

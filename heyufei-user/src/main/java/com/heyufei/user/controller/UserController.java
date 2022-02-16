@@ -37,7 +37,7 @@ public class UserController {
 	private HttpServletRequest request;
 	@Autowired
 	private JwtUtil jwtUtil;
-	
+
 	/**
 	 * 查询全部数据
 	 * @return
@@ -46,12 +46,12 @@ public class UserController {
 	public Result findAll(){
 		return new Result(true,StatusCode.OK,"查询成功",userService.findAll());
 	}
-	
+
 	/**
 	 * 根据ID查询
 	 */
 	@RequestMapping(value="/{id}",method= RequestMethod.GET)
-	public Result findById(@PathVariable int id){
+	public Result findById(@PathVariable String id){
 		return new Result(true,StatusCode.OK,"查询成功",userService.findById(id));
 	}
 
@@ -85,7 +85,8 @@ public class UserController {
     public Result findSearch( @RequestBody Map searchMap){
         return new Result(true,StatusCode.OK,"查询成功",userService.findSearch(searchMap));
     }
-	
+
+
 	/**
 	 * 增加
 	 * @param user
@@ -95,17 +96,17 @@ public class UserController {
 		userService.add(user);
 		return new Result(true,StatusCode.OK,"增加成功");
 	}
-	
+
 	/**
 	 * 修改
 	 */
 	@RequestMapping(value="/{id}",method= RequestMethod.PUT)
-	public Result update(@RequestBody User user, @PathVariable int id ){
+	public Result update(@RequestBody User user, @PathVariable String id ){
 		user.setId(id);
-		userService.update(user);		
+		userService.update(user);
 		return new Result(true,StatusCode.OK,"修改成功");
 	}
-	
+
 	/**
 	 * 删除用户，必须拥有管理员权限，否则不能删除。
 	 * 	Token
@@ -148,8 +149,8 @@ public class UserController {
 	/**
 	 * 用户登陆
 	 */
-	@RequestMapping(value="/login",method=RequestMethod.POST)
-	public Result login(@RequestBody Map<String,String> loginMap){
+	@RequestMapping(value="/login2",method=RequestMethod.POST)
+	public Result login2(@RequestBody Map<String,String> loginMap){
 		User user = userService.findByMobileAndPassword(loginMap.get("email"), loginMap.get("password"));
 		if(user!=null){
 			String token = jwtUtil.createJWT(user.getEmail(),user.getNickname(), "user");
@@ -164,6 +165,25 @@ public class UserController {
 			return new Result(false,StatusCode.LOGINERROR,"用户名或密码错误");
 		}
 	}
+
+	@RequestMapping(value="/login",method=RequestMethod.POST)
+	public Result login(@RequestBody User laUser){
+		User user = userService.findByMobileAndPassword(laUser.getEmail(), laUser.getPassword());
+		if(user!=null){
+			String token = jwtUtil.createJWT(user.getEmail(),user.getNickname(), "user");
+			Map<String,String> map=new HashMap<>();
+			map.put("token",token);
+			map.put("nickname",user.getNickname());//昵称
+			map.put("avatar",user.getAvatar());//头像
+			map.put("isvip",user.getIsVip()+"");//是否VIP
+
+			return new Result(true,StatusCode.OK,"登陆成功",map);
+		}else{
+			return new Result(false,StatusCode.LOGINERROR,"用户名或密码错误");
+		}
+	}
+
+
 
 	//采用file.transferTo 来保存上传的文件
 	@RequestMapping("/uploadPic")
