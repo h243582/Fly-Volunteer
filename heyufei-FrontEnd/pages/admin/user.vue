@@ -1,6 +1,7 @@
 <template>
   <div>
     <br>
+    <!-- 此处是顶部搜索栏   -->
     <el-form :inline="true">
       <el-form-item label="邮箱">
         <el-input v-model="searchMap.email" placeholder="邮箱"></el-input>
@@ -11,79 +12,101 @@
       <el-form-item label="昵称">
         <el-input v-model="searchMap.nickname" placeholder="昵称"></el-input>
       </el-form-item>
-      <el-form-item label="头像">
-        <el-input v-model="searchMap.avatar" placeholder="头像"></el-input>
-      </el-form-item>
-      <el-form-item label="注册日期">
-        <el-input v-model="searchMap.register_date" placeholder="注册日期"></el-input>
-      </el-form-item>
-      <el-form-item label="修改日期">
-        <el-input v-model="searchMap.update_date" placeholder="修改日期"></el-input>
-      </el-form-item>
+<!--      <el-form-item label="头像">-->
+<!--        <el-input v-model="searchMap.avatar" placeholder="头像"></el-input>-->
+<!--      </el-form-item>-->
+<!--      <el-form-item label="注册日期">-->
+<!--        <el-input v-model="searchMap.registerDate" placeholder="注册日期"></el-input>-->
+<!--      </el-form-item>-->
+<!--      <el-form-item label="修改日期">-->
+<!--        <el-input v-model="searchMap.updateDate" placeholder="修改日期"></el-input>-->
+<!--      </el-form-item>-->
       <el-form-item label="是否会员">
-        <el-input v-model="searchMap.is_vip" placeholder="是否会员"></el-input>
+        <el-switch v-model="searchMap.isVip" placeholder="是否会员"></el-switch>
+
       </el-form-item>
 
       <el-button type="primary" @click="fetchData()">查询</el-button>
-      <el-button type="primary" @click="handleEdit('')">新增</el-button>
+      <el-button type="primary" @click="addEdit()">新增</el-button>
     </el-form>
     <el-table
         :data="list"
         border
-        style="width: 100%">
-      <el-table-column prop="id" label="ID" width="160" show-overflow-tooltip></el-table-column>
-      <el-table-column prop="email" label="邮箱" width="160"></el-table-column>
-      <el-table-column prop="password" label="密码" width="100" show-overflow-tooltip></el-table-column>
-      <el-table-column prop="nickname" label="昵称" width="120"></el-table-column>
+        >
+      <!--      <el-table-column prop="id" label="ID" width="160" show-overflow-tooltip></el-table-column>-->
+      <el-table-column prop="email" label="邮箱" width="170"></el-table-column>
+      <!--      <el-table-column prop="password" label="密码" width="100" show-overflow-tooltip></el-table-column>-->
+      <el-table-column prop="nickname" label="昵称" width="130"></el-table-column>
       <el-table-column prop="avatar" label="头像" width="80">
-        <template  slot-scope="scope">
-          <img :src="scope.row.avatar" style="width: 50px;height: 50px;border: 1px solid black;border-radius: 60px" alt="">
+        <template slot-scope="scope">
+          <img :src="scope.row.avatar" style="width: 50px;height: 50px;border: 1px solid black;border-radius: 60px"
+               alt="">
         </template>
       </el-table-column>
-      <el-table-column prop="register_date" label="注册日期" width="155">
-        <template  slot-scope="scope">
-          {{formateDate(scope.row.registerDate)}}
+      <el-table-column prop="register_date" label="注册日期" width="180">
+        <template slot-scope="scope">
+          {{ formatDate(scope.row.registerDate) }}
         </template>
       </el-table-column>
-      <el-table-column prop="update_date" label="修改日期" width="155">
-        <template  slot-scope="scope">
-          {{formateDate(scope.row.updateDate)}}
+      <el-table-column prop="update_date" label="修改日期" width="180">
+        <template slot-scope="scope">
+          {{ formatDate(scope.row.updateDate) }}
         </template>
       </el-table-column>
       <el-table-column prop="isVip" label="是否会员" width="80">
-        <template  slot-scope="scope">
-          <div v-if="scope.row.isVip===0">
+        <template slot-scope="scope">
+          <div v-if="scope.row.isVip===false">
             否
           </div>
-          <div v-if="scope.row.isVip===1">
+          <div v-if="scope.row.isVip===true">
             是
           </div>
         </template>
       </el-table-column>
 
       <el-table-column
-          fixed="right"
           label="操作"
-          width="100">
+          width="200">
         <template slot-scope="scope">
-          <el-button @click="handleEdit(scope.row.id)" type="text" size="small">修改</el-button>
-          <el-button @click="handleDelete(scope.row.id)" type="text" size="small">删除</el-button>
+          <el-button @click="handleEdit(scope.row.id)" type="success" size="small">修改</el-button>
+          <el-button @click="handleDelete(scope.row.id)" type="warning" size="small">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
     <el-pagination
-        @size-change="fetchData"
-        @current-change="fetchData"
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
         :current-page="currentPage"
-        :page-sizes="[5,10,20]"
-        :page-size="10"
+        :page-sizes="[5,10,20,50]"
+        :page-size="pageSize"
         layout="total, sizes, prev, pager, next, jumper"
         :total="total">
     </el-pagination>
     <el-dialog title="编辑" :visible.sync="dialogFormVisible">
       <el-form label-width="80px">
+        <el-form-item label="头像">
+          <div v-if="progress===0 || progress===100">
+            <el-upload
+                class="avatar-uploader"
+                action="#"
+                :show-file-list="false"
+                :before-upload="beforeAvatarUpload"
+                :http-request="uploadImg">
+
+              <img v-if="pojo.avatar" :src="pojo.avatar" class="avatar" alt="">
+              <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+            </el-upload>
+          </div>
+
+          <div v-if="progress!==0&&progress!==100">
+            <el-progress class="progress" type="circle" :percentage="progress" stroke-width="4"	 ></el-progress>
+          </div>
+
+<!--          <div class="upload-name">点击上传头像</div>-->
+        </el-form-item>
+
         <el-form-item label="邮箱">
-          <el-input v-model="pojo.email"></el-input>
+          <el-input v-model="pojo.email" v-bind:disabled="true"></el-input>
         </el-form-item>
         <el-form-item label="密码">
           <el-input v-model="pojo.password"></el-input>
@@ -91,34 +114,65 @@
         <el-form-item label="昵称">
           <el-input v-model="pojo.nickname"></el-input>
         </el-form-item>
-        <el-form-item label="头像">
-          <el-input v-model="pojo.avatar"></el-input>
-        </el-form-item>
         <el-form-item label="注册日期">
-          <el-input v-model="pojo.register_date"></el-input>
-<!--          <el-input :placeholder="formateDate(pojo.registerDate)" id="register_date"  v-bind:disabled="true"></el-input>-->
-
+          <el-input :placeholder="formatDate(pojo.registerDate)" id="register_date" v-bind:disabled="true"></el-input>
         </el-form-item>
         <el-form-item label="修改日期">
-          <el-input v-model="pojo.update_date"></el-input>
-<!--          <el-input :placeholder="formateDate(pojo.updateDate)" id="update_date"  v-bind:disabled="true"></el-input>-->
+          <el-input :placeholder="formatDate(pojo.updateDate)" id="update_date" v-bind:disabled="true"></el-input>
         </el-form-item>
         <el-form-item label="是否会员">
-          <el-input v-model="pojo.isVip"></el-input>
-
+          <el-switch v-model="pojo.isVip"></el-switch>
         </el-form-item>
-<!--                <el-form-item label="是否会员">-->
-<!--                  <el-switch v-model="isvipComputed(user.isVip)"></el-switch>-->
-<!--                </el-form-item>-->
 
         <el-button type="primary" @click="handleSave()">保存</el-button>
         <el-button @click="dialogFormVisible = false">关闭</el-button>
       </el-form>
     </el-dialog>
+
+    <el-dialog title="新增用户" :visible.sync="addFormVisible">
+      <el-form label-width="80px">
+        <el-form-item label="头像">
+          <div v-if="progress===0 || progress===100">
+            <el-upload
+                class="avatar-uploader"
+                action="#"
+                :show-file-list="false"
+                :before-upload="beforeAvatarUpload"
+                :http-request="uploadImg">
+
+              <img v-if="pojo.avatar" :src="pojo.avatar" class="avatar" alt="">
+              <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+            </el-upload>
+          </div>
+
+          <div v-if="progress!==0&&progress!==100">
+            <el-progress class="progress" type="circle" :percentage="progress" stroke-width="4"	 ></el-progress>
+          </div>
+        </el-form-item>
+        <el-form-item label="邮箱">
+          <el-input v-model="pojo.email" ></el-input>
+        </el-form-item>
+        <el-form-item label="密码">
+          <el-input v-model="pojo.password"></el-input>
+        </el-form-item>
+        <el-form-item label="昵称">
+          <el-input v-model="pojo.nickname"></el-input>
+        </el-form-item>
+        <el-form-item label="是否会员">
+          <el-switch v-model="pojo.isVip"></el-switch>
+        </el-form-item>
+
+        <el-button type="primary" @click="handleSave()">保存</el-button>
+        <el-button @click="addFormVisible = false">关闭</el-button>
+      </el-form>
+    </el-dialog>
+
   </div>
 </template>
 <script>
 import userApi from '@/api/user'
+import COS from "cos-js-sdk-v5";
+import "~/assets/css/admin/user.css"
 
 export default {
   layout: 'admin',
@@ -131,29 +185,40 @@ export default {
       pageSize: 10, // 每页大小
       searchMap: {}, // 查询条件
       dialogFormVisible: false, // 编辑窗口是否可见
-      pojo: {}, // 编辑表单绑定的实体对象
+      addFormVisible:false, // 新增用户窗口是否可见
+      pojo: {}, // 编辑表单绑定的实体对象0
       cityList: [], // 城市列表
-      id: '' // 当前用户修改的ID
+      id: '', // 当前用户修改的ID
+      progress: 0,
     }
   },
   created() {
     this.fetchData()
   },
   methods: {
+    handleCurrentChange(val){
+      this.currentPage=val;
+      this.fetchData()
+    },
+    handleSizeChange(val) {
+      this.pageSize=val;
+      this.fetchData()
+    },
     fetchData() {
       userApi.search(this.currentPage, this.pageSize, this.searchMap).then(response => {
-        console.log(response.data.data)
         this.list = response.data.data.rows
         this.total = response.data.data.total
+
+
       })
     },
     handleSave() {
-      userApi.update(this.id, this.pojo).then(response => {
+      userApi.updateUser(this.id, this.pojo).then(response => {
         this.$message({
-          message: response.message,
-          type: (response.flag ? 'success' : 'error')
+          message: response.data.message,
+          type: (response.data.flag ? 'success' : 'error')
         })
-        if (response.flag) { // 如果成功
+        if (response.data.flag) { // 如果成功
           this.fetchData() // 刷新列表
         }
       })
@@ -164,13 +229,18 @@ export default {
       this.dialogFormVisible = true // 打开窗口
       if (id !== '') { // 修改
         userApi.findById(id).then(response => {
-          if (response.flag) {
-            this.pojo = response.data
+          if (response.data.flag) {
+            this.pojo = response.data.data
+            this.pojo.password = ''
           }
         })
       } else {
         this.pojo = {} // 清空数据
       }
+    },
+    addEdit(){
+      this.addFormVisible = true // 打开窗口
+      this.pojo = {} // 清空数据
     },
     handleDelete(id) {
       this.$confirm('确定要删除此纪录吗?', '提示', {
@@ -179,21 +249,88 @@ export default {
         type: 'warning'
       }).then(() => {
         userApi.deleteById(id).then(response => {
-          this.$message({ message: response.message, type: (response.flag ? 'success' : 'error') })
-          if (response.flag) {
+          this.$message({message: response.data.message, type: (response.data.flag ? 'success' : 'error')})
+          if (response.data.flag) {
             this.fetchData() // 刷新数据
           }
         })
       })
     },
-    formateDate(datetime) {
+    formatDate(datetime) {
       function addDateZero(num) {
         return (num < 10 ? "0" + num : num);
       }
 
       let d = new Date(datetime);
-      let formatdatetime = d.getFullYear() + '-' + addDateZero(d.getMonth() + 1) + '-' + addDateZero(d.getDate()) + '  ' + addDateZero(d.getHours()) + ':' + addDateZero(d.getMinutes() + ':' + addDateZero(d.getSeconds()));
-      return formatdatetime;
+      return d.getFullYear() + '年' + addDateZero(d.getMonth() + 1) + '月' + addDateZero(d.getDate()) + '     ' + addDateZero(d.getHours()) + ':' + addDateZero(d.getMinutes() + ':' + addDateZero(d.getSeconds()));
+    },
+    fileDateFormat(fmt, date) {
+      let ret;
+      const opt = {
+        "Y+": date.getFullYear().toString(),        // 年
+        "m+": (date.getMonth() + 1).toString(),     // 月
+        "d+": date.getDate().toString(),            // 日
+        "H+": date.getHours().toString(),           // 时
+        "M+": date.getMinutes().toString(),         // 分
+        "S+": date.getSeconds().toString()          // 秒
+        // 有其他格式化字符需求可以继续添加，必须转化成字符串
+      };
+      for (let k in opt) {
+        ret = new RegExp("(" + k + ")").exec(fmt);
+        if (ret) {
+          fmt = fmt.replace(ret[1], (ret[1].length === 1) ? (opt[k]) : (opt[k].padStart(ret[1].length, "0")))
+        }
+      }
+      return fmt;
+    },
+
+    beforeAvatarUpload(file) {
+      const isJPG = file.type === 'image/jpeg';
+      const isLt2M = file.size / 1024 / 1024 < 2;
+
+      if (!isJPG) {
+        this.$message.error('上传头像图片只能是 JPG 格式!');
+      }
+      if (!isLt2M) {
+        this.$message.error('上传头像图片大小不能超过 2MB!');
+      }
+
+      return isJPG && isLt2M;
+    },
+
+    uploadImg(res) {
+      if (res.file) {
+        // 下面的代码是固定写法
+        // 填写自己腾讯云cos中的key和id (密钥)
+        const cos = new COS({
+          SecretId: 'AKIDY2PVXMBrCMQYUFwfGi40kPq1QcYCckdf', // 身份识别ID
+          SecretKey: 'z8x43NhlbFFVdW7ZptIRKyMh1A4uWtSR' // 身份秘钥
+        })
+        let date = new Date();
+
+        // 执行上传操作
+        cos.putObject({
+          Bucket: 'heyufei-1305336662', /* 存储桶 */
+          Region: 'ap-shanghai', /* 存储桶所在地域，必须字段 */
+          Key: '/Fly-Volunteer/Head-' + this.fileDateFormat("YYYYmmddHHMM", date) + res.file.name, /* 文件名 */
+          StorageClass: 'STANDARD', // 上传模式, 标准模式
+          Body: res.file, // 上传文件对象
+          onProgress: (progressEvent) => { // 上传进度
+            let num = progressEvent.loaded / progressEvent.total * 100 | 0;  //百分比
+            if (num !== undefined) {
+              this.progress = num
+            }
+          }
+        }, (err, data) => {
+          console.log(err || data)
+          // 上传成功之后
+          if (data.statusCode === 200) {
+            this.pojo.avatar = `https:${data.Location}`
+          }
+        })
+      }
+
+
     },
   }
 }

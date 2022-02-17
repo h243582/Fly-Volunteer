@@ -165,20 +165,7 @@ export default {
         }
       })
     },
-    beforeAvatarUpload(file) {
-      const isJPG = file.type === 'image/jpeg';
-      const isLt2M = file.size / 1024 / 1024 < 2;
-
-      if (!isJPG) {
-        this.$message.error('上传头像图片只能是 JPG 格式!');
-      }
-      if (!isLt2M) {
-        this.$message.error('上传头像图片大小不能超过 2MB!');
-      }
-
-      return isJPG && isLt2M;
-    },
-    dateFormat(fmt, date) {
+    fileDateFormat(fmt, date) {
       let ret;
       const opt = {
         "Y+": date.getFullYear().toString(),        // 年
@@ -198,6 +185,20 @@ export default {
       return fmt;
     },
 
+    beforeAvatarUpload(file) {
+      const isJPG = file.type === 'image/jpeg';
+      const isLt2M = file.size / 1024 / 1024 < 2;
+
+      if (!isJPG) {
+        this.$message.error('上传头像图片只能是 JPG 格式!');
+      }
+      if (!isLt2M) {
+        this.$message.error('上传头像图片大小不能超过 2MB!');
+      }
+
+      return isJPG && isLt2M;
+    },
+
     uploadImg(res) {
       if (res.file) {
         // 下面的代码是固定写法
@@ -212,7 +213,7 @@ export default {
         cos.putObject({
           Bucket: 'heyufei-1305336662', /* 存储桶 */
           Region: 'ap-shanghai', /* 存储桶所在地域，必须字段 */
-          Key: '/Fly-Volunteer/Head-' + this.dateFormat("YYYYmmddHHMM", date) + res.file.name, /* 文件名 */
+          Key: '/Fly-Volunteer/Head-' + this.fileDateFormat("YYYYmmddHHMM", date) + res.file.name, /* 文件名 */
           StorageClass: 'STANDARD', // 上传模式, 标准模式
           Body: res.file, // 上传文件对象
           onProgress: (progressEvent) => { // 上传进度

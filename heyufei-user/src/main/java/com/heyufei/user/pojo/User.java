@@ -25,7 +25,7 @@ public class User implements Serializable{
 	private String nickname;//昵称
 	private String avatar;//头像
 	@Column(name = "is_vip")
-	private Integer isVip;//是否会员
+	private Boolean isVip;//是否会员
 
 //	@Column(name = "vip_day")
 //	private Integer vipDay;//

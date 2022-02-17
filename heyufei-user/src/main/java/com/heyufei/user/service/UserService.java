@@ -96,7 +96,7 @@ public class UserService {
         user.setPassword(passwordKey);
         user.setRegisterDate(new Date());//注册日期
         user.setUpdateDate(new Date());//更新日期
-        user.setIsVip(0);
+        user.setIsVip(false);
         userDao.save(user);
     }
 
@@ -104,6 +104,8 @@ public class UserService {
      * 修改
      */
     public void update(User user) {
+        user.setUpdateDate(new Date());
+        user.setPassword(encoder.encode(user.getPassword()));
         userDao.save(user);
     }
 
@@ -206,7 +208,7 @@ public class UserService {
 
         user.setRegisterDate(new Date());//注册日期
         user.setUpdateDate(new Date());//更新日期
-        user.setIsVip(0);
+        user.setIsVip(false);
         userDao.save(user);
     }
 

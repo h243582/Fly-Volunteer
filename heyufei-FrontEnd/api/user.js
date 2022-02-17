@@ -1,4 +1,5 @@
 import request from '@/utils/request'
+
 const group_name = ''
 const api_name = 'user'
 
@@ -23,29 +24,22 @@ export default {
     },
     sendsms(email) {
         return request({
-            url: `/user/sendsms?email=${email}`,
+            url: `/${api_name}/sendsms?email=${email}`,
             method: "post",
         });
     },
     register(user, code) {
         // console.log(user + "-----" + code)
         return request({
-            url: `/user/register/${code}`,
+            url: `/${api_name}/register/${code}`,
             method: "post",
             data: user,
         });
     },
-    //使用微信登录添加新用户
-    add(user) {
-        return request({
-            url: "/user",
-            method: "post",
-            data: user,
-        });
-    },
+
     login(email, password) {
         return request({
-            url: "/heyufei-user/user/login",
+            url: `/${api_name}/login`,
             method: "post",
             data: {
                 email,
@@ -93,29 +87,27 @@ export default {
             method: "get"
         })
     },
-    //修改账户信息
-    saveinfo(user) {
+
+
+    //修改用户信息
+    updateUser(id, pojo) {
+        if (id === null || id === '') {
+            return this.save(pojo)
+        }
         return request({
-            url: "/user/saveinfo",
+            url: `/${api_name}/${id}`,
             method: 'put',
-            data: user
+            data: pojo
         })
     },
-    //查询当前登录用户的用户信息
-    getUser() {
-        return new request({
-            url: "/user/info",
-            method: "get",
-        });
+    deleteById(id) {
+        return request({
+            url: `/${api_name}/${id}`,
+            method: 'delete'
+        })
     },
-    //修改用户信息
-    updateUser(pojo) {
-        return new request({
-            url: `/user/`,
-            method: "put",
-            data: pojo,
-        });
-    },
+
+
 
     //设置用户头像
     setAvator(uid, url) {
