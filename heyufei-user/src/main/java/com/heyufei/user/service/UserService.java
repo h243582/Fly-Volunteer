@@ -144,11 +144,10 @@ public class UserService {
                 if (searchMap.get("nickname")!=null && !"".equals(searchMap.get("nickname"))) {
                     predicateList.add(cb.like(root.get("nickname").as(String.class), "%"+(String)searchMap.get("nickname")+"%"));
                 }
-                // 头像
-                if (searchMap.get("avatar")!=null && !"".equals(searchMap.get("avatar"))) {
-                    predicateList.add(cb.like(root.get("avatar").as(String.class), "%"+(String)searchMap.get("avatar")+"%"));
+                // vip
+                if (searchMap.get("isVip")!=null && !"".equals(searchMap.get("isVip"))) {
+                    predicateList.add(cb.equal(root.get("isVip").as(Boolean.class), (Boolean)searchMap.get("isVip")));
                 }
-
                 return cb.and( predicateList.toArray(new Predicate[predicateList.size()]));
 
             }

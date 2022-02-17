@@ -12,15 +12,15 @@
       <el-form-item label="昵称">
         <el-input v-model="searchMap.nickname" placeholder="昵称"></el-input>
       </el-form-item>
-<!--      <el-form-item label="头像">-->
-<!--        <el-input v-model="searchMap.avatar" placeholder="头像"></el-input>-->
-<!--      </el-form-item>-->
-<!--      <el-form-item label="注册日期">-->
-<!--        <el-input v-model="searchMap.registerDate" placeholder="注册日期"></el-input>-->
-<!--      </el-form-item>-->
-<!--      <el-form-item label="修改日期">-->
-<!--        <el-input v-model="searchMap.updateDate" placeholder="修改日期"></el-input>-->
-<!--      </el-form-item>-->
+      <!--      <el-form-item label="头像">-->
+      <!--        <el-input v-model="searchMap.avatar" placeholder="头像"></el-input>-->
+      <!--      </el-form-item>-->
+      <!--      <el-form-item label="注册日期">-->
+      <!--        <el-input v-model="searchMap.registerDate" placeholder="注册日期"></el-input>-->
+      <!--      </el-form-item>-->
+      <!--      <el-form-item label="修改日期">-->
+      <!--        <el-input v-model="searchMap.updateDate" placeholder="修改日期"></el-input>-->
+      <!--      </el-form-item>-->
       <el-form-item label="是否会员">
         <el-switch v-model="searchMap.isVip" placeholder="是否会员"></el-switch>
 
@@ -28,11 +28,12 @@
 
       <el-button type="primary" @click="fetchData()">查询</el-button>
       <el-button type="primary" @click="addEdit()">新增</el-button>
+      <el-button type="primary" @click="reset()">重置</el-button>
     </el-form>
     <el-table
         :data="list"
         border
-        >
+    >
       <!--      <el-table-column prop="id" label="ID" width="160" show-overflow-tooltip></el-table-column>-->
       <el-table-column prop="email" label="邮箱" width="170"></el-table-column>
       <!--      <el-table-column prop="password" label="密码" width="100" show-overflow-tooltip></el-table-column>-->
@@ -99,10 +100,10 @@
           </div>
 
           <div v-if="progress!==0&&progress!==100">
-            <el-progress class="progress" type="circle" :percentage="progress" stroke-width="4"	 ></el-progress>
+            <el-progress class="progress" type="circle" :percentage="progress" stroke-width="4"></el-progress>
           </div>
 
-<!--          <div class="upload-name">点击上传头像</div>-->
+          <!--          <div class="upload-name">点击上传头像</div>-->
         </el-form-item>
 
         <el-form-item label="邮箱">
@@ -146,11 +147,11 @@
           </div>
 
           <div v-if="progress!==0&&progress!==100">
-            <el-progress class="progress" type="circle" :percentage="progress" stroke-width="4"	 ></el-progress>
+            <el-progress class="progress" type="circle" :percentage="progress" stroke-width="4"></el-progress>
           </div>
         </el-form-item>
         <el-form-item label="邮箱">
-          <el-input v-model="pojo.email" ></el-input>
+          <el-input v-model="pojo.email"></el-input>
         </el-form-item>
         <el-form-item label="密码">
           <el-input v-model="pojo.password"></el-input>
@@ -176,16 +177,16 @@ import "~/assets/css/admin/user.css"
 
 export default {
   layout: 'admin',
-  name: 'node',
+  name: 'user',
   data() {
     return {
       list: [],
       total: 0, // 总记录数
       currentPage: 1, // 当前页
-      pageSize: 10, // 每页大小
+      pageSize: 5, // 每页大小
       searchMap: {}, // 查询条件
       dialogFormVisible: false, // 编辑窗口是否可见
-      addFormVisible:false, // 新增用户窗口是否可见
+      addFormVisible: false, // 新增用户窗口是否可见
       pojo: {}, // 编辑表单绑定的实体对象0
       cityList: [], // 城市列表
       id: '', // 当前用户修改的ID
@@ -196,12 +197,18 @@ export default {
     this.fetchData()
   },
   methods: {
-    handleCurrentChange(val){
-      this.currentPage=val;
+    reset() {
+      this.currentPage = 1
+      this.pageSize = 5
+      this.searchMap = {}
+      this.fetchData();
+    },
+    handleCurrentChange(val) {
+      this.currentPage = val;
       this.fetchData()
     },
     handleSizeChange(val) {
-      this.pageSize=val;
+      this.pageSize = val;
       this.fetchData()
     },
     fetchData() {
@@ -238,7 +245,7 @@ export default {
         this.pojo = {} // 清空数据
       }
     },
-    addEdit(){
+    addEdit() {
       this.addFormVisible = true // 打开窗口
       this.pojo = {} // 清空数据
     },
@@ -256,6 +263,8 @@ export default {
         })
       })
     },
+
+    //格式化
     formatDate(datetime) {
       function addDateZero(num) {
         return (num < 10 ? "0" + num : num);
@@ -284,6 +293,7 @@ export default {
       return fmt;
     },
 
+    //上传头像
     beforeAvatarUpload(file) {
       const isJPG = file.type === 'image/jpeg';
       const isLt2M = file.size / 1024 / 1024 < 2;
@@ -297,7 +307,6 @@ export default {
 
       return isJPG && isLt2M;
     },
-
     uploadImg(res) {
       if (res.file) {
         // 下面的代码是固定写法
