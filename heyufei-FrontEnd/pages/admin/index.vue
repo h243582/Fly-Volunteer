@@ -4,21 +4,25 @@
              label-width="0px"
              class="card-box login-form">
       <h3 class="title">后台管理</h3>
-      <el-form-item prop="username">
+
+      <!--  账号   -->
+      <el-form-item prop="email">
         <span class="svg-container svg-container_login">
-          <svg-icon icon-class="user"/>
+          <i class="el-icon-s-custom"></i>
         </span>
-        <el-input name="username" type="text" v-model="loginForm.username" autoComplete="on" placeholder="username"/>
+        <el-input name="email" type="text" v-model="loginForm.email" autoComplete="on" placeholder="email"/>
       </el-form-item>
+
+      <!--  密码   -->
       <el-form-item prop="password">
         <span class="svg-container">
-          <svg-icon icon-class="password"></svg-icon>
+          <i class="el-icon-lock"></i>
         </span>
-        <el-input name="password" :type="pwdType" @keyup.enter.native="handleLogin" v-model="loginForm.password"
-                  autoComplete="on"
-                  placeholder="password"></el-input>
-        <span class="show-pwd" @click="showPwd"><svg-icon icon-class="eye"/></span>
+        <el-input name="password" :type="pwdType" @keyup.enter.native="handleLogin" v-model="loginForm.password" autoComplete="on" placeholder="password"></el-input>
+        <span class="show-pwd" @click="showPwd"><i class="el-icon-view"></i></span>
+
       </el-form-item>
+
       <el-form-item>
         <el-button type="primary" style="width:100%;" :loading="loading" @click.native.prevent="handleLogin">
           Sign in
@@ -35,6 +39,8 @@
 
 <script>
 import { isvalidUsername } from '@/utils/validate'
+import userApi from "@/api/user";
+import {getUser, setUser} from "@/utils/auth";
 
 export default {
   layout: 'admin',
@@ -48,7 +54,7 @@ export default {
       }
     }
     const validatePass = (rule, value, callback) => {
-      if (value.length < 5) {
+      if (value.length < 1) {
         callback(new Error('密码不能小于5位'))
       } else {
         callback()
@@ -56,11 +62,11 @@ export default {
     }
     return {
       loginForm: {
-        username: 'admin',
+        email: 'admin',
         password: 'admin'
       },
       loginRules: {
-        username: [{required: true, trigger: 'blur', validator: validateUsername}],
+        email: [{required: true, trigger: 'blur', validator: validateUsername}],
         password: [{required: true, trigger: 'blur', validator: validatePass}]
       },
       loading: false,
@@ -80,8 +86,22 @@ export default {
       }
     },
     handleLogin() {
-      if (this.loginForm.username === "admin" && this.loginForm.password === "admin") {
-        location.href = '/admin/user'
+      if (this.loginForm.email === "admin") {
+        userApi.login(this.loginForm.email, this.loginForm.password).then(res => {
+          if (res.data.code === 20000) {
+            //保存用户信息,用户ID暂时用1代替
+            setUser(res.data.data.id, res.data.data.token, res.data.data.nickname, res.data.data.avatar, res.data.data.isvip)
+            location.href = '/admin/user'
+            // console.log(getUser().token)
+          } else {
+            this.$message({
+              message: '用户名或密码错误',
+              type: 'error'
+            })
+            // this.email = ''
+            this.password = ''
+          }
+        })
       }
     }
 
@@ -90,17 +110,15 @@ export default {
 }
 </script>
 
-<style rel="stylesheet/scss" lang="scss">
-$bg: #2d3a4b;
-$dark_gray: #889aa4;
-$light_gray: #eee;
+<style scoped>
+
 
 .login-container {
   position: fixed;
   height: 100%;
   width: 100%;
-  background-color: $bg;
-
+  background-color: #2d3a4b;
+}
   input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0px 1000px #293444 inset !important;
     -webkit-text-fill-color: #fff !important;
@@ -112,7 +130,7 @@ $light_gray: #eee;
     -webkit-appearance: none;
     border-radius: 0px;
     padding: 12px 5px 12px 15px;
-    color: $light_gray;
+    color: #eee;
     height: 47px;
   }
 
@@ -130,20 +148,18 @@ $light_gray: #eee;
 
   .svg-container {
     padding: 6px 5px 6px 15px;
-    color: $dark_gray;
+    color: #889aa4;
     vertical-align: middle;
     width: 30px;
     display: inline-block;
 
-    &_login {
-      font-size: 20px;
-    }
+
   }
 
   .title {
     font-size: 26px;
     font-weight: 400;
-    color: $light_gray;
+    color: #eee;
     margin: 0px auto 40px auto;
     text-align: center;
     font-weight: bold;
@@ -170,7 +186,7 @@ $light_gray: #eee;
     right: 10px;
     top: 7px;
     font-size: 16px;
-    color: $dark_gray;
+    color: #889aa4;
     cursor: pointer;
     user-select: none;
   }
@@ -180,5 +196,5 @@ $light_gray: #eee;
     right: 35px;
     bottom: 28px;
   }
-}
+
 </style>

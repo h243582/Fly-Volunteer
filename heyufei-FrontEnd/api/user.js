@@ -28,8 +28,15 @@ export default {
             method: "post",
         });
     },
+    //管理员界面新增用户
+    addUser(user) {
+        return request({
+            url: `/${api_name}`,
+            method: "post",
+            data: user,
+        });
+    },
     register(user, code) {
-        // console.log(user + "-----" + code)
         return request({
             url: `/${api_name}/register/${code}`,
             method: "post",
@@ -77,6 +84,12 @@ export default {
     findById(id) {
         return request({
             url: `/${api_name}/${id}`,
+            method: 'get'
+        })
+    },
+    findByEmail(email) {
+        return request({
+            url: `/${api_name}/email?email=${email}`,
             method: 'get'
         })
     },

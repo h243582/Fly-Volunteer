@@ -93,7 +93,7 @@
 
             <li v-if="user.token === undefined">
               <router-link to="/login">
-                  <el-button type="success" plain size="mini" style="margin-top: 26px;margin-left: 5px">登入</el-button>
+                <el-button size="mini" plain style="margin-top: 26px;margin-left: 5px">登入</el-button>
               </router-link>
             </li>
 
@@ -108,6 +108,13 @@
               <div style="float:left;margin-top: 26px;">
                 <el-button type="danger" plain size="mini" @click="logout">注销</el-button>
               </div>
+            </li>
+
+            <!-- 管理员登录           -->
+            <li>
+              <router-link to="/admin">
+                <el-button type="primary" plain size="mini" style="margin-top: 26px;margin-left: 5px">后台</el-button>
+              </router-link>
             </li>
           </ul>
         </div>

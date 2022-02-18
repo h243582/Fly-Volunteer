@@ -5,24 +5,21 @@
       <div class="form">
         <h3 class="loginsign-title">注册新账号</h3>
         <el-form :model="pojo" :rules="rules" ref="pojo" label-width="120px" class="demo-form-inline">
-          <div v-if="progress===0 || progress===100">
+          <el-form-item label="头像">
             <el-upload
                 class="avatar-uploader"
                 action="#"
                 :show-file-list="false"
                 :before-upload="beforeAvatarUpload"
-                :http-request="uploadImg">
+                :http-request="uploadImg"
+                v-loading="imgProgress">
 
               <img v-if="pojo.avatar" :src="pojo.avatar" class="avatar" alt="">
               <i v-else class="el-icon-plus avatar-uploader-icon"></i>
             </el-upload>
-          </div>
+          </el-form-item>
 
-          <div v-if="progress!==0&&progress!==100">
-            <el-progress class="progress" type="circle" :percentage="progress" stroke-width="4"	 ></el-progress>
-          </div>
-
-          <div class="upload-name">点击上传头像</div>
+<!--          <div class="upload-name">点击上传头像</div>-->
 
 
           <el-form-item class="control-label" label="姓名" prop="nickname" style="margin-bottom: 20px">
@@ -110,7 +107,7 @@ export default {
           {required: true, message: '请输入电子邮箱', trigger: 'blur'},
         ]
       },
-      progress: 0,
+      imgProgress: false
 
     }
   },
@@ -198,9 +195,9 @@ export default {
 
       return isJPG && isLt2M;
     },
-
     uploadImg(res) {
       if (res.file) {
+        this.imgProgress = true
         // 下面的代码是固定写法
         // 填写自己腾讯云cos中的key和id (密钥)
         const cos = new COS({
@@ -216,16 +213,16 @@ export default {
           Key: '/Fly-Volunteer/Head-' + this.fileDateFormat("YYYYmmddHHMM", date) + res.file.name, /* 文件名 */
           StorageClass: 'STANDARD', // 上传模式, 标准模式
           Body: res.file, // 上传文件对象
-          onProgress: (progressEvent) => { // 上传进度
-            let num = progressEvent.loaded / progressEvent.total * 100 | 0;  //百分比
-            if (num !== undefined) {
-              this.progress = num
-            }
-          }
+          // onProgress: (progressEvent) => { // 上传进度
+          //   let num = progressEvent.loaded / progressEvent.total * 100 | 0;  //百分比
+          //   if (num !== undefined) {
+          //     this.progress = num
+          //   }
+          // }
         }, (err, data) => {
-          console.log(err || data)
           // 上传成功之后
           if (data.statusCode === 200) {
+            this.imgProgress = false
             this.pojo.avatar = `https:${data.Location}`
           }
         })

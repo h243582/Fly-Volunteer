@@ -32,35 +32,36 @@ public class ManagerFilter extends ZuulFilter {
 
     @Override
     public Object run() throws ZuulException {
-        System.out.println("Zuul过滤器: ");
-        RequestContext requestContext = RequestContext.getCurrentContext();
-        HttpServletRequest request = requestContext.getRequest();
+        RequestContext rc = RequestContext.getCurrentContext();
+        HttpServletRequest request = rc.getRequest();
         if (request.getMethod().equals("OPTIONS")) {
             return null;
         }
         String url = request.getRequestURL().toString();
-        System.out.println("Zuul过滤器内容: "+url);
-        if (url.contains("login") || url.contains("user")  || url.indexOf("/label") > 0 ) {
-            System.out.println("登陆页面" + url);
-            return null;
-        }
+        String method = request.getMethod();
+        System.out.println("Zuul过滤器内容: "+url+"  方法：  "+method);
+
+
+
         String authHeader = (String) request.getHeader("Authorization");// 获取头信息
-        if (authHeader != null ) {
-            Claims claims = jwtUtil.parseJWT(authHeader);
-            if (claims != null) {
-                String roles = (String) claims.get("roles");
-                System.out.println(roles);
-                if ("admin".equals(roles) || "user".equals(roles)) {
-                    requestContext.addZuulRequestHeader("Authorization", authHeader);
-                    System.out.println("token 验证通过，添加了头" + authHeader);
-                    return null;
-                }
-            }
+
+        if(authHeader == null && method.contains("delete")){
+            rc.setSendZuulResponse(false);// 终止运行
+            rc.setResponseStatusCode(401);// http状态码
+            rc.setResponseBody("无权访问");
+            rc.getResponse().setContentType("text/html;charset=UTF-8");
         }
-        requestContext.setSendZuulResponse(false);// 终止运行
-        requestContext.setResponseStatusCode(401);// http状态码
-        requestContext.setResponseBody("无权访问");
-        requestContext.getResponse().setContentType("text/html;charset=UTF-8");
+//            Claims claims = jwtUtil.parseJWT(authHeader);
+//            if (claims != null) {
+//                String roles = (String) claims.get("roles");
+//                if ("admin".equals(roles) || "user".equals(roles)) {
+//                    rc.addZuulRequestHeader("Authorization", authHeader);
+//                    System.out.println("token 验证通过，添加了头" + authHeader);
+//                    return authHeader;
+//                }
+//            }
+
         return null;
+
     }
 }

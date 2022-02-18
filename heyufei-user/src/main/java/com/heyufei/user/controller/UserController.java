@@ -56,7 +56,6 @@ public class UserController {
         return new Result(true, StatusCode.OK, "查询成功", userService.findById(id));
     }
 
-
     /**
      * 根据邮箱查询
      */
@@ -173,6 +172,9 @@ public class UserController {
             return new Result(false, StatusCode.LOGINERROR, "用户名或密码错误");
         }
     }
+
+
+
 
 
     //采用file.transferTo 来保存上传的文件

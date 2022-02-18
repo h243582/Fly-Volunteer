@@ -1,6 +1,7 @@
 package com.heyufei.user.filter;
 
 import io.jsonwebtoken.Claims;
+import org.apache.commons.fileupload.RequestContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
@@ -14,8 +15,8 @@ public class JwtFilter extends HandlerInterceptorAdapter {
     @Autowired
     private JwtUtil jwtUtil;
     @Override
-    public boolean preHandle(HttpServletRequest request,HttpServletResponse response, Object handler) throws Exception {
-        System.out.println("经过了User的拦截器");
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+        System.out.println("User的拦截器Authorization: " + request.getHeader("Authorization"));
         final String authHeader = request.getHeader("Authorization");
         if (authHeader != null ) {
             Claims claims = jwtUtil.parseJWT(authHeader);

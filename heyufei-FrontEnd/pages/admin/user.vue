@@ -32,8 +32,7 @@
     </el-form>
     <el-table
         :data="list"
-        border
-    >
+        border    >
       <!--      <el-table-column prop="id" label="ID" width="160" show-overflow-tooltip></el-table-column>-->
       <el-table-column prop="email" label="邮箱" width="170"></el-table-column>
       <!--      <el-table-column prop="password" label="密码" width="100" show-overflow-tooltip></el-table-column>-->
@@ -86,24 +85,17 @@
     <el-dialog title="编辑" :visible.sync="dialogFormVisible">
       <el-form label-width="80px">
         <el-form-item label="头像">
-          <div v-if="progress===0 || progress===100">
             <el-upload
                 class="avatar-uploader"
                 action="#"
                 :show-file-list="false"
                 :before-upload="beforeAvatarUpload"
-                :http-request="uploadImg">
+                :http-request="uploadImg"
+                v-loading="imgProgress">
 
               <img v-if="pojo.avatar" :src="pojo.avatar" class="avatar" alt="">
               <i v-else class="el-icon-plus avatar-uploader-icon"></i>
             </el-upload>
-          </div>
-
-          <div v-if="progress!==0&&progress!==100">
-            <el-progress class="progress" type="circle" :percentage="progress" stroke-width="4"></el-progress>
-          </div>
-
-          <!--          <div class="upload-name">点击上传头像</div>-->
         </el-form-item>
 
         <el-form-item label="邮箱">
@@ -125,7 +117,7 @@
           <el-switch v-model="pojo.isVip"></el-switch>
         </el-form-item>
 
-        <el-button type="primary" @click="handleSave()">保存</el-button>
+        <el-button type="primary" @click="handleUpdate()">保存</el-button>
         <el-button @click="dialogFormVisible = false">关闭</el-button>
       </el-form>
     </el-dialog>
@@ -133,26 +125,35 @@
     <el-dialog title="新增用户" :visible.sync="addFormVisible">
       <el-form label-width="80px">
         <el-form-item label="头像">
-          <div v-if="progress===0 || progress===100">
-            <el-upload
-                class="avatar-uploader"
-                action="#"
-                :show-file-list="false"
-                :before-upload="beforeAvatarUpload"
-                :http-request="uploadImg">
+          <el-upload
+              class="avatar-uploader"
+              action="#"
+              :show-file-list="false"
+              :before-upload="beforeAvatarUpload"
+              :http-request="uploadImg"
+              v-loading="imgProgress">
 
-              <img v-if="pojo.avatar" :src="pojo.avatar" class="avatar" alt="">
-              <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-            </el-upload>
-          </div>
-
-          <div v-if="progress!==0&&progress!==100">
-            <el-progress class="progress" type="circle" :percentage="progress" stroke-width="4"></el-progress>
-          </div>
+            <img v-if="pojo.avatar" :src="pojo.avatar" class="avatar" alt="">
+            <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+          </el-upload>
         </el-form-item>
+
+        <el-tooltip class="item" effect="dark" content="Right Center 提示文字" placement="top" :disabled="visible">
         <el-form-item label="邮箱">
-          <el-input v-model="pojo.email"></el-input>
+<!--          <el-popover-->
+<!--              placement="right-end"-->
+<!--              width="80"-->
+<!--              trigger="manual"  offset = 90-->
+<!--              v-model="visible">-->
+<!--              {{emailMessage}}-->
+<!--          </el-popover>-->
+            <el-input v-model="pojo.email" v-on:blur="findEmail()"></el-input>
+<!--          <el-input v-model="pojo.email" v-on:blur="findEmail()"></el-input>-->
+
         </el-form-item>
+        </el-tooltip>
+
+
         <el-form-item label="密码">
           <el-input v-model="pojo.password"></el-input>
         </el-form-item>
@@ -163,7 +164,7 @@
           <el-switch v-model="pojo.isVip"></el-switch>
         </el-form-item>
 
-        <el-button type="primary" @click="handleSave()">保存</el-button>
+        <el-button type="primary" @click="handleAdd()">保存</el-button>
         <el-button @click="addFormVisible = false">关闭</el-button>
       </el-form>
     </el-dialog>
@@ -190,13 +191,30 @@ export default {
       pojo: {}, // 编辑表单绑定的实体对象0
       cityList: [], // 城市列表
       id: '', // 当前用户修改的ID
-      progress: 0,
+      imgProgress: false,
+      emailMessage: '',
+      visible: true
+
     }
   },
   created() {
     this.fetchData()
   },
   methods: {
+
+    findEmail(){
+      if (this.pojo.email === ''|| this.pojo.email === undefined ) return
+      userApi.findByEmail(this.pojo.email).then(response => {
+        this.visible = true
+        if (response.data.data===null){
+          this.emailMessage = '邮箱可用'
+        }else {
+          this.emailMessage = '邮箱已存在不可用'
+        }
+
+      })
+    },
+    //重置分页列表
     reset() {
       this.currentPage = 1
       this.pageSize = 5
@@ -211,6 +229,8 @@ export default {
       this.pageSize = val;
       this.fetchData()
     },
+
+    //分页刷新列表
     fetchData() {
       userApi.search(this.currentPage, this.pageSize, this.searchMap).then(response => {
         this.list = response.data.data.rows
@@ -219,8 +239,16 @@ export default {
 
       })
     },
-    handleSave() {
-      userApi.updateUser(this.id, this.pojo).then(response => {
+
+    // 打开新增用户窗口
+    addEdit() {
+      this.addFormVisible = true // 打开窗口
+      this.pojo = {} // 清空数据
+    },
+
+    //新增用户的提交按钮
+    handleAdd() {
+      userApi.addUser(this.pojo).then(response => {
         this.$message({
           message: response.data.message,
           type: (response.data.flag ? 'success' : 'error')
@@ -229,8 +257,10 @@ export default {
           this.fetchData() // 刷新列表
         }
       })
-      this.dialogFormVisible = false // 关闭窗口
+      this.addFormVisible = false // 关闭窗口
     },
+
+    //用于打开修改窗口和显示修改的用户信息
     handleEdit(id) {
       this.id = id
       this.dialogFormVisible = true // 打开窗口
@@ -245,10 +275,22 @@ export default {
         this.pojo = {} // 清空数据
       }
     },
-    addEdit() {
-      this.addFormVisible = true // 打开窗口
-      this.pojo = {} // 清空数据
+
+    //修改用户
+    handleUpdate() {
+      userApi.updateUser(this.id, this.pojo).then(response => {
+        this.$message({
+          message: response.data.message,
+          type: (response.data.flag ? 'success' : 'error')
+        })
+        if (response.data.flag) { // 如果成功
+          this.fetchData() // 刷新列表
+        }
+      })
+      this.dialogFormVisible = false // 关闭窗口
     },
+
+    //删除记录
     handleDelete(id) {
       this.$confirm('确定要删除此纪录吗?', '提示', {
         confirmButtonText: '确定',
@@ -309,6 +351,7 @@ export default {
     },
     uploadImg(res) {
       if (res.file) {
+        this.imgProgress = true
         // 下面的代码是固定写法
         // 填写自己腾讯云cos中的key和id (密钥)
         const cos = new COS({
@@ -324,16 +367,16 @@ export default {
           Key: '/Fly-Volunteer/Head-' + this.fileDateFormat("YYYYmmddHHMM", date) + res.file.name, /* 文件名 */
           StorageClass: 'STANDARD', // 上传模式, 标准模式
           Body: res.file, // 上传文件对象
-          onProgress: (progressEvent) => { // 上传进度
-            let num = progressEvent.loaded / progressEvent.total * 100 | 0;  //百分比
-            if (num !== undefined) {
-              this.progress = num
-            }
-          }
+          // onProgress: (progressEvent) => { // 上传进度
+          //   let num = progressEvent.loaded / progressEvent.total * 100 | 0;  //百分比
+          //   if (num !== undefined) {
+          //     this.progress = num
+          //   }
+          // }
         }, (err, data) => {
-          console.log(err || data)
           // 上传成功之后
           if (data.statusCode === 200) {
+            this.imgProgress = false
             this.pojo.avatar = `https:${data.Location}`
           }
         })
@@ -344,3 +387,5 @@ export default {
   }
 }
 </script>
+
+
