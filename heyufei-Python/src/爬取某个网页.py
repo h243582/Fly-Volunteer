@@ -2,7 +2,7 @@
 import requests
 
 # 2.确定url
-base_url = 'https://www.youzy.cn/pay/onlineBuy'
+base_url = 'https://gaokao.chsi.com.cn/sch/search--ss-on,option-qg,searchType-1,start-0.dhtml'
 
 # 3.发送请求，获取响应
 response = requests.get(base_url,verify=False)
