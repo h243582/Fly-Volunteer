@@ -9,6 +9,7 @@ import util.JwtUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Objects;
 
 @Component
 public class JwtFilter extends HandlerInterceptorAdapter {
@@ -17,8 +18,8 @@ public class JwtFilter extends HandlerInterceptorAdapter {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         System.out.println("User的拦截器Authorization: " + request.getHeader("Authorization"));
-        final String authHeader = request.getHeader("Authorization");
-        if (authHeader != null ) {
+        String authHeader = request.getHeader("Authorization");
+        if (authHeader != null && !authHeader.equals("undefined")) {
             Claims claims = jwtUtil.parseJWT(authHeader);
             System.out.println("mobile:"+claims.getId());
             System.out.println("subject:"+claims.getSubject());

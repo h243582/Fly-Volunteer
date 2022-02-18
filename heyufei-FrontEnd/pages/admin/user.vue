@@ -138,7 +138,6 @@
           </el-upload>
         </el-form-item>
 
-        <el-tooltip class="item" effect="dark" content="Right Center 提示文字" placement="top" :disabled="visible">
         <el-form-item label="邮箱">
 <!--          <el-popover-->
 <!--              placement="right-end"-->
@@ -147,18 +146,16 @@
 <!--              v-model="visible">-->
 <!--              {{emailMessage}}-->
 <!--          </el-popover>-->
-            <el-input v-model="pojo.email" v-on:blur="findEmail()"></el-input>
-<!--          <el-input v-model="pojo.email" v-on:blur="findEmail()"></el-input>-->
-
+            <el-input v-model="pojo.email" v-on:blur="findEmail()" style="width: 90%;float:left;"></el-input>
+            <span>{{emailMessage}}</span>
         </el-form-item>
-        </el-tooltip>
 
 
         <el-form-item label="密码">
-          <el-input v-model="pojo.password"></el-input>
+          <el-input v-model="pojo.password" style="width: 90%"></el-input>
         </el-form-item>
         <el-form-item label="昵称">
-          <el-input v-model="pojo.nickname"></el-input>
+          <el-input v-model="pojo.nickname" style="width: 90%"></el-input>
         </el-form-item>
         <el-form-item label="是否会员">
           <el-switch v-model="pojo.isVip"></el-switch>
@@ -193,7 +190,6 @@ export default {
       id: '', // 当前用户修改的ID
       imgProgress: false,
       emailMessage: '',
-      visible: true
 
     }
   },
@@ -209,7 +205,7 @@ export default {
         if (response.data.data===null){
           this.emailMessage = '邮箱可用'
         }else {
-          this.emailMessage = '邮箱已存在不可用'
+          this.emailMessage = '邮箱重复'
         }
 
       })
@@ -235,8 +231,6 @@ export default {
       userApi.search(this.currentPage, this.pageSize, this.searchMap).then(response => {
         this.list = response.data.data.rows
         this.total = response.data.data.total
-
-
       })
     },
 
@@ -248,16 +242,28 @@ export default {
 
     //新增用户的提交按钮
     handleAdd() {
-      userApi.addUser(this.pojo).then(response => {
-        this.$message({
-          message: response.data.message,
-          type: (response.data.flag ? 'success' : 'error')
-        })
-        if (response.data.flag) { // 如果成功
-          this.fetchData() // 刷新列表
+      userApi.findByEmail(this.pojo.email).then(response => {
+        if (response.data.data!==null){
+          this.$message({
+            message: "邮箱重复",
+            type: 'error'
+          })
+        }else {
+          userApi.addUser(this.pojo).then(response => {
+            this.$message({
+              message: response.data.message,
+              type: (response.data.flag ? 'success' : 'error')
+            })
+            if (response.data.flag) { // 如果成功
+              this.fetchData() // 刷新列表
+            }
+          })
+          this.addFormVisible = false // 关闭窗口
         }
+
       })
-      this.addFormVisible = false // 关闭窗口
+
+
     },
 
     //用于打开修改窗口和显示修改的用户信息
@@ -387,5 +393,6 @@ export default {
   }
 }
 </script>
+
 
 

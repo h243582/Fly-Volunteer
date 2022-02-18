@@ -19,15 +19,14 @@
             </el-upload>
           </el-form-item>
 
-<!--          <div class="upload-name">点击上传头像</div>-->
-
 
           <el-form-item class="control-label" label="姓名" prop="nickname" style="margin-bottom: 20px">
             <el-input v-model="pojo.nickname" placeholder="真实姓名或常用昵称"/>
           </el-form-item>
 
-          <el-form-item class="control-label" label="邮箱" prop="mobile" style="margin-bottom: 20px">
-            <el-input v-model="pojo.email" placeholder="请输入邮箱"/>
+          <el-form-item class="control-label" label="邮箱" prop="email" style="margin-bottom: 20px">
+            <el-input v-model="pojo.email" placeholder="请输入邮箱" v-on:blur="findEmail()"/><span>{{emailMessage}}</span>
+
           </el-form-item>
 
           <el-form-item class="control-label" label="短信验证码" prop="yzm">
@@ -82,7 +81,8 @@ import '~/assets/css/loginsign.css'
 import userApi from '@/api/user'
 import {setUser} from '@/utils/auth'
 import COS from 'cos-js-sdk-v5'
-import file from "cos-js-sdk-v5"; //脚手架安装
+import file from "cos-js-sdk-v5";
+import {getUser} from "../../utils/auth"; //脚手架安装
 
 export default {
   data() {
@@ -107,15 +107,26 @@ export default {
           {required: true, message: '请输入电子邮箱', trigger: 'blur'},
         ]
       },
-      imgProgress: false
+      imgProgress: false,
+      emailMessage: '',
 
     }
   },
   methods: {
+    findEmail(){
+      if (this.pojo.email === ''|| this.pojo.email === undefined ) return
+      userApi.findByEmail(this.pojo.email).then(response => {
+        this.visible = true
+        if (response.data.data===null){
+          this.emailMessage = '邮箱可用'
+        }else {
+          this.emailMessage = '邮箱重复'
+        }
+
+      })
+    },
     sendMessage() {
-      console.log(this.pojo.email)
       userApi.sendsms(this.pojo.email).then(res => {
-        console.log(res.data)
         if (res.data.flag) {
           this.$message({
             message: '验证码已发送成功',
@@ -150,7 +161,7 @@ export default {
       userApi.login(this.email, this.password).then(res => {
         if (res.data.code === 20000) {
           //保存用户信息,用户ID暂时用1代替
-          setUser(res.data.data.id, res.data.data.token, res.data.data.nickname, res.data.data.avatar, res.data.data.isvip)
+          setUser(res.data.data.id, res.data.data.token, res.data.data.email, res.data.data.nickname, res.data.data.avatar, res.data.data.isvip)
           location.href = '/'
         } else {
           this.$message({

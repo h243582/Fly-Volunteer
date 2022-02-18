@@ -40,8 +40,6 @@ public class UserController {
 
     /**
      * 查询全部数据
-     *
-     * @return
      */
     @RequestMapping(method = RequestMethod.GET)
     public Result findAll() {
@@ -91,8 +89,6 @@ public class UserController {
 
     /**
      * 增加
-     *
-     * @param user
      */
     @RequestMapping(method = RequestMethod.POST)
     public Result add(@RequestBody User user) {
@@ -161,11 +157,14 @@ public class UserController {
             }else {
                 token = jwtUtil.createJWT(user.getEmail(), user.getNickname(), "user");
             }
+//            user = userService.findByEmail(user.getEmail());
             Map<String, String> map = new HashMap<>();
+            map.put("id", user.getId());
+            map.put("email", user.getEmail());
             map.put("token", token);
             map.put("nickname", user.getNickname());//昵称
             map.put("avatar", user.getAvatar());//头像
-            map.put("isVip", user.getIsVip() + "");//是否VIP
+            map.put("isvip", user.getIsVip() + "");//是否VIP
 
             return new Result(true, StatusCode.OK, "登陆成功", map);
         } else {

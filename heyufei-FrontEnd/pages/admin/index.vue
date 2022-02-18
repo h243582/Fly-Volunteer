@@ -18,7 +18,8 @@
         <span class="svg-container">
           <i class="el-icon-lock"></i>
         </span>
-        <el-input name="password" :type="pwdType" @keyup.enter.native="handleLogin" v-model="loginForm.password" autoComplete="on" placeholder="password"></el-input>
+        <el-input name="password" :type="pwdType" @keyup.enter.native="handleLogin" v-model="loginForm.password"
+                  autoComplete="on" placeholder="password"></el-input>
         <span class="show-pwd" @click="showPwd"><i class="el-icon-view"></i></span>
 
       </el-form-item>
@@ -38,7 +39,7 @@
 
 
 <script>
-import { isvalidUsername } from '@/utils/validate'
+import {isvalidUsername} from '@/utils/validate'
 import userApi from "@/api/user";
 import {getUser, setUser} from "@/utils/auth";
 
@@ -77,8 +78,8 @@ export default {
 
   },
   methods: {
+    //显示密码
     showPwd() {
-      //显示密码
       if (this.pwdType === 'password') {
         this.pwdType = ''
       } else {
@@ -90,7 +91,7 @@ export default {
         userApi.login(this.loginForm.email, this.loginForm.password).then(res => {
           if (res.data.code === 20000) {
             //保存用户信息,用户ID暂时用1代替
-            setUser(res.data.data.id, res.data.data.token, res.data.data.nickname, res.data.data.avatar, res.data.data.isvip)
+            setUser(undefined, res.data.data.token, undefined, undefined, undefined, undefined)
             location.href = '/admin/user'
             // console.log(getUser().token)
           } else {
@@ -119,82 +120,83 @@ export default {
   width: 100%;
   background-color: #2d3a4b;
 }
-  input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0px 1000px #293444 inset !important;
-    -webkit-text-fill-color: #fff !important;
-  }
 
-  input {
-    background: transparent;
-    border: 0px;
-    -webkit-appearance: none;
-    border-radius: 0px;
-    padding: 12px 5px 12px 15px;
-    color: #eee;
-    height: 47px;
-  }
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #293444 inset !important;
+  -webkit-text-fill-color: #fff !important;
+}
 
-  .el-input {
-    display: inline-block;
-    height: 47px;
-    width: 85%;
-  }
+input {
+  background: transparent;
+  border: 0px;
+  -webkit-appearance: none;
+  border-radius: 0px;
+  padding: 12px 5px 12px 15px;
+  color: #eee;
+  height: 47px;
+}
 
-  .tips {
-    font-size: 14px;
-    color: #fff;
-    margin-bottom: 10px;
-  }
+.el-input {
+  display: inline-block;
+  height: 47px;
+  width: 85%;
+}
 
-  .svg-container {
-    padding: 6px 5px 6px 15px;
-    color: #889aa4;
-    vertical-align: middle;
-    width: 30px;
-    display: inline-block;
+.tips {
+  font-size: 14px;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.svg-container {
+  padding: 6px 5px 6px 15px;
+  color: #889aa4;
+  vertical-align: middle;
+  width: 30px;
+  display: inline-block;
 
 
-  }
+}
 
-  .title {
-    font-size: 26px;
-    font-weight: 400;
-    color: #eee;
-    margin: 0px auto 40px auto;
-    text-align: center;
-    font-weight: bold;
-  }
+.title {
+  font-size: 26px;
+  font-weight: 400;
+  color: #eee;
+  margin: 0px auto 40px auto;
+  text-align: center;
+  font-weight: bold;
+}
 
-  .login-form {
-    position: absolute;
-    left: 0;
-    right: 0;
-    width: 400px;
-    padding: 35px 35px 15px 35px;
-    margin: 120px auto;
-  }
+.login-form {
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 400px;
+  padding: 35px 35px 15px 35px;
+  margin: 120px auto;
+}
 
-  .el-form-item {
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    background: rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
-    color: #454545;
-  }
+.el-form-item {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  color: #454545;
+}
 
-  .show-pwd {
-    position: absolute;
-    right: 10px;
-    top: 7px;
-    font-size: 16px;
-    color: #889aa4;
-    cursor: pointer;
-    user-select: none;
-  }
+.show-pwd {
+  position: absolute;
+  right: 10px;
+  top: 7px;
+  font-size: 16px;
+  color: #889aa4;
+  cursor: pointer;
+  user-select: none;
+}
 
-  .thirdparty-button {
-    position: absolute;
-    right: 35px;
-    bottom: 28px;
-  }
+.thirdparty-button {
+  position: absolute;
+  right: 35px;
+  bottom: 28px;
+}
 
 </style>

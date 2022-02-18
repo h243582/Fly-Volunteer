@@ -20,7 +20,7 @@
 
 
               <div class="xxgk-index" style="margin-bottom:20px;">
-                <div v-if="user.isvip === '0'">
+                <div v-if="user.isvip === '0' || user.isvip === undefined || user.isvip === 'undefined'">
                   <router-link to="/vip">
                   <a>
                     开通VIP
@@ -28,9 +28,9 @@
                   </a>
                   </router-link>
                 </div>
-                <div v-if="user.isvip === '1'">
+                <div v-if="user.isvip === 'true'">
                   <a href="/">
-                    VIP有效期至：2022-01-17
+                    VIP专属智能填报
                     <div class="lighting"></div>
                   </a>
 
@@ -692,7 +692,6 @@ export default {
   },
   created() {
     this.user = getUser()
-    console.log(this.user)
   },
   methods: {}
 }

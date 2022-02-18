@@ -9,7 +9,6 @@
         <outputRelativeToContentRoot value="true" />
         <module name="heyufei-Ribbon" />
         <module name="heyufei-utils" />
-        <module name="Demo" />
         <module name="heyufei-Register" />
         <module name="heyufei-FrontEnd" />
         <module name="heyufei-user" />
@@ -18,6 +17,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="Demo" target="8" />
       <module name="heyufei_Register" target="8" />
       <module name="hyf-demo" target="8" />
       <module name="hyf_utils" target="8" />
