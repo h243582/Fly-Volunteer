@@ -46,6 +46,7 @@ public class ManagerFilter extends ZuulFilter {
         String authHeader = (String) request.getHeader("Authorization");// 获取头信息
 
         if(authHeader == null && method.contains("delete")){
+            System.out.print("无权访问");
             rc.setSendZuulResponse(false);// 终止运行
             rc.setResponseStatusCode(401);// http状态码
             rc.setResponseBody("无权访问");
@@ -60,6 +61,7 @@ public class ManagerFilter extends ZuulFilter {
 //                    return authHeader;
 //                }
 //            }
+        System.out.println("Zuul过滤器内容: "+url+"  方法：  "+method);
 
         return null;
 

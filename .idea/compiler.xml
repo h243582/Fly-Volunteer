@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="heyufei-Ribbon" />
+        <module name="heyufei-school" />
         <module name="heyufei-utils" />
         <module name="heyufei-Register" />
         <module name="heyufei-FrontEnd" />
@@ -32,6 +33,7 @@
       <module name="heyufei-Gateway" options="-parameters" />
       <module name="heyufei-Register" options="-parameters" />
       <module name="heyufei-Ribbon" options="-parameters" />
+      <module name="heyufei-school" options="-parameters" />
       <module name="heyufei-sms" options="-parameters" />
       <module name="heyufei-user" options="-parameters" />
       <module name="heyufei-utils" options="-parameters" />

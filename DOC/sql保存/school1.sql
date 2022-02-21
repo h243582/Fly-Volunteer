@@ -596,7 +596,7 @@ create table tb_school
 ) engine =InnoDB DEFAULT CHARSET=utf8 COMMENT='大学学校';
 
 
-alter table tb_school
+alter table tb_school2
     add constraint tb_school_tb_province_id_fk
         foreign key (tb_province_id) references tb_province (id),
     add constraint tb_school_tb_type_id_fk
@@ -618,7 +618,7 @@ create table tb_recruitment_brochure
 
 alter table tb_recruitment_brochure
     add constraint tb_recruitment_brochure_tb_school_fk
-        foreign key (tb_school_id) references tb_school (id);
+        foreign key (tb_school_id) references tb_school2 (id);
 
 
 create table tb_school_information

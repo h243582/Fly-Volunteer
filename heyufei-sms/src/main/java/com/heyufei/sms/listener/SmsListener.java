@@ -1,4 +1,4 @@
-package com.sms.listener;
+package com.heyufei.sms.listener;
 
 import entity.StatusCode;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;

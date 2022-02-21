@@ -32,7 +32,7 @@
               </div>
 
               <ul class="nav-td clearfix">
-                <li><a href="/sch/" target="_blank">院校库</a></li>
+                <li><a href="/school" target="_blank">院校库</a></li>
 
                 <li class="nav-long-name">
                   <a href="/zyk/pub/myd/schAppraisalTop.action" target="_blank">院校满意度</a>

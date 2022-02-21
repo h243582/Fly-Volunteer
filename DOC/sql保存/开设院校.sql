@@ -28,7 +28,7 @@ create table tb_school_major
 
 alter table tb_school_major
     add constraint tb_school_major_tb_school_id_fk
-        foreign key (tb_school_id) references tb_school (id),
+        foreign key (tb_school_id) references tb_school2 (id),
     add constraint tb_school_major_tb_major_id_fk
         foreign key (tb_major_id) references tb_major (id);
 

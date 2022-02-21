@@ -1,5 +1,5 @@
 server:
-  port: 9008
+  port: 9009
 eureka:
   client:
     service-url:
@@ -9,7 +9,7 @@ eureka:
 
 spring:
   application:
-    name: heyufei-user #指定服务名
+    name: heyufei-school #指定服务名
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://120.24.145.157:3306/fly_school?useSSl=false&useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&allowMultiQueries=true
@@ -37,4 +37,5 @@ jwt:
   config:
     key: heyufei
     ttl: 360000000000
+
 

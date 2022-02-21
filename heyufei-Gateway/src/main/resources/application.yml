@@ -39,6 +39,7 @@ feign:
     enabled: false
 
 zuul:
+  sensitive-headers:     #放行头信息
   host:
     connect-timeout-millis: 30000 #HTTP连接超时要比Hystrix的大
     socket-timeout-millis: 60000   #socket超时
@@ -47,8 +48,13 @@ zuul:
     heyufei-user:
       path: /user/** #配置请求的URL的请求规则
       url: http://localhost:9008/user #指定Eureka注册中心中的服务id
+    heyufei-school:
+      path: /school/** #配置请求的URL的请求规则
+      url: http://localhost:9009/school #指定Eureka注册中心中的服务id
 
-  sensitive-headers:     #放行头信息
+
+
+
 
 
 
