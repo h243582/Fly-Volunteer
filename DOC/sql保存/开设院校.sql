@@ -169,7 +169,7 @@ alter table tb_major_province_money
 
 alter table tb_major_province_money
     add constraint tb_major_province_money_tb_province_fk
-        foreign key (tb_province_id) references tb_province (id);
+        foreign key (tb_province_id) references tb_province2 (id);
 
 DELIMITER //
 CREATE PROCEDURE callback()

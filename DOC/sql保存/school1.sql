@@ -8,40 +8,40 @@ create table tb_province(
 ) engine =InnoDB DEFAULT CHARSET=utf8 COMMENT='省份';
 
 
-insert into tb_province values(1,'北京市');
-insert into tb_province values(2,'天津市');
-insert into tb_province values(3,'上海市');
-insert into tb_province values(4,'重庆市');
-insert into tb_province values(5,'河北省');
-insert into tb_province values(6,'山西省');
-insert into tb_province values(7,'台湾省');
-insert into tb_province values(8,'辽宁省');
-insert into tb_province values(9,'吉林省');
-insert into tb_province values(10,'黑龙江省');
-insert into tb_province values(11,'江苏省');
-insert into tb_province values(12,'浙江省');
-insert into tb_province values(13,'安徽省');
-insert into tb_province values(14,'福建省');
-insert into tb_province values(15,'江西省');
-insert into tb_province values(16,'山东省');
-insert into tb_province values(17,'河南省');
-insert into tb_province values(18,'湖北省');
-insert into tb_province values(19,'湖南省');
-insert into tb_province values(20,'广东省');
-insert into tb_province values(21,'甘肃省');
-insert into tb_province values(22,'四川省');
-insert into tb_province values(23,'贵州省');
-insert into tb_province values(24,'海南省');
-insert into tb_province values(25,'云南省');
-insert into tb_province values(26,'青海省');
-insert into tb_province values(27,'陕西省');
-insert into tb_province values(28,'广西壮族自治区');
-insert into tb_province values(29,'西藏自治区');
-insert into tb_province values(30,'宁夏回族自治区');
-insert into tb_province values(31,'新疆维吾尔自治区');
-insert into tb_province values(32,'内蒙古自治区');
-insert into tb_province values(33,'澳门特别行政区');
-insert into tb_province values(34,'香港特别行政区');
+insert into tb_province2 values(1,'北京市');
+insert into tb_province2 values(2,'天津市');
+insert into tb_province2 values(3,'上海市');
+insert into tb_province2 values(4,'重庆市');
+insert into tb_province2 values(5,'河北省');
+insert into tb_province2 values(6,'山西省');
+insert into tb_province2 values(7,'台湾省');
+insert into tb_province2 values(8,'辽宁省');
+insert into tb_province2 values(9,'吉林省');
+insert into tb_province2 values(10,'黑龙江省');
+insert into tb_province2 values(11,'江苏省');
+insert into tb_province2 values(12,'浙江省');
+insert into tb_province2 values(13,'安徽省');
+insert into tb_province2 values(14,'福建省');
+insert into tb_province2 values(15,'江西省');
+insert into tb_province2 values(16,'山东省');
+insert into tb_province2 values(17,'河南省');
+insert into tb_province2 values(18,'湖北省');
+insert into tb_province2 values(19,'湖南省');
+insert into tb_province2 values(20,'广东省');
+insert into tb_province2 values(21,'甘肃省');
+insert into tb_province2 values(22,'四川省');
+insert into tb_province2 values(23,'贵州省');
+insert into tb_province2 values(24,'海南省');
+insert into tb_province2 values(25,'云南省');
+insert into tb_province2 values(26,'青海省');
+insert into tb_province2 values(27,'陕西省');
+insert into tb_province2 values(28,'广西壮族自治区');
+insert into tb_province2 values(29,'西藏自治区');
+insert into tb_province2 values(30,'宁夏回族自治区');
+insert into tb_province2 values(31,'新疆维吾尔自治区');
+insert into tb_province2 values(32,'内蒙古自治区');
+insert into tb_province2 values(33,'澳门特别行政区');
+insert into tb_province2 values(34,'香港特别行政区');
 
 create table tb_city(
     `id` int NOT NULL auto_increment COMMENT 'ID' ,
@@ -52,7 +52,7 @@ create table tb_city(
 
 alter table tb_city
     add constraint province_id_fk
-        foreign key (province_id) references tb_province (id);
+        foreign key (province_id) references tb_province2 (id);
 
 -- 添加市区
 -- 城市 tb_city
@@ -514,10 +514,10 @@ create table tb_department_type(
    primary key (`id`)
 ) engine =InnoDB DEFAULT CHARSET=utf8 COMMENT='教育主管部门类别表';
 
-insert into tb_department_type(name) values('教育部');
-insert into tb_department_type(name) values('其他部委');
-insert into tb_department_type(name) values('地方');
-insert into tb_department_type(name) values('军校');
+insert into tb_department_type2(name) values('教育部');
+insert into tb_department_type2(name) values('其他部委');
+insert into tb_department_type2(name) values('地方');
+insert into tb_department_type2(name) values('军校');
 
 
 create table tb_department(
@@ -527,25 +527,25 @@ create table tb_department(
    primary key (`id`)
 ) engine =InnoDB DEFAULT CHARSET=utf8 COMMENT='教育主管部门表';
 
-insert into tb_department(name,tb_department_type_id) values('教育部',1);
-insert into tb_department(name,tb_department_type_id) values('北京市教育委员会',3);
-insert into tb_department(name,tb_department_type_id) values('工业和信息化部',2);
-insert into tb_department(name,tb_department_type_id) values('国家卫生健康委员会',2);
-insert into tb_department(name,tb_department_type_id) values('其他主管部门',2);
-insert into tb_department(name,tb_department_type_id) values('国家体育总局',2);
-insert into tb_department(name,tb_department_type_id) values('外交部',2);
-insert into tb_department(name,tb_department_type_id) values('公安部',2);
-insert into tb_department(name,tb_department_type_id) values('应急管理部',2);
-insert into tb_department(name,tb_department_type_id) values('中华全国妇女联合会',2);
-insert into tb_department(name,tb_department_type_id) values('国家民族事务委员会',2);
-insert into tb_department(name,tb_department_type_id) values('中华全国总工会',2);
-insert into tb_department(name,tb_department_type_id) values('中国科学院',2);
-insert into tb_department(name,tb_department_type_id) values('中国社会科学院',2);
-insert into tb_department(name,tb_department_type_id) values('中央军委训练管理部',4);
-insert into tb_department(name,tb_department_type_id) values('天津市教育委员会',3);
-insert into tb_department(name,tb_department_type_id) values('中国民用航空局',2);
-insert into tb_department(name,tb_department_type_id) values('湖南省教育厅',3);
-insert into tb_department(name,tb_department_type_id) values('中央军委装备发展部',2);
+insert into tb_department2(name,tb_department_type_id) values('教育部',1);
+insert into tb_department2(name,tb_department_type_id) values('北京市教育委员会',3);
+insert into tb_department2(name,tb_department_type_id) values('工业和信息化部',2);
+insert into tb_department2(name,tb_department_type_id) values('国家卫生健康委员会',2);
+insert into tb_department2(name,tb_department_type_id) values('其他主管部门',2);
+insert into tb_department2(name,tb_department_type_id) values('国家体育总局',2);
+insert into tb_department2(name,tb_department_type_id) values('外交部',2);
+insert into tb_department2(name,tb_department_type_id) values('公安部',2);
+insert into tb_department2(name,tb_department_type_id) values('应急管理部',2);
+insert into tb_department2(name,tb_department_type_id) values('中华全国妇女联合会',2);
+insert into tb_department2(name,tb_department_type_id) values('国家民族事务委员会',2);
+insert into tb_department2(name,tb_department_type_id) values('中华全国总工会',2);
+insert into tb_department2(name,tb_department_type_id) values('中国科学院',2);
+insert into tb_department2(name,tb_department_type_id) values('中国社会科学院',2);
+insert into tb_department2(name,tb_department_type_id) values('中央军委训练管理部',4);
+insert into tb_department2(name,tb_department_type_id) values('天津市教育委员会',3);
+insert into tb_department2(name,tb_department_type_id) values('中国民用航空局',2);
+insert into tb_department2(name,tb_department_type_id) values('湖南省教育厅',3);
+insert into tb_department2(name,tb_department_type_id) values('中央军委装备发展部',2);
 
 
 
@@ -556,17 +556,17 @@ create table tb_type(
 ) engine =InnoDB DEFAULT CHARSET=utf8 COMMENT='院校类型';
 
 
-insert into tb_type(name) values('师范');
-insert into tb_type(name) values('综合');
-insert into tb_type(name) values('工科');
-insert into tb_type(name) values('农业');
-insert into tb_type(name) values('林业');
-insert into tb_type(name) values('语言');
-insert into tb_type(name) values('财经');
-insert into tb_type(name) values('政法');
-insert into tb_type(name) values('体育');
-insert into tb_type(name) values('艺术');
-insert into tb_type(name) values('民族');
+insert into tb_type2(name) values('师范');
+insert into tb_type2(name) values('综合');
+insert into tb_type2(name) values('工科');
+insert into tb_type2(name) values('农业');
+insert into tb_type2(name) values('林业');
+insert into tb_type2(name) values('语言');
+insert into tb_type2(name) values('财经');
+insert into tb_type2(name) values('政法');
+insert into tb_type2(name) values('体育');
+insert into tb_type2(name) values('艺术');
+insert into tb_type2(name) values('民族');
 
 
 create table tb_levels(
@@ -598,11 +598,11 @@ create table tb_school
 
 alter table tb_school2
     add constraint tb_school_tb_province_id_fk
-        foreign key (tb_province_id) references tb_province (id),
+        foreign key (tb_province_id) references tb_province2 (id),
     add constraint tb_school_tb_type_id_fk
-        foreign key (tb_type_id) references tb_type (id),
+        foreign key (tb_type_id) references tb_type2 (id),
     add constraint tb_school_tb_department_id_fk
-        foreign key (tb_department_id) references tb_department (id),
+        foreign key (tb_department_id) references tb_department2 (id),
     add constraint tb_school_tb_levels_id_fk
         foreign key (tb_levels_id) references tb_levels (id);
 
