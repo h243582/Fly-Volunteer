@@ -124,7 +124,7 @@
     <nuxt/>
 
     <!-- 尾部 -->
-    <div class="footer-wrapper">
+    <div class="footer-wrapper" style="margin-top: 200px">
       <div class="footer">
         <div class="footer-list">
           <a href="//www.chsi.com.cn/" target="_blank">学信网</a>
@@ -183,3 +183,4 @@ export default {
   },
 };
 </script>
+

@@ -1,5 +1,3 @@
-package com.heyufei.user;
-
 import com.heyufei.user.dao.UserDao;
 import com.heyufei.user.pojo.User;
 import com.heyufei.user.service.UserService;
