@@ -420,7 +420,7 @@ h1.h1-hide {
 .list-head {
   height: 47px;
   line-height: 47px;
-  border-bottom: 1px solid #1cb278
+  border-bottom: 1px solid #e84c33
 }
 
 .list-head .list-title {
@@ -439,7 +439,7 @@ h1.h1-hide {
   width: 100%;
   height: 3px;
   border-radius: 2px;
-  background: #1cb278;
+  background: #e84c33;
   position: absolute;
   left: 0;
   bottom: -2px
@@ -450,7 +450,7 @@ h1.h1-hide {
 }
 
 .list-head .list-more a, .list-head .list-more a:link, .list-head .list-more a:visited {
-  color: #1cb278
+  color: #e84c33
 }
 
 .list-content {
@@ -467,7 +467,7 @@ h1.h1-hide {
   float: left;
   width: 4px;
   height: 4px;
-  background: #1cb278;
+  background: #e84c33;
   border-radius: 2px;
   margin-right: 10px;
   margin-top: 18px
@@ -487,7 +487,7 @@ h1.h1-hide {
 }
 
 .list-content .news-title a:hover {
-  color: #1cb278
+  color: #e84c33
 }
 
 .list-content .news-time {
@@ -507,19 +507,19 @@ h1.h1-hide {
   float: left;
   max-width: 600px;
   height: 20px;
-  border-left: 4px solid #1cb278;
+  border-left: 4px solid #e84c33;
   padding-left: 10px;
   font-size: 20px;
   color: #5d5d5d
 }
 
 .ch-list-wbgg .list-head .title-province {
-  color: #1cb278;
+  color: #e84c33;
   margin: 0 5px 0 10px
 }
 
 .ch-list-wbgg .list-head .title-school {
-  color: #1cb278;
+  color: #e84c33;
   margin: 0 10px 0 5px
 }
 
@@ -551,7 +551,7 @@ h1.h1-hide {
 }
 
 .ch-list-wbgg .list-content .news-title a:hover {
-  color: #1cb278
+  color: #e84c33
 }
 
 .ch-list-wbgg .list-content .news-time {
@@ -574,7 +574,7 @@ h1.h1-hide {
 }
 
 .ch-page li.lip:hover {
-  border-color: #1cb278;
+  border-color: #e84c33;
   text-decoration: none
 }
 
@@ -597,8 +597,8 @@ h1.h1-hide {
 }
 
 .ch-page li.selected, .ch-page li.selected:hover {
-  background: #1cb278;
-  border-color: #1cb278;
+  background: #e84c33;
+  border-color: #e84c33;
   cursor: default;
   text-decoration: none;
   color: #fff
@@ -651,7 +651,7 @@ h1.h1-hide {
 }
 
 .ch-page li.lip-input-box .page-btn:hover {
-  border-color: #1cb278
+  border-color: #e84c33
 }
 
 .article-title-box {
@@ -727,11 +727,11 @@ h1.h1-hide {
 }
 
 .ch-tab .selected {
-  border-color: #1cb278
+  border-color: #e84c33
 }
 
 .ch-tab .selected a, .ch-tab .selected a:link, .ch-tab .selected a:visited {
-  color: #1cb278
+  color: #e84c33
 }
 
 .ch-tab a, .ch-tab a:link, .ch-tab a:visited {
@@ -798,7 +798,7 @@ h1.h1-hide {
   height: 16px;
   line-height: 15px;
   margin-left: 0;
-  color: #1cb278;
+  color: #e84c33;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -810,7 +810,7 @@ h1.h1-hide {
 }
 
 .ch-header-index .ch-header-list a.head-login {
-  color: #1cb278
+  color: #e84c33
 }
 
 .ch-header-index .ch-header-list a.head-media {
@@ -825,7 +825,7 @@ h1.h1-hide {
 }
 
 .ch-header-index .ch-header-list a.head-media:hover {
-  color: #1cb278;
+  color: #e84c33;
   text-decoration: none
 }
 
@@ -948,7 +948,8 @@ h1.h1-hide {
   margin-right: 20px;
   font-size: 30px;
   letter-spacing: 2px;
-  color: #1cb278
+  color: #f61032;
+  margin-left: 5%;
 }
 
 .ch-header-second .ch-sub-title {
@@ -982,7 +983,7 @@ h1.h1-hide {
   width: 56px;
   height: 40px;
   border: none;
-  background: #1cb278;
+  background: #f11434;
   cursor: pointer;
   vertical-align: middle
 }
@@ -1012,7 +1013,7 @@ h1.h1-hide {
   margin-right: 20px;
   font-size: 30px;
   letter-spacing: 2px;
-  color: #1cb278
+  color: #e84c33
 }
 
 .ch-header-nav .ch-sub-title {
@@ -1046,7 +1047,7 @@ h1.h1-hide {
   width: 56px;
   height: 40px;
   border: none;
-  background: #1cb278;
+  background: #e84c33;
   cursor: pointer;
   vertical-align: middle
 }
@@ -1068,7 +1069,7 @@ h1.h1-hide {
 }
 
 .ch-nav-box {
-  background: #1cb278
+  background: #e84c33
 }
 
 .ch-nav-box .nav-wrapper {
@@ -1171,7 +1172,7 @@ h1.h1-hide {
 }
 
 .ch-table tr:hover a {
-  color: #1cb278
+  color: #e84c33
 }
 
 .ch-table tr:hover a.ch-table-detail {
@@ -1219,7 +1220,7 @@ h1.h1-hide {
 }
 
 .ch-table td a.ch-table-link {
-  color: #1cb278
+  color: #e84c33
 }
 
 .ch-table .ch-table-tag {
@@ -1227,7 +1228,7 @@ h1.h1-hide {
   width: 34px;
   height: 20px;
   line-height: 20px;
-  background: #1cb278;
+  background: #e84c33;
   font-size: 14px;
   text-align: center;
   color: #fff
@@ -1292,7 +1293,7 @@ input[type=button]::-moz-focus-inner, input[type=file] > input[type=button]::-mo
   padding: 0 16px;
   border: none;
   border-radius: 2px;
-  background: #1cb278;
+  background: #e84c33;
   color: #fff;
   font-size: 14px;
   vertical-align: middle;
@@ -1321,8 +1322,8 @@ input[type=button]::-moz-focus-inner, input[type=file] > input[type=button]::-mo
 .ch-btn.ch-btn-second {
   line-height: 34px;
   padding: 0 15px;
-  border: 1px solid #1cb278;
-  color: #1cb278;
+  border: 1px solid #e84c33;
+  color: #e84c33;
   background: #fff
 }
 
@@ -1374,7 +1375,7 @@ a.ch-btn-second.ch-btn-big {
 }
 
 .header-wrapper.single-header {
-  border-bottom: 2px solid #1cb278
+  border-bottom: 2px solid #e01a55
 }
 
 .footer-wrapper, .main-wrapper {
@@ -1404,7 +1405,7 @@ a.ch-btn-second.ch-btn-big {
 }
 
 .ch-simple {
-  border-bottom: 2px solid #1cb278
+  border-bottom: 2px solid #e84c33
 }
 
 .block-title {
@@ -1437,7 +1438,7 @@ a.ch-btn-second.ch-btn-big {
   height: 30px;
   line-height: 30px;
   padding-left: 8px;
-  border-left: 3px solid #1cb278;
+  border-left: 3px solid #e84c33;
   margin: 20px 0;
   color: #5d5d5d;
   font-weight: 400;
@@ -1564,7 +1565,7 @@ a.ch-btn-second.ch-btn-big {
 }
 
 .zx-mid-tabs li.current {
-  background: #1cb278
+  background: #e84c33
 }
 
 .zx-mid-tabs li.current a {
@@ -1699,7 +1700,7 @@ a.ch-btn-second.ch-btn-big {
 }
 
 .zx-question-container .ch-table td a {
-  color: #1cb278
+  color: #e84c33
 }
 
 .zx-question-container .ch-table .red {
@@ -1785,7 +1786,7 @@ a.ch-btn-second.ch-btn-big {
   width: 56px;
   height: 40px;
   border: none;
-  background: #1cb278;
+  background: #e84c33;
   cursor: pointer;
   vertical-align: middle
 }
@@ -1906,7 +1907,7 @@ a.ch-btn-second.ch-btn-big {
 }
 
 .zxdy-zxs .con-p a {
-  color: #1cb278
+  color: #e84c33
 }
 
 .yxk-filter {
@@ -1968,7 +1969,7 @@ a.ch-btn-second.ch-btn-big {
 
 .yxk-filter .yxk-option.selected {
   display: inline-block;
-  background: #1cb278;
+  background: #e84c33;
   color: #fff;
   cursor: default
 }
@@ -1983,7 +1984,7 @@ a.ch-btn-second.ch-btn-big {
 }
 
 .yxk-filter .yxk-all.selected {
-  background: #1cb278;
+  background: #e84c33;
   color: #fff;
   cursor: default
 }
@@ -2033,7 +2034,7 @@ a.ch-btn-second.ch-btn-big {
 }
 
 .yxk-filter .ch-check-label.selected {
-  color: #1cb278
+  color: #e84c33
 }
 
 .yxk-filter .ch-hide {
@@ -2219,7 +2220,7 @@ a.ch-btn-second.ch-btn-big {
 
 .yxk-yxmsg .mid .iconfont {
   margin-right: 5px;
-  color: #1cb278
+  color: #e84c33
 }
 
 .yxk-yxmsg .mid .iconfont.phone {
@@ -2292,7 +2293,7 @@ a.ch-btn-second.ch-btn-big {
   display: inline-block;
   width: 4px;
   height: 18px;
-  background: #1cb278
+  background: #e84c33
 }
 
 .yxk-col-title .em {
@@ -2407,7 +2408,7 @@ body:last-child .arrow {
   height: 18px;
   line-height: 18px;
   text-align: center;
-  background: #1cb278;
+  background: #e84c33;
   color: #fff
 }
 
@@ -2499,12 +2500,12 @@ body:last-child .arrow {
 }
 
 .yxk-nav-title .tips a {
-  color: #1cb278
+  color: #e84c33
 }
 
 .yxk-second-title {
   padding-left: 8px;
-  border-left: 4px solid #1cb278;
+  border-left: 4px solid #e84c33;
   height: 20px;
   line-height: 20px;
   margin-bottom: 10px;
@@ -2592,8 +2593,8 @@ body:last-child .arrow {
   line-height: 40px;
   padding: 0;
   margin: 0;
-  background: #1cb278;
-  border-color: #1cb278;
+  background: #e84c33;
+  border-color: #e84c33;
   border-radius: 0
 }
 
@@ -2714,7 +2715,7 @@ body:last-child .arrow {
 .zyk-info .iconfont {
   margin-left: 25px;
   margin-right: 5px;
-  color: #1cb278;
+  color: #e84c33;
   vertical-align: middle
 }
 
@@ -2749,7 +2750,7 @@ body:last-child .arrow {
   height: 40px;
   line-height: 43px;
   padding: 0 24px;
-  border-bottom: 3px solid #1cb278;
+  border-bottom: 3px solid #e84c33;
   margin-right: 2px;
   font-size: 16px;
   cursor: pointer
@@ -2757,8 +2758,8 @@ body:last-child .arrow {
 
 .zyk-cc-ul li.onread {
   color: #fff;
-  background: #1cb278;
-  border-color: #1cb278
+  background: #e84c33;
+  border-color: #e84c33
 }
 
 .zyk-cc-ul li .iconfont {
@@ -2827,7 +2828,7 @@ body:last-child .arrow {
   line-height: 33px;
   border-top: 1px solid #e5e5e5;
   border-bottom: 1px solid #e5e5e5;
-  color: #1cb278;
+  color: #e84c33;
   background: #fff
 }
 
@@ -2927,7 +2928,7 @@ body:last-child .arrow {
   height: 22px;
   line-height: 22px;
   padding-left: 12px;
-  border-left: 3px solid #1cb278;
+  border-left: 3px solid #e84c33;
   margin: 20px 0 10px;
   font-size: 18px;
   font-weight: 400
@@ -2937,7 +2938,7 @@ body:last-child .arrow {
   height: 20px;
   line-height: 20px;
   padding-left: 16px;
-  border-left: 2px solid #1cb278;
+  border-left: 2px solid #e84c33;
   margin: 20px 0 10px;
   font-size: 14px;
   font-weight: 700
@@ -3224,7 +3225,7 @@ a, a:link, a:visited {
 }
 
 .gk-main .list-content .news-title a.from {
-  color: #1cb278
+  color: #e84c33
 }
 
 .part04 .side-head {
@@ -3254,7 +3255,7 @@ a, a:link, a:visited {
   width: 3px;
   height: 16px;
   border-radius: 2px;
-  background: #1cb278;
+  background: #e84c33;
   position: absolute;
   left: 0;
   top: 0
@@ -3309,7 +3310,7 @@ a, a:link, a:visited {
 }
 
 .tbtj-bl .side-head .more a:hover {
-  color: #1cb278
+  color: #e84c33
 }
 
 .side-head {
@@ -3341,7 +3342,7 @@ a, a:link, a:visited {
   display: inline-block;
   width: 3px;
   height: 18px;
-  background: #1cb278;
+  background: #e84c33;
   border-radius: 2px;
   left: 0;
   top: -1px;
@@ -3374,7 +3375,7 @@ a, a:link, a:visited {
   display: inline-block;
   width: 90px;
   height: 3px;
-  background: #1cb278;
+  background: #e84c33;
   border-radius: 2px;
   position: absolute;
   left: 34px;
@@ -3494,7 +3495,7 @@ a, a:link, a:visited {
   display: inline-block;
   width: 79px;
   height: 3px;
-  background: #1cb278;
+  background: #e84c33;
   position: absolute;
   border-radius: 2px;
   bottom: -4px;
@@ -3517,7 +3518,7 @@ a, a:link, a:visited {
 }
 
 .img-txt-box a:hover {
-  color: #1cb278;
+  color: #e84c33;
   text-decoration: underline
 }
 
@@ -3651,7 +3652,7 @@ a, a:link, a:visited {
 }
 
 .index-list a:hover {
-  color: #1cb278
+  color: #e84c33
 }
 
 .hotnew-list {
@@ -3831,7 +3832,7 @@ a, a:link, a:visited {
 }
 
 .part01-left a:hover {
-  color: #1cb278
+  color: #e84c33
 }
 
 .gk-month-hot {
@@ -3855,7 +3856,7 @@ a, a:link, a:visited {
 }
 
 .gk-months-title i {
-  color: #1cb278
+  color: #e84c33
 }
 
 .gk-months-title span {
@@ -3994,7 +3995,7 @@ a, a:link, a:visited {
 }
 
 .hot-list .multi a, .hot-list .multi a:link, .hot-list .multi a:visited {
-  color: #1cb278
+  color: #e84c33
 }
 
 .hot-list .multi .new {
@@ -4070,7 +4071,7 @@ a, a:link, a:visited {
 .yz-sch a.label-sch:hover {
   text-decoration: none;
   color: #fff;
-  background-color: #1cb278
+  background-color: #e84c33
 }
 
 .yz-sch a.hot {
@@ -4103,7 +4104,7 @@ a, a:link, a:visited {
 .gk-tsl-list a.label-tsl:hover {
   text-decoration: none;
   color: #fff;
-  background-color: #1cb278
+  background-color: #e84c33
 }
 
 .gk-tsl-list a.hot {
@@ -4129,7 +4130,7 @@ a, a:link, a:visited {
 .label-list a.label-item:hover {
   text-decoration: none;
   color: #fff;
-  background-color: #1cb278
+  background-color: #e84c33
 }
 
 .label-list a.hot {
@@ -4201,7 +4202,7 @@ a, a:link, a:visited {
   height: 100%;
   line-height: 24px;
   text-align: center;
-  background-color: #1cb278;
+  background-color: #e84c33;
   color: #fff;
   vertical-align: middle
 }
@@ -4250,7 +4251,7 @@ a.index-long-btn {
   text-align: center;
   padding: 5px;
   font-size: 18px;
-  background: linear-gradient(1turn, #1cb278, #31c78d);
+  background: linear-gradient(1turn, #e84c33, #31c78d);
   box-shadow: 0 2px 4px 0 rgba(28, 178, 120, .4);
   border-radius: 4px
 }
@@ -4261,11 +4262,11 @@ a.index-long-btn {
 
 .index-long-enter a.index-long-btn:hover {
   text-decoration: none;
-  background: linear-gradient(179deg, #8ad2a8, #1cb278) rgba(0, 0, 0, .1)
+  background: linear-gradient(179deg, #8ad2a8, #e84c33) rgba(0, 0, 0, .1)
 }
 
 a:hover {
-  color: #1cb278
+  color: #e84c33
 }
 
 .index-links li {
