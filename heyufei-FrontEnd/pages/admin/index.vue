@@ -44,7 +44,7 @@ import userApi from "@/api/user";
 import {getUser, setUser} from "@/utils/auth";
 
 export default {
-  layout: 'admin',
+  layout: 'adminLogin',
   name: 'admin_login',
   data() {
     const validateUsername = (rule, value, callback) => {
