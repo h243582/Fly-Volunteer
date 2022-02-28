@@ -1,5 +1,5 @@
 import request from '@/utils/request'
-const api_name = 'school'
+const api_name = 'type'
 export default {
   getList() {
     return request({
@@ -7,6 +7,13 @@ export default {
       method: 'get'
     })
   },
+  findAllLimit(currentPage,pageSize){
+    return request({
+      url: `/${api_name}/${currentPage}/${pageSize}`,
+      method: 'get'
+    })
+  },
+
   search(map) {
     return request({
       url: `/${api_name}/findSearch`,

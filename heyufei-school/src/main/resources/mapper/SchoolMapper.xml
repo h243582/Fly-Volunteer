@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.heyufei.school.mapper.SchoolMapper">
+
+<!--	&lt;!&ndash; 可根据自己的需求，是否要使用 &ndash;&gt;-->
+    <resultMap id="schoolMap" type="com.heyufei.school.pojo.dto.SchoolDto">
+
+        <result property="schoolName" column="name"/>
+        <result property="province" column="tb_province_id"/>
+        <result property="department" column="tb_department_id"/>
+        <result property="schoolType" column="tb_type_id"/>
+        <result property="level" column="tb_levels_id"/>
+        <result property="isTopUniversity" column="top_university"/>
+        <result property="isTopDiscipline" column="top_discipline"/>
+        <result property="hasGraduateSchool" column="graduate_school"/>
+        <result property="satisfaction" column="satisfaction"/>
+    </resultMap>
+
+
+    <select id="findCount" resultType="Long" parameterType="map">
+
+    select count(sc.id) count
+
+    from tb_school sc,tb_province pr,tb_department de,tb_type type,tb_levels le
+    where sc.tb_province_id = pr.id and sc.tb_department_id = de.id and sc.tb_type_id = type.id and sc.tb_levels_id = le.id
+
+    <if test="schoolName != null &amp;&amp; schoolName!=''">
+        and sc.name like concat('%',#{schoolName},'%')
+    </if>
+    <if test="provinceId != null &amp;&amp; provinceId!=''">
+        and sc.tb_province_id = #{provinceId}
+    </if>
+    <if test="departmentId != null &amp;&amp; departmentId!=''">
+        and sc.tb_department_id = #{departmentId}
+    </if>
+    <if test="typeId != null &amp;&amp; typeId!=''">
+        and sc.tb_type_id = #{typeId}
+    </if>
+    <if test="levelsId != null &amp;&amp; levelsId!=''">
+        and sc.tb_levels_id = #{levelsId}
+    </if>
+    <if test="topUniversity != null &amp;&amp; topUniversity!=''">
+        and sc.top_university = #{topUniversity}
+    </if>
+    <if test="topDiscipline != null &amp;&amp; topDiscipline!=''">
+        and sc.top_discipline = #{topDiscipline}
+    </if>
+    <if test="graduateSchool != null &amp;&amp; graduateSchool!=''">
+        and sc.graduate_school = #{graduateSchool}
+    </if>
+
+</select>
+
+    <select id="findSearch" resultType="com.heyufei.school.pojo.dto.SchoolDto" parameterType="map">
+
+        select sc.id,sc.name schoolName, pr.name province, de.name department, type.name schoolType, le.name level,
+        sc.top_university isTopUniversity, sc.top_discipline isTopDiscipline, sc.graduate_school hasGraduateSchool, sc.satisfaction
+
+        from tb_school sc,tb_province pr,tb_department de,tb_type type,tb_levels le
+        where sc.tb_province_id = pr.id and sc.tb_department_id = de.id and sc.tb_type_id = type.id and sc.tb_levels_id = le.id
+
+        <if test="schoolName != null &amp;&amp; schoolName!=''">
+            and sc.name like concat('%',#{schoolName},'%')
+        </if>
+        <if test="provinceId != null &amp;&amp; provinceId!=''">
+            and sc.tb_province_id = #{provinceId}
+        </if>
+        <if test="departmentId != null &amp;&amp; departmentId!=''">
+            and sc.tb_department_id = #{departmentId}
+        </if>
+        <if test="typeId != null &amp;&amp; typeId!=''">
+            and sc.tb_type_id = #{typeId}
+        </if>
+        <if test="levelsId != null &amp;&amp; levelsId!=''">
+            and sc.tb_levels_id = #{levelsId}
+        </if>
+        <if test="topUniversity != null &amp;&amp; topUniversity!=''">
+            and sc.top_university = #{topUniversity}
+        </if>
+        <if test="topDiscipline != null &amp;&amp; topDiscipline!=''">
+            and sc.top_discipline = #{topDiscipline}
+        </if>
+        <if test="graduateSchool != null &amp;&amp; graduateSchool!=''">
+            and sc.graduate_school = #{graduateSchool}
+        </if>
+
+        <if test="currentPage != null &amp;&amp; pageSize != null">
+            limit #{currentPage,javaType=int},#{pageSize,javaType=int}
+        </if>
+    </select>
+
+</mapper>

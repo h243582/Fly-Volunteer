@@ -360,7 +360,7 @@ public class Person {
 ```java
 @Autowired
 Person person;
-@Test
+@com.heyufei.school.Demo
 public void contextLoads() {
     System.out.println(person);
 }
@@ -791,8 +791,8 @@ class demo {
     //DI注入数据源
     @Autowired
     DataSource dataSource;
-	//这是作用boot的：import org.junit.jupiter.api.Test;
-    @Test
+	//这是作用boot的：import org.junit.jupiter.api.com.heyufei.school.Demo;
+    @com.heyufei.school.Demo
     public void contextLoads() throws SQLException {
         //看一下默认数据源
         System.out.println("默认数据源  "+dataSource.getClass());
@@ -1960,7 +1960,7 @@ public class DemoEmail {
     @Autowired
     JavaMailSenderImpl mailSender;
 
-    @Test
+    @com.heyufei.school.Demo
     public void contextLoads() {
         //邮件设置1：一个简单的邮件
         SimpleMailMessage message = new SimpleMailMessage();
@@ -1972,7 +1972,7 @@ public class DemoEmail {
         mailSender.send(message);
     }
 
-    @Test
+    @com.heyufei.school.Demo
     public void contextLoads2() throws MessagingException {
         //邮件设置2：一个复杂的邮件
         MimeMessage mimeMessage = mailSender.createMimeMessage();

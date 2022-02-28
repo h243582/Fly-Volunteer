@@ -1,128 +1,82 @@
 package com.heyufei.school.service;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Expression;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
-import javax.persistence.criteria.Selection;
 
-import com.heyufei.school.dao.SchoolDao;
+import com.heyufei.school.mapper.SchoolMapper;
 import com.heyufei.school.pojo.School;
+import com.heyufei.school.pojo.dto.SchoolDto;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import util.IdWorker;
 
+import javax.annotation.Resource;
 
 
 @Service
 public class SchoolService {
 
-	@Autowired
-	private SchoolDao schoolDao;
-	
-	@Autowired
-	private IdWorker idWorker;
+    @Resource
+    private SchoolMapper schoolMapper;
 
-	/**
-	 * 查询全部列表
-	 * @return
-	 */
-	public List<School> findAll() {
-		return schoolDao.findAll();
-	}
+    @Autowired
+    private IdWorker idWorker;
 
-	
-	/**
-	 * 条件查询+分页
-	 * @param whereMap
-	 * @param page
-	 * @param size
-	 * @return
-	 */
-	public Page<School> findSearch(Map whereMap, int page, int size) {
-		Specification<School> specification = createSpecification(whereMap);
-		PageRequest pageRequest =  PageRequest.of(page-1, size);
-		return schoolDao.findAll(specification, pageRequest);
-	}
+    /**
+     * 查询全部列表
+     */
+    public List<School> findAll() {
+        return schoolMapper.selectList(null);
+    }
 
-	
-	/**
-	 * 条件查询
-	 * @param whereMap
-	 * @return
-	 */
-	public List<School> findSearch(Map whereMap) {
-		Specification<School> specification = createSpecification(whereMap);
-		return schoolDao.findAll(specification);
-	}
+    /**
+     * 条件查询
+     */
+    public List<SchoolDto> findSearch(Map<String, Object> map) {
+        return schoolMapper.findSearch(map);
+    }
 
-	/**
-	 * 根据ID查询实体
-	 * @param id
-	 * @return
-	 */
-	public School findById(String id) {
-		return schoolDao.findById(id).get();
-	}
+    /**
+     * 条件查询出的数量
+     */
+    public Long findCount(Map<String, Object> map) {
+        return schoolMapper.findCount(map);
+    }
 
-	/**
-	 * 增加
-	 * @param school
-	 */
-	public void add(School school) {
-		school.setId( idWorker.nextId()+"" );
-		schoolDao.save(school);
-	}
 
-	/**
-	 * 修改
-	 * @param school
-	 */
-	public void update(School school) {
-		schoolDao.save(school);
-	}
 
-	/**
-	 * 删除
-	 * @param id
-	 */
-	public void deleteById(String id) {
-		schoolDao.deleteById(id);
-	}
 
-	/**
-	 * 动态条件构建
-	 * @param searchMap
-	 * @return
-	 */
-	private Specification<School> createSpecification(Map searchMap) {
 
-		return new Specification<School>() {
+    /**
+     * 根据ID查询实体
+     */
+    public School findById(String id) {
+        return schoolMapper.selectById(id);
+    }
 
-			@Override
-			public Predicate toPredicate(Root<School> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
-				List<Predicate> predicateList = new ArrayList<Predicate>();
-                // 院校名称
-                if (searchMap.get("name")!=null && !"".equals(searchMap.get("name"))) {
-                	predicateList.add(cb.like(root.get("name").as(String.class), "%"+(String)searchMap.get("name")+"%"));
-                }
-				
-				return cb.and( predicateList.toArray(new Predicate[predicateList.size()]));
+    /**
+     * 增加
+     */
+    public int add(School school) {
+        school.setId(idWorker.nextId() + "");
+        return schoolMapper.insert(school);
+    }
 
-			}
-		};
+    /**
+     * 修改
+     */
+    public void update(School school) {
+        schoolMapper.updateById(school);
+    }
 
-	}
+    /**
+     * 删除
+     */
+    public void deleteById(String id) {
+        schoolMapper.deleteById(id);
+    }
+
 
 }

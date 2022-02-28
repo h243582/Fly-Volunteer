@@ -1,4 +1,5 @@
 package com.heyufei.school;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
@@ -9,6 +10,7 @@ import util.JwtUtil;
 
 @EnableEurekaClient
 @SpringBootApplication
+@MapperScan("com.heyufei.school.mapper")
 public class SchoolApplication {
 
 	public static void main(String[] args) {

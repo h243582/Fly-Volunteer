@@ -1,36 +1,43 @@
 package com.heyufei.school.pojo;
 
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+
 import java.io.Serializable;
 /**
  * 实体类
  * @author Administrator
  *
  */
-@Entity
 @Data
-@Table(name="tb_school")
+@TableName("tb_school")
 public class School implements Serializable{
 
-	@Id
+	@TableId
 	private String id;//ID
 
 
-	
+
 	private String name;//院校名称
-	private String tb_province_id;//院校所在地
-	private String tb_department_id;//教育行政主管部门
-	private String tb_type_id;//院校类型
-	private String tb_levels_id;//学历层次
-	private Boolean top_university;//一流大学建设高校
-	private Boolean top_discipline;//一流学科建设高校
-	private Boolean graduate_school;//研究生院
+	@TableField("tb_province_id")
+	private String provinceId;//院校所在地
+	@TableField("tb_department_id")
+	private String departmentId;//教育行政主管部门
+	@TableField("tb_type_id")
+	private String typeId;//院校类型
+	@TableField("tb_levels_id")
+	private String levelsId;//学历层次
+	@TableField("top_university")
+	private Boolean topUniversity;//一流大学建设高校
+	@TableField("top_discipline")
+	private Boolean topDiscipline;//一流学科建设高校
+	@TableField("graduate_school")
+	private Boolean graduateSchool;//研究生院
 	private Double satisfaction;//满意度
 
 
-	
+
 }
