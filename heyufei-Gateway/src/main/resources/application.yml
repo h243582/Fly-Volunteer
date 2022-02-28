@@ -49,9 +49,23 @@ zuul:
       path: /user/** #配置请求的URL的请求规则
       url: http://localhost:9008/user #指定Eureka注册中心中的服务id
     heyufei-school:
-      path: /school/** #配置请求的URL的请求规则
-      url: http://localhost:9009/school #指定Eureka注册中心中的服务id
-
+      path: /school/**
+      url: http://localhost:9010/school
+    heyufei-school-province:
+      path: /province/**
+      url: http://localhost:9010/province
+    heyufei-school-department:
+      path: /department/**
+      url: http://localhost:9010/department
+    heyufei-school-departmentType:
+      path: /departmentType/**
+      url: http://localhost:9010/departmentType
+    heyufei-school-levels:
+      path: /levels/**
+      url: http://localhost:9010/levels
+    heyufei-school-type:
+      path: /type/**
+      url: http://localhost:9010/type
 
 
 
