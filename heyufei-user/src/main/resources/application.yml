@@ -38,3 +38,5 @@ jwt:
     key: heyufei
     ttl: 360000000000
 
+redisID: 123
+
