@@ -347,6 +347,303 @@ Warning: PID file not written; -detached was passed.
 
 ![img](https://heyufei-1305336662.cos.ap-shanghai.myqcloud.com/my_img/20190714013859898.png)![img](https://heyufei-1305336662.cos.ap-shanghai.myqcloud.com/my_img/2019071401395790.png)![img](https://heyufei-1305336662.cos.ap-shanghai.myqcloud.com/my_img/20190714014304721.png)
 
+# 二、概念
+
+## 1、架构图
+
+![](https://heyufei-1305336662.cos.ap-shanghai.myqcloud.com/my_img/5.1.png)
+
+### （1）`Producer` 消息生产者
+
+如图A、B、C，数据的发送方。消息生产者连接RabbitMQ服务器然后将消息投递到Exchange。
+
+### （2）`Consumer`消息消费者
+
+如图1、2、3，数据的接收方。消息消费者订阅队列，RabbitMQ将Queue中的消息发送到消息消费者。
+
+### （3）`Exchange`交换器
+
+生产者将消息发送到Exchange（交换器），由Exchange将消息路由到一个或多个Queue中（或者丢弃）Exchange并不存储消息。RabbitMQ中的Exchange有direct、fanout、topic、headers四种类型，每种类型对应不同的路由规则。
+
+### （4）`Queue`队列
+
+是RabbitMQ的内部对象，用于存储消息。消息消费者就是通过订阅队列来获取消息的，RabbitMQ中的消息都只能存储在Queue中，生产者生产消息并最终投递到Queue中，消费者可以从Queue中获取消息并消费。多个消费者可以订阅同一个Queue，这时Queue中的消息会被平均分摊给多个消费者进行处理，而不是每个消费者都收到所有的消息并处理。
+
+### （5）RoutingKey
+
+生产者在将消息发送给Exchange的时候，一般会指定一个`routing key`，来指定这个消息的路由规则，而这个`routing key`需要与`Exchange Type`及`binding key`联合使用才能最终生效。在`Exchange Type`与`binding key`固定的情况下（在正常使用时一般这些内容都是固定配置好的），我们的生产者就可以在发送消息给`Exchange`时，通过指定`routing key`来决定消息流向哪里。`RabbitMQ`为`routing key`设定的长度限制为255bytes。
+
+### （6）Connection连接
+
+Producer和Consumer都是通过TCP连接到RabbitMQ Server的。以后我们可以看到，程序的起始处就是建立这个TCP连接。
+
+### （7）Channels信道
+
+它建立在上述的TCP连接中。数据流动都是在Channel中进行的。也就是说，一般情况是程序起始建立TCP连接，第二步就是建立这个Channel。
+
+### （8）VirtualHost权限控制的基本单位
+
+一个`VirtualHost`里面有若干Exchange和MessageQueue，以及指定被哪些user使用
+
+# 二、工作模式
+
+### 1、 直接模式（Direct）
+
+#### （1） 概念
+
+​	![](https://heyufei-1305336662.cos.ap-shanghai.myqcloud.com/my_img/5.4.png)
+
+任何发送到Direct Exchange的消息都会被转发到RouteKey中指定的Queue。
+​	1.一般情况可以使用rabbitMQ自带的`Exchange：""` (该Exchange的名字为空字符串，下文称其为default Exchange)。
+​	2.这种模式下不需要将Exchange进行任何绑定(binding)操作
+​	3.消息传递时需要一个“RouteKey”，可以简单的理解为要发送到的队列名字。
+​	4.如果vhost中不存在RouteKey中指定的队列名，则该消息会被抛弃。
+
+#### （2） 创建队列
+
+做下面的例子前，我们先建立一个叫itcast的队列。
+
+![](https://heyufei-1305336662.cos.ap-shanghai.myqcloud.com/my_img/5.5.png)
+
+`Durability`：是否做持久化 Durable（持久） transient（临时）
+`Auto delete` : 是否自动删除
+
+#### （4）代码实现-消息消费者
+
+（1）创建工程rabbitmq_demo，引入amqp起步依赖 ，pom.xml如下：
+
+~~~xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-amqp</artifactId>
+</dependency>
+~~~
+
+
+（2）编写配置文件application.yml
+
+~~~xml-dtd
+spring:
+  rabbitmq:
+    host: 120.24.145.157
+    port: 5672
+    username: guest
+    password: guest
+~~~
+
+（3）编写消息消费者类
+
+~~~java
+@Component
+@RabbitListener(queues="itcast" )
+public class Customer1 {
+	@RabbitHandler
+	public void showMessage(String message){
+		System.out.println("itcast接收到消息："+message);
+	}
+}
+~~~
+
+#### （3） 代码实现-消息生产者
+
+（1）编写启动类
+
+~~~java
+@SpringBootApplication
+public class Application {
+	public static void main(String[] args) {
+		SpringApplication.run(Application.class);
+	}
+}
+~~~
+
+（2）编写测试类
+
+~~~java
+@RunWith(SpringRunner.class)
+@SpringBootTest(classes=Application.class)  //启动启动类
+public class MqTest {
+	@Autowired
+	private RabbitTemplate rabbitTemplate;
+	@Test
+	public void testSend(){
+		rabbitTemplate.convertAndSend("itcast","我要红包");
+	}
+}
+
+~~~
+
+#### （5）测试
+
+​	开启多个消费者工程，测试运行消息生产者工程，会发现只有一个消费者工程可以接收到消息。
+如何在IDEA中多次启动同一个程序呢？
+（1）选择IDEA右上角的类名称按钮
+
+![](https://heyufei-1305336662.cos.ap-shanghai.myqcloud.com/my_img/5.6.png)
+
+（2）选择Edit Configurations
+
+![](https://heyufei-1305336662.cos.ap-shanghai.myqcloud.com/my_img/5.7.png)
+
+（3）在弹出窗口中取消单例模式 ，点击OK
+
+![](https://heyufei-1305336662.cos.ap-shanghai.myqcloud.com/my_img/5.8.png)
+
+（4）每次运行前修改application.yml，指定不同的端口
+
+~~~xml
+server:
+	port: 9202
+~~~
+
+运行后在控制台可以看到多个窗口
+
+![](https://heyufei-1305336662.cos.ap-shanghai.myqcloud.com/my_img/5.9.png)
+
+
+
+### 2、 分列模式（Fanout）
+
+#### （1）概念
+
+当我们需要将消息一次发给多个队列时，需要使用这种模式。如下图：
+
+![](https://heyufei-1305336662.cos.ap-shanghai.myqcloud.com/my_img/5.10.png)
+
+任何发送到Fanout Exchange的消息都会被转发到与该Exchange绑定(Binding)的所有
+Queue上。
+1.可以理解为路由表的模式
+2.这种模式不需要RouteKey
+3.这种模式需要提前将Exchange与Queue进行绑定，一个Exchange可以绑定多个Queue，一个Queue可以同多个Exchange进行绑定。
+4.如果接受到消息的Exchange没有与任何Queue绑定，则消息会被抛弃。
+
+#### （2）交换器绑定队列
+
+（1）在queue中添加队列itheima 和kudingyu
+（2）新建交换器chuanzhi
+
+![](https://heyufei-1305336662.cos.ap-shanghai.myqcloud.com/my_img/5.11.png)
+
+（3）将itcast 和itheima两个队列绑定到交换器chuanzhi
+
+![](https://heyufei-1305336662.cos.ap-shanghai.myqcloud.com/my_img/5.12.png)
+
+点击chuanzhi进入交换器管理界面
+![](https://heyufei-1305336662.cos.ap-shanghai.myqcloud.com/my_img/5.13.png)
+
+点击Bindings添加绑定 itheima和kudingyu
+
+![](https://heyufei-1305336662.cos.ap-shanghai.myqcloud.com/my_img/5.14.png)
+
+绑定后效果如下：
+
+![](https://heyufei-1305336662.cos.ap-shanghai.myqcloud.com/my_img/5.15.png)
+
+#### （3）代码实现-消息消费者
+
+创建消息监听类，用于监听itheima/kudingyu的消息
+
+~~~java
+@Component
+@RabbitListener(queues="itheima" )
+public class Customer2 {
+	@RabbitHandler
+	public void showMessage(String message){
+		System.out.println("itheima接收到消息："+message);
+	}
+}
+
+@Component
+@RabbitListener(queues="kudingyu" )
+public class Customer3 {
+	@RabbitHandler
+	public void showMessage(String message){
+		System.out.println("kudingyu接收到消息："+message);
+	}
+}
+~~~
+
+#### （4） 代码实现-消息生产者
+
+~~~java
+@Test
+public void testSendFanout(){
+	rabbitTemplate.convertAndSend("chuanzhi","", "分列模式走起");
+}
+
+~~~
+
+
+
+#### （5）测试
+
+启动消费者工程，发送消息测试
+
+![](https://heyufei-1305336662.cos.ap-shanghai.myqcloud.com/my_img/5.16.png)
+
+### 3、主题模式（Topic）
+
+#### （1）概念
+
+由`routing Key`的值来决定**模糊匹配队列**（不经过交换机）
+
+>`#` 表示0个或者多个单词
+>
+> `*` 表示一个单词
+
+比如：`usa.#` 能够匹配到 usa.news.XXX ，但是 `usa.*` 只会匹配到 usa.XXX 
+
+![](https://heyufei-1305336662.cos.ap-shanghai.myqcloud.com/my_img/5.17.png)
+
+#### （2）创建队列与绑定
+
+（1）新建一个交换器 ，类型选择topic
+
+![](https://heyufei-1305336662.cos.ap-shanghai.myqcloud.com/my_img/5.18.png)
+
+（2）点击新建的交换器topictest
+
+![](https://heyufei-1305336662.cos.ap-shanghai.myqcloud.com/my_img/5.19.png)
+
+添加匹配规则，添加后列表如下：
+![](https://heyufei-1305336662.cos.ap-shanghai.myqcloud.com/my_img/5.20.png)
+
+#### （3）代码实现
+
+编写测试类方法：
+
+~~~java
+@Test
+public void testSendTopic1(){
+	rabbitTemplate.convertAndSend("topictest","goods.aaa","主题模式");
+}
+~~~
+
+
+
+输出结果：itcast接收到消息：主题模式
+
+~~~java
+@Test
+public void testSendTopic2(){
+	rabbitTemplate.convertAndSend("topictest","article.content.log","主题模式");
+}
+~~~
+
+
+
+输出结果：itheima接收到消息：主题模式
+
+![](https://heyufei-1305336662.cos.ap-shanghai.myqcloud.com/my_img/5.22.png)
+
+
+
+
+
+
+
+
+
 
 
 # 二、java调用
@@ -467,12 +764,10 @@ public void process3(String message){
 
 ### 4、发送
 
-```
+```java
 Map<String, String> map = new HashMap();
 map.put("mobile", mobile);
 map.put("code", code + "");
 rabbitTemplate.convertAndSend("sms", map);
 ```
-
-2021-12-29T19:53:08.955+08:00 INFO reservioralert.reservioralert [http-nio-1655-exec-1] [com.hikvision.artemis.sdk.ArtemisHttpUtil:826] the Artemis Request is Success,statusCode:200 SuccessMsg:{"code":"0","msg":"success","data":{"station":{"name":"西兴水库","regionIndexCode":"0644662c-f60e-450b-a2e7-dd98ddbe537e","basinId":null,"code":"a0001","latitudeDegree":24,"latitudeMinute":29,"latitudeSecond":37.1528,"longitudeDegree":107,"longitudeMinute":42,"longitudeSecond":11.77097,"createTime":"2021-12-29 17:27:24","updateTime":"2021-12-29 17:48:12","version":null,"type":0,"reportSwitch":0,"reportType":null,"stickOrder":null,"remark":null,"waterLevelMonitoring":null,"rainfallMonitoring":null,"dayRainfallWarning":30.0,"hourRainfallWarning":20.0,"criticalLevel":20.0,"resourceType":null,"enable":1,"externalIndexCode":null,"typeName":"河道","picUrl":null,"address":null,"displayOrder":null,"management":null,"placeCode":null,"placeName":null,"specialTag":"","upstreamId":null,"upstreamName":null,"downstreamId":null,"downstreamName":null,"geo":null,"sid":"babebb32-75b6-4648-b2af-dea50a1522d5"},"currentData":{"realtimeLevel":8.9,"levelDiff":0.0,"criticalLevel":20.0,"rainfallInOneHour":0.0,"rainfallInOneDay":49.0,"regionInfo":["浙江省","杭州市","滨江区","西兴街道"],"regionIndexCode":"0644662c-f60e-450b-a2e7-dd98ddbe537e","stationId":null,"basinInfo":null,"stationType":0,"stationCode":"a0001","stationName":"西兴水库","resourceType":null,"**alarmType**":4,"createTime":"2021-09-28 15:13:00","dayRainfallWarning":30.0,"hourRainfallWarning":20.0},"dataTrendBo":{"waterLevel":[{"picUrl":null,"xfield":"2021-12-29 17:00:00","yfield":"23.89"},{"picUrl":null,"xfield":"2021-12-29 18:00:00","yfield":"353.61"},{"picUrl":null,"xfield":"2021-12-29 19:00:00","yfield":"663.79"}],"rainfall":[{"picUrl":null,"xfield":"2021-12-29 17:00:00","yfield":"119.00"},{"picUrl":null,"xfield":"2021-12-29 18:00:00","yfield":"28.00"},{"picUrl":null,"xfield":"2021-12-29 19:00:00","yfield":"-49.00"}],"criticalLevel":20.0,"dayRainfallWarning":30.0,"hourRainfallWarning":20.0,"total":0,"name":"西兴水库","regionIndexCode":"0644662c-f60e-450b-a2e7-dd98ddbe537e","stationId":"babebb32-75b6-4648-b2af-dea50a1522d5","code":"a0001"},"basin":null,"cameraList":[{"indexCode":"6d54828226444ffcbfac6b3704464b9c","name":"区域入侵球机","status":null,"altitude":null,"channelNo":1,"componentId":null,"createTime":"2021-12-27 18:44:30","updateTime":"2021-12-27 18:44:49","regionIndexCode":"0644662c-f60e-450b-a2e7-dd98ddbe537e","belongRegionIndexCode":null,"isTop":0,"enable":1,"transmode":1,"displayOrder":6,"cameraType":"枪机","latitude":null,"longitude":null,"deviceIndexCode":"f48b5293984c49f095fbd26f8c6b7d11","externalIndexCode":"33010801581314000001","isSync":1,"cascadeCode":null,"originalIndexCode":null,"remark":null},{"indexCode":"f7be1adaf6924f19b93d7b73cc34e18b","name":"IPdome","status":null,"altitude":null,"channelNo":1,"componentId":null,"createTime":"2021-12-29 17:34:21","updateTime":"2021-12-29 17:34:31","regionIndexCode":"0644662c-f60e-450b-a2e7-dd98ddbe537e","belongRegionIndexCode":null,"isTop":0,"enable":1,"transmode":1,"displayOrder":18,"cameraType":"枪机","latitude":null,"longitude":null,"deviceIndexCode":"5305e1d6687b48208a17bfdfcbf9de87","externalIndexCode":"33010801581314000002","isSync":1,"cascadeCode":null,"originalIndexCode":null,"remark":null}],"sensorList":[{"indexCode":"b17f078e5e824d3a9c049f68ca5f445f","regionIndexCode":"0644662c-f60e-450b-a2e7-dd98ddbe537e","stationId":"babebb32-75b6-4648-b2af-dea50a1522d5","enable":1,"displayOrder":99999,"type":"wl","channelNo":"57","measureLow":10.0,"measureHigh":20.0,"alarmLow":null,"alarmHigh":null,"sensitive":0.1,"unit":null,"createTime":"2021-12-29 17:32:56","updateTime":"2021-12-29 17:32:56","version":null,"deviceIndexCode":"095aaa8413064175931233786ac0e3b0","deviceName":"水位","name":"水位","remark":null},{"indexCode":"0151a1dcde4f4602909163183b5882ee","regionIndexCode":"0644662c-f60e-450b-a2e7-dd98ddbe537e","stationId":"babebb32-75b6-4648-b2af-dea50a1522d5","enable":1,"displayOrder":99999,"type":"precipitation","channelNo":"32","measureLow":10.0,"measureHigh":20.0,"alarmLow":null,"alarmHigh":null,"sensitive":0.2,"unit":null,"createTime":"2021-12-29 17:33:32","updateTime":"2021-12-29 17:33:32","version":null,"deviceIndexCode":"f77893e52ed84b73ae76e66089ea3ee1","deviceName":"雨量","name":"雨量","remark":null}],"regionName":"西兴街道"}}
 

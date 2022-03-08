@@ -1,3 +1,18 @@
+# 一、权限
+
+## 1、文件权限命令
+
+![在这里插入图片描述](https://heyufei-1305336662.cos.ap-shanghai.myqcloud.com/my_img/ee7ea01eebfc4b2a9dc161f768251dcb.png)
+
+1. ps -mp pid -o THREAD,tid,time
+2. printf “%x\n” tid 把十进制的tid转16进制的id
+3. jstack pid |grep tid -A 1000
+
+## 2、切换用户
+
+> su root
+> Password:  不显示
+
 ## 查看cpu
 
 >top
@@ -14,17 +29,7 @@ find -name "*.sh"
 
 
 
-## 查看各个运行的端口号
-
- ```
- netstat -ntpl
- ```
-
-
-
-## 切换用户
-> su root
-> Password: ******
+> 
 
 ## 安装包解压
 
@@ -70,12 +75,6 @@ tar -zxvf 压缩包名
 
 - rm（英文全拼：remove）: 删除文件或目录
 
-  ```java
-  rm -rf [文件或者文件夹名]
-  ```
-
-  
-
 - mv（英文全拼：move file）: 移动文件与目录，或修改文件与目录的名称
 
 
@@ -97,6 +96,8 @@ tar -zxvf 压缩包名
 :x 保存并退出（仅当文件有变化时保存）
 #### 2、删除删不掉的文件时
 
+
+
 查看文件属性
 
 ```java
@@ -115,12 +116,8 @@ lsattr xxx  查看文件属性(xxx为文件名)
 chattr -a xxx 或者 chattr -i xxx
 ```
 
-**删除文件或目录**
+删除文件
 
 ```java
 rm -rf xxx
 ```
-
-### 3、复制文件
-
-cp -r  当前目录  目标目录

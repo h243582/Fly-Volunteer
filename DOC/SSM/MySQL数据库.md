@@ -26,15 +26,15 @@
 
    备注、描述、评论之类的可以设置为 NULL，其他的，最好不要使用 NULL。
 
-3. 对查询进行优化，要尽量避免全表扫描，首先应考虑在 where 及 order by 涉及的列上建立索引
+3. **首先应考虑在 where 及 order by 涉及的列上建立索引**
 
 4. 减少 IO 次数
 
-5. 降低 CPU 计算（order by, group by,distinct，排序）
+5. **少排序、分组、查重**：降低 CPU 计算（order by, group by,distinct，排序）
 
 6. 尽量用连接（join）代替子查询（不需要在内存创建临时表），尽量少 join
 
-7. 尽量避免 select *
+7. 不要 select *，要写具体
 
 8. 尽量少 or,使用 union all 或者是union(必要的时候)的方式来代替“or”会得到更好
 
@@ -78,13 +78,13 @@
 
 一个事务读取了另一个还未提价的事务中的内容
 
-### （2）不可重复读
+### （2）不可重复读update/delete
 
 查询间隔，查询内容被另一个事务修改并提交了。导致多次查询返回了不同的值
 
-### （3）幻读（虚读）
+### （3）幻读（虚读）insert
 
-**事务A**修改所有行为“**无**”，同时**事务B**修改一个行为“有”，事务A修改完一看，诶，漏了一个
+期间事务B 插入了相同搜索条件的新数据，事务A再次按照原先条件进行读取时，发现了事务B ==新插入的数据== 
 
 ## 2、事务的隔离级别
 
@@ -151,7 +151,7 @@
 
 ## 3、缓存击穿
 
-缓存中没有数据，数据库中有，但是刚刚过期了，就在这个过期之后：因为并发用户特别多，同时读取缓存没读到数据又跑到数据库取数据，导致数据库压力瞬间扩大。
+缓存中没有数据，刚刚过期了，数据库中有，这时：并发用户特别多，同时读取缓存没读到数据又跑到数据库取数据，导致数据库压力瞬间扩大。
 
 ### 解决方法
 
@@ -163,7 +163,7 @@
 #### 说明
 
 1. 缓存中有数据，直接走上述代码13行后就返回结果了
-2. 缓存中没有数据，第1个进入的线程，获取锁并从数据库去取数据，==没释放锁之前，其他并行进入的线程会等待100ms，再重新去缓存取数据==。==防止都去数据库重复取数据==，重复往缓存中更新数据情况出现。
+2. 缓存中没有数据，第1个进入的线程，获取锁并从数据库去取数据，==没释放锁之前，其他并行进入的线程会等待100ms，再重新去缓存取数据（自旋）==。==防止都去数据库重复取数据==，重复往缓存中更新数据情况出现。
 3. 当然这是简化处理，理论上如果能根据key值加锁就更好了，就是线程A从数据库取key1的数据并不妨碍线程B取key2的数据，上面代码明显做不到这点。
 
 ## 4、缓存雪崩
@@ -185,15 +185,17 @@
 ### 聚簇索引
 
 - 聚簇索引就是==主键索引==
-- 聚簇索引的叶子节点存储的是整行数据
+- 聚簇索引的**叶子节点**存储的是**整行数据**
 
-### 非聚簇索引
+### 非聚簇索引(辅助索引)
 
 - 非聚簇索引就是==普通索引==
+- 非聚簇索引的**叶子节点**存储的是**索引值**和**主键值**
+- 一张表可以有多个辅助索引。在innodb中有时也称辅助索引为**二级索引**
 
-- 非聚簇索引存储的是==索引值==和==主键值==
+![image-20220304142706336](https://heyufei-1305336662.cos.ap-shanghai.myqcloud.com/my_img/image-20220304142706336.png)
 
-## 1、`innoDB`(**聚簇索引**)的索引类型
+## 1、`innoDB`的索引类型
 
 ### （1）**主键索引**
 
@@ -201,13 +203,13 @@
 
 - 默认的都有，`primary`设置后，自动创建主键索引
 - `InnoDB`通过主键来实现聚簇索引，如果没有主键的话，它会选择一个唯一非空的索引来实现，如果再没有的话，它会隐式生成一个主键实现聚簇索引
-- alert table user add **primary key**(id)
+- `alert table user add **primary key**(id)`
 
 ### （2）**普通索引**
 
 - 也叫 **单列索引，单值索引**
 - 随便一个字段都可以建立索引，可以重复
-- alert table user add **index**  idx_name(name)
+- `alert table user add **index**  idx_name(name)`
 
 ### （3）**唯一索引**
 
@@ -231,7 +233,7 @@
 
 ## 3、什么情况无法用索引
 
-### 1．查询语句中使用LIKE关键字
+### 1.查询语句中使用LIKE关键字
 
 - 如果第一个字符为`%`，索引不会被使用。
 - 只要`%`不在第一个位置，索引就会被使用。
@@ -248,8 +250,8 @@
 
 ## 4、什么时候要用索引
 
-- 在需要排序的列上创建索引，因为索引已经排序
-- 在经常使用在where子句中的列上面创建 [索引](https://baike.baidu.com/item/索引)，加快条件的判断速度。
+- 在需要排序的列上创建索引
+- 在经常使用在where子句中的列上面创建 索引
 - 在经常需要搜索的列上加索引，可以很快搜索到
 - 在外键上面建立索引
 
@@ -267,13 +269,13 @@
 
 ## 1、创建数据库
 
-```
+```sql
 create database  ry  default character set utf8 COLLATE utf8_general_ci;
 ```
 
 ## 2、创建表
 
-```
+```sql
 create table sys_dept (
   dept_id           bigint(20)      not null auto_increment    comment '部门id',
   parent_id         bigint(20)      default 0                  comment '父部门id',
@@ -291,6 +293,24 @@ create table sys_dept (
   update_time       datetime                                   comment '更新时间',
   primary key (dept_id)
 ) engine=innodb auto_increment=200 comment = '部门表';
+```
+
+## 3、增加
+
+```sql
+insert into stu(id,name) values('1','sss')
+```
+
+## 4、修改
+
+```sql
+update stu set nicname='jjj' where id='1'
+```
+
+## 5、删除
+
+```sql
+delete from stu where id =1
 ```
 
 # 八、**Win下安装**
@@ -416,8 +436,6 @@ select concat(city,county,town) from t_place
 
 ```
 
-
-
 ## 2、split_part字符串分割
 
 `split_part([原字符串],  [分割字符], [取第几坨])`
@@ -426,12 +444,11 @@ select concat(city,county,town) from t_place
 
 ```sql
 select split_part(tp.name,'镇',3) from t_place
-
 ```
 
 ## 3、substring字符串截取
 
-substring([原字符串], [从第n个开始], [数m-1个数])         n从0开始
+`substring([原字符串], [从第n个开始], [数m-1个数])`         n从0开始
 
 比如
 
@@ -439,4 +456,59 @@ substring([原字符串], [从第n个开始], [数m-1个数])         n从0开�
 --place_code=123456
 substring(place_code, 0, 3)    --数两位： 12
 ```
+
+## 4、case when判断
+
+```sql
+select (case when stu.score > 90
+				then '优秀'
+			when stu.score > 80
+				then '良好'
+			else '不合格'
+            end) as '等级'
+from stu;            
+```
+
+# 十一、mysql常见日志
+
+## 1、重做日志（redo log）
+
+事务的持久性性是通过 redo log 来实现的 物理日志
+
+**在重启mysql服务的时候，根据redo log进行重新读取，从而达到事务的持久性这一特性。**
+
+## 2、回滚日志（undo log）
+
+事务的原子性是通过 undo log 来实现的 逻辑日志 根据sql生成逆向回滚sql
+
+**保存了事务发生之前的数据的一个版本，可以用于回滚**
+
+## 3、二进制日志（binlog）
+
+用于复制（主从复制）
+
+## 4、其他日志
+
+错误日志（errorlog）
+
+慢查询日志（slow query log）
+
+一般查询日志（general log）
+
+中继日志（relay log）
+
+## 5、三种日志总结
+
+首先 InnoDB 完成一次更新操作的具体步骤：
+
+1. 开启事务
+2. 查询待更新的记录到内存，并加 X写 锁
+3. 记录 undo log 到内存 buffer
+4. 记录 redo log 到内存 buffer
+5. 更改内存中的数据记录
+6. 提交事务，触发 redo log 刷盘
+7. 记录 bin log
+8. 事务结束
+
+
 

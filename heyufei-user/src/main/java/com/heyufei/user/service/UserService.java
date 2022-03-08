@@ -14,7 +14,6 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.script.DefaultRedisScript;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.yaml.snakeyaml.Yaml;
 import util.IdWorker;
 
 import javax.persistence.criteria.CriteriaBuilder;
@@ -272,8 +271,10 @@ public class UserService {
 
                 //正要删除锁时，锁已过期，别人已设置新值。那么我们删除的是别人的锁
                 //解决：删除锁必须保证原子性。使用redis+Lua脚本完成
-                //if redis.call("get",keys[1] == argv[1]
-                //      then return redis.call("get",keys[1])
+                //redis.call() 在执行命令的过程中发生错误时，脚本会停止执行
+                //KEYS[1]代表传递给Lua脚本的第一个key参数，而ARGV[1]代表第一个非key参数。
+                //if redis.call("get",keys[1]) == argv[1]
+                //      then return redis.call("del",keys[1])
                 //      else return 0
                 //      end
                 String script = "if redis.call(\"get\",KEYS[1]) == ARGV[1] then\n" +

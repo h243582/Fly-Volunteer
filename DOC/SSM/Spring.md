@@ -727,16 +727,6 @@ public class Myconfig {
 
 
 
-
-
-
-
-
-
-
-
-
-
 # 七、代理模式
 
 ​		***为什么要学习代理模式?因为这就是SpringAOP的底层!【SpringAOP和SpringMVC】***
@@ -755,59 +745,146 @@ public class Myconfig {
 
 ### 1.1.2、代理模式缺点 
 
-- 一个真实角色就会产生一个代理角色；代码量会翻倍~ 开发效率会变低~
-  
-  
+一个真实角色就会产生一个代理角色；代码量会翻倍~ 开发效率会变低~
 
-## 	2、动态代理
 
-- 动态代理和静态代理角色一样
+
+## 2、静态代理
+
+（1）**定义发送短信的接口**和实现类
+
+```java
+public interface SmsService {
+    String send(String message);
+}
+
+public class SmsServiceImpl implements SmsService {
+    
+    public String send(String message) {
+        System.out.println("send message:" + message);
+        return message;
+    }
+}
+```
+
+这时候其实就已经可以直接发短信了，但是我现在想在发短信之前加点东西
+
+
+
+（2）**创建代理类**
+
+```java
+public class SmsProxy implements SmsService {
+
+    private final SmsService smsService;
+
+    public SmsProxy(SmsService smsService) {
+        this.smsService = smsService;
+    }
+
+    @Override
+    public String send(String message) {
+        //调用方法之前，我们可以添加自己的操作
+        System.out.println("before method send()");
+        smsService.send(message);
+        //调用方法之后，我们同样可以添加自己的操作
+        System.out.println("after method send()");
+        return null;
+    }
+}
+```
+
+
+
+
+
+
+
+## 	3、动态代理
+
+- **在 Java 动态代理机制中 `InvocationHandler` 接口和 `Proxy` 类是核心。**
 - 动态代理的代理类是动态生成的，不是我们直接写好的!
 - 动态代理分为两大类：基于接口的动态代理，基于类的动态代理
   - 基于接口---JDK动态代理【我们在这里使用】
   - 基于类: cglib
   - java字节码实现: javasist
 
+1. `newProxyInstance()` :  `Proxy` 类中使用频率最高的方法，用来生成一个代理对象。
+2. **`loader`** :   类加载器，用于加载代理对象。
+3. **`interfaces`** :  被代理类实现的一些接口；
+4. `h`:  实现了 `InvocationHandler` 接口的对象；
+
+
+
 ​	**动态代理模板**
 
 ```java
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
 /**
  * 自动生成代理类
  */
-public class ProxyInvocationHandler implements InvocationHandler {
-    private Object target;
-    public ProxyInvocationHandler() {}
-    public ProxyInvocationHandler(Object target) {
+public class MyInvocationHandler implements InvocationHandler {
+    /**
+     * 代理类中的真实对象
+     */
+    private final Object target;
+
+    public DebugInvocationHandler(Object target) {
         this.target = target;
     }
-    /**
-     *  生成得到代理类
-     * @return 代理类
-     */
-    public Object getProxy(){
-        //System  ClassLoader系统类加载器,负责在JVM启动时加载来自java命令的class文件，以及classpath环境变最所指定的jar包和类路径
-        return Proxy.newProxyInstance(this.getClass().getClassLoader(), target.getClass().getInterfaces(),this);
-    }
 
-    /**
+	/**
      * 处理代理实例,返回结果
      * @param method 反射执行的方法，可以用method.getName()得到方法名
      * @return 实体类
      */
-    @Override
-    public Object invoke(Object o, Method method, Object[] objects) throws Throwable {
-        //动态代理的本质,就是使用反射机制实现!
-        return method.invoke(target, objects);
+    public Object invoke(Object proxy, Method method, Object[] args) throws Exception {
+        //调用方法之前，我们可以添加自己的操作
+        System.out.println("before method " + method.getName());
+        
+        Object result = method.invoke(target, args);
+        
+        //调用方法之后，我们同样可以添加自己的操作
+        System.out.println("after method " + method.getName());
+        return result;
     }
-
-    public void seeHost(){
-        System.out.println("中介带你看房~");
+    
+    public static Object getProxy(Object target) {
+        return Proxy.newProxyInstance(
+                target.getClass().getClassLoader(), // 目标类的类加载
+                target.getClass().getInterfaces(),  // 代理需要实现的接口，可指定多个
+                new MyInvocationHandler(target)// 代理对象对应的自定义 InvocationHandler
+        );
     }
-    public void needMoney(){
-        System.out.println("中介收钱~");
-    }
+    
 }
 ```
+
+
+
+**实际使用**
+
+```java
+SmsService smsService = (SmsService) MyInvocationHandler.getProxy(new SmsServiceImpl());
+smsService.send("java");
+```
+
+
+
+运行上述代码之后，控制台打印出：
+
+```text
+before method send
+send message:java
+after method send
+```
+
+
+
+
 
 # 八、AOP
 
@@ -1067,7 +1144,7 @@ After的时候**注解最先**其次**自定义**，最后**接口**
 
 
 
-# **九、Mybatis-Spring**
+# **九、Mybatis**
 
 ## **1、步骤:**
 
