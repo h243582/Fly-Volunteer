@@ -32,11 +32,13 @@ public class ProvinceService {
     public List<Province> findSearch(Map<String, Object> map) {
         return provinceMapper.selectByMap(map);
     }
-    public IPage<Province> findAllLimit(int currentPage, int pageSize){
-        IPage<Province> provinceIPage = new Page<>(currentPage,pageSize);
-        provinceIPage = provinceMapper.selectPage(provinceIPage,null);
+
+    public IPage<Province> findAllLimit(int currentPage, int pageSize) {
+        IPage<Province> provinceIPage = new Page<>(currentPage, pageSize);
+        provinceIPage = provinceMapper.selectPage(provinceIPage, null);
         return provinceIPage;
     }
+
     public int add(Province province) {
         Map<String, Object> map = new HashMap<>();
         map.put("name", province.getName());

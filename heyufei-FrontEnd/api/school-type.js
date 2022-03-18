@@ -14,11 +14,11 @@ export default {
     })
   },
 
-  search(map) {
+  findSearch(searchMap) {
     return request({
-      url: `/${api_name}/findSearch`,
+      url: `/${api_name}/search`,
       method: 'post',
-      data: map
+      data: searchMap
     })
   },
   save(pojo) {

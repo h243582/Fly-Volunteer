@@ -8,16 +8,18 @@
       <el-col :span="20">
         <el-menu
             default-active="2"
-            class="el-menu-vertical-demo">
+            class="el-menu-vertical-demo"
+            background-color="#545c64"
+            text-color="#fff"
+            active-text-color="#ffd04b">
           <el-submenu index="1">
             <template slot="title">
               <i class="el-icon-user"></i>
               <span>人员信息管理</span>
             </template>
             <el-menu-item-group>
-              <template slot="title">用户</template>
               <router-link to="/admin/user" class="router_link">
-                <el-menu-item>用户管理</el-menu-item>
+                <el-menu-item index="1-1">用户管理</el-menu-item>
               </router-link>
             </el-menu-item-group>
           </el-submenu>
@@ -28,35 +30,26 @@
               <span>学校信息管理</span>
             </template>
             <el-menu-item-group>
-              <template slot="title">学校列表</template>
               <router-link to="/admin/school" class="router_link">
-                <el-menu-item>学校管理</el-menu-item>
+                <el-menu-item index="2-1">学校管理</el-menu-item>
               </router-link>
+
               <router-link to="/admin/school-type" class="router_link">
-                <el-menu-item>学校类型</el-menu-item>
+                <el-menu-item index="2-2">学校类型</el-menu-item>
               </router-link>
-              <router-link to="/admin/school" class="router_link">
-                <el-menu-item>学校管理</el-menu-item>
+
+              <router-link to="/admin/school-department" class="router_link">
+                <el-menu-item index="2-3">学校所属部门</el-menu-item>
               </router-link>
-              <router-link to="/admin/school" class="router_link">
-                <el-menu-item>学校管理</el-menu-item>
-              </router-link>
+
+<!--              <router-link to="/admin/school-departmentType" class="router_link">-->
+<!--                <el-menu-item index="2-4">教育主管部门类别</el-menu-item>-->
+<!--              </router-link>-->
+
             </el-menu-item-group>
           </el-submenu>
 
 
-          <el-menu-item index="2">
-            <i class="el-icon-reading"></i>
-            <span slot="title">学校信息管理</span>
-          </el-menu-item>
-          <el-menu-item index="3" disabled>
-            <i class="el-icon-document"></i>
-            <span slot="title">导航三</span>
-          </el-menu-item>
-          <el-menu-item index="4">
-            <i class="el-icon-setting"></i>
-            <span slot="title">导航四</span>
-          </el-menu-item>
         </el-menu>
       </el-col>
     </div>
@@ -103,5 +96,11 @@ export default {
 
 .router_link {
   text-decoration: none
+}
+
+element.style {
+  padding-left: 20px;
+  color: rgb(90, 87, 87);
+  background-color: rgb(228, 229, 230);
 }
 </style>

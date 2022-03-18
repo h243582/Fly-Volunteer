@@ -1,8 +1,8 @@
 <template>
   <div>
     <el-form :inline="true">
-<!--      <el-form-item label="名称">-->
-<!--        <el-input v-model="pageIf.name" placeholder="名称"></el-input>-->
+<!--      <el-form-item label="教育主管部门">-->
+<!--        <el-input v-model="pageIf.name" placeholder="教育主管部门"></el-input>-->
 <!--      </el-form-item>-->
 
 <!--      <el-button type="primary" style="width: 300px" @click="fetchData()">查询</el-button>-->
@@ -13,20 +13,24 @@
 
 
     <!--  表格  -->
-    <div style="width: 351px">
-      <el-table :data="typeList"  stripe border>
-
+    <div style="width: 600px">
+      <el-table :data="departmentList" stripe border>
         <el-table-column
             prop="name"
-            label="院校类型" align="center"
-            width="150">
+            label="教育主管部门" align="center"
+            width="180">
+        </el-table-column>
+        <el-table-column
+            prop="departmentTypeId"
+            label="教育主管部门类别" align="center"
+            width="160">
         </el-table-column>
 
         <el-table-column
             label="操作"
             width="180">
           <template slot-scope="scope">
-            <el-button @click="updateEdit(scope.row.id)"  size="small">修改</el-button>
+            <el-button @click="updateEdit(scope.row.id)" size="small">修改</el-button>
             <el-button @click="tableDelete(scope.row.id)" type="warning" size="small">删除</el-button>
           </template>
         </el-table-column>
@@ -45,9 +49,19 @@
 
     <el-dialog title="新增" :visible.sync="addFormVisible">
       <el-form label-width="160px">
-        <el-form-item label="院校名称">
+        <el-form-item label="教育主管部门">
           <el-input v-model="pojo.name" v-on:blur="findSearchByName()" style="width: 70%;float:left;"></el-input>
           <span>{{ message }}</span>
+        </el-form-item>
+        <el-form-item label="教育主管部门类别">
+          <el-select v-model="pojo.departmentTypeId" filterable placeholder="请选择">
+            <el-option
+                v-for="item in departmentTypeList"
+                :key="item.id"
+                :label="item.name"
+                :value="item.id">
+            </el-option>
+          </el-select>
         </el-form-item>
 
           <el-button @click="addFormVisible = false">关闭</el-button>
@@ -58,11 +72,20 @@
 
     <el-dialog title="修改" :visible.sync="updateFormVisible">
         <el-form label-width="160px">
-          <el-form-item label="院校类型">
+          <el-form-item label="教育主管部门">
             <el-input v-model="pojo.name" v-on:blur="findSearchByName()" style="width: 70%;float:left;"></el-input>
             <span>{{ message }}</span>
           </el-form-item>
-
+          <el-form-item label="教育主管部门类别">
+            <el-select v-model="pojo.departmentTypeId" filterable placeholder="请选择">
+              <el-option
+                  v-for="item in departmentTypeList"
+                  :key="item.id"
+                  :label="item.name"
+                  :value="item.id">
+              </el-option>
+            </el-select>
+          </el-form-item>
         <el-button type="primary" @click="updateTable()">保存</el-button>
         <el-button @click="updateFormVisible = false">关闭</el-button>
       </el-form>
@@ -108,15 +131,34 @@ export default {
   },
   created() {
     this.fetchData()
+
   },
 
   methods: {
     //分页刷新列表
     fetchData() {
-      typeApi.findAllLimit(this.pageIf.currentPage,this.pageIf.pageSize).then(response => {
-        this.typeList = response.data.data.records
+      departmentApi.findAllLimit(this.pageIf.currentPage,this.pageIf.pageSize).then(response => {
+        this.departmentList = response.data.data.records
         this.total = response.data.data.total
+
+        departmentTypeApi.getList().then(response => {
+          this.departmentTypeList = response.data.data
+
+          for (let i = 0; i < this.departmentList.length; i++) {
+            for (let j = 0; j < this.departmentTypeList.length; j++) {
+              if (this.departmentList[i].departmentTypeId === this.departmentTypeList[j].id){
+                this.departmentList[i].departmentTypeId = this.departmentTypeList[j].name
+              }
+            }
+          }
+
+        })
+
       })
+
+
+
+
       this.pojo = {// 还原数据
         name:"",
       }
@@ -126,6 +168,7 @@ export default {
     },
     //重置分页列表
     reset() {
+
       this.pageIf = {}
       this.pageIf.currentPage = 1
       this.pageIf.pageSize = 10
@@ -146,7 +189,7 @@ export default {
           type: 'error'
         })
       }else {
-        typeApi.save(this.pojo).then(response => {
+        departmentApi.save(this.pojo).then(response => {
             this.$message({
               message: "新建成功",
               type: 'success'
@@ -162,7 +205,7 @@ export default {
       this.id = id
       this.updateFormVisible = true // 打开窗口
       if (id !== '') { // 修改
-          typeApi.findById(id).then(response => {
+          departmentApi.findById(id).then(response => {
             if (response.data.flag) {
               this.pojo = response.data.data
             }
@@ -180,7 +223,7 @@ export default {
           type: 'error'
         })
       }else {
-        typeApi.update(this.id, this.pojo).then(response => {
+        departmentApi.update(this.id, this.pojo).then(response => {
           this.$message({
             message: response.data.message,
             type: (response.data.flag ? 'success' : 'error')
@@ -198,7 +241,7 @@ export default {
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
-          typeApi.deleteById(id).then(response => {
+          departmentApi.deleteById(id).then(response => {
             this.$message({message: response.data.message, type: (response.data.flag ? 'success' : 'error')})
             if (response.data.flag) {
               this.fetchData() // 刷新数据
@@ -211,7 +254,7 @@ export default {
     findSearchByName() {
       this.searchMap = {}
       this.searchMap.name = this.pojo.name
-      typeApi.findSearch(this.searchMap).then(response => {
+      departmentApi.findSearch(this.searchMap).then(response => {
         if (response.data.data.length === 0 ||response.data.data.length === null) {
           this.message = '院校名可用'
         } else {

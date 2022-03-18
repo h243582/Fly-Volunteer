@@ -91,14 +91,14 @@
             </li>
 
 
-            <li v-if="user.email === undefined">
+            <li v-if="user.name === undefined">
               <router-link to="/login">
                 <el-button size="mini" plain style="margin-top: 26px;margin-left: 5px">登入</el-button>
               </router-link>
             </li>
 
             <!-- 已登入时，显示用户名和头像 -->
-            <li v-if="user.email !== undefined">
+            <li v-if="user.name !== undefined">
               <router-link to="/login" style="float:left;margin-left: 5px;margin-top: 26px;" >
                 <el-button plain size="mini" style="width: 70px;overflow: hidden;text-overflow: ellipsis;">{{ user.name }}</el-button>
               </router-link>
@@ -112,7 +112,7 @@
 
             <!-- 管理员登录           -->
             <li>
-              <router-link to="/admin">
+              <router-link to="/admin"  target="_blank">
                 <el-button type="primary" plain size="mini" style="margin-top: 26px;margin-left: 5px">后台</el-button>
               </router-link>
             </li>

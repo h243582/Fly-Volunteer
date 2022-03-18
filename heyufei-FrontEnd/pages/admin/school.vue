@@ -5,7 +5,8 @@
         <el-input v-model="pageIf.schoolName" placeholder="院校名称"></el-input>
       </el-form-item>
       <el-form-item label="院校所在地">
-        <el-select v-model="pageIf.provinceId" filterable placeholder="请选择">
+        <el-select v-model="pageIf.provinceId" filterable placeholder="全部">
+          <el-option label="全部" value="" key=""></el-option>
           <el-option
               v-for="item in provinceList"
               :key="item.id"
@@ -15,7 +16,8 @@
         </el-select>
       </el-form-item>
       <el-form-item label="教育行政主管部门">
-        <el-select v-model="pageIf.departmentId" filterable placeholder="请选择">
+        <el-select v-model="pageIf.departmentId" filterable placeholder="全部">
+          <el-option label="全部" value="" key=""></el-option>
           <el-option
               v-for="item in departmentList"
               :key="item.id"
@@ -25,7 +27,8 @@
         </el-select>
       </el-form-item>
       <el-form-item label="院校类型">
-        <el-select v-model="pageIf.typeId" filterable placeholder="请选择">
+        <el-select v-model="pageIf.typeId" filterable placeholder="全部">
+          <el-option label="全部" value="" key=""></el-option>
           <el-option
               v-for="item in typeList"
               :key="item.id"
@@ -35,7 +38,8 @@
         </el-select>
       </el-form-item>
       <el-form-item label="学历层次">
-        <el-select v-model="pageIf.levelsId" filterable placeholder="请选择">
+        <el-select v-model="pageIf.levelsId" filterable placeholder="全部">
+          <el-option label="全部" value="" key=""></el-option>
           <el-option
               v-for="item in levelsList"
               :key="item.id"
@@ -65,8 +69,8 @@
 
 
     <!--  表格  -->
-    <div>
-      <el-table :data="list" stripe>
+    <div style="width: 1551px">
+      <el-table :data="list" stripe border>
         <el-table-column
             prop="schoolName"
             label="院校名称"
@@ -147,9 +151,9 @@
         </el-table-column>
         <el-table-column
             label="操作"
-            width="200">
+            width="160">
           <template slot-scope="scope">
-            <el-button @click="updateEdit(scope.row.id)" type="success" size="small">修改</el-button>
+            <el-button @click="updateEdit(scope.row.id)" size="small">修改</el-button>
             <el-button @click="tableDelete(scope.row.id)" type="warning" size="small">删除</el-button>
           </template>
         </el-table-column>
@@ -310,7 +314,7 @@
 
 <script>
 import schoolApi from '@/api/school'
-import provinceApi from '@/api/school-province'
+import provinceApi from '@/api/province'
 import departmentApi from '@/api/school-department'
 import departmentTypeApi from '@/api/school-departmentType'
 import typeApi from '@/api/school-type'
@@ -358,6 +362,21 @@ export default {
 
   },
   methods: {
+    //分页刷新列表
+    fetchData() {
+      schoolApi.search(this.pageIf).then(response => {
+        this.list = response.data.data.rows
+        this.total = response.data.data.total
+      })
+    },
+    //重置分页列表
+    reset() {
+      this.pageIf = {}
+      this.pageIf.currentPage = 1
+      this.pageIf.pageSize = 10
+      this.fetchData();
+    },
+
     // 打开新增用户窗口
     addEdit() {
       this.addFormVisible = true // 打开窗口
@@ -475,20 +494,7 @@ export default {
     },
 
 
-    //分页刷新列表
-    fetchData() {
-      schoolApi.search(this.pageIf).then(response => {
-        this.list = response.data.data.rows
-        this.total = response.data.data.total
-      })
-    },
-    //重置分页列表
-    reset() {
-      this.pageIf = {}
-      this.pageIf.currentPage = 1
-      this.pageIf.pageSize = 10
-      this.fetchData();
-    },
+
     handleCurrentChange(val) {
       this.pageIf.currentPage = val;
       this.fetchData()
@@ -499,7 +505,8 @@ export default {
     },
 
 
-  }
+  },
+
 }
 </script>
 

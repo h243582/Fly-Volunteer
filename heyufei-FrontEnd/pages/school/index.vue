@@ -6,164 +6,63 @@
       </div>
     </div>
     <div id="body-hyf">
-        <div class="yxk-filter">
-          <ul class="yxk-fliter-list">
-            <!--搜索学校 -->
-            <li class="yxk-option-con search-bar clearfix">
-              <div class="clearfix">
-                <div class="item-inline ">
-                  <input class="ch-input" v-model="pageIf.schoolName" type="text" maxlength="50"  placeholder="请输入院校名称"/>
-                </div>
+      <el-form :inline="true">
+        <el-form-item label="学校名称">
+          <input class="ch-input" v-model="pageIf.schoolName" type="text"  placeholder="请输入院校名称" style="width: 300px"/>
+          <div style="color: #999999;margin-top: 5px;">（ 注：本名单未包含港澳台地区高等学校 ）</div>
+        </el-form-item>
+        <el-form-item label="院校所在地">
+          <el-select v-model="pageIf.provinceId" filterable placeholder="全部" mini maxlength="60">
+            <el-option label="全部" value="" key=""></el-option>
+            <el-option
+                v-for="item in provinceList"
+                :key="item.id"
+                :label="item.name"
+                :value="item.id">
+            </el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="教育行政主管部门">
+          <el-select v-model="pageIf.departmentId" filterable placeholder="全部">
+            <el-option label="全部" value="" key=""></el-option>
+            <el-option
+                v-for="item in departmentList"
+                :key="item.id"
+                :label="item.name"
+                :value="item.id">
+            </el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="学历层次">
+          <el-select v-model="pageIf.levelsId" filterable placeholder="全部">
+            <el-option label="全部" value="" key=""></el-option>
+            <el-option
+                v-for="item in levelsList"
+                :key="item.id"
+                :label="item.name"
+                :value="item.id">
+            </el-option>
+          </el-select>
+        </el-form-item>
+        <br>
+        <el-form-item label="一流大学建设高校">
+          <el-switch v-model="pageIf.topUniversity" placeholder="一流大学建设高校"></el-switch>
+        </el-form-item>
+        <el-form-item label="一流学科建设高校">
+          <el-switch v-model="pageIf.topDiscipline" placeholder="一流学科建设高校"></el-switch>
+        </el-form-item>
+        <el-form-item label="研究生院">
+          <el-switch v-model="pageIf.graduateSchool" placeholder="研究生院"></el-switch>
+        </el-form-item>
 
-                <div class="item-inline">
-                  <button class="ch-btn ch-btn-big" @click="findByName()">查询</button>
-                </div>
-              </div>
-              <div style="color: #999999;margin-top: 5px;">（ 注：本名单未包含港澳台地区高等学校 ）</div>
-            </li>
-            <!-- -->
-            <li class="yxk-option-con clearfix">
-              <div class="list-th">院校所在地</div>
-              <div class="list-td clearfix">
-                <select class="ch-hide" name="ssdm">
-                  <option value="">院校所在地</option>
-                  <option value="11">北京</option>
-                  <option value="12">天津</option>
-                  <option value="13">河北</option>
-                  <option value="14">山西</option>
-                  <option value="15">内蒙古</option>
-                  <option value="21">辽宁</option>
-                  <option value="22">吉林</option>
-                  <option value="23">黑龙江</option>
-                  <option value="31">上海</option>
-                  <option value="32">江苏</option>
-                  <option value="33">浙江</option>
-                  <option value="34">安徽</option>
-                  <option value="35">福建</option>
-                  <option value="36">江西</option>
-                  <option value="37">山东</option>
-                  <option value="41">河南</option>
-                  <option value="42">湖北</option>
-                  <option value="43">湖南</option>
-                  <option value="44">广东</option>
-                  <option value="45">广西</option>
-                  <option value="46">海南</option>
-                  <option value="50">重庆</option>
-                  <option value="51">四川</option>
-                  <option value="52">贵州</option>
-                  <option value="53">云南</option>
-                  <option value="54">西藏</option>
-                  <option value="61">陕西</option>
-                  <option value="62">甘肃</option>
-                  <option value="63">青海</option>
-                  <option value="64">宁夏</option>
-                  <option value="65">新疆</option>
-                </select>
-                <span class="yxk-option js-option selected" data-id="">全部</span>
-                <span class="yxk-option js-option " data-id="11">北京</span>
-                <span class="yxk-option js-option " data-id="12">天津</span>
-                <span class="yxk-option js-option " data-id="13">河北</span>
-                 <span class="yxk-option js-option " data-id="14">山西</span>
-                 <span class="yxk-option js-option " data-id="15">内蒙古</span>
-                 <span class="yxk-option js-option " data-id="21">辽宁</span>
-                 <span class="yxk-option js-option " data-id="22">吉林</span>
-                 <span class="yxk-option js-option " data-id="23">黑龙江</span>
-                 <span class="yxk-option js-option " data-id="31">上海</span>
-                 <span class="yxk-option js-option " data-id="32">江苏</span>
-                 <span class="yxk-option js-option " data-id="33">浙江</span>
-                 <span class="yxk-option js-option " data-id="34">安徽</span>
-                 <span class="yxk-option js-option " data-id="35">福建</span>
-                 <span class="yxk-option js-option " data-id="36">江西</span>
-                 <span class="yxk-option js-option " data-id="37">山东</span>
-                 <span class="yxk-option js-option " data-id="41">河南</span>
-                 <span class="yxk-option js-option " data-id="42">湖北</span>
-                 <span class="yxk-option js-option " data-id="43">湖南</span>
-                 <span class="yxk-option js-option " data-id="44">广东</span>
-                 <span class="yxk-option js-option " data-id="45">广西</span>
-                 <span class="yxk-option js-option " data-id="46">海南</span>
-                 <span class="yxk-option js-option " data-id="50">重庆</span>
-                 <span class="yxk-option js-option " data-id="51">四川</span>
-                 <span class="yxk-option js-option " data-id="52">贵州</span>
-                 <span class="yxk-option js-option " data-id="53">云南</span>
-                 <span class="yxk-option js-option " data-id="54">西藏</span>
-                 <span class="yxk-option js-option " data-id="61">陕西</span>
-                 <span class="yxk-option js-option " data-id="62">甘肃</span>
-                 <span class="yxk-option js-option " data-id="63">青海</span>
-                 <span class="yxk-option js-option " data-id="64">宁夏</span>
-                <span class="yxk-option js-option " data-id="65">新疆</span>
+        <el-button type="primary" style="width: 300px" @click="fetchData()">查询</el-button>
+        <button class="ch-btn ch-btn-big" @click="findByName()">重置选择</button>
 
-              </div>
-            </li>
-            <!-- -->
-            <li class="yxk-option-con clearfix">
-              <div class="list-th">主管部门类别</div>
-              <div class="list-td clearfix">
-                <select class="ch-hide" name="yxls">
-                  <option value="" selected='selected'>全部</option>                  <option value="moe">教育部</option>                  <option value="min">其他部委</option>                  <option value="loc">地方</option>                  <option value="army">军校</option>                </select>
-                <span class="yxk-option js-option js-ls selected" data-id="">全部</span>
-                <span class="yxk-option js-option " data-id="moe">教育部</span>
-                <span class="yxk-option js-option " data-id="min">其他部委</span>
-                <span class="yxk-option js-option " data-id="loc">地方</span>
-                <span class="yxk-option js-option " data-id="army">军校</span>
-              </div>
-            </li>
-            <!-- -->
-            <li class="yxk-option-con clearfix">
-              <div class="list-th">学历层次</div>
-              <div class="list-td clearfix">
-                <select class="ch-hide" name="xlcc">
-                  <option value="" selected='selected'>全部</option>                  <option value="bk">本科</option>                  <option value="gzzk">高职(专科)</option>                </select>
-                <span class="yxk-option js-option js-ls selected" data-id="">全部</span>
-                <span class="yxk-option js-option " data-id="bk">本科</span>
-                <span class="yxk-option js-option " data-id="gzzk">高职(专科)</span>
-              </div>
-            </li>
-            <!-- -->
-            <li class="yxk-xz clearfix">
-              <div class="list-th">院校特性</div>
-              <div class="list-td">
-                <label class="ch-check-label ">
-                  <input type="checkbox" name="zgsx" id="ylxx" value="ylxx"
-                  />一流大学建设高校
-                </label>
-                <label class="ch-check-label ">
-                  <input type="checkbox" name="zgsx" id="ylxk" value="ylxk"
-                  />一流学科建设高校
-                </label>
+      </el-form>
 
-                <label class="ch-check-label ">
-                  <input type="checkbox" name="zgsx" id="yjsy" value="yjsy"
-                  />研究生院
-                </label>
-                <a href="//yz.chsi.com.cn/kyzx/kp/201101/20110119/161300374.html" target="_blank"><i
-                    class="iconfont" title="研究生院">&#xe67b;</i></a>
-                <label class="ch-check-label ">
-                  <input type="radio" name="yxjbz" id="yxjbz" value="2"
-                  />民办高校
-                </label>
-                <a href="//gaokao.chsi.com.cn/gkxx/gkcs/201712/20171212/1644084026.html" target="_blank"><i
-                    class="iconfont" title="民办高校">&#xe67b;</i></a>
-                <label class="ch-check-label ">
-                  <input type="radio" name="yxjbz" id="yxjbz" value="3"
-                  />独立学院
-                </label>
-                <a href="//gaokao.chsi.com.cn/gkxx/zcdh/200803/20080307/3975622.html" target="_blank"><i
-                    class="iconfont" title="独立学院">&#xe67b;</i></a>
-                <label class="ch-check-label ">
-                  <input type="radio" name="yxjbz" id="yxjbz" value="4"
-                  />中外合作办学
-                </label>
-                <label class="ch-check-label ">
-                  <input type="radio" name="yxjbz" id="yxjbz" value="5"
-                  />内地与港澳台地区合作办学
-                </label>
-              </div>
-            </li>
-          </ul>
-        </div>
       <!--  表格  -->
       <div>
-        <el-table :data="list"   stripe>
+        <el-table :data="list" stripe @row-click="joinInSchool"	    >
           <el-table-column
               prop="schoolName"
               label="院校名称"
@@ -259,6 +158,11 @@
 
 <script>
 import schoolApi from '@/api/school'
+import provinceApi from '@/api/province'
+import departmentApi from '@/api/school-department'
+import departmentTypeApi from '@/api/school-departmentType'
+import typeApi from '@/api/school-type'
+import levelsApi from '@/api/school-levels'
 
 export default {
   name: "school",
@@ -269,22 +173,33 @@ export default {
       pageIf: {
         currentPage: 1, // 当前页
         pageSize: 10, // 每页大小
-        schoolName:'',
+        schoolName: '',
 
       },
+      provinceList: [],
+      departmentList: [],
+      levelsList: [],
+      departmentTypeList: [],
+      typeList: [],
 
+      pojo: {},
       searchMap: {}, // 查询条件
-
+      selectedFlag: false
     }
   },
   created() {
     this.fetchData()
-
+    this.fetchSelectData()
   },
   methods: {
-    findByName(){
+    findByName() {
       this.fetchData();
       // this.pageIf.schoolName=''
+    },
+    findByProvince(index, item) {
+      this.selectedFlag = true
+      console.log(index)
+      console.log(item)
     },
 
     //分页刷新列表
@@ -294,6 +209,24 @@ export default {
         this.total = response.data.data.total
       })
     },
+  fetchSelectData() {
+    provinceApi.getList().then(response => {
+      this.provinceList = response.data.data
+    })
+    departmentApi.getList().then(response => {
+      this.departmentList = response.data.data
+    })
+    typeApi.getList().then(response => {
+      this.typeList = response.data.data
+    })
+    levelsApi.getList().then(response => {
+      this.levelsList = response.data.data
+    })
+    departmentTypeApi.getList().then(response => {
+      this.departmentTypeList = response.data.data
+    })
+
+  },
     //重置分页列表
     reset() {
       this.pageIf = {}
@@ -301,6 +234,14 @@ export default {
       this.pageIf.pageSize = 10
       this.fetchData();
     },
+    //进入学校详情页
+    joinInSchool(row, event, column){
+               console.log(row)
+
+    },
+
+
+
     handleCurrentChange(val) {
       this.pageIf.currentPage = val;
       this.fetchData()
@@ -310,13 +251,12 @@ export default {
       this.fetchData()
     },
 
-
-  }
+  },
 }
 </script>
 
 <style scoped>
-#body-hyf{
+#body-hyf {
   margin-left: 5%;
 }
 

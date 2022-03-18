@@ -3,8 +3,6 @@ package com.test2;
 
 import com.test1.A;
 
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Objects;
 
 public class Arr extends A {

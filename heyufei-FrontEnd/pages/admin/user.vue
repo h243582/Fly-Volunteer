@@ -1,6 +1,5 @@
 <template>
   <div>
-    <br>
     <!-- 此处是顶部搜索栏   -->
     <el-form :inline="true">
       <el-form-item label="邮箱">
@@ -31,8 +30,7 @@
       <el-button type="primary" @click="reset()">重置</el-button>
     </el-form>
     <el-table
-        :data="list"
-        border    >
+        :data="list" style="width: 1020px" border  stripe>
       <!--      <el-table-column prop="id" label="ID" width="160" show-overflow-tooltip></el-table-column>-->
       <el-table-column prop="email" label="邮箱" width="170"></el-table-column>
       <!--      <el-table-column prop="password" label="密码" width="100" show-overflow-tooltip></el-table-column>-->
@@ -68,7 +66,7 @@
           label="操作"
           width="200">
         <template slot-scope="scope">
-          <el-button @click="handleEdit(scope.row.id)" type="success" size="small">修改</el-button>
+          <el-button @click="handleEdit(scope.row.id)" size="small">修改</el-button>
           <el-button @click="handleDelete(scope.row.id)" type="warning" size="small">删除</el-button>
         </template>
       </el-table-column>
@@ -101,7 +99,7 @@
         <el-form-item label="邮箱">
           <el-input v-model="pojo.email" v-bind:disabled="true"></el-input>
         </el-form-item>
-        <el-form-item label="密码">
+        <el-form-item label="新密码">
           <el-input v-model="pojo.password"></el-input>
         </el-form-item>
         <el-form-item label="昵称">

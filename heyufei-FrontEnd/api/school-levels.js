@@ -7,11 +7,17 @@ export default {
       method: 'get'
     })
   },
-  search(map) {
+  findAllLimit(currentPage,pageSize){
     return request({
-      url: `/${api_name}/findSearch`,
+      url: `/${api_name}/${currentPage}/${pageSize}`,
+      method: 'get'
+    })
+  },
+  findSearch(searchMap) {
+    return request({
+      url: `/${api_name}/search`,
       method: 'post',
-      data: map
+      data: searchMap
     })
   },
   save(pojo) {

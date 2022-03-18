@@ -13,14 +13,16 @@ import java.io.Serializable;
 @Data
 @TableName("tb_province")
 public class Province implements Serializable{
+	private static final long serialVersionUID = 1L;
 
-	private String id;//ID
-
-
-
-	private String name;//省份名
-
-
-
+	/**
+	 * ID
+	 */
+	@TableId
+	private String id;
+	/**
+	 * 省份名
+	 */
+	private String name;
 
 }

@@ -13,7 +13,7 @@ public class demo {
     public void contextLoads() {
         //邮件设置1：一个简单的邮件
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setSubject("通知-明天来狂神这听课");
+        message.setSubject("通知-明天来这听课");
         message.setText("今晚7:30开会");
 
         message.setTo("2435823336@qq.com");
