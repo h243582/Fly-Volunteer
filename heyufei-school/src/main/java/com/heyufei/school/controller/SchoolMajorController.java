@@ -26,6 +26,7 @@ public class SchoolMajorController {
     public Result findAll(){
         return new Result(true,StatusCode.OK,"查询成功", schoolMajorService.findAll());
     }
+
     /**
      * 分页查询全部数据
      */
@@ -33,13 +34,31 @@ public class SchoolMajorController {
     public Result findAllLimit(@PathVariable int currentPage, @PathVariable int pageSize){
         return new Result(true,StatusCode.OK,"查询成功", schoolMajorService.findAllLimit(currentPage,pageSize));
     }
+
     /**
-     * 根据ID查询
+     * 根据ID查询综合满意度降序
      */
-    @RequestMapping(value="/{id}",method= RequestMethod.GET)
-    public Result findById(@PathVariable String id){
-        return new Result(true,StatusCode.OK,"查询成功", schoolMajorService.findById(id));
+    @RequestMapping(value="/comprehensiveSatisfaction/{id}",method= RequestMethod.GET)
+    public Result findByIdDescComprehensiveSatisfaction(@PathVariable String id){
+        return new Result(true,StatusCode.OK,"查询成功", schoolMajorService.findByIdDescComprehensiveSatisfaction(id));
     }
+
+    /**
+     * 根据ID查询推荐满意度降序
+     */
+    @RequestMapping(value="/recommendSatisfaction/{id}",method= RequestMethod.GET)
+    public Result findByIdDescRecommendSatisfaction(@PathVariable String id){
+        return new Result(true,StatusCode.OK,"查询成功", schoolMajorService.findByIdDescRecommendSatisfaction(id));
+    }
+
+    /**
+     * 根据ID查询推荐指数降序
+     */
+    @RequestMapping(value="/recommendNumber/{id}",method= RequestMethod.GET)
+    public Result findByIdDescRecommendNumber(@PathVariable String id){
+        return new Result(true,StatusCode.OK,"查询成功", schoolMajorService.findByIdDescRecommendNumber(id));
+    }
+
 
     /**
      * 根据名字查询

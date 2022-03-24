@@ -20,15 +20,15 @@ public class SchoolMajor implements Serializable {
 	 * ID
 	 */
 	@TableId
-	private Integer id;
+	private String id;
 	/**
 	 * 学校id
 	 */
-	private Integer tbSchoolId;
+	private String tbSchoolId;
 	/**
 	 * 专业id
 	 */
-	private Integer tbMajorId;
+	private String tbMajorId;
 	/**
 	 * 学制
 	 */

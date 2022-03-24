@@ -28,9 +28,21 @@ export default {
       data: pojo
     })
   },
-  findById(id) {
+  findByIdDescComprehensiveSatisfaction(id) {
     return request({
-      url: `/${api_name}/${id}`,
+      url: `/${api_name}/comprehensiveSatisfaction/${id}`,
+      method: 'get'
+    })
+  },
+  findByIdDescRecommendSatisfaction(id) {
+    return request({
+      url: `/${api_name}/recommendSatisfaction/${id}`,
+      method: 'get'
+    })
+  },
+  findByIdDescRecommendNumber(id) {
+    return request({
+      url: `/${api_name}/recommendNumber/${id}`,
       method: 'get'
     })
   },

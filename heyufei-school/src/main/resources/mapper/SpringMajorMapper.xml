@@ -3,5 +3,55 @@
 
 <mapper namespace="com.heyufei.school.mapper.SchoolMajorMapper">
 
+    <resultMap id="schoolMajorMap" type="com.heyufei.school.pojo.dto.SchoolMajorDto">
+
+        <result property="schoolName" column="name"/>
+
+    </resultMap>
+
+    <select id="findByIdDescComprehensiveSatisfaction" resultType="com.heyufei.school.pojo.dto.SchoolMajorDto">
+
+        select  s.name schoolName, m.name majorName,
+                educational_system educationalSystem, training_objectives trainingObjectives,
+                recommend_satisfaction recommendSatisfaction, recommended_number recommendedNumber,
+                comprehensive_satisfaction comprehensiveSatisfaction, comprehensive_number comprehensiveNumber,
+                conditions_satisfaction conditionsSatisfaction, conditions_number conditionsNumber,
+                quality_satisfaction qualitySatisfaction, quality_number qualityNumber,
+                job_satisfaction jobSatisfaction, job_number jobNumber
+
+        from tb_school_major sm ,tb_school s, tb_major m
+        where sm.tb_school_id = #{id} and sm.tb_school_id = s.id and sm.tb_major_id =m.id
+        order by sm.comprehensive_satisfaction desc
+    </select>
+
+    <select id="findByIdDescRecommendSatisfaction" resultType="com.heyufei.school.pojo.dto.SchoolMajorDto">
+
+        select  s.name schoolName, m.name majorName,
+                educational_system educationalSystem, training_objectives trainingObjectives,
+                recommend_satisfaction recommendSatisfaction, recommended_number recommendedNumber,
+                comprehensive_satisfaction comprehensiveSatisfaction, comprehensive_number comprehensiveNumber,
+                conditions_satisfaction conditionsSatisfaction, conditions_number conditionsNumber,
+                quality_satisfaction qualitySatisfaction, quality_number qualityNumber,
+                job_satisfaction jobSatisfaction, job_number jobNumber
+
+        from tb_school_major sm ,tb_school s, tb_major m
+        where sm.tb_school_id = #{id} and sm.tb_school_id = s.id and sm.tb_major_id =m.id
+        order by sm.recommend_satisfaction desc
+    </select>
+
+    <select id="findByIdDescRecommendNumber" resultType="com.heyufei.school.pojo.dto.SchoolMajorDto">
+
+        select  s.name schoolName, m.name majorName,
+                educational_system educationalSystem, training_objectives trainingObjectives,
+                recommend_satisfaction recommendSatisfaction, recommended_number recommendedNumber,
+                comprehensive_satisfaction comprehensiveSatisfaction, comprehensive_number comprehensiveNumber,
+                conditions_satisfaction conditionsSatisfaction, conditions_number conditionsNumber,
+                quality_satisfaction qualitySatisfaction, quality_number qualityNumber,
+                job_satisfaction jobSatisfaction, job_number jobNumber
+
+        from tb_school_major sm ,tb_school s, tb_major m
+        where sm.tb_school_id = #{id} and sm.tb_school_id = s.id and sm.tb_major_id =m.id
+        order by sm.recommended_number desc
+    </select>
 
 </mapper>
