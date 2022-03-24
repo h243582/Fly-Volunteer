@@ -3,7 +3,6 @@ import com.heyufei.user.pojo.User;
 import com.heyufei.user.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.BoundValueOperations;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -12,16 +11,11 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import util.IdWorker;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileWriter;
 import java.util.Date;
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 
 @SpringBootTest
-@SpringBootConfiguration
 public class demo {
     @Autowired
     private RedisTemplate<String, String> redisTemplate;
@@ -74,12 +68,11 @@ public class demo {
             user.setUpdateDate(new Date());//更新日期
             user.setIsVip(false);
             userDao.save(user);
+
+
         }
-    }
 
-    @Test
-    public void contextLoad4() {
+
 
     }
-
 }

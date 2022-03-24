@@ -457,6 +457,22 @@ select split_part(tp.name,'镇',3) from t_place
 substring(place_code, 0, 3)    --数两位： 12
 ```
 
+## 4、cast when then end
+
+
+
+
+
+```
+select  (case
+             when he.ttt like '%镇%'  //if
+             	then (concat(split_part(he.ttt,'镇',1),'镇')) //为真
+             when tp.name like '%镇%'  //else if
+                then (split_part(tp.name,'镇',2))//为真
+             else (concat(split_part(he.ttt,'乡',1),'乡')) //为假
+             end)   as name
+from he
+```
 ## 4、case when判断
 
 ```sql
