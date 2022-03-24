@@ -16,9 +16,13 @@ public class SchoolMajorDto implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * 专业id
+	 * 学校名称
 	 */
-	private Integer tbMajorId;
+	private String schoolName;
+	/**
+	 * 专业名称
+	 */
+	private String majorName;
 	/**
 	 * 学制
 	 */
