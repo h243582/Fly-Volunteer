@@ -327,5 +327,102 @@ var vm = new Vue({
 
 
 
+# 四、nuxt
+
+## 1、页面跳转时传参(id)
+
+### （1）父页面
+
+##### table处  `@row-click="joinInSchool"`
+
+```vue
+<el-table :data="list" stripe @row-click="joinInSchool">
+<el-table-column
+      prop="schoolName"
+      label="院校名称"
+      width="280">
+  </el-table-column>
+</el-table>
+```
 
 
+
+##### 点击某行时调用的方法，row是此行的数据对象
+
+```javascript
+//进入学校详情页
+joinInSchool(row, event, column) {
+
+  location.href = '/school/joinInSchool/'+row.id
+  //上下等价 作用相同
+  //this.$router.push({ path: '/school/joinInSchool/'+row.id })
+},
+```
+
+### （2）转发页面
+
+![image-20220320134639478](https://heyufei-1305336662.cos.ap-shanghai.myqcloud.com/my_img/image-20220320134639478.png)
+
+同目录下新建文件夹，名字随意，文件夹下新建vue文件，名字固定`_id.vue`
+
+`this.$route.params.xxx`获取传过来的参数
+
+```javascript
+created() {
+  this.id = this.$route.params.id
+},
+```
+
+
+
+## 2、页面跳转时传参(对象)
+
+##### table处  `@row-click="joinInSchool"`
+
+```vue
+<el-table :data="list" stripe @row-click="joinInSchool">
+<el-table-column
+      prop="schoolName"
+      label="院校名称"
+      width="280">
+  </el-table-column>
+</el-table>
+```
+
+
+
+##### 点击某行时调用的方法，row是此行的数据对象
+
+```javascript
+//进入学校详情页
+joinInSchool(row, event, column) {
+   //row.id也可以不写,因为一整个对象都传过来了，但是要把_id文件名改为index.vue
+   this.$router.push({ path: `/school/joinInSchool/${row.id}`, query:row})
+   
+},
+```
+
+### （2）转发页面
+
+![image-20220320134639478](https://heyufei-1305336662.cos.ap-shanghai.myqcloud.com/my_img/image-20220320134639478.png)
+
+同目录下新建文件夹，文件夹名字随意，文件夹下新建vue文件，名字固定`_id.vue`
+
+转发后路径变化：
+
+<img src="https://heyufei-1305336662.cos.ap-shanghai.myqcloud.com/my_img/image-20220321151347449.png" alt="image-20220321151347449" style="zoom:80%;" />
+
+`this.$route.query`获取传过来的对象
+
+```javascript
+created() {
+    console.log(this.$route.query);
+
+},
+```
+
+![image-20220321151257035](https://heyufei-1305336662.cos.ap-shanghai.myqcloud.com/my_img/image-20220321151257035.png)
+
+
+
+![view](https://heyufei-1305336662.cos.ap-shanghai.myqcloud.com/my_img/view.jpg)

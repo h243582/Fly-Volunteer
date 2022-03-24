@@ -6,9 +6,11 @@
       </div>
     </div>
     <div id="body-hyf">
+
+      <!--查找-->
       <el-form :inline="true">
         <el-form-item label="学校名称">
-          <input class="ch-input" v-model="pageIf.schoolName" type="text"  placeholder="请输入院校名称" style="width: 300px"/>
+          <input class="ch-input" v-model="pageIf.schoolName" type="text" placeholder="请输入院校名称" style="width: 300px"/>
           <div style="color: #999999;margin-top: 5px;">（ 注：本名单未包含港澳台地区高等学校 ）</div>
         </el-form-item>
         <el-form-item label="院校所在地">
@@ -62,7 +64,7 @@
 
       <!--  表格  -->
       <div>
-        <el-table :data="list" stripe @row-click="joinInSchool"	    >
+        <el-table :data="list" stripe @row-click="joinInSchool">
           <el-table-column
               prop="schoolName"
               label="院校名称"
@@ -163,6 +165,7 @@ import departmentApi from '@/api/school-department'
 import departmentTypeApi from '@/api/school-departmentType'
 import typeApi from '@/api/school-type'
 import levelsApi from '@/api/school-levels'
+import Cookie from "js-cookie";
 
 export default {
   name: "school",
@@ -209,24 +212,24 @@ export default {
         this.total = response.data.data.total
       })
     },
-  fetchSelectData() {
-    provinceApi.getList().then(response => {
-      this.provinceList = response.data.data
-    })
-    departmentApi.getList().then(response => {
-      this.departmentList = response.data.data
-    })
-    typeApi.getList().then(response => {
-      this.typeList = response.data.data
-    })
-    levelsApi.getList().then(response => {
-      this.levelsList = response.data.data
-    })
-    departmentTypeApi.getList().then(response => {
-      this.departmentTypeList = response.data.data
-    })
+    fetchSelectData() {
+      provinceApi.getList().then(response => {
+        this.provinceList = response.data.data
+      })
+      departmentApi.getList().then(response => {
+        this.departmentList = response.data.data
+      })
+      typeApi.getList().then(response => {
+        this.typeList = response.data.data
+      })
+      levelsApi.getList().then(response => {
+        this.levelsList = response.data.data
+      })
+      departmentTypeApi.getList().then(response => {
+        this.departmentTypeList = response.data.data
+      })
 
-  },
+    },
     //重置分页列表
     reset() {
       this.pageIf = {}
@@ -235,11 +238,16 @@ export default {
       this.fetchData();
     },
     //进入学校详情页
-    joinInSchool(row, event, column){
-               console.log(row)
+    joinInSchool(row, event, column) {
+      // location.href = '/school/joinInSchool/'+row
+      // this.$router.push({ path: '/school/joinInSchool/'+row.id })
+      Cookie.set('schoolInformation', row);
+
+      this.$router.push({ path: `/school/schoolInformation`})
+
+
 
     },
-
 
 
     handleCurrentChange(val) {

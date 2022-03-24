@@ -18,7 +18,7 @@ import entity.StatusCode;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/type")
+@RequestMapping("school/type")
 public class TypeController {
 
     @Autowired

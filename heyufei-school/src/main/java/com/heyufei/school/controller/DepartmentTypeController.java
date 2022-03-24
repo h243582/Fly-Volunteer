@@ -18,7 +18,7 @@ import entity.StatusCode;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/departmentType")
+@RequestMapping("/school/departmentType")
 public class DepartmentTypeController {
 
     @Autowired

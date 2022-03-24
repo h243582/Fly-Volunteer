@@ -1469,6 +1469,7 @@ public interface ArticleSearchDao extends
 创建com.tensquare.search.service包，包下建立类
 
 ~~~java
+@Transactional
 @Service
 public class ArticleSearchService {
 @Autowired

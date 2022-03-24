@@ -27,7 +27,9 @@ find -name "uninstallAll.sh"
 find -name "*.sh"   
 ```
 
+#### 查找文件
 
+find ./* -name mysql.server
 
 > 
 
@@ -121,3 +123,51 @@ chattr -a xxx 或者 chattr -i xxx
 ```java
 rm -rf xxx
 ```
+
+
+
+
+
+
+
+# mysql
+
+## 一、启动
+
+1、使用 service 启动：service mysqld start
+
+2、使用 mysqld 脚本启动：/etc/inint.d/mysqld start
+
+3、使用 safe_mysqld 启动：safe_mysqld&
+
+## 二、停止
+
+1、使用 service 启动：service mysqld stop
+
+2、使用 mysqld 脚本启动：/etc/inint.d/mysqld stop
+
+3、 mysqladmin shutdown 
+
+## 三、重启
+
+1、 使用 service 启动：service mysqld restart
+
+2、使用 mysqld 脚本启动：/etc/inint.d/mysqld restart
+
+## 四、连接数设置
+
+找到`my.cnf`文件 一般在/etc下
+
+```properties
+# max_connections设置最大连接数为1000
+max_connections=1000
+
+# max_user_connections设置每用户最大连接数为500
+max_user_connections=500
+
+# wait_timeout表示3600秒后将关闭空闲（IDLE）的连接，但是对正在工作的连接不影响。
+# 写太大启动报错的！
+# wait_timeout=3600
+```
+
+然后重启mysql

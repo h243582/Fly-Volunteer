@@ -1,12 +1,12 @@
 server:
-  port: 9012
+  port: 2435
 spring:
   application:
     name: heufei-Gateway #指定服务名
 eureka:
   client:
     service-url:
-      defaultZone: http://127.0.0.1:6868/eureka/ #eureka客户端和服务器端交互的地址,6868是eureka服务的地址
+      defaultZone: http://127.0.0.1:6868/eureka/ #eureka客户端和服务器端交互的地址,2435是eureka服务的地址
   instance:
     prefer-ip-address: true  #能否跨服务器访问（就是说访问另一个服务）
 
@@ -29,7 +29,6 @@ feign:
         ReadTimeOut: 10000
 
   hystrix:
-
     command:
       default:
         execution:
@@ -47,25 +46,25 @@ zuul:
   routes:
     heyufei-user:
       path: /user/** #配置请求的URL的请求规则
-      url: http://localhost:9008/user #指定Eureka注册中心中的服务id
+      url: http://localhost:2001/user #指定Eureka注册中心中的服务id
     heyufei-school:
       path: /school/**
-      url: http://localhost:9010/school
+      url: http://localhost:2002/school
     heyufei-school-province:
       path: /province/**
-      url: http://localhost:9010/province
-    heyufei-school-department:
-      path: /department/**
-      url: http://localhost:9010/department
-    heyufei-school-departmentType:
-      path: /departmentType/**
-      url: http://localhost:9010/departmentType
-    heyufei-school-levels:
-      path: /levels/**
-      url: http://localhost:9010/levels
-    heyufei-school-type:
-      path: /type/**
-      url: http://localhost:9010/type
+      url: http://localhost:2002/province
+#    heyufei-school-department:
+#      path: /department/**
+#      url: http://localhost:9010/department
+#    heyufei-school-departmentType:
+#      path: /departmentType/**
+#      url: http://localhost:9010/departmentType
+#    heyufei-school-levels:
+#      path: /levels/**
+#      url: http://localhost:9010/levels
+#    heyufei-school-type:
+#      path: /type/**
+#      url: http://localhost:9010/type
 
 
 

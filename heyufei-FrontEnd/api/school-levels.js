@@ -1,5 +1,5 @@
 import request from '@/utils/request'
-const api_name = 'levels'
+const api_name = 'school/levels'
 export default {
   getList() {
     return request({

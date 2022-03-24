@@ -562,6 +562,7 @@ public interface CommentDao extends MongoRepository<Comment, String> {
 （5）创建业务逻辑类
 
 ~~~java
+@Transactional
 @Service
 public class CommentService {
   @Autowired

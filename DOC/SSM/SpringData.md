@@ -161,6 +161,7 @@ public interface UserService {
 5. deleteById  删除用户，通过id
 
 ```java
+@Transactional
 @Service
 @Transactional  //事务注解
 public class UserServiceImpl implements UserService {

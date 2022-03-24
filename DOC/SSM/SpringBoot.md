@@ -1806,6 +1806,7 @@ public class SwaggerController {
 ### （1）写一个service类
 
 ```java
+@Transactional
 @Service
 public class AsyncService {
 
@@ -1875,6 +1876,7 @@ SpringBoot就会自己开一个线程池，进行调用！![image-20210728203206
 #### ①创建一个ScheduledService
 
 ```java
+@Transactional
 @Service
 public class ScheduledService {
    

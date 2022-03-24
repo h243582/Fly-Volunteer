@@ -3,8 +3,10 @@ package com.heyufei.school.pojo.dto;
 
 import lombok.Data;
 
+import java.io.Serializable;
+
 @Data
-public class SchoolDto {
+public class SchoolDto implements Serializable {
 
     private String id;
 

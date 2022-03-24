@@ -1,28 +1,22 @@
 package com.heyufei.school.controller;
-import java.util.Map;
 
-import com.heyufei.school.pojo.Department;
-import com.heyufei.school.service.DepartmentService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-
-
+import com.heyufei.school.pojo.SchoolMajor;
+import com.heyufei.school.service.SchoolMajorService;
 import entity.Result;
 import entity.StatusCode;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 
 @RestController
 @CrossOrigin
-@RequestMapping("/school/department")
-public class DepartmentController {
+@RequestMapping("/school/schoolMajor")
+public class SchoolMajorController {
 
     @Autowired
-    private DepartmentService departmentService;
+    private SchoolMajorService schoolMajorService;
 
 
     /**
@@ -30,21 +24,21 @@ public class DepartmentController {
      */
     @RequestMapping(method= RequestMethod.GET)
     public Result findAll(){
-        return new Result(true,StatusCode.OK,"查询成功", departmentService.findAll());
+        return new Result(true,StatusCode.OK,"查询成功", schoolMajorService.findAll());
     }
     /**
      * 分页查询全部数据
      */
     @RequestMapping(value = "/{currentPage}/{pageSize}", method= RequestMethod.GET)
     public Result findAllLimit(@PathVariable int currentPage, @PathVariable int pageSize){
-        return new Result(true,StatusCode.OK,"查询成功", departmentService.findAllLimit(currentPage,pageSize));
+        return new Result(true,StatusCode.OK,"查询成功", schoolMajorService.findAllLimit(currentPage,pageSize));
     }
     /**
      * 根据ID查询
      */
     @RequestMapping(value="/{id}",method= RequestMethod.GET)
     public Result findById(@PathVariable String id){
-        return new Result(true,StatusCode.OK,"查询成功", departmentService.findById(id));
+        return new Result(true,StatusCode.OK,"查询成功", schoolMajorService.findById(id));
     }
 
     /**
@@ -52,7 +46,7 @@ public class DepartmentController {
      */
     @RequestMapping(value="/findSearch",method= RequestMethod.POST)
     public Result findSearch(@RequestBody Map<String,Object> map){
-        return new Result(true,StatusCode.OK,"查询成功", departmentService.findSearch(map));
+        return new Result(true,StatusCode.OK,"查询成功", schoolMajorService.findSearch(map));
     }
 
 
@@ -60,8 +54,8 @@ public class DepartmentController {
      * 增加
      */
     @RequestMapping(method=RequestMethod.POST)
-    public Result add(@RequestBody Department department  ){
-        int add = departmentService.add(department);
+    public Result add(@RequestBody SchoolMajor schoolMajor  ){
+        int add = schoolMajorService.add(schoolMajor);
         if (add>0){
             return new Result(true,StatusCode.OK,"增加成功");
         }else {
@@ -73,9 +67,9 @@ public class DepartmentController {
      * 修改
      */
     @RequestMapping(value="/{id}",method= RequestMethod.PUT)
-    public Result update(@RequestBody Department department, @PathVariable String id ){
-        department.setId(id);
-        if (departmentService.update(department)!=0){
+    public Result update(@RequestBody SchoolMajor schoolMajor, @PathVariable String id ){
+        schoolMajor.setId(id);
+        if (schoolMajorService.update(schoolMajor)!=0){
             return new Result(true,StatusCode.OK,"修改成功");
         }else {
             return new Result(false,StatusCode.ERROR,"修改失败");
@@ -87,7 +81,7 @@ public class DepartmentController {
      */
     @RequestMapping(value="/{id}",method= RequestMethod.DELETE)
     public Result delete(@PathVariable String id ){
-        departmentService.deleteById(id);
+        schoolMajorService.deleteById(id);
         return new Result(true,StatusCode.OK,"删除成功");
     }
 

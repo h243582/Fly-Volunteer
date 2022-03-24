@@ -14,6 +14,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.script.DefaultRedisScript;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import util.IdWorker;
 
 import javax.persistence.criteria.CriteriaBuilder;
@@ -32,6 +33,7 @@ import java.util.concurrent.TimeUnit;
  *
  * @author Administrator
  */
+@Transactional
 @Service
 public class UserService {
 

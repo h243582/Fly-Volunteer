@@ -56,7 +56,7 @@ Eureka包含两个组件：Eureka **Server**和Eureka **Client**。
 
 ```yml
 server:
-	port: 6868 #服务端口
+	port: 2435 #服务端口
 eureka:
 	client:
 		registerWithEureka: false #是否将自己注册到Eureka服务中，本身就是所有无需注册
@@ -99,7 +99,7 @@ server:
 eureka:
   client:
     service-url:
-      defaultZone: http://127.0.0.1:6868/eureka/ #服务器地址
+      defaultZone: http://127.0.0.1:2435/eureka/ #服务器地址
   instance:
     prefer-ip-address: true  #能否跨服务器访问（就是说访问另一个服务）
 ```

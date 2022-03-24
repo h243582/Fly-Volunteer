@@ -939,6 +939,7 @@ set.remove("特别");
 ### （2）在服务层使用缓存
 
 ```java
+@Transactional
 @Service
 @Transactional  //事务注解
 public class UserServiceImpl implements UserService {

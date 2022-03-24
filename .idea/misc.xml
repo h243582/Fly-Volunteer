@@ -14,6 +14,7 @@
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/Demo/pom.xml" />
+        <option value="$PROJECT_DIR$/heyufei-Ribbon/pom.xml" />
         <option value="$PROJECT_DIR$/hyf-demo/pom.xml" />
       </set>
     </option>
